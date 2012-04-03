@@ -21,6 +21,10 @@ body {
 	background-color: #FFF;
 }
 
+#boutonA{
+	height:141px;
+}
+
 .bandeau img { /* pour la position du bouton d'accueil*/
 	float:left;
 	width:33%;
