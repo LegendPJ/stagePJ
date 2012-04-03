@@ -1,0 +1,63 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Xylassur Application</title>
+<!-- Feuilles de style CSS : Bootstrap & Global -->
+  <?php //echo $this->headLink()->appendStylesheet('/css/bmin.css') ?>
+  <?php echo $this->headLink()->appendStylesheet('/css/global.css') ?>
+
+</head>
+<body>
+	<div class="header">
+		<div class="bandeau">
+			<a href="<?php echo $this->url(array('controller'=>'index',
+                				 			'action'=>'index'));?>">
+                			<img src="<?php echo $this->baseUrl;?>/images/accueil.png" alt="Xylagroup vous conseille"></a>	
+			<div class="subnav">
+				 <ul class="nav">
+					<li id="one"><a href="<?php echo $this->url(array('controller'=>'Xylassur',
+                				 							'action'=>'index'));?>">
+                				 		<img src="<?php echo $this->baseUrl;?>/images/xylassur.png" alt="Xylassur"></a>
+						<!-- <ul class="secondnav">  
+							<li class="child"><a href="#">azertyuiopoiuytrezeghnbv</a></li>  
+							<li class="child"><a href="#">1.2</a></li>  
+						</ul>   -->
+					</li>
+
+					<li id="two"><a href="<?php echo $this->url(array('controller'=>'xylavie',
+                				 							'action'=>'index'));?>">
+                				 		<img src="<?php echo $this->baseUrl;?>/images/xylavie.png" alt="Xylavie"></a>
+
+					</li>
+
+					<li id="three"><a href="<?php echo $this->url(array('controller'=>'xylabtp',
+                				 							'action'=>'index'));?>">
+                				 		<img src="<?php echo $this->baseUrl;?>/images/xylabtp.png" alt="Xylabtp"></a>
+
+					</li>
+
+					<li id="four"><a href="<?php echo $this->url(array('controller'=>'xylarisk',
+                				 							'action'=>'index'));?>">
+                				 		<img src="<?php echo $this->baseUrl;?>/images/xylarisk.png" alt="Xylarisk"></a>
+
+					</li>
+				</ul> 
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="side">
+			Je suis le coté 
+		</div>
+		<div class="content">
+			<?php echo $this->layout()->content ?>
+		</div>
+	</div>
+ 	<div class="footer">
+ 		
+ 	</div>
+
+ 
+</body>
+</html>
