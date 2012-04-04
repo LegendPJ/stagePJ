@@ -7,6 +7,7 @@ class XylavieController extends Zend_Controller_Action
     {
     	 /* page d'accueil*/
         $this->view->title = "Je suis la page de Xylavie";
+        $this->view->nomXyla = "XylaVIE";
     }
 
 
