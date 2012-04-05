@@ -1,5 +1,26 @@
+/* A revoir pour la police ITC Officina sans book ==> pas exactement la même..et problèmes sur Opera*/
+
+
+@font-face {
+    font-family: 'ITCOfficinaSansRegular';
+    src: url('itc_officina_sans_book1-webfont.eot');
+    src: url('itc_officina_sans_book1-webfont.eot?#iefix') format('embedded-opentype'),
+         url('itc_officina_sans_book1-webfont.woff') format('woff'),
+         url('itc_officina_sans_book1-webfont.ttf') format('truetype'),
+         url('itc_officina_sans_book1-webfont.svg#') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/* Fin  */
+
+
 body {
+	font-family: "ITCOfficinaSansRegular";
 	width:70%;
+	min-width:1000px;
 	height:100%;
 	text-align: center;
 	margin-top:1%;
@@ -7,6 +28,8 @@ body {
 	margin-right:auto;
 	margin-bottom :0;
 	box-shadow: 0 0 15px black;
+	color:#1e3847;
+
 	/* dégradé de couleurs reprenant les couleurs du bandeau */
 
 	background: -khtml-gradient(linear, left, right, from(#235d7f), to(#759ebb)); 
@@ -38,22 +61,18 @@ body {
 }
 
 
-/* A revoir pour la police ITC Officina sans book  */
-/*@font-face {
-	/* On donne un nom (au choix) à la fonte téléchargée */
-	/*font-family: "ITC";*/
-	/* On indique le chemin du fichier de fonte à télécharger  */
-	/* L'indication du format n'est pas obligatoire */
-/*	src: url("OfficinaSansCTT.ttf") format("opentype");
+p {
+	font-size:100%;
+	font-family: "ITCOfficinaSansRegular";
+	text-align: left;
+	width:100%;
 }
 
-
-h3 {
-	font-family: "ITC", sans-serif;
-	font-family:ITC;
-} */
-
-/* Fin  */
+h1{
+	color: #235d7f;
+	text-align: left;
+	margin-left:10%;
+}
 
 .headerP {
 	width:100%;
@@ -74,13 +93,14 @@ h3 {
 
 .subnav {
 	width: 29%;
-	margin: 4.1% 0 0 38%;
+	height:9%;
+	margin: 4.1% 0 1% 38%;
 	position:absolute;
 }
 
 
 
-li#one {margin-left: -2%;margin-right:5%;}
+li#one {margin-left: 0%;margin-right:5%;}
 li#two {margin-left: 0%;margin-right:4%;}
 li#three {margin-right: 5%;}
 
@@ -119,10 +139,10 @@ ul.navMenu li a {
 }
 
 ul.navMenu li img {
-	width:100%;
+	width:100%;/*
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
-	border-radius: 15px;
+	border-radius: 15px;*/
 	border: 3px solid transparent;	
 }
 
@@ -130,7 +150,9 @@ ul.navMenu li img:hover {
 	box-shadow: 0 0 15px #254b61;
 }
 
-
+a.current {
+	background-color: red;
+}
 /**********************************************************/
 /************** FIN CSS MENU DANS LE BANDEAU **************/
 /*********************************************************/
@@ -156,6 +178,79 @@ ul.navMenu li img:hover {
 	width:100%;
 	margin-left:0;
 }
+
+ul.dropdown-menu li a {
+	text-align: left;
+}
+
+ul.dropdown-menu{
+	min-width:100%;
+}
+
+ul.nav-pills li a{
+	text-align: left;
+}
+
+.span12 {
+	margin-left:8%;
+	margin-right:8%;
+	width:84%;
+}
+
+.span5{
+	margin-left:8%;
+	margin-right:2%;
+	width:20%;
+}
+
+#alignLeft {
+	width:60%;
+	margin-top:1%;
+	margin-left:1%;
+}
+
 /**********************************************************/
 /************** FIN MODIFS BOOTSTRAP TWITTER **************/
 /*********************************************************/
+
+
+/**********************************************************/
+/********************** MENU FLOU ************************/
+/*********************************************************/
+
+.menuFlou li {
+	display: block;
+	font-size: 1.2em;
+	margin-right: 15px;
+	float: left;
+}
+
+.menuFlou ul {
+	margin-top: 20px;
+	text-align: left;
+}
+
+.menuFlou li a {
+	-webkit-transition: all 0.2s ease-in 0s;
+	-moz-transition: all 0.2s ease-in 0s;
+	-o-transition: all 0.2s ease-in 0s;
+	-ms-transition: all 0.2s ease-in 0s;
+	transition: all 0.2s ease-in 0s;
+	color: transparent;
+	text-decoration: none;
+	text-shadow: 0 0 1px #000;
+	text-transform: uppercase;
+	font-family: "ITCOfficinaSansRegular";
+}
+
+.menuFlou li a:hover {
+	color: #254b61;
+	padding-top: 5px;
+	text-shadow: 0 0 1px #FFFFFF;
+	font-size: 1.4em;
+}
+
+.menuFlou:hover li a {
+	text-shadow: 0 0 3px #254b61;
+}
+

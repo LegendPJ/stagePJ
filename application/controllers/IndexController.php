@@ -10,7 +10,8 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $this->view->title = "je suis xylagroup";
+        $this->view->title = "Bienvenue chez XYLAGROUP";
+        $this->view->subMenu = "Qui sommes-nous ?";
         //$this->view->nomXyla = "XylaGROUP";
     }
 
