@@ -8,7 +8,7 @@ date_default_timezone_set('Europe/Brussels');
 * Setup libraries & autoloaders
 */
 set_include_path(dirname(__FILE__).'/../library/zendframework'
-. PATH_SEPARATOR . dirname(__FILE__).'/../library/doctrine'. PATH_SEPARATOR . dirname(__FILE__).'/../library/doctrine/Doctrine'
+. PATH_SEPARATOR . dirname(__FILE__).'/../library/doctrine'
 . PATH_SEPARATOR . dirname(__FILE__).'/models'
 . PATH_SEPARATOR . dirname(__FILE__).'/models/generated'
 . PATH_SEPARATOR . get_include_path());

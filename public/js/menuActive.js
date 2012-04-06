@@ -1,6 +1,6 @@
 jQuery(function($) {
 	$('.navMenu a').click(function(){
-		$('.navMenu a').removeClass('current');
+		$('.navMenu a.current').removeClass('current');
 		$(this).addClass('current');
 	}); 
 });
