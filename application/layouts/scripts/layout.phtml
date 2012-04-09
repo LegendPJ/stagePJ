@@ -16,7 +16,7 @@
 			<a href="<?php echo $this->url(array('controller'=>'index',
                 				 			'action'=>'index'));?>"><img src="<?php echo $this->baseUrl;?>/images/bandeau5.png" alt="Xylagroup vous conseille"></a>
 		</div>
-		<div class="navMenu">
+		<div class="menu">
 			<ul class="navMenu">
 				<li id="one"><a href="<?php echo $this->url(array('controller'=>'Xylassur','action'=>'index'));?>">XYLASSUR</a></li>
 
@@ -30,7 +30,11 @@
 	</div>
 	<div class="containerP">
 		<div class="content">
+			<?php echo $this->action?>
+			<?php echo $this->module ?>
+			<?php echo $this->controller ?>
 			<?php echo $this->layout()->content ?>
+
 		</div>
 	</div>
  	<div class="footerP">
