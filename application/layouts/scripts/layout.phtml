@@ -18,23 +18,20 @@
 		</div>
 		<div class="menu">
 			<ul class="navMenu">
-				<li id="one"><a href="<?php echo $this->url(array('controller'=>'Xylassur','action'=>'index'));?>">XYLASSUR</a></li>
+				<li id ="one"><a <?php echo ($this->controller == "index") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'));?>">ACCUEIL</a></li>
 
-				<li id="two"><a href="<?php echo $this->url(array('controller'=>'xylavie','action'=>'index'));?>">XYLAVIE</a></li>
-
-				<li id="three"><a href="<?php echo $this->url(array('controller'=>'xylabtp','action'=>'index'));?>">XYLABTP</a></li>
-
-				<li id="four"><a href="<?php echo $this->url(array('controller'=>'xylarisk','action'=>'index'));?>">XYLARISK</a></li>
+				<?php foreach (Entite::findAll() as $entite) : ?>
+				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(
+																						'controller'=>strtolower($entite->nom),
+																						'action'=>'index'));?>"><?php echo strtoupper($entite->nom);?>
+					</a></li>
+				<?php endforeach; ?>
 			</ul> 
 		</div>
 	</div>
 	<div class="containerP">
 		<div class="content">
-			<?php echo $this->action?>
-			<?php echo $this->module ?>
-			<?php echo $this->controller ?>
 			<?php echo $this->layout()->content ?>
-
 		</div>
 	</div>
  	<div class="footerP">

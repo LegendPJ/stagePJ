@@ -18,6 +18,7 @@ class IndexController extends Zend_Controller_Action
         // recupere le controller
         $this->view->action = $this->getRequest()->getActionName(); 
         // recupere l'action
+
     }
 
 

@@ -1,0 +1,109 @@
+## YAML Template
+options:
+ type: INNODB
+ collate: utf8_general_ci
+ charset: utf8
+
+
+News:
+ columns:
+  id:
+   type: integer
+   primary: true
+   autoincrement: true
+   notnull: true
+  titre: 
+   type: string(100)
+   notnull: true
+  numero:
+   type: integer
+   notnull: true
+  contenu: 
+   type: string(10000)
+   notnull: true
+  date: 
+   type: date
+   notnull: true
+
+
+Entite:
+ columns:
+  id:
+   type: integer
+   primary: true
+   autoincrement: true
+   notnull: true
+  nom: 
+   type: string(20)
+   notnull: true
+ relations:
+  Encadre:
+   class: Encadre
+   local: id
+   foreign: entite_id
+   foreignAlias: Entite
+   foreignType: one
+   type: one
+
+
+Encadre:
+ columns:
+  id:
+   type: integer
+   primary: true
+   autoincrement: true
+   notnull: true
+  titre: 
+   type: string(50)
+   notnull: true
+  contenu: 
+   type: string(10000)
+   notnull: true
+  entite_id:
+   type: integer
+   notnull: true
+ relations:
+  Entite:
+   class: Entite
+   local: entite_id
+   foreign: id
+   foreignAlias: Encadre
+   foreignType: one
+   type: one
+  Sousencadre:
+   class: Sousencadre
+   local: id
+   foreign: encadre_id
+   foreignAlias: Encadre
+   foreignType: one
+   type: one
+
+
+Sousencadre:
+ columns:
+  id:
+   type: integer
+   primary: true
+   autoincrement: true
+   notnull: true
+  titre: 
+   type: string(50)
+   notnull: true
+  contenu: 
+   type: string(10000)
+   notnull: true
+  encadre_id:
+   type: integer
+   notnull: true
+ relations:
+  Encadre:
+   class: Encadre
+   local: encadre_id
+   foreign: id
+   foreignAlias: Sousencadre
+   foreignType: one
+   type: one
+
+
+
+

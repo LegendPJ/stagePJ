@@ -19,7 +19,7 @@
 
 body {
 	font-family: "ITCOfficinaSansRegular";
-	width:70%;
+	width:1200px;	
 	min-width:1000px;
 	height:100%;
 	text-align: center;
@@ -27,7 +27,6 @@ body {
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom :0;
-	box-shadow: 0 0 15px black;
 	color:#1e3847;
 
 	/* dégradé de couleurs reprenant les couleurs du bandeau */
@@ -72,6 +71,7 @@ h1{
 	color: #235d7f;
 	text-align: left;
 	margin-left:10%;
+	font-family:'Rockwell','Rockwellff';
 }
 
 .headerP {
@@ -82,13 +82,12 @@ h1{
 
 .bandeau {
 	height:100%;
-
 }
 
 
 .bandeau img {
 	width:100%;
-	box-shadow: 0px 10px 10px 0px #656565;
+	box-shadow: 0 0 15px black;
 }
 
 
@@ -102,20 +101,20 @@ h1{
 
 
 
-li#one {margin-left: 29%;}/*
+li#one {margin-left: 24%;}/*
 li#two {margin-left: 0%;margin-right:4%;}
 li#three {margin-right: 5%;}
 */
 
 .containerP {
-	margin: 0% 0 0 0;
+	margin: 0 0 0 0;
 	width:100%;
 	min-height:1000px;
-	box-shadow: 0 0 15px #656565;
 	background: url("../images/XylagroupX.jpg");
 	background-repeat:no-repeat;
 	background-position:center top;
 	background-color: #FFF;
+	box-shadow: 0 0 15px black;
 }
 
 
@@ -127,8 +126,13 @@ div.menu{
 	width:100%;
 	height:50px;
 	background-color: #eee;
-	box-shadow: 0 0 5px #656565;
 	text-align:center;
+	z-index:20;
+	margin-top:-13px;	
+	background: url("../images/rubandeauPP.png");
+	background-repeat:no-repeat;
+	background-position:-10px -1px;
+	box-shadow: 0 0 15px black;
 }
 
 
@@ -137,7 +141,6 @@ div.menu{
 /*********************************************************/
 ul.navMenu {
 	width:98%;
-	margin-top : -0.5%;
 }
 
 ul.navMenu li {
@@ -147,6 +150,7 @@ ul.navMenu li {
 	margin-top: 20px;
 	margin-right:0;
 	display: block;
+
 }
 
 
@@ -156,20 +160,8 @@ ul.navMenu li a {
 	font-size:1.2em;
 }
 
-ul.navMenu li img {
-	width:100%;/*
-	-webkit-border-radius: 15px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;*/
-	border: 3px solid transparent;	
-}
-
-ul.navMenu li img:hover {
-	box-shadow: 0 0 15px #254b61;
-}
-
-a.current {
-	background-color: red;
+.current {
+	color:#FFC90E;
 }
 /**********************************************************/
 /************** FIN CSS MENU DANS LE BANDEAU **************/
