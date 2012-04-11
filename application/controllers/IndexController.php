@@ -5,23 +5,26 @@ class IndexController extends Zend_Controller_Action
 
     public function init()
     {
-        /* Initialize action controller here */
-    }
-
-    public function indexAction()
-    {
-        $this->view->title = "Bienvenue chez XYLAGROUP";
-        $this->view->subMenu = "Qui sommes-nous ?";
+        ////////////////////////////////////////////////////////////////////////
+        //a remettre en dessous si ça ne fonctionne plus !
         $this->view->module = $this->getRequest()->getModuleName(); 
         // recupere le module
         $this->view->controller = $this->getRequest()->getControllerName(); 
         // recupere le controller
         $this->view->action = $this->getRequest()->getActionName(); 
         // recupere l'action
-
+        ////////////////////////////////////////////////////////////////////////
     }
 
+    public function indexAction()
+    {
+        // Pour récupérer les encadre de l'Accueil
+        foreach (Entite::findAccueil() as $entite) {
+            $this->view->encadreAccueil = Encadre::findEncadreAccueil($entite->id);
+        }
 
-}
+        $this->view->test = Encadre::hasEncadre();
+            
+    }
 
-	
+}	

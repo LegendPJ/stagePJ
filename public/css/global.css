@@ -68,6 +68,10 @@ p {
 }
 
 h1{
+	display: none;
+}
+
+h2{
 	color: #235d7f;
 	text-align: left;
 	margin-left:10%;
@@ -217,6 +221,10 @@ ul.nav-pills li a{
 	width:60%;
 	margin-top:1%;
 	margin-left:1%;
+}
+
+.carousel {
+	text-align: left;
 }
 
 /**********************************************************/

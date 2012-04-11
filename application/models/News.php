@@ -12,5 +12,8 @@
  */
 class News extends BaseNews
 {
-
+	public static function findAll()
+	{
+		return Doctrine_Query::create()->from('news n')->execute();
+	}
 }

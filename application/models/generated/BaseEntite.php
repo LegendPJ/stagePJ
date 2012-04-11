@@ -7,7 +7,7 @@
  * 
  * @property integer $id
  * @property string $nom
- * @property Encadre $Encadre
+ * @property Doctrine_Collection $Encadre
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -38,7 +38,7 @@ abstract class BaseEntite extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Encadre', array(
+        $this->hasMany('Encadre', array(
              'local' => 'id',
              'foreign' => 'entite_id'));
     }

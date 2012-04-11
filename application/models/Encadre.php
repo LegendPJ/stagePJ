@@ -12,5 +12,32 @@
  */
 class Encadre extends BaseEncadre
 {
+	public function findAll() {
 
+		return 	Doctrine_Query::create()
+					->from('encadre en')
+					->execute();
+
+	}
+
+	public function findEncadreAccueil($idAccueil) {
+
+		return 	Doctrine_Query::create()
+					->select('en.*, s.titre')
+					->from('encadre en')
+					->where('en.entite_id = ?', $idAccueil)
+					->leftJoin('en.sousencad s') // On joint les deux tables.
+					->orderBy('en.ordre ASC')
+					->execute();
+
+	}
+
+	public function hasEncadre() {
+
+		return 	Doctrine_Query::create()
+					->select('en.*, s.titre')
+					->from('encadre en')
+					->where('en.entite_id = ?', 28)
+					->execute();
+	}
 }

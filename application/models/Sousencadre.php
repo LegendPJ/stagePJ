@@ -12,5 +12,13 @@
  */
 class Sousencadre extends BaseSousencadre
 {
+	public function findSEEncadre($idEncadre) {
 
+		return 	Doctrine_Query::create()
+					->from('Sousencadre se')
+					->where('se.encadre_id = ?', $idEncadre)
+					->orderBy('en.ordre ASC')
+					->execute();
+
+	}
 }

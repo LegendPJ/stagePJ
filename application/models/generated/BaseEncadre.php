@@ -9,8 +9,9 @@
  * @property string $titre
  * @property string $contenu
  * @property integer $entite_id
+ * @property integer $ordre
  * @property Entite $Entite
- * @property Sousencadre $Sousencadre
+ * @property Doctrine_Collection $Sousencadre
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -41,6 +42,10 @@ abstract class BaseEncadre extends Doctrine_Record
              'type' => 'integer',
              'notnull' => true,
              ));
+        $this->hasColumn('ordre', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
+             ));
 
         $this->option('type', 'INNODB');
         $this->option('collate', 'utf8_general_ci');
@@ -54,7 +59,7 @@ abstract class BaseEncadre extends Doctrine_Record
              'local' => 'entite_id',
              'foreign' => 'id'));
 
-        $this->hasOne('Sousencadre', array(
+        $this->hasMany('Sousencadre as sousencad', array(
              'local' => 'id',
              'foreign' => 'encadre_id'));
     }

@@ -35,9 +35,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->headLink()->prependStylesheet('/css/bmin.css');
 
 		// Fichiers jQuery
-		$view->headScript()->prependFile('/js/footer.js');
+		// $view->headScript()->prependFile('/js/footer.js');
 		$view->headScript()->prependFile('/js/bootstrap-tab.js');	
-		$view->headScript()->prependFile('/js/menuActive.js');
+		$view->headScript()->prependFile('/js/bootstrap-carousel.js');	
+		// $view->headScript()->prependFile('/js/menuActive.js');
 		$view->headScript()->prependFile('/js/bootstrap-dropdown.js');
 		$view->headScript()->prependFile('/js/jquery-1.7.1.min.js');
 

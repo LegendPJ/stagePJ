@@ -20,7 +20,7 @@
 			<ul class="navMenu">
 				<li id ="one"><a <?php echo ($this->controller == "index") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'));?>">ACCUEIL</a></li>
 
-				<?php foreach (Entite::findAll() as $entite) : ?>
+				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
 				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(
 																						'controller'=>strtolower($entite->nom),
 																						'action'=>'index'));?>"><?php echo strtoupper($entite->nom);?>

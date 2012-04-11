@@ -12,8 +12,27 @@
  */
 class Entite extends BaseEntite
 {
-	public static function findAll()
-	{
-		return Doctrine_Query::create()->from('entite e')->execute();
+	public static function findAll() {
+
+		return Doctrine_Query::create()
+					->from('entite e')
+					->execute();
+	}
+
+	public static function findAllExceptAccueil() {
+
+		return Doctrine_Query::create()
+					->select('e.*')
+					->from('entite e')
+					->where('e.nom != ?', "ACCUEIL")
+					->execute();
+	}
+
+	public function findAccueil() {
+
+		return Doctrine_Query::create()
+					->from('entite')
+					->where('nom = ?', "ACCUEIL")
+					->execute();
 	}
 }
