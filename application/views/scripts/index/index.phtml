@@ -3,13 +3,6 @@
 <br>
 <h1>XYLAGROUP</h1>
 <div class="row">
-
-	<H2>TEST</H2>
-	<?php if(empty($this->test))
-		echo 'vide';
-		else echo 'pas vide';
-		 ?>
-
 	<?php foreach ($this->encadreAccueil as $e): ?>
 		<div class="span12">
 			<h2><?php echo $e->titre; ?></h2>
@@ -17,10 +10,10 @@
 			<?php echo ($e->contenu != "<news>") ? $e->contenu : "ICI les News a voir plus tard" ?>
 			<!-- NEWS -->
 			<!-- FIN NEWS -->
-			<hr class="soften">
-		</div>
-			<br>
+		<br>
 			<!-- ICI A TESTER SI C'EST VIDE OU NON -->
+		<?php if (count($e->sousencad) != 0) { ?>
+		</div>
 			<div class="span5">
 				<ul id="tab" class="nav nav-pills nav-stacked">
 					<?php $i =0;
@@ -47,5 +40,8 @@
 					?>
 				</div>
 			</div>
+			<?php } else {
+				echo '<hr class="soften"></div>';
+			} ?>
 	<?php endforeach ?>
 </div>
