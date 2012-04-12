@@ -9,6 +9,9 @@
  * @property string $titre
  * @property integer $numero
  * @property string $contenu
+ * @property string $auteur
+ * @property string $lien
+ * @property string $photo
  * @property date $date
  * 
  * @package    ##PACKAGE##
@@ -39,6 +42,16 @@ abstract class BaseNews extends Doctrine_Record
              'type' => 'string',
              'notnull' => true,
              'length' => '10000',
+             ));
+        $this->hasColumn('auteur', 'string', null, array(
+             'type' => 'string',
+             'notnull' => true,
+             ));
+        $this->hasColumn('lien', 'string', null, array(
+             'type' => 'string',
+             ));
+        $this->hasColumn('photo', 'string', null, array(
+             'type' => 'string',
              ));
         $this->hasColumn('date', 'date', null, array(
              'type' => 'date',

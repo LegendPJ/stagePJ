@@ -12,8 +12,26 @@
  */
 class News extends BaseNews
 {
-	public static function findAll()
-	{
+	public static function findAll() {
+
 		return Doctrine_Query::create()->from('news n')->execute();
 	}
+
+	public static function findFirstNews() {
+
+		return Doctrine_Query::create()
+					->select('n.date, n.titre, n.auteur, n.contenu')
+					->from('news n')
+					->where('n.date IN (SELECT MAX(ne.date) as date FROM news ne)')
+					->execute();
+	}
+
+	public static function findNews($idNews) {
+
+		return 	Doctrine_Query::create()
+					->from('news n')
+					->where('n.id = ?', $idNews)
+					->execute();
+	}
 }
+

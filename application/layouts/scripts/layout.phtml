@@ -14,16 +14,16 @@
 	<div class="headerP">
 		<div class="bandeau">		
 			<a href="<?php echo $this->url(array('controller'=>'index',
-                				 			'action'=>'index'));?>"><img src="<?php echo $this->baseUrl;?>/images/bandeau5.png" alt="Xylagroup vous conseille"></a>
+                				 			'action'=>'index'), null, true);?>"><img src="<?php echo $this->baseUrl;?>/images/bandeau5.png" alt="Xylagroup vous conseille"></a>
 		</div>
 		<div class="menu">
 			<ul class="navMenu">
-				<li id ="one"><a <?php echo ($this->controller == "index") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'));?>">ACCUEIL</a></li>
+				<li id ="one"><a <?php echo ($this->controller == "index") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>">ACCUEIL</a></li>
 
 				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
 				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(
 																						'controller'=>strtolower($entite->nom),
-																						'action'=>'index'));?>"><?php echo strtoupper($entite->nom);?>
+																						'action'=>'index'), null, true);?>"><?php echo strtoupper($entite->nom);?>
 					</a></li>
 				<?php endforeach; ?>
 			</ul> 

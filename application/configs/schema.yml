@@ -21,6 +21,13 @@ News:
   contenu: 
    type: string(10000)
    notnull: true
+  auteur:
+   type: string
+   notnull: true
+  lien:
+   type: string
+  photo:
+   type: string
   date: 
    type: date
    notnull: true

@@ -171,19 +171,6 @@ ul.navMenu li a {
 /************** FIN CSS MENU DANS LE BANDEAU **************/
 /*********************************************************/
 
-
-.logo img {
-	width:100%;
-}
-
-.footerP {
-	margin-top: 1%;
-	height:200px;
-	width:100%;
-	background-color: blue;
-}
-
-
 /**********************************************************/
 /**************** MODIFS BOOTSTRAP TWITTER ****************/
 /*********************************************************/
@@ -227,10 +214,71 @@ ul.nav-pills li a{
 	text-align: left;
 }
 
+
+/**********************************************/
+/******************     NEWS     ******************/
+/*********************************************/
+
+#row-encadre div.span12 {
+	margin: 2% 0 0 2%;
+	width:97%;
+}
+
+#row-encadre {
+	border:2px solid #000;
+/*
+*/
+	margin-left:5%;
+	width:85%;
+	padding: 2%;
+	box-shadow: 0 0 20px black;
+/*	box-shadow: 5px 5px black;
+	box-shadow: 0 0 10px black;
+	box-shadow: 2px 2px black;*/
+}
+
+#row-encadre div.span5 {
+	margin: 0;
+	width:310px;
+}
+
+#row-encadre div.span5 img {
+	box-shadow: 0 0 10px black;
+	max-width:310px;
+	margin-left:6%;
+}
+
+#row-encadre div.span6 {
+	text-align: left;
+	color:#2e6180;
+	margin: 0 0 0 5%;
+}
+
+.span6 h5{
+	color:#999;
+}
+
+#source {
+	text-decoration:underline;
+	font-weight:bold;
+}
+/**********************************************/
+/*****************     FIN NEWS     ***************/
+/*********************************************/
+
+
+
 /**********************************************************/
 /************** FIN MODIFS BOOTSTRAP TWITTER **************/
 /*********************************************************/
 
+
+.footerP {
+	margin-top: 1%;
+	height:200px;
+	width:100%;
+	background-color: blue;
+}
 
 /**********************************************************/
 /********************** MENU FLOU ************************/

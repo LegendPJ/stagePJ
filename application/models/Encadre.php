@@ -27,17 +27,8 @@ class Encadre extends BaseEncadre
 					->from('encadre en')
 					->where('en.entite_id = ?', $idAccueil)
 					->leftJoin('en.sousencad s') // On joint les deux tables.
-					->orderBy('en.ordre ASC')
+					->orderBy('en.ordre ASC, s.ordre ASC')
 					->execute();
 
-	}
-
-	public function hasEncadre() {
-
-		return 	Doctrine_Query::create()
-					->select('en.*, s.titre')
-					->from('encadre en')
-					->where('en.entite_id = ?', 28)
-					->execute();
 	}
 }
