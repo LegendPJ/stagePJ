@@ -30,6 +30,7 @@ class IndexController extends Zend_Controller_Action
 	{
 		$this->view->int = $this->_getParam('id');
 		$this->view->theNews = News::findNews($this->view->int);
+		
 	}
 
 }	

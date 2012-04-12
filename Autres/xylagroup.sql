@@ -19,6 +19,29 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `xylagroup`
 --
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `entite`
+--
+
+CREATE TABLE IF NOT EXISTS `entite` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `entite`
+--
+
+INSERT INTO `entite` (`id`, `nom`) VALUES
+(1, 'ACCUEIL'),
+(2, 'XYLASSUR'),
+(3, 'XYLAVIE'),
+(4, 'XYLABTP'),
+(5, 'XYLARISK');
+
 
 -- --------------------------------------------------------
 
@@ -45,28 +68,6 @@ INSERT INTO `encadre` (`id`, `titre`, `contenu`, `entite_id`, `ordre`) VALUES
 (2, 'News', '<news>', 1, 2),
 (3, 'Qui sommes-nous ?', '', 1, 3);
 
--- --------------------------------------------------------
-
---
--- Structure de la table `entite`
---
-
-CREATE TABLE IF NOT EXISTS `entite` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
-
---
--- Contenu de la table `entite`
---
-
-INSERT INTO `entite` (`id`, `nom`) VALUES
-(1, 'ACCUEIL'),
-(2, 'XYLASSUR'),
-(3, 'XYLAVIE'),
-(4, 'XYLABTP'),
-(5, 'XYLARISK');
 
 -- --------------------------------------------------------
 
