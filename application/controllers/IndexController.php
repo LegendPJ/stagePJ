@@ -26,11 +26,4 @@ class IndexController extends Zend_Controller_Action
 		$this->view->first = News::findFirstNews();
 	}
 
-	public function newsdayAction()
-	{
-		$this->view->int = $this->_getParam('id');
-		$this->view->theNews = News::findNews($this->view->int);
-		
-	}
-
 }	

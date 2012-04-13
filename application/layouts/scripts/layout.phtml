@@ -18,7 +18,7 @@
 		</div>
 		<div class="menu">
 			<ul class="navMenu">
-				<li id ="one"><a <?php echo ($this->controller == "index") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>">ACCUEIL</a></li>
+				<li id ="one"><a <?php echo ($this->controller == "index" || $this->controller == "news") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>">ACCUEIL</a></li>
 
 				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
 				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(

@@ -33,5 +33,34 @@ class News extends BaseNews
 					->where('n.id = ?', $idNews)
 					->execute();
 	}
+
+	public function findPrecNews($dateNews) {
+		
+		return 	Doctrine_Query::create()
+					->from('news n')
+					->where('n.date < ?', $dateNews)
+					->orderBy('n.date DESC')
+					->limit(0,1)
+					->execute();
+	}	
+
+	public function findNextNews($dateNews) {
+		
+		return 	Doctrine_Query::create()
+					->from('news n')
+					->where('n.date > ?', $dateNews)
+					->orderBy('n.date ASC')
+					->limit(0,1)
+					->execute();
+	}	
+
+	public function othersNews($idNews) {
+
+		return 	Doctrine_Query::create()
+					->from('news n')
+					->where('n.id NOT IN (SELECT ne.id FROM news ne WHERE ne.id = ?)', $idNews)
+					->orderBy('n.date DESC')
+					->execute();
+	}
 }
 

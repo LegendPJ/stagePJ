@@ -18,22 +18,21 @@
 						<h3><?php echo $news->titre; ?></h3>
 						<h5>Postée par <?php echo $news->auteur; ?> le <?php echo $news->date; ?>.</h5>
 					</div>
-					<?php  $nb_mots = 70;
+					<?php  $nb_mots = 50;
 					$inter = $news->contenu;
 					$texte = explode(' ', $inter, $nb_mots+1);
 					unset($texte[$nb_mots]);?>
 					
 					<div class="span12">
-						<?php echo implode(' ', $texte).'...';?><p><a href="<?php echo $this->url(array('controller'=>'index',
-                				 											'action'=>'newsday',
-                				 											'id' => $news->id), null, true);?>"> (En savoir plus...)</a></p>
+						<?php echo implode(' ', $texte).'...';?><p><a href="<?php echo $this->url(array('controller'=>'news',
+                				 											'action'=>'newsvue',
+                				 											'id' => $news->id), null, true);?>"> (Lire la suite...)</a></p>
 					</div>
 				</div>
 				<br>
 				<div class="span12">
-					<p><a href="<?php echo $this->url(array(
-										'controller'=>'index',
-                				 					'action'=>'newsday'), null, true);?>">> Accéder aux anciennes news <</a></p>
+					<p><a href="<?php echo $this->url(array('controller'=>'news',
+                				 					'action'=>'index'), null, true);?>">> Accéder à toutes les news <</a></p>
 				</div>
 
 			<!-- FIN NEWS -->
