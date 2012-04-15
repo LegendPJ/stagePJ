@@ -20,12 +20,12 @@ class Encadre extends BaseEncadre
 
 	}
 
-	public function findEncadreAccueil($idAccueil) {
+	public function findEncadreEntite($idEntity) {
 
 		return 	Doctrine_Query::create()
 					->select('en.*, s.titre')
 					->from('encadre en')
-					->where('en.entite_id = ?', $idAccueil)
+					->where('en.entite_id = ?', $idEntity)
 					->leftJoin('en.sousencad s') // On joint les deux tables.
 					->orderBy('en.ordre ASC, s.ordre ASC')
 					->execute();

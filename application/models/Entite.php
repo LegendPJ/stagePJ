@@ -35,4 +35,11 @@ class Entite extends BaseEntite
 					->where('nom = ?', "ACCUEIL")
 					->execute();
 	}
+
+	public function findEntity($entity){
+		return Doctrine_Query::create()
+					->from('entite')
+					->where('nom = ?', $entity)
+					->execute();
+	}
 }

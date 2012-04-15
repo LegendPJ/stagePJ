@@ -17,7 +17,7 @@ class News extends BaseNews
 		return Doctrine_Query::create()->from('news n')->execute();
 	}
 
-	public static function findFirstNews() {
+	public static function findLastNews() {
 
 		return Doctrine_Query::create()
 					->select('n.date, n.titre, n.auteur, n.contenu')
