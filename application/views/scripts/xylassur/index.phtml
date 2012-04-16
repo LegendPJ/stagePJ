@@ -4,51 +4,54 @@
 </div>
 <br><br>
 <h1>XYLASSUR</h1>
-<div class="row">
-	<?php foreach ($this->encEnti as $e): ?>
-		<div class="span12">
-		<h2><?php echo $e->titre; ?></h2>
-		<br>
-		<?php echo $e->contenu;?>
-		<br>
-	<?php if (count($e->sousencad) != 0) { ?>
-		</div>
-		<div class="span5">
-			<div class="tabbable tabs-left">
-			<!-- <ul id="tab" class="nav nav-pills nav-stacked">  -->
-				<ul id="tab" class="nav nav-tabs">
-				<?php $i =0;
-				foreach ($e->sousencad as $s) : 
-					echo ($i == 0) ? '<li class="active">' : '<li>' ; 
-					echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
-					$i++;
-				endforeach; 
-				?>
-			</ul>
-		</div>
-		</div>
-		<div class="span7" id="alignLeft">
-			<div id="myTabContent" class="tab-content">
-				<?php 
-				$j = 0;
-				foreach ($e->sousencad as $s) : 
-					echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
-					echo $s->contenu;
-					echo '</div>';
-					$j++;
-				endforeach; 
-				?>
-			</div>
-		</div>
-		<div class="span12">
-			<hr class="soften">
-		</div>
-	<?php } else { echo '<hr class="soften">'; } ?>
-		</div>
-	<?php endforeach ?>
-</div>
 
-<!-- <br><br>
+<?php if (count($this->encEnti) ==0)
+	echo '<h2> Nous sommes désolé mais cette page ne contient pour le moment aucun contenu, ceci devrait être rectifié d\'ici quelques jours!</h2>';
+else { ?>
+	<div class="row">
+		<?php foreach ($this->encEnti as $e): ?>
+			<div class="span12">
+			<h2><?php echo $e->titre; ?></h2>
+			<br>
+			<?php echo $e->contenu;?>
+		<?php if (count($e->sousencad) != 0) { ?>
+			<?php if (strlen($e->contenu) != 0)
+				echo '<br><hr class="resize">'; ?>
+			</div>
+			<div class="span5">
+				<div class="tabbable tabs-left">
+				<!-- <ul id="tab" class="nav nav-pills nav-stacked">  -->
+					<ul id="tab" class="nav nav-tabs">
+					<?php $i =0;
+					foreach ($e->sousencad as $s) : 
+						echo ($i == 0) ? '<li class="active">' : '<li>' ; 
+						echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
+						$i++;
+					endforeach; ?>
+				</ul>
+			</div>
+			</div>
+			<div class="span7" id="alignLeft">
+				<div id="myTabContent" class="tab-content">
+					<?php 
+					$j = 0;
+					foreach ($e->sousencad as $s) : 
+						echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
+						echo $s->contenu;
+						echo '</div>';
+						$j++;
+					endforeach; ?>
+				</div>
+			</div>
+			<div class="span12">
+				<hr class="soften">
+			</div>
+		<?php } else { echo '<hr class="soften"></div>'; } ?>
+		<?php endforeach ?>
+	</div>
+<?php } ?>
+<!-- 
+<br><br>
 <div class="row">
 	<div class="span8">
 		<div class="menuFlou">
@@ -59,28 +62,6 @@
 				<li><a href="#">Web</a></li>
 				<li><a href="#">Contact</a></li>
 			</ul>
-		</div>
-
-		<ul id="tab" class="nav nav-tabs">
-			<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-			<li><a href="#profile" data-toggle="tab">Profile</a></li>
-		</ul>
-
-		<div id="myTabContent" class="tab-content">
-			<div class="tab-pane fade in active" id="home">
-				<p>jjjjjjjjjjjiiiiiiiiiiiiiiiiii BBB.</p>
-			</div>
-			<div class="tab-pane fade" id="profile">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ull.</p>
-			</div>
-			<div class="tab-pane fade" id="dropdown1">
-				<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-			</div>
-			<div class="tab-pane fade" id="dropdown2">
-				<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-			</div>
 		</div>
 	</div>
 </div>

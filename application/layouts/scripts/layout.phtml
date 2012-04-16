@@ -1,4 +1,4 @@
-<?php echo $this->doctype() ?>
+ <?php echo $this->doctype() ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8,33 +8,29 @@
 <!-- Fichiers jQuery pour les animations -->
   <?php echo $this->headScript(); ?>
 <!-- A mettre en Zend dans le bootstrap -->
-<link rel="icon" href="<?php echo$this->baseUrl;?>/images/favicon.png" type="image/x-icon" />
-<link rel="shortcut icon" href="<?php echo$this->baseUrl;?>/images/favicon.png" type="image/x-icon" />
 
 </head>
 <body>
 	<div class="headerP">
 		<div class="bandeau">		
 			<a href="<?php echo $this->url(array('controller'=>'index',
-                				 			'action'=>'index'), null, true);?>"><img src="<?php echo $this->baseUrl;?>/images/bandeau5.png" alt="Xylagroup vous conseille"></a>
+                				 			'action'=>'index'), null, true);?>" title="Xylagroup"><img src="<?php echo $this->baseUrl;?>/images/using/bandeau5.png" alt="Xylagroup vous conseille"></a>
 		</div>
 		<div class="menu">
 			<ul class="navMenu">
-				<li id ="one"><a <?php echo ($this->controller == "index" || $this->controller == "news") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>">ACCUEIL</a></li>
+				<li id ="one"><a <?php echo ($this->controller == "index" || $this->controller == "news") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Vous dirige vers l'accueil">ACCUEIL</a></li>
 
 				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
 				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(
 																						'controller'=>strtolower($entite->nom),
-																						'action'=>'index'), null, true);?>"><?php echo strtoupper($entite->nom);?>
+																						'action'=>'index'), null, true);?>"  title="Vous dirige vers <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
 					</a></li>
 				<?php endforeach; ?>
 			</ul> 
 		</div>
 	</div>
 	<div class="containerP">
-		<div class="content">
-			<?php echo $this->layout()->content ?>
-		</div>
+		<?php echo $this->layout()->content ?>
 	</div>
  	<div class="footerP">
 

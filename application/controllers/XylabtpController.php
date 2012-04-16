@@ -5,8 +5,6 @@ class XylabtpController extends Zend_Controller_Action
 
 	public function init()
 	{
-		/* page d'accueil*/
-		$this->view->title = "Je suis la page de XylaBTP";
 		$this->view->nomXyla = "XylaBTP";
 		$this->view->module = $this->getRequest()->getModuleName(); 
 		// recupere le module
@@ -18,7 +16,9 @@ class XylabtpController extends Zend_Controller_Action
 
 	public function indexAction()
 	{
-		
+		$this->view->en 		= 	Entite::findEntity(strtoupper($this->view->controller));
+		$this->view->encEnti		= 	Encadre::findEncadreEntite($this->view->en[0]->id); 
+								//on récupère les encadre relatifs à l'entité (XYLABTP)
 	}
 
 

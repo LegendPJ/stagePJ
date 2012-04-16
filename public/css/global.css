@@ -1,29 +1,22 @@
 /* A revoir pour la police ITC Officina sans book ==> pas exactement la même..et problèmes sur Opera*/
-
-
 @font-face {
-    font-family: 'ITCOfficinaSansRegular';
-    src: url('itc_officina_sans_book1-webfont.eot');
-    src: url('itc_officina_sans_book1-webfont.eot?#iefix') format('embedded-opentype'),
-         url('itc_officina_sans_book1-webfont.woff') format('woff'),
-         url('itc_officina_sans_book1-webfont.ttf') format('truetype'),
-         url('itc_officina_sans_book1-webfont.svg#') format('svg');
+    font-family: 'PoliceXylagroup';
+    src: url('policeXylagroup.eot');
+    src: url('policeXylagroup.eot?#iefix') format('embedded-opentype'),
+
+         url('policeXylagroup.ttf') format('truetype'),
+         url('policeXylagroup.svg#') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
-
-/* Fin  */
-
-
 body {
-	font-family: "ITCOfficinaSansRegular";
+	font-family: "PoliceXylagroup";
 	width:1200px;	
 	/*width:1000px;	*/
 	min-width:1000px;
 	height:100%;
-	text-align: center;
 	margin-top:1%;
 	margin-left:auto;
 	margin-right:auto;
@@ -32,9 +25,9 @@ body {
 
 	/* dégradé de couleurs reprenant les couleurs du bandeau */
 
-	/*background: -khtml-gradient(linear, left, right, from(#235d7f), to(#759ebb)); 
+	background: -khtml-gradient(linear, left, right, from(#235d7f), to(#759ebb)); 
     	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#759ebb); /* IE 5.5 - 7 */
-    	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#759ebb)";   /* IE 8 */
+    	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#759ebb, GradientType=1)";   /* IE 8 */
 
 	/* IE10 */ 
 	background-image: -ms-linear-gradient(left, #235d7f 0%, #759ebb 100%);
@@ -53,26 +46,22 @@ body {
 
 	/* Proposed W3C Markup */ 
 	background-image: linear-gradient(left, #235d7f 0%, #759ebb 100%);
-
-
 	/* IE9 ?????????????????????*/
 	/* fin dégradé de couleurs reprenant les couleurs du bandeau */
-
 }
-
 
 p {
 	font-size:100%;
-	font-family: "ITCOfficinaSansRegular";
+	font-family: "PoliceXylagroup";
 	text-align: left;
 	width:100%;
 }
 
-h1{
+h1 {
 	display: none;
 }
 
-h2{
+h2 {
 	color: #235d7f;
 	text-align: left;
 	margin-left:10%;
@@ -84,18 +73,14 @@ h2{
 	height:100%;
 }
 
-
 .bandeau {
 	height:100%;
 }
-
 
 .bandeau img {
 	width:100%;
 	box-shadow: 0 0 15px black;
 }
-
-
 
 /*.subnav {
 	width: 29%;
@@ -103,8 +88,6 @@ h2{
 	margin: 4.1% 0 1% 38%;
 	position:absolute;
 }*/
-
-
 
 li#one {margin-left: 24%;}/*
 li#two {margin-left: 0%;margin-right:4%;}
@@ -115,7 +98,7 @@ li#three {margin-right: 5%;}
 	margin: 0 0 0 0;
 	width:100%;
 	min-height:1000px;
-	background: url("../images/XylagroupX.jpg");
+	background: url("../images/using/XylagroupX.jpg");
 	background-repeat:no-repeat;
 	background-position:center top;
 	background-color: #FFF;
@@ -127,14 +110,14 @@ li#three {margin-right: 5%;}
 /********** POUR LE MENU EN DESSOUS DU BANDEAU ***********/
 /*********************************************************/
 
-div.menu{
+div.menu {
 	width:100%;
 	height:50px;
 	background-color: #eee;
 	text-align:center;
 	z-index:20;
 	margin-top:-13px;	
-	background: url("../images/rubandeauPP.png");
+	background: url("../images/using/rubandeauPP.png");
 	background-repeat:no-repeat;
 	background-position:-10px -1px;
 	box-shadow: 0 0 15px black;
@@ -155,9 +138,7 @@ ul.navMenu li {
 	margin-top: 20px;
 	margin-right:0;
 	display: block;
-
 }
-
 
 ul.navMenu li a {
 	width : 100%;
@@ -168,6 +149,7 @@ ul.navMenu li a {
 .current {
 	color:#FFC90E;
 }
+
 /**********************************************************/
 /************** FIN CSS MENU DANS LE BANDEAU **************/
 /*********************************************************/
@@ -185,11 +167,11 @@ ul.dropdown-menu li a {
 	text-align: left;
 }
 
-ul.dropdown-menu{
+ul.dropdown-menu {
 	min-width:100%;
 }
 
-ul.nav-pills li a{
+ul.nav-pills li a {
 	text-align: left;
 }
 
@@ -199,7 +181,7 @@ ul.nav-pills li a{
 	width:84%;
 }
 
-.span5{
+.span5 {
 	margin-left:8%;
 	margin-right:2%;
 	width:20%;
@@ -215,6 +197,24 @@ ul.nav-pills li a{
 	text-align: left;
 }
 
+.resize {
+	width:60%;
+	margin-left:20%;
+	border-top: 1px solid #999;
+}
+
+
+.pager a:hover {
+	border: 1px solid #215675;
+	background: -moz-linear-gradient(100% 100% 90deg, #235d7f, #215675) repeat scroll 0 0 #222222;
+	border-radius: 14px 14px 14px 14px;
+	box-shadow: 0 1px 4px black;
+	color: #FFFFFF;
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+}
+/**********************************************************/
+/************** FIN MODIFS BOOTSTRAP TWITTER **************/
+/*********************************************************/
 
 /**********************************************/
 /******************     NEWS     ******************/
@@ -227,15 +227,13 @@ ul.nav-pills li a{
 
 #row-encadre {
 	border:2px solid #000;
-/*
-*/
 	margin-left:5%;
 	width:85%;
 	padding: 2%;
 	box-shadow: 0 0 20px black;
-/*	box-shadow: 5px 5px black;
-	box-shadow: 0 0 10px black;
-	box-shadow: 2px 2px black;*/
+/*	box-shadow: 5px 5px black;*/
+/*	box-shadow: 0 0 10px black;*/
+/*	box-shadow: 2px 2px black;*/
 }
 
 #row-encadre div.span5 {
@@ -255,7 +253,7 @@ ul.nav-pills li a{
 	margin: 0 0 0 5%;
 }
 
-.span6 h5{
+.span6 h5 {
 	color:#999;
 }
 
@@ -265,7 +263,7 @@ ul.nav-pills li a{
 }
 
 .little {
-	background-image: url(../images/fond_news3.png);
+	background-image: url(../images/using/fond_news3.png);
 	height:243px;
 	width:460px;
 	float: left;
@@ -273,15 +271,15 @@ ul.nav-pills li a{
 	text-align: left;
 }
 
-.little a{
+.little a {
 	margin: 0 0 0 24%;
 }
 
-#numNews{
+#numNews {
 	margin: -16.5% 0 0 85%;
 }
 
-#titreNews{
+#titreNews {
 	margin: -12% 8% 0 25%;
 	color:#795a37;
 	height:21%;
@@ -298,29 +296,25 @@ ul.nav-pills li a{
 	box-shadow: 0 0 8px black;
 }
 
-
+#row-encadre img {
+	margin-top:-3%;
+}
 /**********************************************/
 /*****************     FIN NEWS     ***************/
 /*********************************************/
 
-
-
-/**********************************************************/
-/************** FIN MODIFS BOOTSTRAP TWITTER **************/
-/*********************************************************/
-
-
 .footerP {
-	margin-top: 1%;
+	margin: 1% 0 0.5% 0;
 	height:200px;
-	width:100%;
-	background-color: blue;
+	background-color: #274f67;
+	box-shadow: 0 0 8px black;
 }
 
 /**********************************************************/
 /********************** MENU FLOU ************************/
 /*********************************************************/
 /*
+
 .menuFlou li {
 	display: block;
 	font-size: 1.2em;
@@ -343,7 +337,7 @@ ul.nav-pills li a{
 	text-decoration: none;
 	text-shadow: 0 0 1px #000;
 	text-transform: uppercase;
-	font-family: "ITCOfficinaSansRegular";
+	font-family: "PoliceXylagroup";
 }
 
 .menuFlou li a:hover {

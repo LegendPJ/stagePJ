@@ -21,6 +21,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		$conn = Doctrine_Manager::connection($doctrine['dsn'], 'doctrine');
 		$conn->setAttribute(Doctrine::ATTR_USE_NATIVE_ENUM, true);
+		$conn->execute("SET CHARACTER SET utf8"); /* Pour que Doctrine utilise l'UTF8 !!! :) */
 		return $conn;
 	}
 
@@ -32,7 +33,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		// Feuilles de style
 		$view->headLink()->prependStylesheet('/css/global.css');
-		$view->headLink()->prependStylesheet('/css/bmin.css');
+		$view->headLink()->prependStylesheet('/css/bmin.css')
+		->headLink(array('rel' => 'shortcut icon',
+		                                    'href' => '/images/using/favicon.ico'),
+		                          	    'PREPEND');
 
 		// Fichiers jQuery
 		// $view->headScript()->prependFile('/js/footer.js');

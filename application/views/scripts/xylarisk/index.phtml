@@ -4,43 +4,88 @@
 </div>
 <br><br>
 <h1>XYLARISK</h1>
-<h3><?php echo $this->title; ?></h3>
 
-
-<!-- CAROUSEL -->
-
-<div style="margin-left:17%" class="span10 offset2">
-<br><br>
-	<div id="myCarousel" class="carousel slide">
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="<?php echo $this->baseUrl;?>/images/carousel/X_boot2.jpg" alt="Un X from the Bootstrap">
-				<div class="carousel-caption">
-					<h4>First X from the Bootstrap</h4>
-					<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+<?php if (count($this->encEnti) ==0)
+	echo '<h2> Nous sommes désolé mais cette page ne contient pour le moment aucun contenu, ceci devrait être rectifié d\'ici quelques jours!</h2>';
+else { ?>
+	<div class="row">
+		<?php foreach ($this->encEnti as $e): ?>
+			<div class="span12">
+			<h2><?php echo $e->titre; ?></h2>
+			<br>
+			<?php echo $e->contenu;?>
+		<?php if (count($e->sousencad) != 0) { ?>
+			<?php if (strlen($e->contenu) != 0) //si le contenu de l'encadre n'est pas nul, alors on affiche un hr pour séparer le contenu des sous encadres
+				echo '<br><hr class="resize">'; ?>
+			</div>
+			<div class="span5">
+				<div class="tabbable tabs-left">
+					<!-- <ul id="tab" class="nav nav-pills nav-stacked">  -->
+					<ul id="tab" class="nav nav-tabs">
+						<?php $i =0;
+						foreach ($e->sousencad as $s) : 
+							echo ($i == 0) ? '<li class="active">' : '<li>' ; 
+							echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
+							$i++;
+						endforeach; ?>
+					</ul>
 				</div>
 			</div>
-
-			<div class="item">
-				<img src="<?php echo $this->baseUrl;?>/images/carousel/city_1.jpg" alt="City">
-				<div class="carousel-caption">
-					<h4>Le sous titre sous la ville ??</h4>
-					<p>Il faut tester sinon on ne saura jamais...ça serait dommage ;)</p>
-				</div>
+			<div class="span7" id="alignLeft">
+				<div id="myTabContent" class="tab-content">
+					<?php 
+					$j = 0;
+					foreach ($e->sousencad as $s) : 
+						echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
+						echo $s->contenu;
+						echo '</div>'; //celui de tab-pane
+						$j++;
+					endforeach; ?>
+				</div><!--  celui de tab content -->
+			</div><!--  celui de alignLeft -->
+			<div class="span12">
+				<hr class="soften">
 			</div>
-
-			<div class="item">
-				<img src="<?php echo $this->baseUrl;?>/images/carousel/X_boot.jpg" alt="Le X !!">
-				<div class="carousel-caption">
-					<h4>Le sous titre sous le Grand X ??</h4>
-					<p>C'est Remy qui trouve qu'il fait bien ! C'est vrai que c'est cool comme image !</p>
-				</div>
-			</div>
-
-		</div>
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		<?php } else { echo '<hr class="soften"></div>'; } ?>
+		<?php endforeach ?>
 	</div>
-</div>
+	<!-- CAROUSEL -->
 
-<!-- FIN CAROUSEL -->
+	<div style="margin-left:17%" class="span9 columns">
+	<br><br>
+		<div id="myCarousel" class="carousel slide">
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="<?php echo $this->baseUrl;?>/images/carousel/X_boot2.jpg" alt="Un X from the Bootstrap">
+					<div class="carousel-caption">
+						<h4>First X from the Bootstrap</h4>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="<?php echo $this->baseUrl;?>/images/carousel/city_1.jpg" alt="City">
+					<div class="carousel-caption">
+						<h4>Le sous titre sous la ville ??</h4>
+						<p>Il faut tester sinon on ne saura jamais...ça serait dommage ;)</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="<?php echo $this->baseUrl;?>/images/carousel/X_boot.jpg" alt="Le X !!">
+					<div class="carousel-caption">
+						<h4>Le sous titre sous le Grand X ??</h4>
+						<p>C'est Remy qui trouve qu'il fait bien ! C'est vrai que c'est cool comme image !</p>
+					</div>
+				</div>
+
+			</div>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		</div>
+	</div>
+	<?php //$this->headScript()->captureStart() ?>
+	<?php //$this->headScript()->captureEnd() ?>
+	<!-- FIN CAROUSEL -->
+
+<?php } ?>

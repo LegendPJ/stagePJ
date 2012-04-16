@@ -3,73 +3,80 @@
 <br>
 <h1>XYLAGROUP</h1>
 <div class="row">
-	<?php foreach ($this->encadreAccueil as $e): ?>
-		<div class="span12">
-			<?php if ($e->contenu == "<news>") { 
-				//DEBUT NEWS
-				$news = $this->last[0]; ?>
-				<h2><?php echo $e->titre." #".$news->numero;?></h2><br>
-
-				<div id="row-encadre" class="row">
-					<div class="span5">
-						<?php echo '<img src="'. $this->baseUrl.'/images/news/'.$news->photo.'" alt="News #'.$news->numero.'">'; ?>
-					</div>
-					<div class="span6">
-						<h3><?php echo $news->titre; ?></h3>
-						<h5>Postée par <?php echo $news->auteur; ?> le <?php echo $news->date; ?>.</h5>
-					</div>
-					<?php  $nb_mots = 50;
-					$inter = $news->contenu;
-					$texte = explode(' ', $inter, $nb_mots+1);
-					unset($texte[$nb_mots]);?>
-					
-					<div class="span12">
-						<?php echo implode(' ', $texte).'...';?><p><a href="<?php echo $this->url(array('controller'=>'news',
-                				 											'action'=>'newsvue',
-                				 											'id' => $news->id), null, true);?>"> (Lire la suite...)</a></p>
-					</div>
-				</div>
-				<br>
-				<div class="span12">
-					<p><a href="<?php echo $this->url(array('controller'=>'news',
-                				 					'action'=>'index'), null, true);?>">> Accéder à toutes les news <</a></p>
-				</div>
-
-			<!-- FIN NEWS -->
-			<?php } else { ?>
-				<h2><?php echo $e->titre; ?></h2>
-				<br>
-			<?php echo $e->contenu;}?>
-		<br>
-		<?php if (count($e->sousencad) != 0) { ?>
-		</div>
-			<div class="span5">
-				<ul id="tab" class="nav nav-pills nav-stacked">
-					<?php $i =0;
-					foreach ($e->sousencad as $s) : 
-						echo ($i == 0) ? '<li class="active">' : '<li>' ; 
-						echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
-						$i++;
-					endforeach; 
-					?>
-				</ul>
-			</div>
-			<div class="span7" id="alignLeft">
-				<div id="myTabContent" class="tab-content">
-					<?php 
-					$j = 0;
-					foreach ($e->sousencad as $s) : 
-						echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
-						echo $s->contenu;
-						echo '</div>';
-						$j++;
-					endforeach; 
-					?>
-				</div>
-			</div>
+	<?php if (count($this->encadreAccueil) ==0)
+			echo '<h2> Et bien non...il n\'y a pas de contenu...et ce n \'est pas un 404 page not found !';
+		else { ?>
+		<?php foreach ($this->encadreAccueil as $e): ?>
 			<div class="span12">
-				<hr class="soften">
+				<?php if ($e->contenu == "<news>") { 
+					//DEBUT NEWS
+					$news = $this->last[0]; ?>
+					<h2><?php echo $e->titre." #".$news->numero;?></h2><br>
+
+					<div id="row-encadre" class="row">
+						<div class="span5">
+							<?php echo '<img src="'. $this->baseUrl.'/images/news/'.$news->photo.'" alt="News #'.$news->numero.'">'; ?>
+						</div>
+						<div class="span6">
+							<h3><?php echo $news->titre; ?></h3>
+							<h5>Postée par <?php echo $news->auteur; ?> le <?php echo $news->date; ?>.</h5>
+						</div>
+						<?php echo '<img src="'.$this->baseUrl.'/images/using/ribbon.png" alt="Dernière News">'; ?>
+						<?php  $nb_mots = 50;
+						$inter = $news->contenu;
+						$texte = explode(' ', $inter, $nb_mots+1);
+						unset($texte[$nb_mots]);?>
+						
+						<div class="span12">
+							<?php echo implode(' ', $texte).'...';?><p><a href="<?php echo $this->url(array('controller'=>'news',
+	                				 											'action'=>'newsvue',
+	                				 											'id' => $news->id), null, true);?>"> (Lire la suite...)</a></p>
+						</div>
+						<div class="ribbon">
+							
+						</div>
+					</div>
+					<br>
+					<div class="span12">
+						<p><a href="<?php echo $this->url(array('controller'=>'news',
+	                				 					'action'=>'index'), null, true);?>">> Accéder à toutes les news <</a></p>
+					</div>
+					<hr class="soften">
+				<!-- FIN NEWS -->
+				<?php } else { ?>
+					<h2><?php echo $e->titre; ?></h2>
+					<br>
+				<?php echo $e->contenu;}?>
+				<?php if (count($e->sousencad) != 0) { ?>		
+					<?php if (strlen($e->contenu) != 0)
+						echo '<br><hr class="resize">'; ?>
 			</div>
-		<?php } else { echo '<hr class="soften"></div>'; } 
-	endforeach ?>
+				<div class="span5">
+					<ul id="tab" class="nav nav-pills nav-stacked">
+						<?php $i =0;
+						foreach ($e->sousencad as $s) : 
+							echo ($i == 0) ? '<li class="active">' : '<li>' ; 
+							echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
+							$i++;
+						endforeach; ?>
+					</ul>
+				</div>
+				<div class="span7" id="alignLeft">
+					<div id="myTabContent" class="tab-content">
+						<?php 
+						$j = 0;
+						foreach ($e->sousencad as $s) : 
+							echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
+							echo $s->contenu;
+							echo '</div>';
+							$j++;
+						endforeach; ?>
+					</div>
+				</div>
+				<div class="span12">
+					<hr class="soften">
+				</div>
+				<?php } else { echo '<hr class="soften"></div>'; } 
+			endforeach ?>
+	<?php } ?>
 </div>

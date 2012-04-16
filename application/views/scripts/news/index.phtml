@@ -6,31 +6,36 @@
 <div class="row">
 	<div class="span12">
 		<h2>Liste de toutes les News</h2>
-		<?php foreach ($this->autres as $autresN) : ?>
-			<div class="little">
 
-				<div id="imageNews">
-					<?php echo '<img src="'. $this->baseUrl.'/images/logo/X.png" alt="News #'.$autresN->numero.'">' ?>
-				</div>
-	 			<div id="titreNews">
-					<?php echo '<h4>'.$autresN->titre.'</h4>'; ?>
-				</div>
-	 			<div id="numNews">
-					<?php echo '#'.$autresN->numero; ?>
-				</div>
+		<?php if (count($this->autres) ==0)
+			echo '<h2> Nous sommes désolé mais aucune news n\'a été ajoutée à ce jour..</h2>';
+		else { ?>
+			<?php foreach ($this->autres as $autresN) : ?>
+				<div class="little">
 
-				<?php  $nb_mots = 10;
-					$inter = $autresN->contenu;
-					$texte = explode(' ', $inter, $nb_mots+1);
-					unset($texte[$nb_mots]);?>
+					<div id="imageNews">
+						<?php echo '<img src="'. $this->baseUrl.'/images/logo/X.png" alt="News #'.$autresN->numero.'">' ?>
+					</div>
+		 			<div id="titreNews">
+						<?php echo '<h4>'.$autresN->titre.'</h4>'; ?>
+					</div>
+		 			<div id="numNews">
+						<?php echo '#'.$autresN->numero; ?>
+					</div>
 
-				<div id="contenuNews">
-					<?php echo implode(' ', $texte).'...';?>
+					<?php  $nb_mots = 10;
+						$inter = $autresN->contenu;
+						$texte = explode(' ', $inter, $nb_mots+1);
+						unset($texte[$nb_mots]);?>
+
+					<div id="contenuNews">
+						<?php echo implode(' ', $texte).'...';?>
+					</div>
+					<a href="<?php echo $this->url(array('controller'=>'news',
+										'action'=>'newsvue',
+										'id' => $autresN->id), null, true);?>">(Lire la suite...)</a>
 				</div>
-				<a href="<?php echo $this->url(array('controller'=>'news',
-									'action'=>'newsvue',
-									'id' => $autresN->id), null, true);?>">(Lire la suite...)</a>
-			</div>
-		<?php endforeach; ?>
-		</div>
+			<?php endforeach; ?>
+		<?php } ?>
+	</div>
 </div>
