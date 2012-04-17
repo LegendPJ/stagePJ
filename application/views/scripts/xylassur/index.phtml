@@ -16,12 +16,11 @@ else { ?>
 			<?php echo $e->contenu;?>
 		<?php if (count($e->sousencad) != 0) { ?>
 			<?php if (strlen($e->contenu) != 0)
-				echo '<br><hr class="resize">'; ?>
+				echo '<br><hr class="resize"><br>'; ?>
 			</div>
 			<div class="span5">
 				<div class="tabbable tabs-left">
-				<!-- <ul id="tab" class="nav nav-pills nav-stacked">  -->
-					<ul id="tab" class="nav nav-tabs">
+				<ul id="tab" class="nav nav-pills nav-stacked">
 					<?php $i =0;
 					foreach ($e->sousencad as $s) : 
 						echo ($i == 0) ? '<li class="active">' : '<li>' ; 
@@ -50,19 +49,3 @@ else { ?>
 		<?php endforeach ?>
 	</div>
 <?php } ?>
-<!-- 
-<br><br>
-<div class="row">
-	<div class="span8">
-		<div class="menuFlou">
-			<ul>
-				<li><a href="#">Comptabilité</a></li>
-				<li><a href="#">Assurance</a></li>
-				<li><a href="#">Ressources</a></li>
-				<li><a href="#">Web</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
- -->

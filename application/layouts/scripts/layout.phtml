@@ -11,14 +11,14 @@
 
 </head>
 <body>
-	<div class="headerP">
-		<div class="bandeau">		
+	<div id="headerP">
+		<div id="bandeau">		
 			<a href="<?php echo $this->url(array('controller'=>'index',
                 				 			'action'=>'index'), null, true);?>" title="Xylagroup"><img src="<?php echo $this->baseUrl;?>/images/using/bandeau5.png" alt="Xylagroup vous conseille"></a>
 		</div>
-		<div class="menu">
-			<ul class="navMenu">
-				<li id ="one"><a <?php echo ($this->controller == "index" || $this->controller == "news") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Vous dirige vers l'accueil">ACCUEIL</a></li>
+		<div id="menu">
+			<ul id="navMenu">
+				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Vous dirige vers l'accueil">ACCUEIL</a></li>
 
 				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
 				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(
@@ -29,11 +29,21 @@
 			</ul> 
 		</div>
 	</div>
-	<div class="containerP">
+	<div id="containerP">
 		<?php echo $this->layout()->content ?>
 	</div>
- 	<div class="footerP">
-
+ 	<div id="footerP">
+ 		<ul id="footer">
+ 			<li class="first">&copy; Xylagroup 2012</li>
+ 			<li class="separator">-</li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'conditions'), null, true);?>" title="Vous dirige vers les Conditions d'utilisation">Conditions d'utilisation</a></li>
+ 			<li class="separator">|</li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'mentions'), null, true);?>" title="Vous dirige vers les Mentions Légales">Mentions Légales</a></li><!-- 
+ 			<li class="separator">|</li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'plan'), null, true);?>" title="Vous dirige vers le Plan du site">Plan du site ou Qui sommes nous ?</a></li> -->
+ 			<li class="separator">|</li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'contact'), null, true);?>" title="Vous dirige vers Contact">Contact</a></li>
+ 		</ul>
  	</div>
 </body>
 </html>

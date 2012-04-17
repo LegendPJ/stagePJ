@@ -15,7 +15,7 @@
 
 					<div id="row-encadre" class="row">
 						<div class="span5">
-							<?php echo '<img src="'. $this->baseUrl.'/images/news/'.$news->photo.'" alt="News #'.$news->numero.'">'; ?>
+							<?php echo '<img src= "'. $this->baseUrl.'/images/news/'.$news->photo.'" alt="News #'.$news->numero.'">'; ?>
 						</div>
 						<div class="span6">
 							<h3><?php echo $news->titre; ?></h3>
@@ -28,13 +28,14 @@
 						unset($texte[$nb_mots]);?>
 						
 						<div class="span12">
-							<?php echo implode(' ', $texte).'...';?><p><a href="<?php echo $this->url(array('controller'=>'news',
-	                				 											'action'=>'newsvue',
-	                				 											'id' => $news->id), null, true);?>"> (Lire la suite...)</a></p>
+							<?php 	if ( count($texte) < 50) 
+									echo implode(' ', $texte);
+								else {
+									echo implode(' ', $texte).'...';?>
+							<p><a href="<?php echo $this->url(array('controller'=>'news','action'=>'newsvue','id' => $news->id), null, true);?>"> (Lire la suite...)</a></p>
+							<?php 	} ?>
 						</div>
-						<div class="ribbon">
-							
-						</div>
+						<div class="ribbon"></div>
 					</div>
 					<br>
 					<div class="span12">
