@@ -5,16 +5,15 @@
 <br><br>
 <h1>XYLAVIE</h1>
 
+<div id="devisContact">
+	<a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'devis'), null, true);?>" title="Faire une demande de devis"><img src="<?php echo $this->baseUrl;?>/images/using/devis.png"></a>
+	<a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true); ?>" title="Contactez nous !"><img src="<?php echo $this->baseUrl;?>/images/contact/<?php echo $this->controller; ?>Contact.png"></a>
+</div>
+
 <?php if (count($this->encEnti) ==0)
 	echo '<h2> Nous sommes désolé mais cette page ne contient pour le moment aucun contenu, ceci devrait être rectifié d\'ici quelques jours!</h2>';
 else { $i=0;?>
 	<div class="row">
-		<div id="devisContact">
-			<a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'devis'), null, true);?>" title="Faire une demande de devis"><img src="<?php echo $this->baseUrl;?>/images/using/devis.png"></a>
-			<div class="contact">
-				<img src="<?php echo $this->baseUrl;?>/images/using/contact2.png">
-			</div>
-		</div>
 		<?php foreach ($this->encEnti as $e): ?>
 		<?php if($i == 0) { echo '<div class="span9">'; } else { echo '<div class="span12">'; }?>
 			<h2><?php echo $e->titre; ?></h2>

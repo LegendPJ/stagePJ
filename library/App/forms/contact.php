@@ -1,0 +1,69 @@
+<?php 
+
+
+class App_forms_contact extends Zend_Form 
+{
+
+                public function __construct() {
+
+		$this->civilite = new Zend_Form_Element_Radio('civilite');
+		$this->civilite->setLabel("Civilité :")
+		->setMultiOptions(array('m'=>'M.','mme'=>'Mme.'))
+		->setOptions(array('separator'=>''));
+
+		$this->civilite->setValue('m');
+		               
+		$this->nom = new Zend_Form_Element_Text('nom');
+		$this->nom->setLabel("Votre nom : ")
+			->addValidator('notEmpty')
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->setRequired(true);
+
+		$this->email = new Zend_Form_Element_Text('email');
+		$this->email->setLabel("Votre e-mail : ")
+			->addValidator('notEmpty')
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->setRequired(true);
+		                
+		$this->message = new Zend_Form_Element_Textarea('message');
+		$this->message->setLabel("Votre message : ")
+		                                ->setRequired(true);
+
+		$this->submit = new Zend_Form_Element_Submit('Envoyer');
+
+		$this->addElements(array(
+			$this->civilite,
+			$this->nom,
+			$this->mail,
+			$this->message
+		));
+
+		$this->setDecorators(array(
+		'FormElements',
+			array('HtmlTag', array('tag' => 'dl')),
+				'Form'
+		));             
+	}
+
+	public function getCivilite() {
+		
+		return $this->civilite->getValue();
+	}
+
+	public function getNom() {
+		
+		return $this->nom->getValue();
+	}
+              
+	public function getEmail() {
+		
+		return $this->email->getValue();
+	}
+	public function getMessage() {
+		
+		return $this->message->getValue();
+	}
+}
+ ?>
