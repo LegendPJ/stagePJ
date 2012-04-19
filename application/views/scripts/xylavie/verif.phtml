@@ -1,0 +1,24 @@
+<?php $this->headTitle()->append('Vérification Contact'); ?>
+
+<br>
+<h1>Vérification Contact XYLAVIE</h1>
+<br>
+<div class="row">
+	<div class="enveloppe" id="visu">
+		<h2>Voici un aperçu de votre mail : </h2>
+		<div id="mail">
+			<?php
+				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
+				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
+				$date = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
+				echo "le ". $date.'<br><br>';
+
+				echo '<h3 id="replace">'.strtoupper($this->controller).'</h3><br>';
+				echo 'Sujet : '.$this->telephone.'<br><br>';
+				echo 'Vous êtes <span style="color: #235d7f; font-weight:bold;">'.$this->civilite.' '.$this->nom.'</span> (<span style="color: #235d7f;">'.$this->email.'</span>)<br><br>';
+				echo $this->message;
+				?>
+		</div>
+	</div>
+</div>
+

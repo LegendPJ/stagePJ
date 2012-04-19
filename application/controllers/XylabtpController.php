@@ -6,12 +6,6 @@ class XylabtpController extends Zend_Controller_Action
 	public function init()
 	{
 		$this->view->nomXyla = "XylaBTP";
-		$this->view->module = $this->getRequest()->getModuleName(); 
-		// recupere le module
-		$this->view->controller = $this->getRequest()->getControllerName(); 
-		// recupere le controller
-		$this->view->action = $this->getRequest()->getActionName(); 
-		// recupere l'action
 	}
 
 	public function indexAction()

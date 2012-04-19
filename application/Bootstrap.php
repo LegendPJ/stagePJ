@@ -4,16 +4,21 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
 	protected function _initAppAutoload()
 	{
-                $moduleLoader = new Zend_Application_Module_Autoloader(array(
-                        'namespace' => '',
-                        'basePath' => APPLICATION_PATH));
+	                $moduleLoader = new Zend_Application_Module_Autoloader(array(
+	                        'namespace' => '',
+	                        'basePath' => APPLICATION_PATH));
 
-                $autoloader = Zend_Loader_Autoloader::getInstance();
-                $autoloader->registerNamespace(array('App_'));
-                
-                return $moduleLoader;
+	                $autoloader = Zend_Loader_Autoloader::getInstance();
+	                $autoloader->registerNamespace(array('App_'));
+	                
+	                return $moduleLoader;
+	}
 
-
+	protected function _initHelpers() 
+	{
+		Zend_Controller_Action_HelperBroker::addHelper(
+		            new Helpers_Action_Start()
+		        );
 	}
 
 	protected function _initDoctrine() 
@@ -41,21 +46,27 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	public function _initTranslate()
 	{
-	// On définit la langue sur le français
-	$language = 'fr';
+		// On définit la langue sur le français
+		$language = 'fr';
 
-	// On définit le traducteur à utiliser
-	$translate = new Zend_Translate(
-		array(	'adapter' => 'array',
-			'content' => APPLICATION_PATH . '/../library/resources/languages', //ici, cela dépendra de tes dossiers, mais si tu as suivi les normes le dossier "resources" se trouve au même niveau qu'application, et le boostrap dans application.
-			'locale'  => $language,
-			'scan' => Zend_Translate::LOCALE_DIRECTORY
-	));
+		// On définit le traducteur à utiliser
+		$translate = new Zend_Translate(
+			array(	'adapter' => 'array',
+				'content' => APPLICATION_PATH . '/../library/resources/languages', //ici, cela dépendra de tes dossiers, mais si tu as suivi les normes le dossier "resources" se trouve au même niveau qu'application, et le boostrap dans application.
+				'locale'  => $language,
+				'scan' => Zend_Translate::LOCALE_DIRECTORY
+		));
 
-	Zend_Validate_Abstract::setDefaultTranslator($translate);
+		Zend_Validate_Abstract::setDefaultTranslator($translate);
 
 	}
 
+	// protected function _initMail()
+	// {
+	// 	$tr = new Zend_Mail_Transport_Smtp("localhost", array('port' => 2525));
+	// 	Zend_Mail::setDefaultTransport($tr);
+	// }
+    
 	protected function _initPlaceholders()
 	{
 		$this->bootstrap('View');
@@ -70,11 +81,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		                          	    'PREPEND');
 
 		// Fichiers jQuery
-		$view->headScript()->prependFile('/js/bootstrap-tab.js');	
+		$view->headScript()->prependFile('/js/googiespell/AJS.js');	
+		$view->headScript()->prependFile('/js/googiespell/googiespell.js');	
+		$view->headScript()->prependFile('/js/googiespell/cookiesupport.js');	
+		$view->headScript()->prependFile('/js/verif_image.js');	
+		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js');
+		$view->headScript()->prependFile('/js/bootstrap-tab.js');		
 		$view->headScript()->prependFile('/js/bootstrap-carousel.js');
 		$view->headScript()->prependFile('/js/bootstrap-dropdown.js');
 		$view->headScript()->prependFile('/js/jquery-1.7.1.min.js');
-
 	}
 }
 

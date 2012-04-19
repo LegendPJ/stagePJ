@@ -8,10 +8,10 @@ class App_forms_contact extends Zend_Form
 
 		$this->civilite = new Zend_Form_Element_Radio('civilite');
 		$this->civilite->setLabel("Civilité :")
-		->setMultiOptions(array('m'=>'M.','mme'=>'Mme.'))
+		->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.'))
 		->setOptions(array('separator'=>''));
 
-		$this->civilite->setValue('m');
+		$this->civilite->setValue('M.');
 		               
 		$this->nom = new Zend_Form_Element_Text('nom');
 		$this->nom->setLabel("Votre nom : ")
@@ -26,6 +26,11 @@ class App_forms_contact extends Zend_Form
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setRequired(true);
+
+		$this->telephone = new Zend_Form_Element_Text('telephone');
+		$this->telephone->setLabel("Tel : ")
+			->addValidator('notEmpty')
+			->setRequired(true);
 		                
 		$this->message = new Zend_Form_Element_Textarea('message');
 		$this->message->setLabel("Votre message : ")
@@ -37,6 +42,7 @@ class App_forms_contact extends Zend_Form
 			$this->civilite,
 			$this->nom,
 			$this->mail,
+			$this->telephone,
 			$this->message
 		));
 
@@ -61,6 +67,12 @@ class App_forms_contact extends Zend_Form
 		
 		return $this->email->getValue();
 	}
+
+	public function getTelephone() {
+		
+		return $this->telephone->getValue();
+	}
+
 	public function getMessage() {
 		
 		return $this->message->getValue();

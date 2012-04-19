@@ -4,7 +4,7 @@
  *
  */
 
-/* Menu / Body */
+/* Menu - Body */
 
 @font-face {
     font-family: 'PoliceXylagroup';
@@ -30,6 +30,7 @@ body {
 	margin-bottom :0;
 	color:#1e3847;
 
+	background-color: #759ebb;
 	/* dégradé de couleurs reprenant les couleurs du bandeau */
 
 	background: -khtml-gradient(linear, left, right, from(#235d7f), to(#759ebb)); 
@@ -55,6 +56,7 @@ body {
 	background-image: linear-gradient(left, #235d7f 0%, #759ebb 100%);
 	/* IE9 ?????????????????????*/
 	/* fin dégradé de couleurs reprenant les couleurs du bandeau */
+
 }
 
 p {
@@ -361,33 +363,32 @@ ul#footer li a {
 	margin: 0 0 0 1.5%;
 }
 
-#enveloppe {
+.enveloppe {
 	background-image:url(../images/using/feuille3.png);
 	background-repeat:no-repeat;
 	background-position:50px 50px;
 	width:880px;
-	height:1020px;
+	min-height:1020px;
 	margin-left:12%;
 }
 
-#enveloppe form{
+.enveloppe form{
 	padding-top:144px;
 	margin-left:32px;
 }
 
-#enveloppe dl{
+.enveloppe dl{
 	margin-left:60px;
 	margin-top : 0;
 }
 
-#enveloppe h3 {
-	position: absolute;
+/*#enveloppe h3 {
 	margin: 7.3% 0 0 33.8%;
 	font-family:Georgia;
 	font-size:1.1em;
 	color: #545455;
 }
-
+*/
 #civilite-element input{
 	display:inline;
 }
@@ -397,26 +398,41 @@ ul#footer li a {
 	margin-right: 2%;
 }
 
-#Envoyer-element {
-}
-
 #Envoyer-element input{
-	width:90px;
+	width:110px;
 	height:30px;
 	margin-left:10%;
+	border-radius:15px;
+	font-weight:bold;
+	font-size:1em;
+	color:#235d7f;
 }
 
-
-
+#Envoyer-element input:hover {
+	border: 1px solid #215675;
+	background: -moz-linear-gradient(100% 100% 90deg, #235d7f, #215675) repeat scroll 0 0 #222222;
+	border-radius: 14px 14px 14px 14px;
+	box-shadow: 0 1px 4px black;
+	color: #FFFFFF;
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+}
 
 textarea#message {
-/*	min-width:511px;
-	min-height:155px;
-	max-width:511px;
-	max-height:339px;*/
 	resize:none;
 	width : 511px;
 	height : 339px;
 }
 
+#mail {
+	margin: 12% 0 0 12%;
+	padding-right:8%;
+}
+
+#replace {
+	margin: -8.4% 0 0 78%;
+}
+
+#replace2 {
+	margin: -78% 0 0 74%;
+}
 /* FIN DEVIS & CONTACT */
