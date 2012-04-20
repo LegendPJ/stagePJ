@@ -372,11 +372,14 @@ ul#footer li a {
 	margin-left:12%;
 }
 
-.enveloppe form{
-	padding-top:144px;
-	margin-left:32px;
+#beforeForm{
+	padding-top:15%;
+	margin-left:10%;
 }
 
+.enveloppe form {
+	margin-left:4%;
+}
 .enveloppe dl{
 	margin-left:60px;
 	margin-top : 0;
@@ -417,22 +420,38 @@ ul#footer li a {
 	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 }
 
+#civilite-element {
+	margin-bottom:1%;
+}
+
 textarea#message {
 	resize:none;
 	width : 511px;
-	height : 339px;
-}
-
-#mail {
-	margin: 12% 0 0 12%;
-	padding-right:8%;
+	height : 280px;
 }
 
 #replace {
-	margin: -8.4% 0 0 78%;
+	display:inline;
+	margin-left:17%;
 }
 
-#replace2 {
-	margin: -78% 0 0 74%;
+ul.errors {
+	list-style:none;
+	margin-left:0;
+}
+
+ul.errors li {
+	color: red;
+	font-size:0.9em;
+	font-weight:bold;
+}
+
+form dd {
+	width : 500px;
+	padding: 1% 0 0 5%;
+}
+
+#nom-element, #email-element {
+	border-radius:15px;
 }
 /* FIN DEVIS & CONTACT */

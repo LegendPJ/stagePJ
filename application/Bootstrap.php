@@ -80,10 +80,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		                                    'href' => '/images/using/favicon.ico'),
 		                          	    'PREPEND');
 
-		// Fichiers jQuery
-		$view->headScript()->prependFile('/js/googiespell/AJS.js');	
-		$view->headScript()->prependFile('/js/googiespell/googiespell.js');	
-		$view->headScript()->prependFile('/js/googiespell/cookiesupport.js');	
+		// Fichiers jQuery	
 		$view->headScript()->prependFile('/js/verif_image.js');	
 		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js');
 		$view->headScript()->prependFile('/js/bootstrap-tab.js');		

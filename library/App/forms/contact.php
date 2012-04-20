@@ -15,22 +15,24 @@ class App_forms_contact extends Zend_Form
 		               
 		$this->nom = new Zend_Form_Element_Text('nom');
 		$this->nom->setLabel("Votre nom : ")
-			->addValidator('notEmpty')
+			->addValidator('Alpha') //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setRequired(true);
 
 		$this->email = new Zend_Form_Element_Text('email');
 		$this->email->setLabel("Votre e-mail : ")
-			->addValidator('notEmpty')
-			->addFilter('StripTags')
-			->addFilter('StringTrim')
-			->setRequired(true);
+				->setAttrib('placeholder', 'Format: you@you.me')
+				->addValidator('StringLength', false,array(6,70))
+				->addValidator('EmailAddress')
+				->setRequired(true);
 
 		$this->telephone = new Zend_Form_Element_Text('telephone');
-		$this->telephone->setLabel("Tel : ")
-			->addValidator('notEmpty')
-			->setRequired(true);
+		$this->telephone->setLabel("Telephone : ")
+				->setAttrib('placeholder', 'Format : 0606060606')
+				->addValidator('Digits')
+				->addValidator('StringLength', false,array(10,10))
+				->setRequired(true);
 		                
 		$this->message = new Zend_Form_Element_Textarea('message');
 		$this->message->setLabel("Votre message : ")
