@@ -36,6 +36,7 @@ class App_forms_contact extends Zend_Form
 		                
 		$this->message = new Zend_Form_Element_Textarea('message');
 		$this->message->setLabel("Votre message : ")
+				->addFilter('StripTags') //erreur si image..à revoir !
 		                                ->setRequired(true);
 
 		$this->submit = new Zend_Form_Element_Submit('Envoyer');

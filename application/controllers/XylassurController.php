@@ -5,7 +5,6 @@ class XylassurController extends Zend_Controller_Action
 
 	public function init()
 	{
-		$this->view->nomXyla = "XylASSUR";
 	}
 
 	public function indexAction()

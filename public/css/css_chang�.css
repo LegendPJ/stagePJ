@@ -21,42 +21,13 @@
 body {
 	font-family: "PoliceXylagroup";
 	/*width:1200px;*/
-	width:1000px;/* ==> pour resize le site */
-	min-width:1000px; /* utile ? */
+	
 	height:100%;
-	margin-top:1%;
+	margin-top:-0.5%;
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom :0;
 	color:#1e3847;
-
-	background-color: #759ebb;
-	/* dégradé de couleurs reprenant les couleurs du bandeau */
-
-	background: -khtml-gradient(linear, left, right, from(#235d7f), to(#759ebb)); 
-    	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#759ebb); /* IE 5.5 - 7 */
-    	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#759ebb, GradientType=1)";   /* IE 8 */
-
-	/* IE10 */ 
-	background-image: -ms-linear-gradient(left, #235d7f 0%, #759ebb 100%);
-
-	/* Mozilla Firefox */ 
-	background-image: -moz-linear-gradient(left, #235d7f 0%, #759ebb 100%);
-
-	/* Opera */ 
-	background-image: -o-linear-gradient(left, #235d7f 0%, #759ebb 100%);
-
-	/* Webkit (Safari/Chrome 10) */ 
-	background-image: -webkit-gradient(linear, left, left bottom, color-stop(0, #235d7f), color-stop(1, #759ebb));
-
-	/* Webkit (Chrome 11+) */ 
-	background-image: -webkit-linear-gradient(left, #235d7f 0%, #759ebb 100%);
-
-	/* Proposed W3C Markup */ 
-	background-image: linear-gradient(left, #235d7f 0%, #759ebb 100%);
-	/* IE9 ?????????????????????*/
-	/* fin dégradé de couleurs reprenant les couleurs du bandeau */
-
 }
 
 p {
@@ -89,7 +60,7 @@ h2 {
 
 #bandeau img {
 	width:100%;
-	box-shadow: 0 0 15px black;
+	/*box-shadow: 0 0 15px black;*/
 }
 
 /*.subnav {
@@ -105,14 +76,15 @@ li#three {margin-right: 5%;}
 */
 
 #containerP {
-	margin: 0 0 0 0;
-	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	width:1000px;
 	min-height:1000px;
 	background: url("../images/using/XylagroupX.jpg");
 	background-repeat:no-repeat;
 	background-position:center top;
 	background-color: #FFF;
-	box-shadow: 0 0 15px black;
+	/*box-shadow: 0 0 15px black;*/
 }
 
 /* FIN Menu / Body */
@@ -131,7 +103,7 @@ div#menu {
 	background: url("../images/using/rubandeau.png");
 	background-repeat:no-repeat;
 	background-position:-10px -1px;
-	box-shadow: 0 0 15px black;
+	/*box-shadow: 0 0 15px black;*/
 }
 
 ul#navMenu {
@@ -189,11 +161,6 @@ ul.nav-pills li a {
 
 .span9 {
 	margin: -24% 10% 0 8%;
-}
-
-.span7 {
-	margin: 0 0 0 5%;
-	min-height: 360px;
 }
 
 .span5 {
@@ -272,7 +239,7 @@ ul.nav-pills li a {
 
 #row-encadre div.span6 img {
 	display: inline;
-	margin: -26% 0 0 100%;
+	margin: -25% 0 0 100%;
 }
 
 .span6 h5 {
@@ -285,7 +252,7 @@ ul.nav-pills li a {
 }
 
 .little {
-	background-image: url("../images/using/news.png");
+	background-image: url(../images/using/news.png);
 	 /*background:url(data:image/gif;base64,<? base64_encode(file_get_contents('../images/using/papier_note_skotchgBlancGris.png'))?>;);*/
 	height:243px;
 	width:460px;
@@ -399,9 +366,9 @@ ul#footer li a {
 }
 
 .enveloppe {
-	background-image:url("../images/using/feuille3.png");
+	background-image:url(../images/using/feuille3.png);
 	background-repeat:no-repeat;
-	background-position:0px 50px;
+	background-position:50px 50px;
 	width:880px;
 	min-height:1020px;
 	margin-left:12%;
@@ -409,14 +376,14 @@ ul#footer li a {
 
 #beforeForm{
 	padding-top:15%;
-	margin-left:3%;
+	margin-left:10%;
 }
 
 .enveloppe form {
 	margin-left:4%;
 }
 .enveloppe dl{
-	margin-left:0px;
+	margin-left:60px;
 	margin-top : 0;
 }
 

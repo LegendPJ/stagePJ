@@ -5,7 +5,6 @@ class XylavieController extends Zend_Controller_Action
 
 	public function init()
 	{
-		$this->view->nomXyla = "XylaVIE";
 	}
 
 	public function indexAction()
@@ -29,8 +28,6 @@ class XylavieController extends Zend_Controller_Action
 				theme : 'advanced',
 				language : 'fr',
 				plugins : 'inlinepopups, paste',
-				skin : 'o2k7',
-				skin_variant : 'silver',
 				theme_advanced_buttons1 : 'bold, italic, underline, |, bullist, numlist, |, justifyleft, justifyright, justifycenter, justifyfull, |, link, unlink, |, formatselect, fontselect,fontsizeselect, |,forecolor',
 				theme_advanced_buttons2 : '',
 				theme_advanced_buttons3 : '',
@@ -48,24 +45,12 @@ class XylavieController extends Zend_Controller_Action
 		$this->view->form = new App_forms_contact();
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
-				// $this->_helper->Redirector->gotoUrl('/xylavie/');
                             			$this->view->civilite = $this->view->form->getCivilite();
                             			$this->view->nom = $this->view->form->getNom();
                             			$this->view->email = $this->view->form->getEmail();
                             			$this->view->telephone = $this->view->form->getTelephone();
                             			$this->view->message = $this->view->form->getMessage();
-                            			// ICI on envoie le mail !
-                            			$errors = array();
-				$emailValidator = new Zend_Validate_EmailAddress();
-
-				if( !$emailValidator->isValid($email) ) {
-				    $errors[] = "L'adresse email est invalide";
-				}
-
-				if( count(errors) ) {
-				    $this->view->errors = $errors;
-				}
-
+                            			
                             			$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
 				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
 				$date = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");

@@ -20,8 +20,7 @@
 						<div class="span6">
 							<h3><?php echo $news->titre; ?></h3>
 							<h5>Postée par <?php echo $news->auteur; ?> le <?php echo $news->date; ?>.</h5>
-						</div>
-						<?php echo '<img src="'.$this->baseUrl.'/images/using/ribbon.png" alt="Dernière News">'; ?>
+						<?php echo '<img src="'.$this->baseUrl.'/images/using/ribbon.png" alt="Dernière News">'; ?></div>
 						<?php  $nb_mots = 50;
 						$inter = $news->contenu;
 						$texte = explode(' ', $inter, $nb_mots+1);

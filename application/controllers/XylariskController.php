@@ -4,8 +4,7 @@ class XylariskController extends Zend_Controller_Action
 {
 
 	public function init()
-	{
-		$this->view->nomXyla = "XylaRISK";	
+	{	
 	}
 
 	public function indexAction()

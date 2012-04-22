@@ -1,6 +1,6 @@
 <?php $this->headTitle()->append('Xylavie'); ?>
 <div class="logo">			
-	<img src="<?php echo $this->baseUrl;?>/images/bandeaux/<?php echo $this->nomXyla;?>.png" alt="<?php echo $this->nomXyla;?>">
+	<img src="<?php echo $this->baseUrl;?>/images/bandeaux/<?php echo $this->controller;?>.png" alt="<?php echo $this->controller;?>">
 </div>
 <br><br>
 <h1>XYLAVIE</h1>
@@ -15,7 +15,7 @@
 else { $i=0;?>
 	<div class="row">
 		<?php foreach ($this->encEnti as $e): ?>
-		<?php if($i == 0) { echo '<div class="span9">'; } else { echo '<div class="span12">'; }?>
+		<?php if($i == 0) { echo '<div class="span7">'; } else { echo '<div class="span12">'; }?>
 			<h2><?php echo $e->titre; ?></h2>
 			<br>
 			<?php echo $e->contenu;?>
