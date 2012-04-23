@@ -9,6 +9,26 @@
 
 </head>
 <body>
+	<div id="flashMessengers">
+	<?php $flashMessenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
+		if ($flashMessenger->setNamespace('success')->hasMessages()): ?>
+		    <div class="alert alert-success">
+		    <a class="close" data-dismiss="alert">×</a>
+		    <?php foreach ($flashMessenger->getMessages() as $msg): ?>
+		        <?php echo $msg ?>
+		    <?php endforeach; ?>
+		    </div>
+		<?php endif; ?>
+
+		<?php if ($flashMessenger->setNamespace('error')->hasMessages()): ?>
+		    <div class="alert alert-error">
+		    <a class="close" data-dismiss="alert">×</a>
+		    <?php foreach ($flashMessenger->getMessages() as $msg): ?>
+		        <?php echo $msg ?>
+		    <?php endforeach; ?>
+		    </div>
+		<?php endif; ?>
+	</div>
 	<div id="headerP">
 		<div id="bandeau">		
 			<a href="<?php echo $this->url(array('controller'=>'index',

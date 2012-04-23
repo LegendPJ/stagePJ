@@ -75,7 +75,6 @@ h2 {
 	color: #235d7f;
 	text-align: left;
 	margin-left:10%;
-	font-family:'Rockwell','Rockwellff';
 }
 
 #headerP {
@@ -191,7 +190,7 @@ ul.nav-pills li a {
 	margin: -24% 10% 0 8%;
 }
 
-.span7 {
+#first {
 	margin: 0 0 0 5%;
 	min-height: 360px;
 }
@@ -250,6 +249,11 @@ ul.nav-pills li a {
 	/*box-shadow: 5px 5px black;*/
 	/*box-shadow: 0 0 10px black;*/
 	/*box-shadow: 2px 2px black;*/
+}
+
+#row-encadre h3 a{
+	color: #2E6180;
+	text-decoration:none;
 }
 
 #row-encadre div.span5 {
@@ -399,12 +403,12 @@ ul#footer li a {
 }
 
 .enveloppe {
-	background-image:url("../images/using/feuille3.png");
+	background-image:url("../images/using/feuille8.png");
 	background-repeat:no-repeat;
 	background-position:0px 50px;
 	width:880px;
 	min-height:1020px;
-	margin-left:12%;
+	margin-left:9%;
 }
 
 #beforeForm{
@@ -420,13 +424,6 @@ ul#footer li a {
 	margin-top : 0;
 }
 
-/*#enveloppe h3 {
-	margin: 7.3% 0 0 33.8%;
-	font-family:Georgia;
-	font-size:1.1em;
-	color: #545455;
-}
-*/
 #civilite-element input{
 	display:inline;
 }
@@ -467,12 +464,13 @@ textarea#message {
 
 #replace {
 	display:inline;
-	margin-left:190px;
+	margin-left:140px;
 }
 
 ul.errors {
 	list-style:none;
 	margin-left:0;
+	width:700px;
 }
 
 ul.errors li {
@@ -483,10 +481,17 @@ ul.errors li {
 
 form dd {
 	width : 500px;
-	padding: 1% 0 0 5%;
+	padding: 1% 0 0 2%;
+	margin: 0 0 0 0;
 }
 
 #nom-element, #email-element {
 	border-radius:15px;
 }
 /* FIN DEVIS & CONTACT */
+
+/* Flash Messenger */
+
+.flashMessengers {
+	position: relative;
+}

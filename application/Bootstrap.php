@@ -61,10 +61,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	}
 
-	// protected function _initMail()
+	// protected function _initDefaultEmailTransport()
 	// {
-	// 	$tr = new Zend_Mail_Transport_Smtp("localhost", array('port' => 2525));
-	// 	Zend_Mail::setDefaultTransport($tr);
+	// 	$emailConfig = $this->getOption('email');
+
+	// 	$smtpHost = $emailConfig['transportOptionsSmtp']['host'];
+	// 	unset($smtpHost);
+
+	// 	$mailTransport = new Zend_Mail_Transport_Smtp('smtp.gmail.com', $emailConfig['transportOptionsSmtp']);
+
+	// 	Zend_Mail::setDefaultTransport($mailTransport);
 	// }
     
 	protected function _initPlaceholders()
@@ -75,14 +81,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		// Feuilles de style
 		$view->headLink()->prependStylesheet('/css/global.css');
-		$view->headLink()->prependStylesheet('/css/bmin.css')
+		$view->headLink()->prependStylesheet('/css/bmin.css');
+		$view->headLink()->prependStylesheet('/css/noty/noty.css');
+		$view->headLink()->prependStylesheet('/css/noty/noty_theme_default.css');
+		$view->headLink()->prependStylesheet('/css/noty/noty_theme_facebook.css');
+		$view->headLink()->prependStylesheet('/css/noty/noty_theme_mitgux.css');
+		$view->headLink()->prependStylesheet('/css/noty/noty_theme_twitter.css')
 		->headLink(array('rel' => 'shortcut icon',
 		                                    'href' => '/images/using/favicon.ico'),
 		                          	    'PREPEND');
 
-		// Fichiers jQuery	
-		$view->headScript()->prependFile('/js/verif_image.js');	
+		// Fichiers jQuery		
 		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js');
+		$view->headScript()->prependFile('/js/tiny_mce/noty.js');
+		$view->headScript()->prependFile('/js/verif_image.js');
 		$view->headScript()->prependFile('/js/bootstrap-tab.js');		
 		$view->headScript()->prependFile('/js/bootstrap-carousel.js');
 		$view->headScript()->prependFile('/js/bootstrap-dropdown.js');

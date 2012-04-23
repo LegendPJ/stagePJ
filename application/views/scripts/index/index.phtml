@@ -18,7 +18,7 @@
 							<?php echo '<img src= "'. $this->baseUrl.'/images/news/'.$news->photo.'" alt="News #'.$news->numero.'">'; ?>
 						</div>
 						<div class="span6">
-							<h3><?php echo $news->titre; ?></h3>
+							<h3><a href="<?php echo $this->url(array('controller'=>'news','action'=>'newsvue','id' => $news->id), null, true);?>"><?php echo $news->titre; ?></a></h3>
 							<h5>Postée par <?php echo $news->auteur; ?> le <?php echo $news->date; ?>.</h5>
 						<?php echo '<img src="'.$this->baseUrl.'/images/using/ribbon.png" alt="Dernière News">'; ?></div>
 						<?php  $nb_mots = 50;
@@ -31,7 +31,7 @@
 									echo implode(' ', $texte);
 								else {
 									echo implode(' ', $texte).'...';?>
-							<p><a href="<?php echo $this->url(array('controller'=>'news','action'=>'newsvue','id' => $news->id), null, true);?>"> (Lire la suite...)</a></p>
+							<p><a href="<?php echo $this->url(array('controller'=>'news','action'=>'newsvue','id' => $news->id), null, true);?>">(Lire la suite...)</a></p>
 							<?php 	} ?>
 						</div>
 						<div class="ribbon"></div>

@@ -116,7 +116,8 @@ abstract class Zend_Captcha_Word extends Zend_Captcha_Base
     protected $_messageTemplates = array(
         self::MISSING_VALUE => 'Empty captcha value',
         self::MISSING_ID    => 'Captcha ID field is missing',
-        self::BAD_CAPTCHA   => 'Captcha value is wrong',
+        // self::BAD_CAPTCHA   => 'Captcha value is wrong',
+        self::BAD_CAPTCHA   => 'Le code ne correspond pas',
     );
 
     /**

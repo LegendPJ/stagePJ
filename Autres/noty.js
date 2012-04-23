@@ -1,0 +1,1 @@
+noty({"text":"Hi! I'm an example text. When I grow up I want to be a noty message.","theme":"noty_theme_mitgux","layout":"topCenter","type":"success","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":5000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":false});

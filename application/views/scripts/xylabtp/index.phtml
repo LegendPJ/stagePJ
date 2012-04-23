@@ -4,54 +4,6 @@
 </div>
 <br><br>
 <h1>XYLABTP</h1>
-
-<div id="devisContact">
-	<a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'devis'), null, true);?>" title="Faire une demande de devis"><img src="<?php echo $this->baseUrl;?>/images/using/devis.png"></a>
-	<a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true); ?>" title="Contactez nous !"><img src="<?php echo $this->baseUrl;?>/images/contact/<?php echo $this->controller; ?>Contact.png"></a>
-</div>
-
-<?php if (count($this->encEnti) ==0)
-	echo '<h2> Nous sommes désolé mais cette page ne contient pour le moment aucun contenu, ceci devrait être rectifié d\'ici quelques jours!</h2>';
-else { $i=0;?>
-	<div class="row">
-		<?php foreach ($this->encEnti as $e): ?>
-		<?php if($i == 0) { echo '<div class="span7">'; } else { echo '<div class="span12">'; }?>
-			<h2><?php echo $e->titre; ?></h2>
-			<br>
-			<?php echo $e->contenu;?>
-		<?php if (count($e->sousencad) != 0) { ?>
-			<?php if (strlen($e->contenu) != 0)
-				echo '<br><hr class="resize"><br>'; ?>
-			</div>
-			<div class="span5">
-				<div class="tabbable tabs-left">
-				<ul id="tab" class="nav nav-pills nav-stacked"> 
-					<?php $i =0;
-					foreach ($e->sousencad as $s) : 
-						echo ($i == 0) ? '<li class="active">' : '<li>' ; 
-						echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
-						$i++;
-					endforeach; 
-					?>
-				</ul>
-			</div>
-			</div>
-			<div class="span7" id="alignLeft">
-				<div id="myTabContent" class="tab-content">
-					<?php 
-					$j = 0;
-					foreach ($e->sousencad as $s) : 
-						echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
-						echo $s->contenu;
-						echo '</div>';
-						$j++;
-					endforeach; ?>
-				</div>
-			</div>
-			<div class="span12">
-				<hr class="soften">
-			</div>
-		<?php } else { echo '<hr class="soften"></div>'; $i++;} ?>
-		<?php endforeach ?>
-	</div>
-<?php } ?>
+<?php echo $this->partial('partials/affContenu.phtml', array(
+							'controller' => $this->controller,
+							'encadreEnti' => $this->encEnti)); ?>

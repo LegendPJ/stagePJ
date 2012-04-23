@@ -36,8 +36,17 @@ class App_forms_contact extends Zend_Form
 		                
 		$this->message = new Zend_Form_Element_Textarea('message');
 		$this->message->setLabel("Votre message : ")
-				->addFilter('StripTags') //erreur si image..à revoir !
 		                                ->setRequired(true);
+
+		$this->captcha= new Zend_Form_Element_Captcha('captcha', array(
+			'label' => "Veuillez recopier le code ci dessous",
+			'captcha' => array(
+			'captcha' => 'image',
+			'dotNoiseLevel' => 80, // Valeur initiale = 100
+			'lineNoiseLevel' => 2, // Valeur initiale = 5
+			'font'=>'C:/wamp/www/Xylagroup/public/css/arial.ttf'
+			)
+		));
 
 		$this->submit = new Zend_Form_Element_Submit('Envoyer');
 
@@ -46,7 +55,8 @@ class App_forms_contact extends Zend_Form
 			$this->nom,
 			$this->mail,
 			$this->telephone,
-			$this->message
+			$this->message,
+			$this->captcha
 		));
 
 		$this->setDecorators(array(
