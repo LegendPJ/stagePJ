@@ -5,6 +5,8 @@ jQuery(function($) {
 			$(this).val($(this).val().replace(reg,""));
 		}
 	});	
+	console.log($('ul.errors'));
+	$('ul.errors').parent().css({'background-color':'#FF9696'});
 
 	$('.alert .close').click(function(){
 		$(this).parent().slideUp('slow');

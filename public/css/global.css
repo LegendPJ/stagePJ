@@ -464,7 +464,8 @@ textarea#message {
 
 #replace {
 	display:inline;
-	margin-left:140px;
+	float: right;
+	margin-right:26%;
 }
 
 ul.errors {
@@ -480,14 +481,12 @@ ul.errors li {
 }
 
 form dd {
-	width : 500px;
+	width : 626px;
 	padding: 1% 0 0 2%;
 	margin: 0 0 0 0;
-}
-
-#nom-element, #email-element {
 	border-radius:15px;
 }
+
 /* FIN DEVIS & CONTACT */
 
 /* Flash Messenger */
