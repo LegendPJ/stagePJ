@@ -4,7 +4,7 @@ options:
  collate: utf8_general_ci
  charset: utf8
 
-
+## News
 News:
  columns:
   id:
@@ -33,6 +33,26 @@ News:
    notnull: true
 
 
+## Users
+Users:
+ columns:
+  id:
+   type: integer
+   primary: true
+   autoincrement: true
+   notnull: true
+  username:
+   type: string()
+   notnull: true
+  password:
+   type: string()
+   notnull: true
+  name:
+   type: string()
+   notnull: true
+
+
+## Entite
 Entite:
  columns:
   id:
@@ -42,6 +62,9 @@ Entite:
    notnull: true
   nom: 
    type: string(20)
+   notnull: true
+  adresse: 
+   type: string(200)
    notnull: true
  relations:
   Encadre:
@@ -53,6 +76,7 @@ Entite:
    type: many
 
 
+## Encadre
 Encadre:
  columns:
   id:
@@ -89,6 +113,7 @@ Encadre:
    type: many
 
 
+## SousEncadre
 Sousencadre:
  columns:
   id:
@@ -116,7 +141,3 @@ Sousencadre:
    foreignAlias: Sousencadre
    foreignType: one
    type: one
-
-
-
-

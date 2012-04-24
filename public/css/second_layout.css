@@ -1,0 +1,47 @@
+/* SECONDE LAYOUT */
+body { 
+	margin:0;
+	padding:0;
+	background: url(../images/using/background5.gif) no-repeat center fixed; 
+	-webkit-background-size: cover; /* pour Chrome et Safari */
+	-moz-background-size: cover; /* pour Firefox */
+	-o-background-size: cover; /* pour Opera */
+	background-size: cover; /* version standardisée */
+}
+
+.row {
+	margin: 20% 0 0 70%;
+}
+
+input#username {
+	display: block;
+	margin-left:13%;
+	height:32px;
+	width:298px;
+}
+
+input#password {
+	display: block;
+	margin: 6.2% 0 0 13%;
+	height:32px;
+	width:298px;
+}
+
+input#connex {
+	margin: 15.5% 0 0 30%;
+	width:165px;
+	height:45px;
+	background-color:#235d7f;
+	border-radius:3px;
+	font-size:1.5em;
+	font-family:"Comic Sans MS";
+	color:white;
+	border:solid 1px black;
+	box-shadow: 0 0 5px black;
+}
+#connexion {
+	width:410px;
+	height:330px;
+	background: url(../images/using/login_form2.png) no-repeat center; 
+	padding-top:38%;
+}

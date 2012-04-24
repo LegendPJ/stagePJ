@@ -1,0 +1,7 @@
+<?php $this->headTitle()->append('Start XYLAGROUP'); ?>
+<br><br>
+<div class="row">
+	<h2>Je suis la page Start du controlleur données</h2>
+	<a href="/donnees/logout">logout</a>
+	<?php echo var_dump(Zend_Auth::getInstance()->getIdentity()->toArray()); ?>
+</div>

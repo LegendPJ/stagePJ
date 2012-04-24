@@ -1,0 +1,16 @@
+<?php $this->headTitle()->append('Données XYLAGROUP'); ?>
+<br><br>
+
+<div class="row">
+	<div class="span6">
+		<form id="connexion" action="" method="post" >
+		<input type="text" class="x-large" id="username" name="username" value="" placeholder="Login" />
+		<input type="password" class="x-large" id="password" name="password" />
+		<input type="submit" id="connex" value="Login" name="submit" />
+		</form>
+
+		<h2>Messages</h2>
+		<?php echo $this->message; ?>
+	</div>
+</div>
+

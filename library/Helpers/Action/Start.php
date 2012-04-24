@@ -12,16 +12,6 @@ class Helpers_Action_Start extends Zend_Controller_Action_Helper_Abstract
 		$this->view->controller = $this->getRequest()->getControllerName(); 
 		// recupere le controller
 		$this->view->action = $this->getRequest()->getActionName(); 
-		// // recupere l'action
-		// if ($this->getRequest()->getParam('loggedIn',false))
-		// {
-		// 	$view->signup = 'You are logged in';
-		// }
-		// else
-		// {
-		// 	$view->signup = 'sign up to our site!';
-		// }
-
 	}
 
 	public function getView()

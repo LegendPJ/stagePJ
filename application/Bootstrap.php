@@ -92,8 +92,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		                          	    'PREPEND');
 
 		// Fichiers jQuery		
-		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js');
-		$view->headScript()->prependFile('/js/tiny_mce/noty.js');
+		// $view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js');
+		// $view->headScript()->prependFile('/js/tiny_mce/noty.js');
 		$view->headScript()->prependFile('/js/verif_image.js');
 		$view->headScript()->prependFile('/js/bootstrap-tab.js');		
 		$view->headScript()->prependFile('/js/bootstrap-carousel.js');
