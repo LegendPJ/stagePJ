@@ -7,12 +7,7 @@ jQuery(function($) {
 	});
 
 	$('ul.errors').parent().css({'background-color':'#FF9696'});
-	$('ul.errors').parent().find('input').focus().css({
-		'border-color':'rgba(255,0,0,0.8)',
-		'-webkit-box-shadow':'inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(255, 0, 0, 0.8)',
-		'-moz-box-shadow':'inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(255, 0, 0, 0.8)',
-		'box-shadow':'inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(255, 0, 0, 0.8)'
-	});
+	$('ul.errors').parent().find('input').addClass('erreur');
 
 	$('.alert .close').click(function(){
 		$(this).parent().slideUp('slow');

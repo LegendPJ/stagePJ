@@ -2,7 +2,7 @@
 body { 
 	margin:0;
 	padding:0;
-	background: url(../images/using/background5.gif) no-repeat center fixed; 
+	background: url(../images/using/background5.gif) no-repeat center; /*fixed */
 	-webkit-background-size: cover; /* pour Chrome et Safari */
 	-moz-background-size: cover; /* pour Firefox */
 	-o-background-size: cover; /* pour Opera */
@@ -10,7 +10,9 @@ body {
 }
 
 .row {
-	margin: 20% 0 0 70%;
+	margin: 5% 0% 0 33%;
+	width:500px;
+	height:100%;
 }
 
 input#username {

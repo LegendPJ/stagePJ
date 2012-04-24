@@ -17,39 +17,6 @@
 
 }
 
-body {
-	font-family: "PoliceXylagroup";
-	width:1000px;
-	min-width:1000px; /* utile ? */
-	height:100%;
-	margin-top:1%;
-	margin-left:auto;
-	margin-right:auto;
-	margin-bottom :0;
-	color:#1e3847;
-
-	background-color: #759ebb;
-	/* dégradé de couleurs reprenant les couleurs du bandeau */
-	background: -khtml-gradient(linear, left, right, from(#235d7f), to(#759ebb)); 
-    	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#759ebb); /* IE 5.5 - 7 */
-    	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#759ebb, GradientType=1)";   /* IE 8 */
-	/* IE10 */ 
-	background-image: -ms-linear-gradient(left, #235d7f 0%, #759ebb 100%);
-	/* Mozilla Firefox */ 
-	background-image: -moz-linear-gradient(left, #235d7f 0%, #759ebb 100%);
-	/* Opera */ 
-	background-image: -o-linear-gradient(left, #235d7f 0%, #759ebb 100%);
-	/* Webkit (Safari/Chrome 10) */ 
-	background-image: -webkit-gradient(linear, left, left bottom, color-stop(0, #235d7f), color-stop(1, #759ebb));
-	/* Webkit (Chrome 11+) */ 
-	background-image: -webkit-linear-gradient(left, #235d7f 0%, #759ebb 100%);
-	/* Proposed W3C Markup */ 
-	background-image: linear-gradient(left, #235d7f 0%, #759ebb 100%);
-	/* IE9 ?????????????????????*/
-	/* fin dégradé de couleurs reprenant les couleurs du bandeau */
-
-}
-
 p {
 	font-size:91%;
 	font-family: "PoliceXylagroup";
@@ -468,6 +435,16 @@ form dd {
 	padding: 1% 0 0 2%;
 	margin: 0 0 0 0;
 	border-radius:15px;
+}
+
+input.erreur {
+	border-color:rgba(255,0,0,0.8);
+}
+
+input.erreur:focus {
+	-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(255, 0, 0, 0.8);
+	-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(255, 0, 0, 0.8);
+	box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(255, 0, 0, 0.8);
 }
 
 /* FIN DEVIS & CONTACT */
