@@ -1,0 +1,61 @@
+ <?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php echo $this->headTitle(); ?>
+<!-- Feuilles de style CSS : Bootstrap & Global -->
+  <?php echo $this->headLink()->appendStylesheet('/css/body_base.css'); ?>
+  <?php echo $this->headLink()->appendStylesheet('/css/start.css'); ?>
+<!-- Fichiers jQuery pour les animations -->
+
+</head>
+<body>
+	<div id="flashMessengers">
+	<?php $flashMessenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
+		if ($flashMessenger->setNamespace('success')->hasMessages()): ?>
+		    <div class="alert alert-success">
+		    <a class="close" data-dismiss="alert">×</a>
+		    <?php foreach ($flashMessenger->getMessages() as $msg): ?>
+		        <?php echo $msg ?>
+		    <?php endforeach; ?>
+		    </div>
+		<?php endif; ?>
+
+		<?php if ($flashMessenger->setNamespace('error')->hasMessages()): ?>
+		    <div class="alert alert-error">
+		    <a class="close" data-dismiss="alert">×</a>
+		    <?php foreach ($flashMessenger->getMessages() as $msg): ?>
+		        <?php echo $msg ?>
+		    <?php endforeach; ?>
+		    </div>
+		<?php endif; ?>
+	</div>
+
+	<div class="logout">
+		<a href="<?php echo $this->baseUrl;?>/donnees/logout/" title=""> </a>
+	</div>
+
+	<div id="headerP">
+		<div id="bandeau">		
+			<a href="<?php echo $this->url(array('controller'=>'donnees',
+                				 			'action'=>'start'), null, true);?>" title="Administration du site"><img src="<?php echo $this->baseUrl;?>/images/bandeau_start.png"></a>
+		</div>
+	</div>
+		<div id="menu">
+			<ul id="navMenu">
+				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'news','action'=>'modif'), null, true);?>" title="Modifications des news">News</a></li>
+				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
+				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(
+																						'controller'=>strtolower($entite->nom),
+																						'action'=>'modif'), null, true);?>"  title="Modifications de <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
+					</a></li>
+				<?php endforeach; ?>
+			</ul> 
+		</div>
+	<div id="containerP">
+		<?php echo $this->layout()->content ?>
+	</div>
+
+</body>
+  <?php echo $this->headScript(); ?>
+</html>

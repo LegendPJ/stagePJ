@@ -70,6 +70,13 @@ class XylariskController extends Zend_Controller_Action
 			}
 		}
 	}
+
+	public function modifAction()
+	{
+		if (!Zend_Auth::getInstance()->hasIdentity())
+			$this->_redirect('/');
+		$this->_helper->layout->setLayout('layoutstart');
+	}
 }
 ?>
 

@@ -1,0 +1,29 @@
+<?php $this->headTitle()->append('Administration - '.strtoupper($this->controller)); ?>
+<br><br>
+<div class="row">
+	<div class="span12">
+		<h2><?php echo strtoupper($this->controller); ?> - Modifications</h2><br>
+		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouter'), null, true);?>" title="Ajouter un titre pour <?php echo $this->controller; ?>">Ajouter</a>
+		- <a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'order'), null, true);?>" title="Ajouter un titre pour <?php echo $this->controller; ?>">Modifier l'ordre</a>
+		<br><br>
+		<table class="table table-bordered">
+			<thead style="background-color:white; color:black">
+				<tr>
+					<th>Grand titre</th>
+					<th>Actions</th>
+					<th>Ordre</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+					<td>
+						<a href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'editer'), null, true);?>" title="Editer ce Titre">editer</a>
+						- <a href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'supprimer'), null, true);?>" title="Supprimer ce Titre">supprimer</a>
+					</td>
+					<td>1</td>
+				
+			</tbody>
+		</table>
+	</div>
+</div>

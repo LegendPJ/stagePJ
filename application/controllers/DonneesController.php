@@ -27,6 +27,7 @@ class DonneesController extends Zend_Controller_Action
 
 	public function startAction()
 	{
+		$this->_helper->layout->setLayout('layoutstart');
 		if (!Zend_Auth::getInstance()->hasIdentity())
 			$this->_redirect('/');
 	}

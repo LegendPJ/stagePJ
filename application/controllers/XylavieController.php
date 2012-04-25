@@ -79,13 +79,11 @@ class XylavieController extends Zend_Controller_Action
 		}
 	}
 
-	public function verifAction() 
+	public function modifAction()
 	{
-		$this->view->civilite = $this->_getParam('c');
-		$this->view->nom = $this->_getParam('n');
-		$this->view->email = $this->_getParam('e');
-		$this->view->telephone = $this->_getParam('t');
-		$this->view->message = $this->_getParam('m');
+		if (!Zend_Auth::getInstance()->hasIdentity())
+			$this->_redirect('/');
+		$this->_helper->layout->setLayout('layoutstart');
 	}
 }
 

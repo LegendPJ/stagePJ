@@ -1,0 +1,30 @@
+border: 1px solid #215675;
+	background-color: #235d7f;
+	background: -khtml-gradient(linear, left, right, from(#235d7f), to(#215675)); 
+    	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#215675); /* IE 5.5 - 7 */
+    	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#215675, GradientType=1)";   /* IE 8 */
+	/* IE10 */ 
+	background-image: -ms-linear-gradient(left, #235d7f 0%, #215675 100%);
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(left, #235d7f 0%, #215675 100%);
+	/* Opera */ 
+	background-image: -o-linear-gradient(left, #235d7f 0%, #215675 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left, left bottom, color-stop(0, #235d7f), color-stop(1, #215675));
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(left, #235d7f 0%, #215675 100%);
+	/* Proposed W3C Markup */ 
+	background-image: linear-gradient(left, #235d7f 0%, #215675 100%);
+/*	background-image: -webkit-linear-gradient(100% 100% 90deg, #235d7f, #215675) repeat scroll 0 0 #222222;
+	background-image: -moz-linear-gradient(100% 100% 90deg, #235d7f, #215675) repeat scroll 0 0 #222222;
+	background-image: -o-linear-gradient(100% 100% 90deg, #235d7f, #215675) repeat scroll 0 0 #222222;
+	background-image: -ms-linear-gradient(100% 100% 90deg, #235d7f, #215675) repeat scroll 0 0 #222222;
+	background-image: linear-gradient(100% 100% 90deg, #235d7f, #215675) repeat scroll 0 0 #222222;*/
+	-webkit-border-radius: 14px;
+	-moz-border-radius: 14px;
+	border-radius: 14px;
+	-webkit-box-shadow: 0 1px 4px black;
+	-moz-box-shadow: 0 1px 4px black;
+	box-shadow: 0 1px 4px black;
+	color: #FFFFFF;
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);

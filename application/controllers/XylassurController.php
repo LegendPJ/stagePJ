@@ -71,6 +71,14 @@ class XylassurController extends Zend_Controller_Action
 		}
 	}
 
+	public function modifAction()
+	{
+		if (!Zend_Auth::getInstance()->hasIdentity())
+			$this->_redirect('/');
+		$this->_helper->layout->setLayout('layoutstart');
+		$this->view->enti 		= 	Entite::findEntity(strtoupper($this->view->controller));
+		$this->view->grandtitre	= 	Encadre::findEncadreEntite($this->view->enti[0]->id); 
+	}
 }
 
 ?>

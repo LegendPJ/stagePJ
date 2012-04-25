@@ -1,0 +1,80 @@
+/* START */
+
+body {
+	width:1200px;
+}
+
+/* BOUTON LOGOUT*/
+.logout {
+	width:80px;
+	height:80px;
+	margin: 200px 0 0 -100px;
+	position:absolute;
+}
+
+.logout a {
+	text-decoration: none;
+	position: fixed;
+	width:70px;
+	height:70px;
+	background: url("../images/phover.png") no-repeat;
+  }
+
+.logout a:active {
+	background: url("../images/pactive.png")no-repeat;
+}
+
+.logout a:before {
+	content: '';
+	display: block;
+	position: absolute;
+}
+
+#demo2 a:active:before {
+	top: 0px; 
+}
+/* FIN BOUTON LOGOUT */
+
+.span12 {
+	color: #759ebb;
+}
+
+h2 {
+	color: #759ebb;
+}
+
+.menu {
+	margin: 2% 0 0 0;
+	height: 40px;
+	width: 100%;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+.menu li {
+	float: left;
+	list-style : none;
+	width:100px;
+	height:40px;
+	background-color: #DDD;
+	text-align: center;
+	line-height:40px;
+	/*border-radius : 10px;*/
+}
+
+.menu a {
+	text-decoration:none;
+	padding: 11px 0 11px 0;
+}
+
+#containerP {	
+	background: url("../images/bg.png") repeat;
+	height:800px;
+	min-height:800px;
+}
+
+.table tbody tr:hover td,.table tbody tr:hover th{background-color:inherit;}
+
+.table td {
+	text-align: center;
+}

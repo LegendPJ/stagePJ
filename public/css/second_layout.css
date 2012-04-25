@@ -1,49 +1,79 @@
 /* SECONDE LAYOUT */
-body { 
+html { 
 	margin:0;
 	padding:0;
-	background: url(../images/using/background5.gif) no-repeat center; /*fixed */
+	background: url(../images/using/background5.gif) no-repeat center fixed;
 	-webkit-background-size: cover; /* pour Chrome et Safari */
 	-moz-background-size: cover; /* pour Firefox */
 	-o-background-size: cover; /* pour Opera */
 	background-size: cover; /* version standardisée */
 }
 
-.row {
-	margin: 5% 0% 0 33%;
-	width:500px;
+body {
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.span6 {
+	margin: 5% 0% 0 25%;
+	width:55%;
 	height:100%;
 }
 
 input#username {
 	display: block;
-	margin-left:13%;
+	margin: 0 0 0 13%;
 	height:32px;
 	width:298px;
 }
 
 input#password {
 	display: block;
-	margin: 6.2% 0 0 13%;
+	margin: 0 0 0 13%;
 	height:32px;
 	width:298px;
 }
 
 input#connex {
-	margin: 15.5% 0 0 30%;
-	width:165px;
-	height:45px;
-	background-color:#235d7f;
-	border-radius:3px;
-	font-size:1.5em;
-	font-family:"Comic Sans MS";
-	color:white;
-	border:solid 1px black;
+	margin: 5% 0 0 30%;
+	width: 165px;
+	height: 45px;
+	background-color: #235d7f;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 1.5em;
+	font-family: "Comic Sans MS";
+	color: white;
+	border: solid 1px black;
+	-webkit-box-shadow: 0 0 5px black;
+	-moz-box-shadow: 0 0 5px black;
 	box-shadow: 0 0 5px black;
 }
+
+.info {
+	margin: 0 0 0 13%;
+	font-size: 1em;
+	font-family:"Rockwell";
+	color: red;
+
+}
+
 #connexion {
 	width:410px;
-	height:330px;
-	background: url(../images/using/login_form2.png) no-repeat center; 
-	padding-top:38%;
+	height:380px;
+	background: url(../images/using/login_form3.png) no-repeat center; 
+	padding-top:30%;
 }
+
+#connexion label {
+	font-size: 1.2em;
+	font-family:"Rockwell";
+	margin: 0 0 2% 13.2%;
+}
+
+label#pass {
+	margin-top:4%;
+}
+

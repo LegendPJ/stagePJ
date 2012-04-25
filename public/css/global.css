@@ -44,9 +44,12 @@ h2 {
 }
 
 #bandeau img {
-	width:100%;
+	width: 100%;
+	-webkit-box-shadow: 0 0 15px black;
+	-moz-box-shadow: 0 0 15px black;
 	box-shadow: 0 0 15px black;
 }
+
 
 /*.subnav {
 	width: 29%;
@@ -59,12 +62,14 @@ li.one {margin-left: 24%;}
 
 #containerP {
 	margin: 0 0 0 0;
-	width:100%;
-	min-height:1000px;
+	width: 100%;
+	min-height: 1000px;
 	background: url("../images/using/XylagroupX.jpg");
-	background-repeat:no-repeat;
-	background-position:center top;
+	background-repeat: no-repeat;
+	background-position: center top;
 	background-color: #FFF;
+	-webkit-box-shadow: 0 0 15px black;
+	-moz-box-shadow: 0 0 15px black;
 	box-shadow: 0 0 15px black;
 }
 
@@ -170,16 +175,19 @@ ul.nav-pills li a {
 	margin-left:20%;
 	border-top: 1px solid #999;
 }
-
+	
 
 .pager a:hover {
 	border: 1px solid #215675;
-	background: -moz-linear-gradient(100% 100% 90deg, #235d7f, #215675) repeat scroll 0 0 #222222;
-	border-radius: 14px 14px 14px 14px;
+	background-color: #235d7f;
+	
+	-webkit-box-shadow: 0 1px 4px black;
+	-moz-box-shadow: 0 1px 4px black;
 	box-shadow: 0 1px 4px black;
 	color: #FFFFFF;
 	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 }
+
 
 /* FIN MODIFS BOOTSTRAP TWITTER */
 
@@ -272,8 +280,11 @@ ul.nav-pills li a {
 
 #imageNews img {
 	margin: 12% 0% 0 7%;
+	-webkit-box-shadow: 0 0 8px black;
+	-moz-box-shadow: 0 0 8px black;
 	box-shadow: 0 0 8px black;
 }
+
 
 #vueSeule {
 	border:2px solid #000;
@@ -311,8 +322,10 @@ ul.nav-pills li a {
 
 #footerP {
 	margin: 0% 0 1% 0;
-	height:60px;
+	height: 60px;
 	background-color: #274f67;
+	-webkit-box-shadow: 0 10px 8px black;
+	-moz-box-shadow: 0 10px 8px black;
 	box-shadow: 0 10px 8px black;
 }
 
@@ -353,12 +366,12 @@ ul#footer li a {
 }
 
 .enveloppe {
-	background-image:url("../images/using/feuille8.png");
-	background-repeat:no-repeat;
-	background-position:0px 50px;
-	width:880px;
-	min-height:1020px;
-	margin-left:9%;
+	background-image: url("../images/using/feuille8.png");
+	background-repeat: no-repeat;
+	background-position: 0px 50px;
+	width: 880px;
+	min-height: 1020px;
+	margin-left: 9%;
 }
 
 #beforeForm{
@@ -395,12 +408,14 @@ ul#footer li a {
 
 #Envoyer-element input:hover {
 	border: 1px solid #215675;
-	background: -moz-linear-gradient(100% 100% 90deg, #235d7f, #215675) repeat scroll 0 0 #222222;
-	border-radius: 14px 14px 14px 14px;
+	background-color: #235d7f;
+	-webkit-box-shadow: 0 1px 4px black;
+	-moz-box-shadow: 0 1px 4px black;
 	box-shadow: 0 1px 4px black;
 	color: #FFFFFF;
 	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 }
+
 
 #civilite-element {
 	margin-bottom:1%;
@@ -431,11 +446,14 @@ ul.errors li {
 }
 
 form dd {
-	width : 626px;
+	width: 626px;
 	padding: 1% 0 0 2%;
 	margin: 0 0 0 0;
-	border-radius:15px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
 }
+
 
 input.erreur {
 	border-color:rgba(255,0,0,0.8);
