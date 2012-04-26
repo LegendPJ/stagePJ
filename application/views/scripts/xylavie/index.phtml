@@ -36,6 +36,8 @@ else {?>
 					$j = 0;
 					foreach ($this->else as $autres) : 
 						$lien = $autres->id + 2000;
+						$title = str_replace(array('à', 'â', 'ä', 'á', 'ã', 'å','î', 'ï', 'ì', 'í', 'ô', 'ö', 'ò', 'ó', 'õ', 'ø', 'ù', 'û', 'ü', 'ú', 'é', 'è', 'ê', 'ë', 'ç', 'ÿ', 'ñ', ),
+							array('a', 'a', 'a', 'a', 'a', 'a', 'i', 'i', 'i', 'i', 'o', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'e', 'e', 'e', 'e', 'c', 'y', 'n', ),$autres->titre);
 						echo ($j == 0) ? '<div class="tab-pane active" id="'.$lien.'">' : '<div class="tab-pane" id="'.$lien.'">';
 						echo '<div class="row">';
 						// on test la valeur de ajout
@@ -43,7 +45,7 @@ else {?>
 								<h2>'.$autres->titre.'</h2><br>';
 								switch($autres->ajout) {
 									case "r": echo '<p><a href="http://www.gmcgestion.fr" title="Faire une demande de devis"><img src="'.$this->baseUrl.'/images/xylavie/rbt3.png"></a></p>'; break;
-									case "d": echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=>'devis'), null, true).'" title="Faire une demande de devis"><img src="'.$this->baseUrl.'/images/using/devis.png"></a></p><div id="lentite">'.$autres->titre.'</div>'; break;
+									case "d": echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=> 'devis_'.strtolower($title).''), null, true).'" title="Faire une demande de devis"><img src="'.$this->baseUrl.'/images/using/devis.png"></a></p><div id="lentite">'.$autres->titre.'</div>'; break;
 									case "c": echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/xylavie/contact.png"></a></p>'; break;
 									default: break;
 								}

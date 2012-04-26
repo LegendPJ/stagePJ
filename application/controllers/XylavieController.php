@@ -15,11 +15,16 @@ class XylavieController extends Zend_Controller_Action
 								//on récupère les encadre relatifs à l'entité (XYLAVIE)
 	}
 
-	public function devisAction()
+	public function devissanteAction()
 	{
             
 	}
-        
+
+	public function devisdependanceAction()
+	{
+            	$this->view->form = new App_forms_dependance();
+	}
+        	
 	public function contactAction()
 	{	
 		// on ajoute le script d'initialisation de tinyMCE
