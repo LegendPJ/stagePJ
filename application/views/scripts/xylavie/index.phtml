@@ -5,6 +5,57 @@
 <br><br>
 <h1>XYLAVIE</h1>
 
-<?php echo $this->partial('partials/affContenu.phtml', array(
-							'controller' => $this->controller,
-							'encadreEnti' => $this->encEnti)); ?>
+
+
+<!-- <div id="devisContact">
+	<a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'devis'), null, true);?>" title="Faire une demande de devis"><img src="<?php echo $this->baseUrl;?>/images/using/devis.png"></a>
+	<a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true); ?>" title="Contactez nous !"><img src="<?php echo $this->baseUrl;?>/images/contact/<?php echo $this->controller; ?>Contact.png"></a>
+</div> -->
+
+<?php if ((count($this->first) == 0) and (count($this->else) == 0))
+	echo '<h2> Nous sommes désolé mais cette page ne contient pour le moment aucun contenu, ceci devrait être rectifié d\'ici quelques jours!</h2>';
+else {?>
+	<div class="row">
+		<div class="span12">
+			<h2><?php echo $this->first[0]->titre; ?></h2><br>
+			<?php echo $this->first[0]->contenu;
+				echo $this->partial('partials/affLoop.phtml', array('e' => $this->first[0])); ?>
+			<ul class="nav nav-tabs">
+				<h2>L'Assurance de Personne</h2><br>
+				<?php $i =0;
+					foreach ($this->else as $autres) : 
+						echo ($i == 0) ? '<li class="active">' : '<li>' ; 
+						$lien = $autres->id + 2000;
+						echo '<a href="#'.$lien.'" data-toggle="tab" title="Vous dirige vers '.$autres->titre.'">'.$autres->titre.'</a></li>';
+						$i++;
+					endforeach; ?>
+					<li><a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true);?>" title="Contactez XYLAVIE">Contact</a></li>
+			</ul>
+			<div class="tab-content">
+					<?php 
+					$j = 0;
+					foreach ($this->else as $autres) : 
+						$lien = $autres->id + 2000;
+						echo ($j == 0) ? '<div class="tab-pane active" id="'.$lien.'">' : '<div class="tab-pane" id="'.$lien.'">';
+						echo '<div class="row">';
+						// on test la valeur de ajout
+							echo '<div class="span12 ajout">
+								<h2>'.$autres->titre.'</h2><br>';
+								switch($autres->ajout) {
+									case "r": echo '<p><a href="http://www.gmcgestion.fr" title="Faire une demande de devis"><img src="'.$this->baseUrl.'/images/xylavie/rbt3.png"></a></p>'; break;
+									case "d": echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=>'devis'), null, true).'" title="Faire une demande de devis"><img src="'.$this->baseUrl.'/images/using/devis.png"></a></p><div id="lentite">'.$autres->titre.'</div>'; break;
+									case "c": echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/xylavie/contact.png"></a></p>'; break;
+									default: break;
+								}
+								echo $autres->contenu;
+								echo $this->partial('partials/affLoop.phtml', array('e' => $autres));
+							echo '</div>';
+						echo '</div>'; //ceklui de row
+						echo '</div>'; //celui de tab-pane
+						$j++;
+					endforeach; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php } ?>

@@ -10,6 +10,7 @@
  * @property string $contenu
  * @property integer $entite_id
  * @property integer $ordre
+ * @property string $ajout
  * @property Entite $Entite
  * @property Doctrine_Collection $Sousencadre
  * 
@@ -45,6 +46,11 @@ abstract class BaseEncadre extends Doctrine_Record
         $this->hasColumn('ordre', 'integer', null, array(
              'type' => 'integer',
              'notnull' => true,
+             ));
+        $this->hasColumn('ajout', 'string', 1, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => '1',
              ));
 
         $this->option('type', 'INNODB');

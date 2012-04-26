@@ -3,8 +3,12 @@
 <div class="row">
 	<div class="span12">
 		<h2><?php echo strtoupper($this->controller); ?> - Modifications</h2><br>
-		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouter'), null, true);?>" title="Ajouter un titre pour <?php echo $this->controller; ?>">Ajouter</a>
-		- <a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'order'), null, true);?>" title="Ajouter un titre pour <?php echo $this->controller; ?>">Modifier l'ordre</a>
+
+		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouter'), null, true);?>"
+		     title="Ajouter un titre pour <?php echo $this->controller; ?>"><button class="btn btn-success">Ajouter</button></a>
+		&nbsp;
+		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ordre'), null, true);?>"
+		     title="Ajouter un titre pour <?php echo $this->controller; ?>"><button class="btn btn-warning">Modifier l'ordre</button></a>
 		<br><br>
 		<table class="table table-bordered">
 			<thead style="background-color:white; color:black">
@@ -18,11 +22,10 @@
 				<tr>
 					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
 					<td>
-						<a href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'editer'), null, true);?>" title="Editer ce Titre">editer</a>
-						- <a href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'supprimer'), null, true);?>" title="Supprimer ce Titre">supprimer</a>
+						<a href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'editer'), null, true);?>" title="Editer ce Titre"><button class="btn btn-mini btn-primary">editer</button></a>&nbsp;&nbsp;<a href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'supprimer'), null, true);?>" title="Supprimer ce Titre"><button class="btn btn-mini btn-danger">supprimer</button></a>
 					</td>
 					<td>1</td>
-				
+				</tr>
 			</tbody>
 		</table>
 	</div>

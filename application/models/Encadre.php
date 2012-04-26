@@ -29,6 +29,29 @@ class Encadre extends BaseEncadre
 					->leftJoin('en.sousencad s') // On joint les deux tables.
 					->orderBy('en.ordre ASC, s.ordre ASC')
 					->execute();
+	}
 
+	public function findFirstEncadreEntite($idEntity) {
+
+		return 	Doctrine_Query::create()
+					->select('en.*, s.titre')
+					->from('encadre en')
+					->where('en.entite_id = ?', $idEntity)
+					->andWhere('en.ordre = ?', 1)
+					->leftJoin('en.sousencad s') // On joint les deux tables.
+					->orderBy('en.ordre ASC, s.ordre ASC')
+					->execute();
+	}
+
+	public function findEncadreEntiteNoFirst($idEntity) {
+
+		return 	Doctrine_Query::create()
+					->select('en.*, s.titre')
+					->from('encadre en')
+					->where('en.entite_id = ?', $idEntity)
+					->andWhere('en.ordre != ?', 1)
+					->leftJoin('en.sousencad s') // On joint les deux tables.
+					->orderBy('en.ordre ASC, s.ordre ASC')
+					->execute();
 	}
 }

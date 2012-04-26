@@ -96,6 +96,9 @@ Encadre:
   ordre :
    type: integer
    notnull: true
+  ajout :
+   type: string(1)
+   notnull: true
  relations:
   Entite:
    class: Entite

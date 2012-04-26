@@ -31,14 +31,20 @@
 		<?php endif; ?>
 	</div>
 
-	<div class="logout">
-		<a href="<?php echo $this->baseUrl;?>/donnees/logout/" title=""> </a>
+	<div class="side">
+		<div class="logout">
+			<a href="<?php echo $this->baseUrl;?>/donnees/logout/" title="Se déconnecter"> </a>
+		</div>
+		<div class="retour">
+			<a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'index'), null, true);?>" title="Retour au Site Web"></a>
+		</div>
+		
 	</div>
 
 	<div id="headerP">
 		<div id="bandeau">		
 			<a href="<?php echo $this->url(array('controller'=>'donnees',
-                				 			'action'=>'start'), null, true);?>" title="Administration du site"><img src="<?php echo $this->baseUrl;?>/images/bandeau_start.png"></a>
+                				 			'action'=>'start'), null, true);?>" title="Administration du site"><img src="<?php echo $this->baseUrl;?>/images/using/bandeau_start.png"></a>
 		</div>
 	</div>
 		<div id="menu">

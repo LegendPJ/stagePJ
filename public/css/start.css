@@ -8,20 +8,20 @@ body {
 .logout {
 	width:80px;
 	height:80px;
-	margin: 200px 0 0 -70px;
+	margin: 200px 0 0 -78px;
 	position:absolute;
 }
 
 .logout a {
 	text-decoration: none;
 	position: fixed;
-	width:70px;
+	width:64px;
 	height:70px;
-	background: url("../images/phover.png") no-repeat;
+	background: url("../images/using/sprite_button.png") no-repeat;
   }
 
 .logout a:active {
-	background: url("../images/pactive.png")no-repeat;
+	background-position:-64px;
 }
 
 .logout a:before {
@@ -30,9 +30,24 @@ body {
 	position: absolute;
 }
 
-#demo2 a:active:before {
-	top: 0px; 
+.retour {
+	width:80px;
+	height:80px;
+	margin: 270px 0 0 -90px;
+	position:absolute;
 }
+
+.retour a {
+	position: fixed;
+	width:90px;
+	height:40px;
+	background : url("../images/using/sprite_site.png") no-repeat;
+}
+
+.retour a:active{
+	background-position: 0 -40px;
+}
+
 /* FIN BOUTON LOGOUT */
 
 .span12 {
@@ -68,13 +83,13 @@ h2 {
 }
 
 #containerP {	
-	background: url("../images/bg.png") repeat;
+	background: url("../images/using/bg.png") repeat;
 	height:800px;
 	min-height:800px;
 }
 
 .table tbody tr:hover td,.table tbody tr:hover th{background-color:inherit;}
 
-.table td {
+.table td, .table th {
 	text-align: center;
 }

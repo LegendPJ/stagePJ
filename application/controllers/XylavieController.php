@@ -10,7 +10,8 @@ class XylavieController extends Zend_Controller_Action
 	public function indexAction()
 	{
 		$this->view->en 		= 	Entite::findEntity(strtoupper($this->view->controller));
-		$this->view->encEnti		= 	Encadre::findEncadreEntite($this->view->en[0]->id); 
+		$this->view->first		=	Encadre::findFirstEncadreEntite($this->view->en[0]->id);
+		$this->view->else		= 	Encadre::findEncadreEntiteNoFirst($this->view->en[0]->id);
 								//on récupère les encadre relatifs à l'entité (XYLAVIE)
 	}
 

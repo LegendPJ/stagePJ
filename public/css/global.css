@@ -149,6 +149,7 @@ ul.nav-pills li a {
 	margin: -24% 10% 0 8%;
 }
 
+
 #first {
 	margin: 0 0 0 5%;
 	min-height: 360px;
@@ -187,8 +188,6 @@ ul.nav-pills li a {
 	color: #FFFFFF;
 	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 }
-
-
 /* FIN MODIFS BOOTSTRAP TWITTER */
 
 
@@ -473,3 +472,38 @@ input.erreur:focus {
 	position: relative;
 }
 
+
+
+/* XYLAVIE */
+
+.ajout {
+	margin-left:0;
+	margin-right:0;
+	width:90%;
+}
+
+.ajout img { 
+	display: inline-block; 
+	float: right;
+	margin: 20px 0 0 10px;
+}
+
+.ajout p {
+	width:110%;
+}
+
+
+ul.nav h2 {
+	color: #5aa2ce;
+}
+
+#lentite {
+	text-align: center;
+	width:150px;
+	margin: 110px 0 0 605px;
+	position: absolute;
+	font-family: "Comic Sans MS";
+	font-weight:bold;
+	font-size:1.3em;
+	color: #f9ac04;
+}
