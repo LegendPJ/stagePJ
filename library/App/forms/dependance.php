@@ -17,7 +17,7 @@ class App_forms_dependance extends Zend_Form
 
 		$this->civilite = new Zend_Form_Element_Radio('civilite');
 		$this->civilite->setLabel("Vous êtes :")
-			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Melle' => 'Melle'))
+			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Mlle' => 'Mlle'))
 			->setDecorators($decorators)
 			->setOptions(array('separator'=>''));
 
@@ -39,9 +39,13 @@ class App_forms_dependance extends Zend_Form
 			->setDecorators($decorators)
 			->setRequired(true);
 
+		$this->conjoint = new Zend_Form_Element_Radio('conjoint');
+		$this->conjoint->setLabel("Ajouter votre conjoint :")
+			->setMultiOptions(array('Oui'=>'Oui','Non'=>'Non'))
+			->setDecorators($decorators)
+			->setOptions(array('separator'=>''));
 
-
-		
+		$this->conjoint->setValue('Non');
 
 		$this->submit = new Zend_Form_Element_Submit('Envoyer');
 		$this->submit->setDecorators(array(
@@ -51,9 +55,12 @@ class App_forms_dependance extends Zend_Form
        							 )
 						);
 
+
+
 		$this->addElements(array(
 			$this->nom,
-			$this->prenom
+			$this->prenom,
+			$this->conjoint
 		));
 
 		$this->setDecorators(array('FormElements',

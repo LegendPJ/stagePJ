@@ -507,3 +507,24 @@ ul.nav h2 {
 	font-size:1.3em;
 	color: #f9ac04;
 }
+
+label[for^="civilite-M"] {
+	float: left;
+}
+
+label[for^="conjoint"] {
+	float: left;
+}
+
+input#civilite-M {
+	margin-right:30px;
+
+}
+
+input#civilite-Mme{
+	margin-right:30px;
+}
+
+input#conjoint-Oui {
+	margin-right:30px;
+}
