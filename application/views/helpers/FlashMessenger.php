@@ -5,9 +5,6 @@
  */
 require_once 'Zend/Controller/Action/Helper/FlashMessenger.php';
  
-/**
- * @author grummfy
- */
 class Zend_View_Helper_FlashMessenger extends Zend_View_Helper_Abstract implements IteratorAggregate, Countable
 {
 	protected $_fm;
