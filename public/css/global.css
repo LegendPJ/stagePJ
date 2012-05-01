@@ -528,3 +528,25 @@ input#civilite-Mme{
 input#conjoint-Oui {
 	margin-right:30px;
 }
+
+/* SCROLL TOP */
+.scroll {
+	bottom: 50px;
+	float: right;
+	margin-left: 1005px;
+	position: fixed;
+	width: 100px;
+}
+.scroll a {
+	background: none repeat scroll 0 0 #aaaaaa;
+	border-radius: 10px 10px 10px 10px;
+	color: #FFFFFF;
+	display: block;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	width: 50px;
+	cursor: pointer;
+	text-decoration: none;
+}
