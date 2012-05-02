@@ -593,6 +593,7 @@ label.required:after, label.optional:after {
   content: '*';
   color: red;
 }
+
 /* SCROLL TOP */
 
 .scroll {
