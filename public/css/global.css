@@ -395,7 +395,7 @@ ul#footer li a {
 	margin-right: 2%;
 }
 
-#Envoyer-element input{
+#Envoyer{
 	width:110px;
 	height:30px;
 	margin-left:10%;
@@ -405,7 +405,7 @@ ul#footer li a {
 	color:#235d7f;
 }
 
-#Envoyer-element input:hover {
+#Envoyer:hover {
 	border: 1px solid #215675;
 	background-color: #235d7f;
 	-webkit-box-shadow: 0 1px 4px black;
@@ -435,7 +435,7 @@ textarea#message {
 ul.errors {
 	list-style:none;
 	margin-left:0;
-	width:700px;
+	width:450px;
 }
 
 ul.errors li {
@@ -499,8 +499,8 @@ ul.nav h2 {
 
 #lentite {
 	text-align: center;
-	width:150px;
-	margin: 110px 0 0 605px;
+	width:250px;
+	margin: 110px 0 0 555px;
 	position: absolute;
 	font-family: "Comic Sans MS";
 	font-weight:bold;
@@ -508,28 +508,93 @@ ul.nav h2 {
 	color: #f9ac04;
 }
 
-label[for^="civilite-M"] {
+label[for^="civ-M"], label[for^="civC-M"]  {
 	float: left;
 }
 
-label[for^="conjoint"] {
+
+/*label[for^="conjoint"] {
 	float: left;
 }
-
-input#civilite-M {
+*/
+input#civ-M, input#civC-M {
 	margin-right:30px;
 
 }
 
-input#civilite-Mme{
+input#civ-Mme, input#civC-Mme{
 	margin-right:30px;
 }
 
-input#conjoint-Oui {
+/*input#conjoint-Oui {
 	margin-right:30px;
+}*/
+
+#dependance form {
+	margin: 2% 0 0 20%;
 }
 
+#dependance form th label {
+	text-align: right;
+	margin-right:20px;
+}
+
+#dependance form tr {
+	height:50px;
+}
+
+#dependance {
+	margin-top:5%;
+	border:5px solid #235d7f;
+	background-image:url("../images/using/fdevis2.jpg");
+}
+
+#dependance h2 {
+	text-align:center;
+	text-decoration:underline;
+	margin:5% 0 2% 0;
+	color: #ffad43;
+}
+
+#dependance hr {
+	width:80%;
+	margin: 0 0 0 10%;
+	color: #ddd;
+	border: 1px solid #235d7f;
+}
+
+#dependance p {
+	text-align:center;
+	font-size:0.8em;
+	color: red;
+}
+
+#dependance #Envoyer {
+	margin: 20px 0 20px 200px;
+}
+
+#dependance select {
+	width:60px;
+}
+
+select#rente {
+	width:120px;
+}
+
+#dependance label:first-child {
+	color: #235d7f;
+}
+
+#civC-label label:first-child, #nomC-label label:first-child,  #prenomC-label label:first-child, #dateNC-label label:first-child {
+	color: #69f;
+}
+
+label.required:after, label.optional:after {
+  content: '*';
+  color: red;
+}
 /* SCROLL TOP */
+
 .scroll {
 	bottom: 50px;
 	float: right;
@@ -537,6 +602,7 @@ input#conjoint-Oui {
 	position: fixed;
 	width: 100px;
 }
+
 .scroll a {
 	background: none repeat scroll 0 0 #aaaaaa;
 	border-radius: 10px 10px 10px 10px;

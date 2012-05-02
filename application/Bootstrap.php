@@ -52,7 +52,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		// On définit le traducteur à utiliser
 		$translate = new Zend_Translate(
 			array(	'adapter' => 'array',
-				'content' => APPLICATION_PATH . '/../library/resources/languages', //ici, cela dépendra de tes dossiers, mais si tu as suivi les normes le dossier "resources" se trouve au même niveau qu'application, et le boostrap dans application.
+				'content' => APPLICATION_PATH . '/../library/resources/languages', 
 				'locale'  => $language,
 				'scan' => Zend_Translate::LOCALE_DIRECTORY
 		));
@@ -82,17 +82,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		// Feuilles de style
 		$view->headLink()->prependStylesheet('/css/global.css');
 		$view->headLink()->prependStylesheet('/css/bmin.css');
-		$view->headLink()->prependStylesheet('/css/noty/noty.css');
-		$view->headLink()->prependStylesheet('/css/noty/noty_theme_default.css');
-		$view->headLink()->prependStylesheet('/css/noty/noty_theme_facebook.css');
-		$view->headLink()->prependStylesheet('/css/noty/noty_theme_mitgux.css');
-		$view->headLink()->prependStylesheet('/css/noty/noty_theme_twitter.css')
+		// $view->headLink()->prependStylesheet('/css/noty/noty.css');
+		// $view->headLink()->prependStylesheet('/css/noty/noty_theme_default.css');
+		// $view->headLink()->prependStylesheet('/css/noty/noty_theme_facebook.css');
+		// $view->headLink()->prependStylesheet('/css/noty/noty_theme_mitgux.css');
+		// $view->headLink()->prependStylesheet('/css/noty/noty_theme_twitter.css');
+		$view->headLink()->prependStylesheet('/css/jquery-ui-1.8.19.custom.css')
 		->headLink(array('rel' => 'shortcut icon',
 		                                    'href' => '/images/using/favicon.ico'),
 		                          	    'PREPEND');
 
 		// Fichiers jQuery		
 		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js');
+		$view->headScript()->prependFile('/js/jquery-ui.js');
+		$view->headScript()->prependFile('/js/datepicker.js');
 		// $view->headScript()->prependFile('/js/noty.js');	
 		$view->headScript()->prependFile('/js/main.js');
 		$view->headScript()->prependFile('/js/bootstrap-tab.js');		
