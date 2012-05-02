@@ -79,7 +79,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view = $this->getResource('View');
 		$view->doctype('HTML5');
 
+
 		// Feuilles de style
+		$view->headLink()->prependStylesheet('/css/aristo.css');
 		$view->headLink()->prependStylesheet('/css/global.css');
 		$view->headLink()->prependStylesheet('/css/bmin.css');
 		// $view->headLink()->prependStylesheet('/css/noty/noty.css');
