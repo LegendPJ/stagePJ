@@ -510,6 +510,7 @@ ul.nav h2 {
 
 label[for^="civ-M"], label[for^="civC-M"], label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"] {
 	float: left;
+	margin-right:20px;
 }
 
 label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"] {
@@ -519,13 +520,9 @@ label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"] {
 	float: left;
 }
 */
-input#civ-M, input#civC-M {
-	margin-right:30px;
-
-}
-
-input#civ-Mme, input#civC-Mme{
-	margin-right:30px;
+input#civ-M, input#civC-M, input#civ-Mme, input#civC-Mme, input#civ-Mlle, input#civC-Mlle {
+	margin-right:3px;
+	float: left;
 }
 
 /*input#conjoint-Oui {
@@ -651,13 +648,9 @@ select#avenir {
 #projet1{
 	float: left;
 	width:45%;
-	margin-right:25px;
+	margin-right:0;
+	margin-left:100px;
 }
-
-#projet1 {
-	margin-left:25px;
-}
-
 #projet1 h3, #emprunteur h3 {
 	color: #235d7f;
 	text-decoration:underline;
@@ -679,27 +672,21 @@ select#avenir {
 
 #projet1 ul.errors li {
 	color: red;
-	font-size:0.6em;
-}
-
-#projet2 ul.errors {
-	list-style:none;
-	margin-left:0;
-	width:250px;
-}
-
-#projet2 ul.errors li {
-	color: red;
-	font-size:0.6em;
+	font-size:0.7em;
 }
 
 select#km {
 	width:110px;
 }
 
+#emprunteur ul.errors li{
+	color:red;
+	font-size:0.7em;
+}
 
-
-
+#emprunteur label[for^="civ-Mlle"], #emprunteur label[for^="IPP-Non"], #emprunteur label[for^="fumeur-Non"], #emprunteur label[for^="IPT-Non"] {
+	float: none;
+}
 
 
 

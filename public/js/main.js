@@ -1,6 +1,7 @@
 jQuery(function($) {
 	//pour l'affichage des erreurs
 	$('ul.errors').parent().css({'background-color':'#FF9696'});
+	$('#emprunt ul.errors').parent().css({'background-color':'rgba(0,0,0,0)'});
 	$('ul.errors').parent().find('input').addClass('erreur');
 	//pour fermer le flash messenger
 	$('.alert .close').click(function(){
@@ -57,6 +58,6 @@ jQuery(function($) {
 			$('#dateNC-label').parent().slideUp();
 		}
 	});
-
+	$('#scroll a').tooltip();
 	// $('#projets-Epargner').parent().parent().find('br').replaceWith('');	
 });
