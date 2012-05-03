@@ -62,7 +62,6 @@ class XylavieController extends Zend_Controller_Action
 				$html->assign('nomC', $this->view->nomC);
 				$html->assign('prenomC', $this->view->prenomC);
 				$html->assign('dateC', $this->view->dateC);
-				$html->assign('conjoint', $this->view->conjoint);
 				$html->assign('adresse', $this->view->adresse);
 				$html->assign('mail', $this->view->mail);
 				$html->assign('tel', $this->view->tel);
@@ -93,16 +92,39 @@ class XylavieController extends Zend_Controller_Action
         	public function devisretraiteAction()
         	{
         		$this->view->form = new App_forms_retraitepargne();
+        		if ($this->getRequest()->isPost()) {
+			if($this->view->form->isValid($this->getRequest()->getParams())) {
+				$this->view->civilite = $this->view->form->getCivilite();
+                    			$this->view->nom = $this->view->form->getNom();
+                    			$this->view->prenom = $this->view->form->getPrenom();
+                    			$this->view->options = $this->view->form->getProjets();
+			}
+		}
         	}
 
         	public function devisepargneAction()
         	{
-
+        		$this->view->form = new App_forms_retraitepargne();
+        		if ($this->getRequest()->isPost()) {
+			if($this->view->form->isValid($this->getRequest()->getParams())) {
+				$this->view->civilite = $this->view->form->getCivilite();
+                    			$this->view->nom = $this->view->form->getNom();
+                    			$this->view->prenom = $this->view->form->getPrenom();
+                    			$this->view->options = $this->view->form->getProjets();
+			}
+		}
         	}
 
         	public function devisassuranceemprunteurAction()
         	{
-
+        		$this->view->form = new App_forms_emprunt();
+        		if ($this->getRequest()->isPost()) {
+			if($this->view->form->isValid($this->getRequest()->getParams())) {
+				$this->view->civilite = $this->view->form->getCivilite();
+                    			$this->view->nom = $this->view->form->getNom();
+                    			$this->view->prenom = $this->view->form->getPrenom();
+			}
+		}
         	}
         	
 	public function contactAction()

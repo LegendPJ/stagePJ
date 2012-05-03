@@ -56,5 +56,7 @@ jQuery(function($) {
 
 			$('#dateNC-label').parent().slideUp();
 		}
-	}); 
+	});
+
+	// $('#projets-Epargner').parent().parent().find('br').replaceWith('');	
 });

@@ -508,11 +508,13 @@ ul.nav h2 {
 	color: #f9ac04;
 }
 
-label[for^="civ-M"], label[for^="civC-M"]  {
+label[for^="civ-M"], label[for^="civC-M"], label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"] {
 	float: left;
 }
 
-
+label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"] {
+	margin-right:30px;
+}
 /*label[for^="conjoint"] {
 	float: left;
 }
@@ -530,50 +532,57 @@ input#civ-Mme, input#civC-Mme{
 	margin-right:30px;
 }*/
 
-#dependance form {
+#devis form {
 	margin: 2% 0 0 20%;
 }
 
-#dependance form th label {
+#devis form th label {
 	text-align: right;
 	margin-right:20px;
 }
 
-#dependance form tr {
+#devis form tr {
 	height:50px;
 }
 
-#dependance {
+#devis .span12 {
 	margin-top:5%;
 	border:5px solid #235d7f;
-	background-image:url("../images/using/fdevis2.jpg");
 }
 
-#dependance h2 {
+#dependance {
+	background-image:url("../images/xylavie/fdevisD.jpg");
+}
+
+#epargne {
+	background-image:url("../images/xylavie/fdevisE.jpg");
+}
+
+#devis h2 {
 	text-align:center;
 	text-decoration:underline;
 	margin:5% 0 2% 0;
 	color: #ffad43;
 }
 
-#dependance hr {
+#devis hr {
 	width:80%;
 	margin: 0 0 0 10%;
 	color: #ddd;
 	border: 1px solid #235d7f;
 }
 
-#dependance p {
+#devis p {
 	text-align:center;
 	font-size:0.8em;
 	color: red;
 }
 
-#dependance #Envoyer {
+#devis #Envoyer {
 	margin: 20px 0 20px 200px;
 }
 
-#dependance select {
+#devis select {
 	width:60px;
 }
 
@@ -581,18 +590,122 @@ select#rente {
 	width:120px;
 }
 
-#dependance label:first-child {
+#devis th label:first-child {
 	color: #235d7f;
 }
 
-#civC-label label:first-child, #nomC-label label:first-child,  #prenomC-label label:first-child, #dateNC-label label:first-child {
+#devis th#civC-label label:first-child, #devis th#nomC-label label:first-child, #devis th#prenomC-label label:first-child, #devis th#dateNC-label label:first-child {
 	color: #69f;
 }
 
 label.required:after, label.optional:after {
-  content: '*';
-  color: red;
+	content: '*';
+	color: red;
 }
+
+/* DEVIS RETRAITE */
+label[for^="projets-"] {
+	margin-bottom:10px;
+}
+
+input[name^="projets[]"] {
+	display: inline;
+	margin: -3px 5px 0 0;
+}
+
+label[for^="avenir"]:after, label[for^="projets"]:after, label[for^="type"]:after, label[for^="banque"]:after, label[for^="differe"]:after {
+	content: '';
+}
+
+#projets-label label {
+	margin-top:-140px;
+}
+
+select#avenir {
+	width: 130px;
+}
+
+#retraite {
+	background-image:url("../images/xylavie/fdevisR.jpg");
+}
+
+/* EMPRUNT */
+
+
+#emprunt {
+	background-image:url("../images/xylavie/fdevisA.jpg");
+}
+
+#devis #emprunt form {
+	margin: 2% 0 0 0;
+}
+
+#projet1 input{
+	width:150px;
+}
+
+#projet1 #dateE{
+	width:150px;
+}
+
+#projet1{
+	float: left;
+	width:45%;
+	margin-right:25px;
+}
+
+#projet1 {
+	margin-left:25px;
+}
+
+#projet1 h3, #emprunteur h3 {
+	color: #235d7f;
+	text-decoration:underline;
+	margin-left:60px;
+}
+#projet2 select {
+	width:115px;
+}
+
+#projet2 #differe {
+	width:105px;	
+}
+
+#projet1 ul.errors {
+	list-style:none;
+	margin-left:0;
+	width:250px;
+}
+
+#projet1 ul.errors li {
+	color: red;
+	font-size:0.6em;
+}
+
+#projet2 ul.errors {
+	list-style:none;
+	margin-left:0;
+	width:250px;
+}
+
+#projet2 ul.errors li {
+	color: red;
+	font-size:0.6em;
+}
+
+select#km {
+	width:110px;
+}
+
+
+
+
+
+
+
+
+
+
 
 /* SCROLL TOP */
 

@@ -49,7 +49,7 @@
 	</div>
 	<div id="containerP">
 		<?php echo $this->layout()->content ?>
-		<div class="scroll" id="scroll"><a href="#"><img src="<?php echo $this->baseUrl;?>/images/using/top2.png" alt=""></a></div>
+		<div class="scroll" id="scroll"><a href="#" rel="tootltip" data-original-title="Haut de Page"><img src="<?php echo $this->baseUrl;?>/images/using/top2.png" alt=""></a></div>
 	</div>
  	<div id="footerP">
  		<ul id="footer">
@@ -59,7 +59,7 @@
  			<li class="separator">|</li>
  			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'mentions'), null, true);?>" title="Vous dirige vers les Mentions Légales">Mentions Légales</a></li><!-- 
  			<li class="separator">|</li>
- 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'plan'), null, true);?>" title="Vous dirige vers le Plan du site">Plan du site ou Qui sommes nous ?</a></li> -->
+ 			<li><a href="<?php //echo $this->url(array('controller'=>'pages', 'action'=>'plan'), null, true);?>" title="Vous dirige vers le Plan du site">Plan du site ou Qui sommes nous ?</a></li> -->
  			<li class="separator">|</li>
  			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'contact'), null, true);?>" title="Vous dirige vers Contact">Contact</a></li>
  		</ul>

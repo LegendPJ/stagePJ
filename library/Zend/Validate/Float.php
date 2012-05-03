@@ -45,7 +45,8 @@ class Zend_Validate_Float extends Zend_Validate_Abstract
      */
     protected $_messageTemplates = array(
         self::INVALID   => "Invalid type given. String, integer or float expected",
-        self::NOT_FLOAT => "'%value%' does not appear to be a float",
+        self::NOT_FLOAT => "'%value%' ne semble pas être un nombre réel, pensez à la virgule",
+    //    self::NOT_FLOAT => "'%value%' does not appear to be a float",
     );
 
     protected $_locale;

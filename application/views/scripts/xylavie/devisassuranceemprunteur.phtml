@@ -1,0 +1,55 @@
+<?php $this->headTitle()->append('Devis Assurance - Emprunteur'); ?>
+<div class="row" id="devis">
+	<div class="span12" id="emprunt">
+		<h2>Demande de devis Assurance - Emprunteur</h2>
+		<p>Afin d'améliorer la qualité de nos réponses, tous les champs sont obligatoires.</p>
+		<hr>
+
+		<form enctype="application/x-www-form-urlencoded" action="" method="post">
+				<div id="projet1">
+					<table>
+					<h3>Votre Projet</h3><br>
+					<?php echo $this->form->montant; ?>
+					<?php echo $this->form->taux; ?>
+					<?php echo $this->form->duree; ?>
+					<?php echo $this->form->dateE; ?>
+					</table>
+				</div>
+				<div id="projet2">
+					<table>
+					<h3>&nbsp;</h3><br>
+					<?php echo $this->form->garanties; ?>
+					<?php echo $this->form->autre; ?>
+					<?php echo $this->form->type; ?>
+					<?php echo $this->form->banque; ?>
+					<?php echo $this->form->differe; ?>
+					</table>
+				</div>
+				<br><br><br><br><hr><br>
+				<div id="emprunteur">
+					<table>
+					<h3>Emprunteur</h3><br>
+					<?php echo $this->form->civ; ?>
+					<?php echo $this->form->nom; ?>
+					<?php echo $this->form->prenom; ?>	
+					<?php echo $this->form->dateN; ?>	
+					<?php echo $this->form->fumeur; ?>	
+					<?php echo $this->form->quotite; ?>
+					<?php echo $this->form->km; ?>
+					<?php echo $this->form->IPT; ?>
+					<?php echo $this->form->IPP; ?>
+				</table>
+				</div>
+				<div id="coemprunteur">
+					
+				</div>
+				<div id="infos">
+					<br>
+				</div>
+				<?php echo $this->form->submit; ?>
+		</form>
+		<p>Une fois votre devis envoyé nous ferons tout notre possible pour répondre dans les 48h.</p>
+	</div>
+</div>
+
+<br>

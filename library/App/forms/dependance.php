@@ -12,7 +12,7 @@ class App_forms_dependance extends Zend_Form
 
 		$this->civ = new Zend_Form_Element_Radio('civ');
 		$this->civ->setLabel("Vous êtes ")
-			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Mlle' => 'Mlle'))
+			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Mlle.' => 'Mlle.'))
 			->setDecorators($decorators)
 			->setRequired()
 			->setOptions(array('separator'=>''));
@@ -135,12 +135,12 @@ class App_forms_dependance extends Zend_Form
 		$this->depT = new Zend_Form_Element_Select('depT');
 		$this->depT->setLabel("Dépendance Totale ")
 			->setDecorators($decorators)
-			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
+			->addMultiOptions(array('Non'=>'Non','Oui'=>'Oui'));
 
 		$this->depTP = new Zend_Form_Element_Select('depTP');
 		$this->depTP->setLabel("Dépendance Totale ou Partielle ")
 			->setDecorators($decorators)
-			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
+			->addMultiOptions(array('Non'=>'Non','Oui'=>'Oui'));
 
 		$this->submit = new Zend_Form_Element_Submit('Envoyer');
 		$this->submit->setDecorators(array('ViewHelper',

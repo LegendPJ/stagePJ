@@ -94,14 +94,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		                                    'href' => '/images/using/favicon.ico'),
 		                          	    'PREPEND');
 
-		// Fichiers jQuery		
+		// Fichiers jQuery
 		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js');
-		$view->headScript()->prependFile('/js/jquery-ui.js');
 		$view->headScript()->prependFile('/js/datepicker.js');
-		// $view->headScript()->prependFile('/js/noty.js');	
+		$view->headScript()->prependFile('/js/jquery-ui.js');
+		// $view->headScript()->prependFile('/js/noty.js
 		$view->headScript()->prependFile('/js/main.js');
-		$view->headScript()->prependFile('/js/bootstrap-tab.js');		
+		$view->headScript()->prependFile('/js/bootstrap-tab.js');
 		$view->headScript()->prependFile('/js/bootstrap-carousel.js');
+		$view->headScript()->prependFile('/js/bootstrap-tooltip.js');
 		$view->headScript()->prependFile('/js/bootstrap-dropdown.js');
 		$view->headScript()->prependFile('/js/jquery-1.7.1.min.js');
 	}
