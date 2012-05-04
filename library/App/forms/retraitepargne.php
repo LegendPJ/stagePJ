@@ -75,6 +75,7 @@ class App_forms_retraitepargne extends Zend_Form
 		$this->avenir = new Zend_Form_Element_Select('avenir');
 		$this->avenir->setLabel('Comment voyez-vous l\'avenir :')
 			->setDecorators($decorators)
+			->setRequired(true)
 			->addMultiOptions(array(' ' => ' ', 'Confiant'=>'Confiant','Très Confiant'=>'Très Confiant', 'Inquiet'=>'Inquiet', 'Très Inquiet'=>'Très Inquiet'));
 
 		$this->projets = new Zend_Form_Element_MultiCheckbox('projets', array(
@@ -89,10 +90,10 @@ class App_forms_retraitepargne extends Zend_Form
 						'Bénéficier' => 'Bénéficier d\'un complément de ressources.',
 						'Impôts' => 'Payer moins d\'impôts.'
 					)));
-
 		$this->projets->setDecorators($decorators)
 				->setSeparator('')
-				->setLabel("Vos projets & Objectifs : ");
+				->setRequired(true)
+				->setLabel("Vous souhaitez (1 choix mini) : ");
 
 		$this->submit = new Zend_Form_Element_Submit('Envoyer');
 		$this->submit->setDecorators(array('ViewHelper',

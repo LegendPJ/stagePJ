@@ -28,24 +28,47 @@
 				<br><br><br><br><hr><br>
 				<div id="emprunteur">
 					<table>
-					<h3>Emprunteur</h3><br>
-					<?php echo $this->form->civ; ?>
-					<?php echo $this->form->nom; ?>
-					<?php echo $this->form->prenom; ?>	
-					<?php echo $this->form->dateN; ?>	
-					<?php echo $this->form->fumeur; ?>	
-					<?php echo $this->form->quotite; ?>
-					<?php echo $this->form->km; ?>
-					<?php echo $this->form->IPT; ?>
-					<?php echo $this->form->IPP; ?>
-				</table>
+						<h3>Emprunteur</h3><br>
+						<?php echo $this->form->civ; ?>
+						<?php echo $this->form->nom; ?>
+						<?php echo $this->form->prenom; ?>	
+						<?php echo $this->form->dateN; ?>
+						<?php echo $this->form->profession; ?>
+						<?php echo $this->form->fumeur; ?>	
+						<?php echo $this->form->quotite; ?>
+						<?php echo $this->form->km; ?>
+						<?php echo $this->form->IPT; ?>
+						<?php echo $this->form->IPP; ?>
+						<?php echo $this->form->co; ?>
+					</table>
 				</div>
 				<div id="coemprunteur">
-					
+					<table>
+						<h3>Co-Emprunteur</h3><br>
+						<?php echo $this->form->civCo; ?>
+						<?php echo $this->form->nomCo; ?>
+						<?php echo $this->form->prenomCo; ?>	
+						<?php echo $this->form->dateNCo; ?>
+						<?php echo $this->form->professionCo; ?>	
+						<?php echo $this->form->fumeurCo; ?>	
+						<?php echo $this->form->quotiteCo; ?>
+						<?php echo $this->form->kmCo; ?>
+						<?php echo $this->form->IPTCo; ?>
+						<?php echo $this->form->IPPCo; ?>
+					</table>
 				</div>
-				<div id="infos">
-					<br>
+				<br><br><br><br><hr><br><br>
+				<div id="coordonnees">
+					<table>
+						<h3>Coordonnées Emprunteur</h3><br>
+						<?php echo $this->form->adresse; ?>
+						<?php echo $this->form->codeP; ?>
+						<?php echo $this->form->ville; ?>	
+						<?php echo $this->form->email; ?>
+						<?php echo $this->form->telephone; ?>
+					</table>
 				</div>
+				<div class="QapTcha"></div>
 				<?php echo $this->form->submit; ?>
 		</form>
 		<p>Une fois votre devis envoyé nous ferons tout notre possible pour répondre dans les 48h.</p>

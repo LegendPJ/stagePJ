@@ -84,11 +84,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->headLink()->prependStylesheet('/css/aristo.css');
 		$view->headLink()->prependStylesheet('/css/global.css');
 		$view->headLink()->prependStylesheet('/css/bmin.css');
-		// $view->headLink()->prependStylesheet('/css/noty/noty.css');
-		// $view->headLink()->prependStylesheet('/css/noty/noty_theme_default.css');
-		// $view->headLink()->prependStylesheet('/css/noty/noty_theme_facebook.css');
-		// $view->headLink()->prependStylesheet('/css/noty/noty_theme_mitgux.css');
-		// $view->headLink()->prependStylesheet('/css/noty/noty_theme_twitter.css');
+		$view->headLink()->prependStylesheet('/css/QapTcha.jquery.css');
 		$view->headLink()->prependStylesheet('/css/jquery-ui-1.8.19.custom.css')
 		->headLink(array('rel' => 'shortcut icon',
 		                                    'href' => '/images/using/favicon.ico'),
@@ -96,9 +92,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		// Fichiers jQuery
 		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js');
+		$view->headScript()->prependFile('/js/jqueryQ/jquery.ui.touch.js');
+		$view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.js');
+		$view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.min.js');
 		$view->headScript()->prependFile('/js/datepicker.js');
 		$view->headScript()->prependFile('/js/jquery-ui.js');
-		// $view->headScript()->prependFile('/js/noty.js
 		$view->headScript()->prependFile('/js/main.js');
 		$view->headScript()->prependFile('/js/bootstrap-tab.js');
 		$view->headScript()->prependFile('/js/bootstrap-carousel.js');

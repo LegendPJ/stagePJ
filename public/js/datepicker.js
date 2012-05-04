@@ -13,4 +13,19 @@ $(".datepicker").datepicker({
 		prevText: 'Précédent',
 		nextText: 'Suivant'
 	});
+
+
+$(".datepickerNow").datepicker({	
+		dateFormat: 'dd/mm/yy',
+		dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],			
+		dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+		monthNamesShort: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+		monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+		changeYear: true,
+		changeMonth: true,
+		yearRange: '+0y:+5y',
+		firstDay: 1,
+		prevText: 'Précédent',
+		nextText: 'Suivant'
+	});
 });

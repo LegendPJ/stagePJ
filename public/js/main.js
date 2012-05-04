@@ -1,13 +1,15 @@
 jQuery(function($) {
+
 	//pour l'affichage des erreurs
-	$('ul.errors').parent().css({'background-color':'#FF9696'});
-	$('#emprunt ul.errors').parent().css({'background-color':'rgba(0,0,0,0)'});
+	$('#write ul.errors').parent().css({'background-color':'#FF9696'});
 	$('ul.errors').parent().find('input').addClass('erreur');
+
 	//pour fermer le flash messenger
 	$('.alert .close').click(function(){
 		$(this).parent().slideUp('slow');
 		return false;
 	}); 
+
 	//pour le scrollTop
 	$('#scroll').hide();
 
@@ -28,7 +30,7 @@ jQuery(function($) {
 			return false;
 	});
 
-	//pour le conjoitn dans le formulaire de dépendance
+	//pour le conjoint dans le formulaire de dépendance
 	if ($('#conjoint').val() == 'Non') {
 			$('#civC-label').parent().hide();
 
@@ -36,7 +38,7 @@ jQuery(function($) {
 
 			$('#prenomC-label').parent().hide();
 
-			$('#dateNC-label').parent().hide();
+			$('#dateC-label').parent().hide();
 	}
 
 	$('#conjoint').change(function() {
@@ -47,7 +49,7 @@ jQuery(function($) {
 
 			$('#prenomC-label').parent().slideDown();
 
-			$('#dateNC-label').parent().slideDown();
+			$('#dateC-label').parent().slideDown();
 		} else {
 			$('#civC-label').parent().slideUp();
 
@@ -55,9 +57,37 @@ jQuery(function($) {
 
 			$('#prenomC-label').parent().slideUp();
 
-			$('#dateNC-label').parent().slideUp();
+			$('#dateC-label').parent().slideUp();
 		}
 	});
+
+	//tooltip
 	$('#scroll a').tooltip();
-	// $('#projets-Epargner').parent().parent().find('br').replaceWith('');	
+
+	//pour le co-emprunteur
+	if ($('#co').val() == 'Non') {
+		$('#coemprunteur').hide();
+	}
+	if ($('#co').val() == 'Oui') {
+		$('#coemprunteur').show();
+		$('#emprunteur').css({'margin-left':'30px', 'float':'left'});
+	}
+
+	$('#co').change(function() {
+		if ($(this).val() == 'Oui') {
+			$('#coemprunteur').show();
+			// $('#emprunteur').hide('slide', { direction: 'left' }, 1000);
+			$('#emprunteur').css({'margin-left':'30px', 'float':'left'});
+		} else {
+			$('#coemprunteur').hide();
+			$('#emprunteur').css({'margin-left':'200px', 'float':'none'});
+			// $('#emprunteur').show('slide', { direction: 'right' }, 1000);
+		}
+	});
+
+	//Q
+	$(document).ready(function(){
+		// $('.QapTcha').QapTcha(); 
+		$('.QapTcha').QapTcha({autoRevert : true, PHPfile : 'c:/wamp/www/Xylagroup/public/js/Qaptcha.jquery.php' }); 
+	});
 });

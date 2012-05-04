@@ -434,7 +434,7 @@ textarea#message {
 
 ul.errors {
 	list-style:none;
-	margin-left:0;
+	display: inline;
 	width:450px;
 }
 
@@ -508,7 +508,7 @@ ul.nav h2 {
 	color: #f9ac04;
 }
 
-label[for^="civ-M"], label[for^="civC-M"], label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"] {
+label[for^="civ-M"], label[for^="civC-M"], label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"], label[for^="civCo-M"], label[for^="fumeurCo-"], label[for^="IPPCo-"], label[for^="IPTCo-"] {
 	float: left;
 	margin-right:20px;
 }
@@ -520,7 +520,7 @@ label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"] {
 	float: left;
 }
 */
-input#civ-M, input#civC-M, input#civ-Mme, input#civC-Mme, input#civ-Mlle, input#civC-Mlle {
+input#civ-M, input#civC-M, input#civ-Mme, input#civC-Mme, input#civ-Mlle, input#civC-Mlle, input#fumeur-Oui, input#fumeur-Non, input#IPT-Oui, input#IPT-Non, input#IPP-Oui, input#IPP-Non, input#civCo-M, input#civCo-Mme, input#civCo-Mlle, input#fumeurCo-Oui, input#fumeurCo-Non, input#IPTCo-Oui, input#IPTCo-Non, input#IPPCo-Oui, input#IPPCo-Non {
 	margin-right:3px;
 	float: left;
 }
@@ -591,7 +591,7 @@ select#rente {
 	color: #235d7f;
 }
 
-#devis th#civC-label label:first-child, #devis th#nomC-label label:first-child, #devis th#prenomC-label label:first-child, #devis th#dateNC-label label:first-child {
+#devis th#civC-label label:first-child, #devis th#nomC-label label:first-child, #devis th#prenomC-label label:first-child, #devis th#dateC-label label:first-child {
 	color: #69f;
 }
 
@@ -610,7 +610,7 @@ input[name^="projets[]"] {
 	margin: -3px 5px 0 0;
 }
 
-label[for^="avenir"]:after, label[for^="projets"]:after, label[for^="type"]:after, label[for^="banque"]:after, label[for^="differe"]:after {
+label[for^="type"]:after, label[for^="banque"]:after, label[for^="differe"]:after {
 	content: '';
 }
 
@@ -651,11 +651,30 @@ select#avenir {
 	margin-right:0;
 	margin-left:100px;
 }
-#projet1 h3, #emprunteur h3 {
+#projet1 h3{
 	color: #235d7f;
 	text-decoration:underline;
 	margin-left:60px;
 }
+
+#emprunteur h3 {
+	color: #235d7f;
+	text-decoration:underline;
+	margin-left:130px;
+}
+
+#coemprunteur h3 {
+	color: #235d7f;
+	text-decoration:underline;
+	margin-left:530px;
+}
+
+#coordonnees h3 {
+	color: #235d7f;
+	text-decoration:underline;
+	margin-left:124px;
+}
+
 #projet2 select {
 	width:115px;
 }
@@ -664,36 +683,42 @@ select#avenir {
 	width:105px;	
 }
 
-#projet1 ul.errors {
+#projet1 ul.errors, #projet2 ul.errors {
 	list-style:none;
 	margin-left:0;
 	width:250px;
 }
 
-#projet1 ul.errors li {
+#projet1 ul.errors li, #projet2 ul.errors li  {
 	color: red;
 	font-size:0.7em;
 }
 
-select#km {
+select#km, select#kmCo {
 	width:110px;
 }
 
-#emprunteur ul.errors li{
+select#profession, select#professionCo {
+	width:150px;
+}
+
+
+#emprunteur {
+	margin: 0 20px 0 200px;
+}
+
+#emprunteur ul.errors li, #coemprunteur ul.errors li, #coordonnees ul.errors li{
 	color:red;
 	font-size:0.7em;
 }
 
-#emprunteur label[for^="civ-Mlle"], #emprunteur label[for^="IPP-Non"], #emprunteur label[for^="fumeur-Non"], #emprunteur label[for^="IPT-Non"] {
-	float: none;
+#coordonnees {
+	margin: 0 0 0 200px;
 }
 
-
-
-
-
-
-
+#emprunt #Envoyer {
+	margin: 20px 0 20px 370px;
+}
 /* SCROLL TOP */
 
 .scroll {

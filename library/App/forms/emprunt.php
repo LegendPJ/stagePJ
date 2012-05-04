@@ -9,11 +9,12 @@ class App_forms_emprunt extends Zend_Form
 				array('Label', array('tag' => 'th')),
 				array(array('tr' => 'HtmlTag'), array('tag' => 'tr'))
 				);
+		
 		//DEBUT PROJET
 		$this->montant = new Zend_Form_Element_Text('montant');
 		$this->montant->setLabel("Montant (en €)")
 			->setAttrib('placeholder', 'ex : 2000,50')
-			->addValidator('Float')	
+			->addValidator('Float', true)	
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->addValidator('StringLength', false, array(3,20))
@@ -23,7 +24,7 @@ class App_forms_emprunt extends Zend_Form
 		$this->taux = new Zend_Form_Element_Text('taux');
 		$this->taux->setLabel("Taux (en %)")
 			->setAttrib('placeholder', 'ex : 4,25')
-			->addValidator('Float')
+			->addValidator('Float', true)
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->addValidator('Between', false, array('min' => 0, 'max' => 100))
@@ -33,14 +34,14 @@ class App_forms_emprunt extends Zend_Form
 		$this->duree = new Zend_Form_Element_Text('duree');
 		$this->duree->setLabel("Durée (en mois)")
 			->setAttrib('placeholder', 'ex : 12')
-			->addValidator('Digits')
+			->addValidator('Digits', true)
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->addValidator('Between', false, array('min' => 1, 'max' => 1200))
 			->setDecorators($decorators)
 			->setRequired(true);
 
-		$this->dateE = new Zend_Form_Element_Text('dateE', array('readonly' => 'readonly', 'class' => 'datepicker'));
+		$this->dateE = new Zend_Form_Element_Text('dateE', array('readonly' => 'readonly', 'class' => 'datepickerNow'));
 		$this->dateE->setLabel("Date d'effet")
 			->setAttrib('placeholder', 'Cliquez puis choisissez')
 			->setRequired(true)
@@ -74,14 +75,14 @@ class App_forms_emprunt extends Zend_Form
 		$this->differe = new Zend_Form_Element_Text('differe');
 		$this->differe->setLabel("Différé (en mois)")
 			->setAttrib('placeholder', 'ex : 12')
-			->addValidator('Digits')
+			->addValidator('Digits', true)
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->addValidator('Between', false, array('min' => 1, 'max' => 1200))
 			->setDecorators($decorators);
 		//FIN PROJET
-		//DEBUT EMPRUNTEUR
 
+		//DEBUT EMPRUNTEUR
 		$this->civ = new Zend_Form_Element_Radio('civ');
 		$this->civ->setLabel("Vous êtes")
 			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Mlle.' => 'Mlle.'))
@@ -91,7 +92,7 @@ class App_forms_emprunt extends Zend_Form
 		               
 		$this->nom = new Zend_Form_Element_Text('nom');
 		$this->nom->setLabel("Votre Nom")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -99,7 +100,7 @@ class App_forms_emprunt extends Zend_Form
 					   
 		$this->prenom = new Zend_Form_Element_Text('prenom');
 		$this->prenom->setLabel("Votre Prénom")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -115,6 +116,12 @@ class App_forms_emprunt extends Zend_Form
 			->addValidator('regex', true, array('/^\d{2}\/\d{2}\/\d{4}$/', 'messages' => 'Format de date incorrect'))
 			->addValidator('Date', true, array('format' => 'dd/mm/aaaa'))
 			->setDecorators($decorators);
+
+		$this->profession = new Zend_Form_Element_Select('profession');
+		$this->profession->setLabel("Profession")
+			->setDecorators($decorators)
+			->addMultiOptions(array('' => '','Artisan'=>'Artisan','Commerçant'=>'Commerçant','Salarié Cadre'=>'Salarié Cadre','Salarié non cadre'=>'Salarié non cadre','Fonctionnaire'=>'Fonctionnaire','Auxiliaire Médical'=>'Auxiliaire Médical','Avocat'=>'Avocat','Expert-Ingénieur'=>'Expert-Ingénieur','Médecin'=>'Médecin','Pharmacien'=>'Pharmacien','Sans Profession'=>'Sans Profession','Autre'=>'Autre'	))
+			->setRequired(true);
 
 		$this->fumeur = new Zend_Form_Element_Radio('fumeur');
 		$this->fumeur->setLabel("Êtes-vous fumeur ?")
@@ -148,11 +155,123 @@ class App_forms_emprunt extends Zend_Form
 			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'))
 			->setRequired(true);
 
+		$this->co = new Zend_Form_Element_Select('co');
+		$this->co->setLabel("J'ai un co-emprunteur")
+			->setDecorators($decorators)
+			->addMultiOptions(array('Non'=>'Non', 'Oui'=>'Oui'));
+		//FIN EMPRUNTEUR 
+
+		//DEBUT CO-EMPRUNTEUR
+		$this->civCo = new Zend_Form_Element_Radio('civCo');
+		$this->civCo->setLabel("Vous êtes")
+			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Mlle.' => 'Mlle.'))
+			->setDecorators($decorators)
+			->setOptions(array('separator'=>''));
+		               
+		$this->nomCo = new Zend_Form_Element_Text('nomCo');
+		$this->nomCo->setLabel("Votre Nom")
+			->addValidator('Alpha', true) //que des lettres !
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->setDecorators($decorators);
+					   
+		$this->prenomCo = new Zend_Form_Element_Text('prenomCo');
+		$this->prenomCo->setLabel("Votre Prénom")
+			->addValidator('Alpha', true) //que des lettres !
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->setDecorators($decorators);
+
+		$this->dateNCo = new Zend_Form_Element_Text('dateNCo', array('readonly' => 'readonly', 'class' => 'datepicker'));
+		$this->dateNCo->setLabel("Date de Naissance")
+			->setAttrib('placeholder', 'Cliquez puis choisissez')
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->addValidator('StringLength', false, array(10,10))
+			->addValidator('regex', true, array('/^\d{2}\/\d{2}\/\d{4}$/', 'messages' => 'Format de date incorrect'))
+			->addValidator('Date', true, array('format' => 'dd/mm/aaaa'))
+			->setDecorators($decorators);
+
+		$this->professionCo = new Zend_Form_Element_Select('professionCo');
+		$this->professionCo->setLabel("Profession")
+			->setDecorators($decorators)
+			->addMultiOptions(array('' => '','Artisan'=>'Artisan','Commerçant'=>'Commerçant','Salarié Cadre'=>'Salarié Cadre','Salarié non cadre'=>'Salarié non cadre','Fonctionnaire'=>'Fonctionnaire','Auxiliaire Médical'=>'Auxiliaire Médical','Avocat'=>'Avocat','Expert-Ingénieur'=>'Expert-Ingénieur','Médecin'=>'Médecin','Pharmacien'=>'Pharmacien','Sans Profession'=>'Sans Profession','Autre'=>'Autre'	));
+
+		$this->fumeurCo = new Zend_Form_Element_Radio('fumeurCo');
+		$this->fumeurCo->setLabel("Êtes-vous fumeur ?")
+			->setDecorators($decorators)
+			->setOptions(array('separator'=>''))
+			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
+
+		$this->quotiteCo = new Zend_Form_Element_Select('quotiteCo');
+		$this->quotiteCo->setLabel("Quotité à assurer")
+			->setDecorators($decorators)
+			->addMultiOptions(array(''=>'','5%'=>'5%', '10%'=>'10%', '15%'=>'15%', '20%'=>'20%', '25%'=>'25%', '30%'=>'30%', '35%'=>'35%', '40%'=>'40%', '45%'=>'45%', '50%'=>'50%', '55%'=>'55%', '60%'=>'60%', '65%'=>'65%', '70%'=>'70%', '75%'=>'75%', '80%'=>'80%', '85%'=>'85%', '90%'=>'90%', '95%'=>'95%', '100%'=>'100%'));
+
+		$this->kmCo = new Zend_Form_Element_Select('kmCo');
+		$this->kmCo->setLabel("Nombre de km par an")
+			->setDecorators($decorators)
+			->addMultiOptions(array('+ de 15.000'=>'+ de 15.000', '- de 15.000'=>'- de 15.000'));
+
+		$this->IPTCo = new Zend_Form_Element_Radio('IPTCo');
+		$this->IPTCo->setLabel("Option IPT/ITT")
+			->setDecorators($decorators)
+			->setOptions(array('separator'=>''))
+			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
+
+		$this->IPPCo = new Zend_Form_Element_Radio('IPPCo');
+		$this->IPPCo->setLabel("Option IPP")
+			->setDecorators($decorators)
+			->setOptions(array('separator'=>''))
+			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
+		//FIN CO-EMPRUNTEUR 
+
+		//DEBUT COORDONNEES
+		$this->adresse = new Zend_Form_Element_Text('adresse');
+		$this->adresse->setLabel("Votre Adresse ")
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->setDecorators($decorators)
+			->setRequired(true);
+
+		$this->codeP = new Zend_Form_Element_Text('codeP');
+		$this->codeP->setLabel("Code Postal ")
+			->addValidator('Digits') //que des chiffres !
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->addValidator('StringLength', false, array(2,5))
+			->setDecorators($decorators)
+			->setRequired(true);
+
+		$this->ville = new Zend_Form_Element_Text('ville');
+		$this->ville->setLabel("Votre Ville ")
+			->addValidator('Alpha') //que des lettres !
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->setDecorators($decorators)
+			->setRequired(true);
+
+		$this->email = new Zend_Form_Element_Text('email');
+		$this->email->setLabel("Votre e-mail ")
+				->setAttrib('placeholder', 'Format: you@you.me')
+				->addValidator('StringLength', false,array(6,70))
+				->addValidator('EmailAddress')
+				->setDecorators($decorators)
+				->setRequired(true);
+
+		$this->telephone = new Zend_Form_Element_Text('telephone');
+		$this->telephone->setLabel("Votre telephone ")
+				->setAttrib('placeholder', 'Format : 0606060606')
+				->addValidator('Digits')
+				->setDecorators($decorators)
+				->addValidator('StringLength', false,array(10,10))
+				->setRequired(true);
+
+		//FIN COORDONNEES
 		$this->submit = new Zend_Form_Element_Submit('Envoyer');
 		$this->submit->setDecorators(array('ViewHelper',
 						array(array('td' => 'HtmlTag'), array('tag' => 'td', 'colspan' => 2)),
-						array(array('tr' => 'HtmlTag'), array('tag' => 'tr')))
-						);
+						array(array('tr' => 'HtmlTag'), array('tag' => 'tr'))));
 
 		$this->addElements(array(
 			$this->montant,
@@ -168,16 +287,26 @@ class App_forms_emprunt extends Zend_Form
 			$this->nom,
 			$this->prenom,
 			$this->dateN,
+			$this->profession,
 			$this->fumeur,
 			$this->quotite,
 			$this->km,
 			$this->IPT,
-			$this->IPP
+			$this->IPP,
+			$this->co,
+			$this->civCo,
+			$this->nomCo,
+			$this->prenomCo,
+			$this->dateNCo,
+			$this->professionCo,
+			$this->fumeurCo,
+			$this->quotiteCo,
+			$this->kmCo,
+			$this->IPTCo,
+			$this->IPPCo
 		));
 
-		$this->setDecorators(array('FormElements',
-					array('HtmlTag', array('tag' => 'table')),
-				'Form'));             
+		$this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),'Form'));             
 	}
 
 	public function getCivilite() { return $this->civ->getValue(); }

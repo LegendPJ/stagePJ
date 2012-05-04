@@ -119,7 +119,7 @@ class XylavieController extends Zend_Controller_Action
         	{
         		$this->view->form = new App_forms_emprunt();
         		if ($this->getRequest()->isPost()) {
-			if($this->view->form->isValid($this->getRequest()->getParams())) {
+			if($this->view->form->isValid($this->getRequest()->getParams()) && isset($_POST['iQapTcha']) && empty($_POST['iQapTcha']) && isset($_SESSION['iQaptcha']) && $_SESSION['iQaptcha']) {
 				$this->view->civilite = $this->view->form->getCivilite();
                     			$this->view->nom = $this->view->form->getNom();
                     			$this->view->prenom = $this->view->form->getPrenom();
