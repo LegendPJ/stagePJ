@@ -91,17 +91,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		                          	    'PREPEND');
 
 		// Fichiers jQuery
-		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js');
-		$view->headScript()->prependFile('/js/jqueryQ/jquery.ui.touch.js');
-		$view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.js');
-		$view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.min.js');
-		$view->headScript()->prependFile('/js/datepicker.js');
-		$view->headScript()->prependFile('/js/jquery-ui.js');
-		$view->headScript()->prependFile('/js/main.js');
+		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js'); //TINY
+		//BOOTSTRAP
 		$view->headScript()->prependFile('/js/bootstrap-tab.js');
 		$view->headScript()->prependFile('/js/bootstrap-carousel.js');
 		$view->headScript()->prependFile('/js/bootstrap-tooltip.js');
 		$view->headScript()->prependFile('/js/bootstrap-dropdown.js');
+		//Q
+		$view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.js');
+		// $view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.min.js');
+		$view->headScript()->prependFile('/js/jqueryQ/jquery.ui.touch.js');
+		$view->headScript()->prependFile('/js/jqueryQ/jquery-ui.js');
+		$view->headScript()->prependFile('/js/datepicker.js');
+		$view->headScript()->prependFile('/js/main.js');
+		$view->headScript()->prependFile('/js/jquery-ui.js');
 		$view->headScript()->prependFile('/js/jquery-1.7.1.min.js');
 	}
 }

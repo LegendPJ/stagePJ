@@ -32,6 +32,18 @@ class App_forms_retraitepargne extends Zend_Form
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
 			->setRequired(true);
+
+		$this->dateN = new Zend_Form_Element_Text('dateN', array('readonly' => 'readonly', 'class' => 'datepicker'));
+		$this->dateN->setLabel("Date de Naissance")
+			->setAttrib('placeholder', 'Cliquez puis choisissez')
+			->setRequired(true)
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->addValidator('StringLength', false, array(10,10))
+			->addValidator('regex', true, array('/^\d{2}\/\d{2}\/\d{4}$/', 'messages' => 'Format de date incorrect'))
+			->addValidator('Date', true, array('format' => 'dd/mm/aaaa'))
+			->setDecorators($decorators);
+
 		$this->adresse = new Zend_Form_Element_Text('adresse');
 		$this->adresse->setLabel("Votre Adresse : ")
 			->addFilter('StripTags')
@@ -105,6 +117,7 @@ class App_forms_retraitepargne extends Zend_Form
 			$this->civ,
 			$this->nom,
 			$this->prenom,
+			$this->dateN,
 			$this->adresse,
 			$this->codeP,
 			$this->ville,

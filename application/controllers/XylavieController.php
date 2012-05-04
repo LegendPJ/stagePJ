@@ -18,7 +18,7 @@ class XylavieController extends Zend_Controller_Action
 
 	public function devissanteAction()
 	{
-            
+            	$this->view->form = new App_forms_sante();
 	}
 
 	public function devisdependanceAction()
@@ -98,6 +98,7 @@ class XylavieController extends Zend_Controller_Action
                     			$this->view->nom = $this->view->form->getNom();
                     			$this->view->prenom = $this->view->form->getPrenom();
                     			$this->view->options = $this->view->form->getProjets();
+                    			//TESTS
 			}
 		}
         	}
@@ -111,6 +112,7 @@ class XylavieController extends Zend_Controller_Action
                     			$this->view->nom = $this->view->form->getNom();
                     			$this->view->prenom = $this->view->form->getPrenom();
                     			$this->view->options = $this->view->form->getProjets();
+                    			//TESTS
 			}
 		}
         	}
@@ -123,36 +125,13 @@ class XylavieController extends Zend_Controller_Action
 				$this->view->civilite = $this->view->form->getCivilite();
                     			$this->view->nom = $this->view->form->getNom();
                     			$this->view->prenom = $this->view->form->getPrenom();
+                    			//TESTS + TEST CAPTCHA
 			}
 		}
         	}
         	
 	public function contactAction()
-	{	
-		// on ajoute le script d'initialisation de tinyMCE
-		$script="
-			tinyMCE.init({
-				mode : 'textareas',
-				theme : 'advanced',
-				language : 'fr',
-				skin : 'o2k7',
-		       		skin_variant : 'silver',
-				plugins : 'inlinepopups, paste',
-				theme_advanced_buttons1 : 'code, bold, italic, underline, |, bullist, numlist, |, justifyleft, justifyright, justifycenter, justifyfull, |, link, unlink, |, formatselect, fontselect,fontsizeselect, |,forecolor',
-				theme_advanced_buttons2 : '',
-				theme_advanced_buttons3 : '',
-				theme_advanced_buttons4 : '',
-				theme_advanced_toolbar_location : 'top',
-				theme_advanced_toolbar_align : 'left',
-				paste_remove_styles : true,
-				paste_remove_spans : true,
-				paste_stip_class_attributes : 'all',
-				theme_advanced_text_colors : '000000,ff6600,808000,008000,008080,0000ff,ff0000,333399',
-				theme_advanced_more_colors : false,
-				theme_advanced_default_foreground_color : '#000000'
-			})
-		";
-		$this->view->headScript()->appendScript($script);
+	{
 		$this->view->form = new App_forms_contact();	
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
@@ -186,7 +165,7 @@ class XylavieController extends Zend_Controller_Action
 				$mail->setFrom('noreply@xylavie.fr', 'Contact - XYLAVIE')
 					->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE')
 					->setBodyHtml($bodyText)
-					->setSubject('Sujet de test')
+					->setSubject('Mail de contact XYLAVIE')
 					->send();
 				//FIN MAIL
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Message envoyé correctement à la société'.$this->controller.'.');

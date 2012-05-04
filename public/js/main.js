@@ -86,8 +86,30 @@ jQuery(function($) {
 	});
 
 	//Q
-	$(document).ready(function(){
-		// $('.QapTcha').QapTcha(); 
-		$('.QapTcha').QapTcha({autoRevert : true, PHPfile : 'c:/wamp/www/Xylagroup/public/js/Qaptcha.jquery.php' }); 
+		$('.QapTcha').QapTcha(); 
+		// $('.QapTcha').QapTcha({autoRevert : true, PHPfile : 'c:/wamp/www/Xylagroup/public/js/Qaptcha.jquery.php' }); 
+	$('#deux').hide();
+	$('#trois').hide();
+	$('#quatre').hide();
+
+	$('#un a').click(function(){
+		$('#un').hide();
+		$('#deux').show();
+		$('#trois').hide();
+		$('#quatre').hide();
+	});
+
+	$('#deux a').click(function(){
+		$('#deux').hide();
+		$('#trois').show();
+		$('#un').hide();
+		$('#quatre').hide();
+
+	});
+	$('#trois a').click(function(){
+		$('#trois').hide();
+		$('#quatre').show();
+		$('#un').hide();
+		$('#eux').hide();
 	});
 });

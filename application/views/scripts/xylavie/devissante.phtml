@@ -1,0 +1,44 @@
+<?php $this->headTitle()->append('Devis Santé'); ?>
+<div class="row" id="devis">
+	<div class="span12" id="sante">
+		<h2>Demande de devis Santé</h2>
+		<p>Afin d'améliorer la qualité de nos réponses, tous les champs sont obligatoires.</p>
+		<hr>
+
+		<form enctype="application/x-www-form-urlencoded" action="" method="post">
+				<div id="un">
+					<table>
+						<?php echo $this->form->civ; ?>
+						<?php echo $this->form->nom; ?>
+					</table>
+					<a title="">Valider et passer à la suite</a>
+
+				</div>
+
+				<div id="deux">
+					<table>
+						<?php echo $this->form->prenom; ?>	
+					</table>
+					<a title="">Valider et passer à la suite</a>
+
+				</div>
+				<div id="trois">
+					<table>
+						<?php echo $this->form->dateN; ?>
+					</table>
+					<a title="">Valider et passer à la suite</a>
+
+				</div>
+				<div id="quatre">
+					<table>
+						<?php echo $this->form->profession; ?>
+						<?php echo $this->form->submit; ?>
+					</table>
+				</div>
+				<!-- <div class="QapTcha"></div> -->
+		</form>
+		<p>Une fois votre devis envoyé nous ferons tout notre possible pour répondre dans les 48h.</p>
+	</div>
+</div>
+
+<br>
