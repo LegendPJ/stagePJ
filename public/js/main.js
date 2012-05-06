@@ -86,7 +86,7 @@ jQuery(function($) {
 	});
 
 	//Q
-		$('.QapTcha').QapTcha(); 
+		// $('.QapTcha').QapTcha(); 
 		// $('.QapTcha').QapTcha({autoRevert : true, PHPfile : 'c:/wamp/www/Xylagroup/public/js/Qaptcha.jquery.php' }); 
 	$('#deux').hide();
 	$('#trois').hide();
@@ -111,5 +111,17 @@ jQuery(function($) {
 		$('#quatre').show();
 		$('#un').hide();
 		$('#eux').hide();
+	});
+
+	//Pour noty
+	$(function(){
+		if($('ul.errors').length > 0) {
+			noty({"text":"Attention, il y a des erreurs dans le formulaire !","theme":"noty_theme_mitgux","layout":"top","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":4000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":true,"modal":true});
+		}
+	});
+
+	//validation formulaires
+	$('#Validation').click(function(){ 
+		$('form').submit(); 
 	});
 });

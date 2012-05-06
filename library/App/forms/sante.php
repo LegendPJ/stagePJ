@@ -44,12 +44,47 @@ class App_forms_sante extends Zend_Form
 			->addValidator('Date', true, array('format' => 'dd/mm/aaaa'))
 			->setDecorators($decorators);
 
-		$this->profession = new Zend_Form_Element_Select('profession');
-		$this->profession->setLabel("Profession")
+		$this->nbenfant = new Zend_Form_Element_Text('nbenfant');
+		$this->nbenfant->setLabel("Nombre d'enfants")
+			->addValidator('Digits') //que des chiffres !
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
 			->setDecorators($decorators)
-			->addMultiOptions(array('' => '','Artisan'=>'Artisan','Commerçant'=>'Commerçant','Salarié Cadre'=>'Salarié Cadre','Salarié non cadre'=>'Salarié non cadre','Fonctionnaire'=>'Fonctionnaire','Auxiliaire Médical'=>'Auxiliaire Médical','Avocat'=>'Avocat','Expert-Ingénieur'=>'Expert-Ingénieur','Médecin'=>'Médecin','Pharmacien'=>'Pharmacien','Sans Profession'=>'Sans Profession','Autre'=>'Autre'	))
 			->setRequired(true);
 
+		$this->email = new Zend_Form_Element_Text('email');
+		$this->email->setLabel("Votre e-mail ")
+				->setAttrib('placeholder', 'Format: you@you.me')
+				->addValidator('StringLength', false,array(6,70))
+				->addValidator('EmailAddress')
+				->setDecorators($decorators)
+				->setRequired(true);
+
+		$this->telephone = new Zend_Form_Element_Text('telephone');
+		$this->telephone->setLabel("Votre telephone ")
+				->setAttrib('placeholder', 'Format : 0606060606')
+				->addValidator('Digits')
+				->setDecorators($decorators)
+				->addValidator('StringLength', false,array(10,10))
+				->setRequired(true);
+
+		$this->codeP = new Zend_Form_Element_Text('codeP');
+		$this->codeP->setLabel("Code Postal ")
+			->addValidator('Digits') //que des chiffres !
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->addValidator('StringLength', false, array(2,5))
+			->setDecorators($decorators)
+			->setRequired(true);
+
+		$this->ville = new Zend_Form_Element_Text('ville');
+		$this->ville->setLabel("Votre Ville ")
+			->addValidator('Alpha') //que des lettres !
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->setDecorators($decorators)
+			->setRequired(true);
+			
 		$this->submit = new Zend_Form_Element_Submit('Envoyer');
 		$this->submit->setDecorators(array('ViewHelper',
 						array(array('td' => 'HtmlTag'), array('tag' => 'td', 'colspan' => 2)),

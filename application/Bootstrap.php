@@ -9,7 +9,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	                        'basePath' => APPLICATION_PATH));
 
 	                $autoloader = Zend_Loader_Autoloader::getInstance();
-	                $autoloader->registerNamespace(array('App_'));
+	                $autoloader->registerNamespace(array('App_','Webf_','Manager_'));
 	                
 	                return $moduleLoader;
 	}
@@ -82,9 +82,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		// Feuilles de style
 		$view->headLink()->prependStylesheet('/css/aristo.css');
+		$view->headLink()->prependStylesheet('/css/jquery.noty.css');
+		$view->headLink()->prependStylesheet('/css/noty_theme_default.css');
+		$view->headLink()->prependStylesheet('/css/noty_theme_mitgux.css');
 		$view->headLink()->prependStylesheet('/css/global.css');
 		$view->headLink()->prependStylesheet('/css/bmin.css');
-		$view->headLink()->prependStylesheet('/css/QapTcha.jquery.css');
+		// $view->headLink()->prependStylesheet('/css/QapTcha.jquery.css');
 		$view->headLink()->prependStylesheet('/css/jquery-ui-1.8.19.custom.css')
 		->headLink(array('rel' => 'shortcut icon',
 		                                    'href' => '/images/using/favicon.ico'),
@@ -97,11 +100,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->headScript()->prependFile('/js/bootstrap-carousel.js');
 		$view->headScript()->prependFile('/js/bootstrap-tooltip.js');
 		$view->headScript()->prependFile('/js/bootstrap-dropdown.js');
+		$view->headScript()->prependFile('/js/bootstrap-modal.js');
 		//Q
-		$view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.js');
+		// $view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.js');
+		$view->headScript()->prependFile('/js/jquery.noty.js');
 		// $view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.min.js');
-		$view->headScript()->prependFile('/js/jqueryQ/jquery.ui.touch.js');
-		$view->headScript()->prependFile('/js/jqueryQ/jquery-ui.js');
+		// $view->headScript()->prependFile('/js/jqueryQ/jquery.ui.touch.js');
+		// $view->headScript()->prependFile('/js/jqueryQ/jquery-ui.js');
 		$view->headScript()->prependFile('/js/datepicker.js');
 		$view->headScript()->prependFile('/js/main.js');
 		$view->headScript()->prependFile('/js/jquery-ui.js');

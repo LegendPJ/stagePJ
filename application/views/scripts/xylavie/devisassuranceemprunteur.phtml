@@ -69,10 +69,19 @@
 					</table>
 				</div>
 				<!-- <div class="QapTcha"></div> -->
-				<?php echo $this->form->submit; ?>
+				<?php //echo $this->form->submit; ?>
+				<div class="pager">
+					<a href="#" id="Validation" onclick="return false;">Envoyer</a>
+				</div>
 		</form>
 		<p>Une fois votre devis envoyé nous ferons tout notre possible pour répondre dans les 48h.</p>
 	</div>
 </div>
-
 <br>
+
+<!-- 
+<script type="text/javascript">
+	jQuery(function($){
+		 $('.QapTcha').QapTcha({autoRevert : true, autoSubmit : true, PHPfile : '<?php //echo $this->baseUrl."/js/qaptcha.jquery.php";?>' }); 
+	});
+</script> -->

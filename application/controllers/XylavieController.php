@@ -19,6 +19,12 @@ class XylavieController extends Zend_Controller_Action
 	public function devissanteAction()
 	{
             	$this->view->form = new App_forms_sante();
+            	if ($this->getRequest()->isPost()) {
+			if($this->view->form->isValid($this->getRequest()->getParams())) {
+				$this->view->civilite = $this->view->form->getCivilite();
+			}
+		}
+
 	}
 
 	public function devisdependanceAction()
@@ -48,37 +54,47 @@ class XylavieController extends Zend_Controller_Action
                     			$this->view->depT  =  $this->view->form->getDepT();
                     			$this->view->depTP  =  $this->view->form->getDepTP();
 				//MAIL
-				$html = new Zend_View();
-				$html->setScriptPath(APPLICATION_PATH . '/views/emails/');
+				// $html = new Zend_View();
+				// $html->setScriptPath(APPLICATION_PATH . '/views/emails/');
 
-				$html->assign('dateJour', $this->view->dateJour);
-				$html->assign('controller', strtoupper($this->view->controller));
-				$html->assign('civilite', $this->view->civilite);
-				$html->assign('nom', $this->view->nom);
-				$html->assign('prenom', $this->view->prenom);
-				$html->assign('date', $this->view->date);
-				$html->assign('conjoint', $this->view->conjoint);
-				$html->assign('civC', $this->view->civC);
-				$html->assign('nomC', $this->view->nomC);
-				$html->assign('prenomC', $this->view->prenomC);
-				$html->assign('dateC', $this->view->dateC);
-				$html->assign('adresse', $this->view->adresse);
-				$html->assign('mail', $this->view->mail);
-				$html->assign('tel', $this->view->tel);
-				$html->assign('rente', $this->view->rente);
-				$html->assign('depT', $this->view->depT);
-				$html->assign('depTP', $this->view->depTP);
+				// $html->assign('dateJour', $this->view->dateJour);
+				// $html->assign('controller', strtoupper($this->view->controller));
+				// $html->assign('civilite', $this->view->civilite);
+				// $html->assign('nom', $this->view->nom);
+				// $html->assign('prenom', $this->view->prenom);
+				// $html->assign('date', $this->view->date);
+				// $html->assign('conjoint', $this->view->conjoint);
+				// $html->assign('civC', $this->view->civC);
+				// $html->assign('nomC', $this->view->nomC);
+				// $html->assign('prenomC', $this->view->prenomC);
+				// $html->assign('dateC', $this->view->dateC);
+				// $html->assign('adresse', $this->view->adresse);
+				// $html->assign('mail', $this->view->mail);
+				// $html->assign('tel', $this->view->tel);
+				// $html->assign('rente', $this->view->rente);
+				// $html->assign('depT', $this->view->depT);
+				// $html->assign('depTP', $this->view->depTP);
 
-				$mail = new Zend_Mail('utf-8');
+				// $mail = new Zend_Mail('utf-8');
 
-				$bodyText = $html->render('devisdep.phtml');
-				// $mailT = new Zend_Mail_Transport_Sendmail();
-				// $mail->send($mailT);
-				$mail->setFrom('noreply@xylavie.fr', 'Demande de Devis - XYLAVIE')
-					->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE')
-					->setBodyHtml($bodyText)
-					->setSubject('Demande de Devis')
-					->send();
+				// $bodyText = $html->render('devisdep.phtml');
+				// // $mailT = new Zend_Mail_Transport_Sendmail();
+				// // $mail->send($mailT);
+				// $mail->setFrom('noreply@xylavie.fr', 'Demande de Devis - XYLAVIE')
+				// 	->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE')
+				// 	->setBodyHtml($bodyText)
+				// 	->setSubject('Demande de Devis')
+				// 	->send();
+                    			$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
+                    			$layoutMail->setScriptHtml("contact");
+                    			$mail = new Webf_Mail($layoutMail);
+                    			$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('wizbii','wizbii38');
+				$mail->setSmtpTransporter($sendGridTransporter);
+                    			$mail->setFrom('noreply@xylavie.fr', 'Demande de Devis - XYLAVIE');
+				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
+				// ->setBodyHtml($bodyText)
+				$mail->setSubject('Demande de Devis');
+				$mail->send();
 				//FIN MAIL
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société'.$this->controller.'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_helper->Redirector->gotoUrl('/xylavie/');
@@ -121,7 +137,7 @@ class XylavieController extends Zend_Controller_Action
         	{
         		$this->view->form = new App_forms_emprunt();
         		if ($this->getRequest()->isPost()) {
-			if($this->view->form->isValid($this->getRequest()->getParams()) && isset($_POST['iQapTcha']) && empty($_POST['iQapTcha']) && isset($_SESSION['iQaptcha']) && $_SESSION['iQaptcha']) {
+			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->civilite = $this->view->form->getCivilite();
                     			$this->view->nom = $this->view->form->getNom();
                     			$this->view->prenom = $this->view->form->getPrenom();
