@@ -303,44 +303,55 @@ class App_forms_emprunt extends Zend_Form
 			$this->quotiteCo,
 			$this->kmCo,
 			$this->IPTCo,
-			$this->IPPCo
+			$this->IPPCo,
+			$this->adresse,
+			$this->codeP,
+			$this->ville,
+			$this->email,
+			$this->telephone
 		));
 
 		$this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),'Form'));             
 	}
 
+	public function getMontant() { return $this->montant->getValue(); }
+	public function getTaux() { return $this->taux->getValue(); }
+	public function getDuree() { return $this->duree->getValue(); }
+	public function getDateE() { return $this->dateE->getValue(); }
+	public function getGaranties() { return $this->garanties->getValue(); }
+	public function getAutre() { return $this->autre->getValue(); }
+	public function getType() { return $this->type->getValue(); }
+	public function getBanque() { return $this->banque->getValue(); }
+	public function getDiffere() { return $this->differe->getValue(); }
+
 	public function getCivilite() { return $this->civ->getValue(); }
-
 	public function getNom() { return $this->nom->getValue(); }
-	
 	public function getPrenom() { return $this->prenom->getValue(); }
+	public function getDateN() { return $this->dateN->getValue(); }
+	public function getProfession() { return $this->profession->getValue(); }
+	public function getFumeur() { return $this->fumeur->getValue(); }
+	public function getQuotite() { return $this->quotite->getValue(); }
+	public function getKm() { return $this->km->getValue(); }
+	public function getIPT() { return $this->IPT->getValue(); }
+	public function getIPP() { return $this->IPP->getValue(); }
 
-	public function getDate() { return $this->dateN->getValue(); }
-              
-	public function getConjoint() { return $this->conjoint->getValue(); }
+	public function getCo() { return $this->co->getValue(); }
 
-	public function getCivC() { return $this->civC->getValue(); }
-
-	public function getNomC() { return $this->nomC->getValue(); }
-
-	public function getPrenomC() { return $this->prenomC->getValue(); }
-
-	public function getDateC() { return $this->dateC->getValue(); }
+	public function getCivCo() { return $this->civCo->getValue(); }
+	public function getNomCo() { return $this->nomCo->getValue(); }
+	public function getPrenomCo() { return $this->prenomCo->getValue(); }
+	public function getDateNCo() { return $this->dateNCo->getValue(); }
+	public function getProfessionCo() { return $this->professionCo->getValue(); }
+	public function getFumeurCo() { return $this->fumeurCo->getValue(); }
+	public function getQuotiteCo() { return $this->quotiteCo->getValue(); }
+	public function getKmCo() { return $this->kmCo->getValue(); }
+	public function getIPTCo() { return $this->IPTCo->getValue(); }
+	public function getIPPCo() { return $this->IPPCo->getValue(); }
 
 	public function getAdresse() { return $this->adresse->getValue(); }
-	
 	public function getCodeP() { return $this->codeP->getValue(); }
-
 	public function getVille() { return $this->ville->getValue(); }
-              
-	public function getMail() { return $this->email->getValue(); }	
-
-	public function getTel() { return $this->telephone->getValue(); }	
-
-	public function getRente() { return $this->rente->getValue(); }	
-
-	public function getDepT() { return $this->depT->getValue(); }
-
-	public function getDepTP() { return $this->depTP->getValue(); }
+	public function getMail() { return $this->email->getValue(); }
+	public function getTel() { return $this->telephone->getValue(); }
 }
  ?>

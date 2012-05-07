@@ -88,7 +88,7 @@ class XylavieController extends Zend_Controller_Action
                     			$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
                     			$layoutMail->setScriptHtml("contact");
                     			$mail = new Webf_Mail($layoutMail);
-                    			$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('wizbii','wizbii38');
+                    			$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('legenpj','legenpj');
 				$mail->setSmtpTransporter($sendGridTransporter);
                     			$mail->setFrom('noreply@xylavie.fr', 'Demande de Devis - XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
@@ -198,6 +198,24 @@ class XylavieController extends Zend_Controller_Action
 		if (!Zend_Auth::getInstance()->hasIdentity())
 			$this->_redirect('/');
 		$this->_helper->layout->setLayout('layoutstart');
+		$this->view->en 		= 	Entite::findEntity(strtoupper($this->view->controller));
+		$this->view->encadres	=	Encadre::findEncadreEntite($this->view->en[0]->id);
+
+		$query = $this->getRequest();
+		$errors = array();
+		if( $query->isPost() ) {
+			$titre = $query->getParam('titre');
+			$id = $query->getParam('id');
+			$notEmptyValidator = new Zend_Validate_NotEmpty();
+			if(!$notEmptyValidator->isValid($titre)) {
+				$errors[] = "Le titre ne peut être vide !";
+			}
+			if( count($errors) ) {
+				$fm = $this->_helper->flashMessenger->addMessage($errors);
+			} else {
+				Encadre::updateTEncadre($titre, $id);
+			}
+		}
 	}
 }
 

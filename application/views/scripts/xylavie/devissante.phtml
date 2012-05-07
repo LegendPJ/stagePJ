@@ -5,49 +5,76 @@
 		<p>Afin d'améliorer la qualité de nos réponses, tous les champs sont obligatoires.</p>
 		<hr>
 
-		<form enctype="application/x-www-form-urlencoded" action="" method="post">
-				<div id="un">
-					<table>
-						<?php echo $this->form->civ; ?>
-						<?php echo $this->form->nom; ?>
-						<?php echo $this->form->prenom; ?>	
-						<?php echo $this->form->dateN; ?>
-						<?php echo $this->form->email; ?>
-						<?php echo $this->form->nbenfant; ?>
-						<?php echo $this->form->codeP; ?>
-						<?php echo $this->form->ville; ?>
-					</table>
-				<div class="pager">
-					<a href="#" id="next" onclick="return false;">Valider et passer à la suite</a>
-				</div>
+		<form id="s" enctype="application/x-www-form-urlencoded" action="" method="post">
+			<div id="ident">
+				<h3>Identification</h3><br>
+				<table>
+<!-- 						<div id="spriteD"></div>
+					<br> -->
+					<?php echo $this->form->civ; ?>
+					<?php echo $this->form->nom; ?>
+					<?php echo $this->form->prenom; ?>	
+					<?php echo $this->form->email; ?>
+					<?php echo $this->form->nbenfant; ?>
+					<?php echo $this->form->codeP; ?>
+					<?php echo $this->form->ville; ?>
+				</table>
+			</div>
+			<br><br><hr><br>
+			<div id="famille">
+				<h3>Votre Famille</h3><br>
+				<table>
+					<?php echo $this->form->dateN; ?>
+					<?php echo $this->form->conjoint; ?>
+					<?php echo $this->form->dateNC; ?>
+					<?php echo $this->form->date1; ?>
+					<?php echo $this->form->date2; ?>
+					<?php echo $this->form->date3; ?>
+				</table>
+				<p>Au delà de 3 enfants, l'assurance est grauite pour eux.</p><br>
+			</div>
+			<hr><br>
+			<div id="besoins">
+				<h3>Vos Besoins</h3><br>
+				<h4>Question 1 :</h4>
+				<table> <?php echo $this->form->q1; ?> </table>
+				<br>
+				<h4>Question 2 :</h4>
+				<table> <?php echo $this->form->q2; ?> </table>
+				<br>
+				<h4>Question 3 :</h4>
+				<table> <?php echo $this->form->q3; ?> </table>
+				<br>
+				<h4>Question 4 :</h4>
+				<table> <?php echo $this->form->q4; ?> </table>
+			</div>
+			<?php echo $this->form->submit; ?>
+				<!-- </table>
+				<div class="pager"><a href="#" id="next" onclick="return false;">Valider et passer à la suiteeeeeeeeeee</a></div>
+			</div>
 
-				</div>
+			<div id="deux">
+				<div id="spriteD"></div>
+				<br>
+				<table>
+					<?php //echo $this->form2->civ; ?>	
+				</table>
+				<div class="pager"><a href="#" id="next" onclick="return false;">Valider et passer à la suite</a></div>
+			</div>
+			<div id="trois">
+				<div id="spriteD"></div>
+				<br>
+				<table>
+					<?php //echo $this->form->dateN; ?>
+				</table>
+				<div class="pager"><a href="#" id="next" onclick="return false;">Valider et passer à la suite</a></div>
+			</div>
+			<div id="quatre">
+				<table>
+					<?php //echo $this->form->profession; ?>
+-->
 
-				<div id="deux">
-					<table>
-						<?php echo $this->form->prenom; ?>	
-					</table>
-				<div class="pager">
-					<a href="#" id="next" onclick="return false;">Valider et passer à la suite</a>
-				</div>
-
-				</div>
-				<div id="trois">
-					<table>
-						<?php echo $this->form->dateN; ?>
-					</table>
-				<div class="pager">
-					<a href="#" id="next" onclick="return false;">Valider et passer à la suite</a>
-				</div>
-
-				</div>
-				<div id="quatre">
-					<table>
-						<?php echo $this->form->profession; ?>
-						<?php echo $this->form->submit; ?>
-					</table>
-				</div>
-				<!-- <div class="QapTcha"></div> -->
+			<!-- <div class="QapTcha"></div> -->
 		</form>
 		<p>Une fois votre devis envoyé nous ferons tout notre possible pour répondre dans les 48h.</p>
 	</div>

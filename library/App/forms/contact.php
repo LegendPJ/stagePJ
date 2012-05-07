@@ -66,29 +66,10 @@ class App_forms_contact extends Zend_Form
 		));             
 	}
 
-	public function getCivilite() {
-		
-		return $this->civilite->getValue();
-	}
-
-	public function getNom() {
-		
-		return $this->nom->getValue();
-	}
-              
-	public function getEmail() {
-		
-		return $this->email->getValue();
-	}
-
-	public function getTelephone() {
-		
-		return $this->telephone->getValue();
-	}
-
-	public function getMessage() {
-		
-		return $this->message->getValue();
-	}
+	public function getCivilite() { return $this->civilite->getValue(); }
+	public function getNom() { return $this->nom->getValue(); }
+	public function getEmail() { return $this->email->getValue(); }
+	public function getTelephone() { return $this->telephone->getValue(); }
+	public function getMessage() { return $this->message->getValue(); }
 }
  ?>

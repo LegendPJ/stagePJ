@@ -9,7 +9,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	                        'basePath' => APPLICATION_PATH));
 
 	                $autoloader = Zend_Loader_Autoloader::getInstance();
-	                $autoloader->registerNamespace(array('App_','Webf_','Manager_'));
+	                $autoloader->registerNamespace(array('App_','Webf_'));
 	                
 	                return $moduleLoader;
 	}
@@ -86,9 +86,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->headLink()->prependStylesheet('/css/noty_theme_default.css');
 		$view->headLink()->prependStylesheet('/css/noty_theme_mitgux.css');
 		$view->headLink()->prependStylesheet('/css/global.css');
-		$view->headLink()->prependStylesheet('/css/bmin.css');
+		$view->headLink()->prependStylesheet('/css/bmin.css')
 		// $view->headLink()->prependStylesheet('/css/QapTcha.jquery.css');
-		$view->headLink()->prependStylesheet('/css/jquery-ui-1.8.19.custom.css')
 		->headLink(array('rel' => 'shortcut icon',
 		                                    'href' => '/images/using/favicon.ico'),
 		                          	    'PREPEND');

@@ -19,14 +19,37 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php foreach ($this->encadres as $en): ?>				
 				<tr>
-					<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+					<td><?php echo $en->titre; ?></td>
 					<td>
-						<a href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'editer'), null, true);?>" title="Editer ce Titre"><button class="btn btn-mini btn-primary">editer</button></a>&nbsp;&nbsp;<a href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'supprimer'), null, true);?>" title="Supprimer ce Titre"><button class="btn btn-mini btn-danger">supprimer</button></a>
+						<a class="btn btn-mini btn-primary" href="#<?php echo $en->id; ?>" title="Editer ce Titre" data-toggle="modal">editer</a>&nbsp;&nbsp;<a class="btn btn-mini btn-danger" href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'supprimer'), null, true);?>" title="Supprimer ce Titre">supprimer</a>
 					</td>
-					<td>1</td>
+					<td><?php echo $en->ordre; ?></td>
 				</tr>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
 </div>
+<?php foreach ($this->encadres as $en): ?>	
+	<div id="<?php echo $en->id; ?>" class="modal hide fade" style="display: none;">
+		<div class="modal-header">
+			<button class="close" data-dismiss="modal">×</button>
+			<h3>Modifier le titre d'un encadre</h3>
+		</div>
+		<div class="modal-body">
+			<form action="" method="post">
+				<fieldset>
+					<input type="hidden" name="id" value="<?php echo $en->id; ?>">
+					<input type="text" name="titre" value="<?php echo $en->titre; ?>">
+				</fieldset>
+		</div>
+		<div class="modal-footer">
+			<a class="btn" data-dismiss="modal" href="#">Annuler</a>
+			<input class="btn btn-primary" type="submit" value="Sauvegarder" >
+		</div>
+			</form>
+	</div>
+<?php endforeach; ?>
+<!-- <a class="btn btn-primary btn-large" href="#myModal" data-toggle="modal">editer</a> -->

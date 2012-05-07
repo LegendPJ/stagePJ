@@ -11,14 +11,14 @@ class App_forms_retraitepargne extends Zend_Form
 				);
 
 		$this->civ = new Zend_Form_Element_Radio('civ');
-		$this->civ->setLabel("Vous êtes :")
+		$this->civ->setLabel("Vous êtes")
 			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Mlle.' => 'Mlle.'))
 			->setDecorators($decorators)
 			->setRequired()
 			->setOptions(array('separator'=>''));
 		               
 		$this->nom = new Zend_Form_Element_Text('nom');
-		$this->nom->setLabel("Votre Nom :")
+		$this->nom->setLabel("Votre Nom")
 			->addValidator('Alpha') //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
@@ -26,7 +26,7 @@ class App_forms_retraitepargne extends Zend_Form
 			->setRequired(true);
 					   
 		$this->prenom = new Zend_Form_Element_Text('prenom');
-		$this->prenom->setLabel("Votre Prénom : ")
+		$this->prenom->setLabel("Votre Prénom")
 			->addValidator('Alpha') //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
@@ -45,14 +45,14 @@ class App_forms_retraitepargne extends Zend_Form
 			->setDecorators($decorators);
 
 		$this->adresse = new Zend_Form_Element_Text('adresse');
-		$this->adresse->setLabel("Votre Adresse : ")
+		$this->adresse->setLabel("Votre Adresse")
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
 			->setRequired(true);
 
 		$this->codeP = new Zend_Form_Element_Text('codeP');
-		$this->codeP->setLabel("Code Postal : ")
+		$this->codeP->setLabel("Code Postal")
 			->addValidator('Digits') //que des chiffres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
@@ -61,7 +61,7 @@ class App_forms_retraitepargne extends Zend_Form
 			->setRequired(true);
 
 		$this->ville = new Zend_Form_Element_Text('ville');
-		$this->ville->setLabel("Votre Ville : ")
+		$this->ville->setLabel("Votre Ville")
 			->addValidator('Alpha') //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
@@ -69,7 +69,7 @@ class App_forms_retraitepargne extends Zend_Form
 			->setRequired(true);
 
 		$this->email = new Zend_Form_Element_Text('email');
-		$this->email->setLabel("Votre e-mail : ")
+		$this->email->setLabel("Votre e-mail")
 				->setAttrib('placeholder', 'Format: you@you.me')
 				->addValidator('StringLength', false,array(6,70))
 				->addValidator('EmailAddress')
@@ -77,7 +77,7 @@ class App_forms_retraitepargne extends Zend_Form
 				->setRequired(true);
 
 		$this->telephone = new Zend_Form_Element_Text('telephone');
-		$this->telephone->setLabel("Votre telephone : ")
+		$this->telephone->setLabel("Votre telephone")
 				->setAttrib('placeholder', 'Format : 0606060606')
 				->addValidator('Digits')
 				->setDecorators($decorators)
@@ -85,7 +85,7 @@ class App_forms_retraitepargne extends Zend_Form
 				->setRequired(true);
 
 		$this->avenir = new Zend_Form_Element_Select('avenir');
-		$this->avenir->setLabel('Comment voyez-vous l\'avenir :')
+		$this->avenir->setLabel('Comment voyez-vous l\'avenir')
 			->setDecorators($decorators)
 			->setRequired(true)
 			->addMultiOptions(array(' ' => ' ', 'Confiant'=>'Confiant','Très Confiant'=>'Très Confiant', 'Inquiet'=>'Inquiet', 'Très Inquiet'=>'Très Inquiet'));
@@ -105,7 +105,7 @@ class App_forms_retraitepargne extends Zend_Form
 		$this->projets->setDecorators($decorators)
 				->setSeparator('')
 				->setRequired(true)
-				->setLabel("Vous souhaitez (1 choix mini) : ");
+				->setLabel("Vous souhaitez (1 choix mini)");
 
 		$this->submit = new Zend_Form_Element_Submit('Envoyer');
 		$this->submit->setDecorators(array('ViewHelper',
@@ -133,23 +133,15 @@ class App_forms_retraitepargne extends Zend_Form
 	}
 
 	public function getCivilite() { return $this->civ->getValue(); }
-
 	public function getNom() { return $this->nom->getValue(); }
-	
 	public function getPrenom() { return $this->prenom->getValue(); }	
-
-	public function getAvenir() { return $this->avenir->getValue(); }
-
-	public function getProjets() { return $this->projets->getValue(); }
-
+	public function getDateN() { return $this->dateN->getValue(); }	
 	public function getAdresse() { return $this->adresse->getValue(); }
-	
 	public function getCodeP() { return $this->codeP->getValue(); }
-
 	public function getVille() { return $this->ville->getValue(); }
-              
-	public function getMail() { return $this->email->getValue(); }	
-
+	public function getMail() { return $this->email->getValue(); }
 	public function getTel() { return $this->telephone->getValue(); }	
+	public function getAvenir() { return $this->avenir->getValue(); }
+	public function getProjets() { return $this->projets->getValue(); }
 }
  ?>

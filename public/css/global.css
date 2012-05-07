@@ -441,7 +441,7 @@ ul.errors {
 ul.errors li {
 	color: red;
 	font-size:0.9em;
-	font-weight:bold;
+	/*font-weight:bold;*/
 }
 
 form dd {
@@ -500,7 +500,7 @@ ul.nav h2 {
 #lentite {
 	text-align: center;
 	width:250px;
-	margin: 110px 0 0 555px;
+	margin: 120px 0 0 555px;
 	position: absolute;
 	font-family: "Comic Sans MS";
 	font-weight:bold;
@@ -610,7 +610,7 @@ input[name^="projets[]"] {
 	margin: -3px 5px 0 0;
 }
 
-label[for^="type"]:after, label[for^="banque"]:after, label[for^="differe"]:after {
+label[for^="type"]:after, label[for^="banque"]:after, label[for^="differe"]:after, label[for^="q4"]:after {
 	content: '';
 }
 
@@ -623,7 +623,7 @@ select#avenir {
 }
 
 #retraite {
-	background-image:url("../images/xylavie/fdevisR.jpg");
+	background-image:url("../images/xylavie/fdevisR2.jpg");
 }
 
 /* EMPRUNT */
@@ -655,6 +655,12 @@ select#avenir {
 	color: #235d7f;
 	text-decoration:underline;
 	margin-left:60px;
+}
+
+#ident h3, #famille h3, #besoins h3 {
+	color: #235d7f;
+	text-decoration:underline;
+	margin-left:-20px;
 }
 
 #emprunteur h3 {
@@ -719,6 +725,77 @@ select#profession, select#professionCo {
 #emprunt #Envoyer {
 	margin: 20px 0 20px 370px;
 }
+
+/*Sante */
+
+#sante {
+	background-image:url("../images/xylavie/fdevisS.jpg");
+}
+
+#ident #nbenfant {
+	width:90px;
+}
+
+#famille p {
+	color: red;
+	text-align: left;
+	font-size:0.8em;
+}
+
+label[for^="q1-"], label[for^="q2-"], label[for^="q3-"] {
+	float: left;
+}
+
+label[for^="q1-Oui"], label[for^="q2-Oui"], label[for^="q3-Oui"] {
+	margin-right:20px;
+}
+
+#q1-Oui, #q1-Non, #q2-Oui, #q2-Non, #q3-Oui, #q3-Non {
+	float: left;
+	margin-right:5px;
+}
+
+#q1-label, #q2-label, #q3-label, #q4-label {
+	display: block;
+}
+
+#q4-label {
+ 	clear: left;
+}
+
+#besoins #q3-label label, #besoins #q4-label label{
+	width : 400px;
+	text-align: left;
+}
+
+#besoins td {
+	display:block;
+}
+
+#besoins h4 {
+	color: #759ebb;
+	border-bottom:1px solid black;
+	width:400px;
+}
+
+#s hr {
+	border: 1px solid grey;
+	color: #DDDDDD;
+	margin: 0 0 0 0;
+	width: 80%;
+}
+
+label[for^="q4-"] {
+	display: block;
+	margin-right:20px;
+	clear:left;
+}
+
+input[name^="q4[]"] {
+	display: inline;
+	margin: -3px 5px 0 0;
+}
+
 /* SCROLL TOP */
 
 .scroll {
@@ -741,4 +818,19 @@ select#profession, select#professionCo {
 	width: 50px;
 	cursor: pointer;
 	text-decoration: none;
+}
+
+ul.errors {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 0px;
+}
+ul.webkiit {
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 40px;
 }
