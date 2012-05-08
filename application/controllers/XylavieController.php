@@ -88,7 +88,7 @@ class XylavieController extends Zend_Controller_Action
                     			$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
                     			$layoutMail->setScriptHtml("contact");
                     			$mail = new Webf_Mail($layoutMail);
-                    			$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('legenpj','legenpj');
+                    			$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('wizbii','wizbii38');
 				$mail->setSmtpTransporter($sendGridTransporter);
                     			$mail->setFrom('noreply@xylavie.fr', 'Demande de Devis - XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
@@ -203,7 +203,7 @@ class XylavieController extends Zend_Controller_Action
 
 		$query = $this->getRequest();
 		$errors = array();
-		if( $query->isPost() ) {
+		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$id = $query->getParam('id');
 			$notEmptyValidator = new Zend_Validate_NotEmpty();
@@ -214,8 +214,15 @@ class XylavieController extends Zend_Controller_Action
 				$fm = $this->_helper->flashMessenger->addMessage($errors);
 			} else {
 				Encadre::updateTEncadre($titre, $id);
+				$this->_redirect('/xylavie/modif');
 			}
 		}
+	}
+
+	public function suppAction()
+	{
+		Encadre::delete();
+		$this->_redirect('/xylavie/modif');
 	}
 }
 

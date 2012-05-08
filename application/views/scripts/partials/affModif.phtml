@@ -1,4 +1,5 @@
 <?php $this->headTitle()->append('Administration - '.strtoupper($this->controller)); ?>
+<?php $this->headScript()->appendFile('/js/verifchamps.js'); ?>
 <br><br>
 <div class="row">
 	<div class="span12">
@@ -23,7 +24,8 @@
 				<tr>
 					<td><?php echo $en->titre; ?></td>
 					<td>
-						<a class="btn btn-mini btn-primary" href="#<?php echo $en->id; ?>" title="Editer ce Titre" data-toggle="modal">editer</a>&nbsp;&nbsp;<a class="btn btn-mini btn-danger" href="<?php echo $this->url(array('controller' => 'donnees', 'action'=>'supprimer'), null, true);?>" title="Supprimer ce Titre">supprimer</a>
+						<a class="btn btn-mini btn-primary" id="edit" href="#myModal" data-id="<?php echo $en->id; ?>" data-titre="<?php echo $en->titre; ?>" title="Modifier ce Titre" data-toggle="modal">modifier</a>&nbsp;&nbsp;
+						<a class="btn btn-mini btn-danger" href="#deleteModal" title="Supprimer ce Titre" data-toggle="modal">supprimer</a>
 					</td>
 					<td><?php echo $en->ordre; ?></td>
 				</tr>
@@ -32,24 +34,34 @@
 		</table>
 	</div>
 </div>
-<?php foreach ($this->encadres as $en): ?>	
-	<div id="<?php echo $en->id; ?>" class="modal hide fade" style="display: none;">
+
+<div id="myModal" class="modal hide fade" style="display: none;">
+	<form action="" method="post">
 		<div class="modal-header">
 			<button class="close" data-dismiss="modal">×</button>
 			<h3>Modifier le titre d'un encadre</h3>
 		</div>
 		<div class="modal-body">
-			<form action="" method="post">
-				<fieldset>
-					<input type="hidden" name="id" value="<?php echo $en->id; ?>">
-					<input type="text" name="titre" value="<?php echo $en->titre; ?>">
-				</fieldset>
+			<input type="hidden" name="id" value="">
+			<input type="text" name="titre" value="">
 		</div>
 		<div class="modal-footer">
 			<a class="btn" data-dismiss="modal" href="#">Annuler</a>
 			<input class="btn btn-primary" type="submit" value="Sauvegarder" >
 		</div>
-			</form>
+	</form>
+</div>
+
+<div id="deleteModal" class="modal hide fade" style="display: none;">
+	<div class="modal-header">
+		<button class="close" data-dismiss="modal">×</button>
+		<h3>Suppression d'un encadre</h3>
 	</div>
-<?php endforeach; ?>
-<!-- <a class="btn btn-primary btn-large" href="#myModal" data-toggle="modal">editer</a> -->
+	<div class="modal-body">
+		<p>Êtes-vous sûr de vouloir supprimer ce titre ?</p><br><p style="color:red">(Attention, cela supprimera également tous les sous-titres relatifs à ce titre!)</p>
+	</div>
+	<div class="modal-footer">
+		<a class="btn" data-dismiss="modal" href="#">Non</a>
+		<a class="btn btn-primary" data-dismiss="modal" href="<?php echo $this->url(array('controller'=> $this->controller, 'action'=>'supp'), null, true);?>">Oui</a>
+	</div>
+</div>

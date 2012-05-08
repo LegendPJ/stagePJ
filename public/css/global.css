@@ -188,6 +188,16 @@ ul.nav-pills li a {
 	color: #FFFFFF;
 	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 }
+
+#myModal{
+	margin-top: -150px;
+}
+
+#deleteModal {
+	width:400px;
+	left:60%;
+	margin-top: -150px;
+}
 /* FIN MODIFS BOOTSTRAP TWITTER */
 
 

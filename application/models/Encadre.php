@@ -58,9 +58,9 @@ class Encadre extends BaseEncadre
 	public function updateTEncadre($newT, $id) {
 
 		return Doctrine_Query::create()
-				->update('Encadre')
-				->set('titre', $newT)
-				->where('id = ?', $id)
+				->update("Encadre")
+				->set("titre", "?", $newT)
+				->where("id = ?", $id)
 				->execute();
 				// update Encadre set titre = "Bonjour" where id = 7;
 	}
