@@ -19,7 +19,7 @@ class App_forms_dependance extends Zend_Form
 		               
 		$this->nom = new Zend_Form_Element_Text('nom');
 		$this->nom->setLabel("Votre Nom ")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -27,7 +27,7 @@ class App_forms_dependance extends Zend_Form
 					   
 		$this->prenom = new Zend_Form_Element_Text('prenom');
 		$this->prenom->setLabel("Votre Prénom  ")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -45,7 +45,7 @@ class App_forms_dependance extends Zend_Form
 			->setDecorators($decorators);
 
 		$this->conjoint = new Zend_Form_Element_Select('conjoint');
-		$this->conjoint->setLabel('Ajouter votre conjoint ')
+		$this->conjoint->setLabel('Ajouter votre conjoint(e) ')
 			->setDecorators($decorators)
 			->addMultiOptions(array('Non'=>'Non','Oui'=>'Oui'));
 
@@ -65,14 +65,14 @@ class App_forms_dependance extends Zend_Form
 		               
 		$this->nomC = new Zend_Form_Element_Text('nomC');
 		$this->nomC->setLabel("Son Nom ")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators);
 					   
 		$this->prenomC = new Zend_Form_Element_Text('prenomC');
 		$this->prenomC->setLabel("Son Prénom ")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators);
@@ -105,7 +105,7 @@ class App_forms_dependance extends Zend_Form
 
 		$this->ville = new Zend_Form_Element_Text('ville');
 		$this->ville->setLabel("Votre Ville ")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -130,17 +130,20 @@ class App_forms_dependance extends Zend_Form
 		$this->rente = new Zend_Form_Element_Select('rente');
 		$this->rente->setLabel("Montant de votre rente ")
 			->setDecorators($decorators)
-			->addMultiOptions(array('200€'=>'200€','400€'=>'400€', '600€'=>'600€', '800€'=>'800€', '1000€' => '1000€', '1200€' => '1200€', 'plus de 1200€' => 'plus de 1200€'));
+			->setRequired(true)
+			->addMultiOptions(array('' => '', '200€'=>'200€','400€'=>'400€', '600€'=>'600€', '800€'=>'800€', '1000€' => '1000€', '1200€' => '1200€', 'plus de 1200€' => 'plus de 1200€'));
 
 		$this->depT = new Zend_Form_Element_Select('depT');
 		$this->depT->setLabel("Dépendance Totale ")
 			->setDecorators($decorators)
-			->addMultiOptions(array('Non'=>'Non','Oui'=>'Oui'));
+			->setRequired(true)
+			->addMultiOptions(array('' => '', 'Non'=>'Non','Oui'=>'Oui'));
 
 		$this->depTP = new Zend_Form_Element_Select('depTP');
 		$this->depTP->setLabel("Dépendance Totale ou Partielle ")
 			->setDecorators($decorators)
-			->addMultiOptions(array('Non'=>'Non','Oui'=>'Oui'));
+			->setRequired(true)
+			->addMultiOptions(array('' => '', 'Non'=>'Non','Oui'=>'Oui'));
 
 		$this->submit = new Zend_Form_Element_Submit('Envoyer');
 		$this->submit->setDecorators(array('ViewHelper',

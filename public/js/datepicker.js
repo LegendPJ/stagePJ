@@ -23,7 +23,7 @@ $(".datepickerNow").datepicker({
 		monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
 		changeYear: true,
 		changeMonth: true,
-		yearRange: '+0y:+5y',
+		yearRange: '+0y:+2y',
 		firstDay: 1,
 		prevText: 'Précédent',
 		nextText: 'Suivant'

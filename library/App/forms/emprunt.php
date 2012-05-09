@@ -52,19 +52,16 @@ class App_forms_emprunt extends Zend_Form
 			->addValidator('Date', true, array('format' => 'dd/mm/aaaa'))
 			->setDecorators($decorators);
 
-		$this->garanties = new Zend_Form_Element_Select('garanties');
-		$this->garanties->setLabel("Garanties souhaitées")
-			->setDecorators($decorators)
-			->addMultiOptions(array('Décès'=>'Décès','Décès et Chômage'=>'Décès et Chômage', 'Décès et Option Arrêt de Travail/Invalidité'=>'Décès et Option Arrêt de Travail/Invalidité', 'Décès et Option Arrêt de Travail/Invalidité et Chômage'=>'Décès et Option Arrêt de Travail/Invalidité et Chômage'));
-
 		$this->autre = new Zend_Form_Element_Select('autre');
 		$this->autre->setLabel("Autre prêt ?")
 			->setDecorators($decorators)
-			->addMultiOptions(array('Non'=>'Non','Oui'=>'Oui'));
+			->setRequired(true)
+			->addMultiOptions(array('' => '', 'Non'=>'Non','Oui'=>'Oui'));
 
 		$this->type = new Zend_Form_Element_Select('type');
 		$this->type->setLabel("Type de prêt")
 			->setDecorators($decorators)
+			->setRequired(true)
 			->addMultiOptions(array('' => '', 'Amortissable'=>'Amortissable','In Fine'=>'In Fine'));
 
 		$this->banque = new Zend_Form_Element_Select('banque');
@@ -92,7 +89,7 @@ class App_forms_emprunt extends Zend_Form
 		               
 		$this->nom = new Zend_Form_Element_Text('nom');
 		$this->nom->setLabel("Votre Nom")
-			->addValidator('Alpha', true) //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Remplacez les caractères spéciaux par un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -100,7 +97,7 @@ class App_forms_emprunt extends Zend_Form
 					   
 		$this->prenom = new Zend_Form_Element_Text('prenom');
 		$this->prenom->setLabel("Votre Prénom")
-			->addValidator('Alpha', true) //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Remplacez les caractères spéciaux par un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -139,21 +136,27 @@ class App_forms_emprunt extends Zend_Form
 		$this->km = new Zend_Form_Element_Select('km');
 		$this->km->setLabel("Nombre de km par an")
 			->setDecorators($decorators)
-			->addMultiOptions(array('+ de 15.000'=>'+ de 15.000', '- de 15.000'=>'- de 15.000'));
+			->addMultiOptions(array('- de 15.000'=>'- de 15.000', '+ de 15.000'=>'+ de 15.000'));
 
-		$this->IPT = new Zend_Form_Element_Radio('IPT');
-		$this->IPT->setLabel("Option IPT/ITT")
-			->setDecorators($decorators)
-			->setOptions(array('separator'=>''))
-			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'))
-			->setRequired(true);
+		// $this->IPT = new Zend_Form_Element_Radio('IPT');
+		// $this->IPT->setLabel("Option IPT/ITT")
+		// 	->setDecorators($decorators)
+		// 	->setOptions(array('separator'=>''))
+		// 	->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'))
+		// 	->setRequired(true);
 
-		$this->IPP = new Zend_Form_Element_Radio('IPP');
-		$this->IPP->setLabel("Option IPP")
+		// $this->IPP = new Zend_Form_Element_Radio('IPP');
+		// $this->IPP->setLabel("Option IPP")
+		// 	->setDecorators($decorators)
+		// 	->setOptions(array('separator'=>''))
+		// 	->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'))
+		// 	->setRequired(true);
+
+		$this->garantiesE = new Zend_Form_Element_Select('garantiesE');
+		$this->garantiesE->setLabel("Garanties souhaitées")
 			->setDecorators($decorators)
-			->setOptions(array('separator'=>''))
-			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'))
-			->setRequired(true);
+			->setRequired(true)
+			->addMultiOptions(array('' => '', 'Décès'=>'Décès','Décès et Chômage'=>'Décès et Chômage', 'Décès et Option Arrêt de Travail/Invalidité'=>'Décès et Option Arrêt de Travail/Invalidité', 'Décès et Option Arrêt de Travail/Invalidité et Chômage'=>'Décès et Option Arrêt de Travail/Invalidité et Chômage'));
 
 		$this->co = new Zend_Form_Element_Select('co');
 		$this->co->setLabel("J'ai un co-emprunteur")
@@ -170,14 +173,14 @@ class App_forms_emprunt extends Zend_Form
 		               
 		$this->nomCo = new Zend_Form_Element_Text('nomCo');
 		$this->nomCo->setLabel("Votre Nom")
-			->addValidator('Alpha', true) //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Remplacez les caractères spéciaux par un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators);
 					   
 		$this->prenomCo = new Zend_Form_Element_Text('prenomCo');
 		$this->prenomCo->setLabel("Votre Prénom")
-			->addValidator('Alpha', true) //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Remplacez les caractères spéciaux par un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators);
@@ -211,19 +214,24 @@ class App_forms_emprunt extends Zend_Form
 		$this->kmCo = new Zend_Form_Element_Select('kmCo');
 		$this->kmCo->setLabel("Nombre de km par an")
 			->setDecorators($decorators)
-			->addMultiOptions(array('+ de 15.000'=>'+ de 15.000', '- de 15.000'=>'- de 15.000'));
+			->addMultiOptions(array('- de 15.000'=>'- de 15.000', '+ de 15.000'=>'+ de 15.000'));
 
-		$this->IPTCo = new Zend_Form_Element_Radio('IPTCo');
-		$this->IPTCo->setLabel("Option IPT/ITT")
-			->setDecorators($decorators)
-			->setOptions(array('separator'=>''))
-			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
+		// $this->IPTCo = new Zend_Form_Element_Radio('IPTCo');
+		// $this->IPTCo->setLabel("Option IPT/ITT")
+		// 	->setDecorators($decorators)
+		// 	->setOptions(array('separator'=>''))
+		// 	->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
 
-		$this->IPPCo = new Zend_Form_Element_Radio('IPPCo');
-		$this->IPPCo->setLabel("Option IPP")
+		// $this->IPPCo = new Zend_Form_Element_Radio('IPPCo');
+		// $this->IPPCo->setLabel("Option IPP")
+		// 	->setDecorators($decorators)
+		// 	->setOptions(array('separator'=>''))
+		// 	->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
+
+		$this->garantiesC = new Zend_Form_Element_Select('garantiesC');
+		$this->garantiesC->setLabel("Garanties souhaitées")
 			->setDecorators($decorators)
-			->setOptions(array('separator'=>''))
-			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
+			->addMultiOptions(array('' => '', 'Décès'=>'Décès','Décès et Chômage'=>'Décès et Chômage', 'Décès et Option Arrêt de Travail/Invalidité'=>'Décès et Option Arrêt de Travail/Invalidité', 'Décès et Option Arrêt de Travail/Invalidité et Chômage'=>'Décès et Option Arrêt de Travail/Invalidité et Chômage'));
 		//FIN CO-EMPRUNTEUR 
 
 		//DEBUT COORDONNEES
@@ -245,7 +253,7 @@ class App_forms_emprunt extends Zend_Form
 
 		$this->ville = new Zend_Form_Element_Text('ville');
 		$this->ville->setLabel("Votre Ville ")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -291,8 +299,7 @@ class App_forms_emprunt extends Zend_Form
 			$this->fumeur,
 			$this->quotite,
 			$this->km,
-			$this->IPT,
-			$this->IPP,
+			$this->garantiesE,
 			$this->co,
 			$this->civCo,
 			$this->nomCo,
@@ -302,8 +309,7 @@ class App_forms_emprunt extends Zend_Form
 			$this->fumeurCo,
 			$this->quotiteCo,
 			$this->kmCo,
-			$this->IPTCo,
-			$this->IPPCo,
+			$this->garantiesC,
 			$this->adresse,
 			$this->codeP,
 			$this->ville,
@@ -318,7 +324,6 @@ class App_forms_emprunt extends Zend_Form
 	public function getTaux() { return $this->taux->getValue(); }
 	public function getDuree() { return $this->duree->getValue(); }
 	public function getDateE() { return $this->dateE->getValue(); }
-	public function getGaranties() { return $this->garanties->getValue(); }
 	public function getAutre() { return $this->autre->getValue(); }
 	public function getType() { return $this->type->getValue(); }
 	public function getBanque() { return $this->banque->getValue(); }
@@ -332,8 +337,7 @@ class App_forms_emprunt extends Zend_Form
 	public function getFumeur() { return $this->fumeur->getValue(); }
 	public function getQuotite() { return $this->quotite->getValue(); }
 	public function getKm() { return $this->km->getValue(); }
-	public function getIPT() { return $this->IPT->getValue(); }
-	public function getIPP() { return $this->IPP->getValue(); }
+	public function getGarantiesE() { return $this->garantiesE->getValue(); }
 
 	public function getCo() { return $this->co->getValue(); }
 
@@ -345,8 +349,7 @@ class App_forms_emprunt extends Zend_Form
 	public function getFumeurCo() { return $this->fumeurCo->getValue(); }
 	public function getQuotiteCo() { return $this->quotiteCo->getValue(); }
 	public function getKmCo() { return $this->kmCo->getValue(); }
-	public function getIPTCo() { return $this->IPTCo->getValue(); }
-	public function getIPPCo() { return $this->IPPCo->getValue(); }
+	public function getGarantiesC() { return $this->garantiesC->getValue(); }
 
 	public function getAdresse() { return $this->adresse->getValue(); }
 	public function getCodeP() { return $this->codeP->getValue(); }

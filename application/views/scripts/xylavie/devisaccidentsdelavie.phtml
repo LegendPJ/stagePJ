@@ -1,0 +1,75 @@
+<?php $this->headTitle()->append('Devis Garanties Accidents de la Vie'); ?>
+<div class="row" id="devis">
+	<div class="span12" id="accident">
+		<h2>Demande de devis Garanties Accidents de la vie </h2>
+		<p>Afin d'améliorer la qualité de nos réponses, tous les champs sont obligatoires.</p>
+		<hr>
+
+		<form id="s" enctype="application/x-www-form-urlencoded" action="" method="post">
+			<table>
+			<?php echo $this->form->civ; ?>
+			<?php echo $this->form->nom; ?>
+			<?php echo $this->form->prenom; ?>
+			<?php echo $this->form->dateN; ?>
+			<?php echo $this->form->email; ?>
+			<?php echo $this->form->telephone; ?>
+			<?php echo $this->form->codeP; ?>
+			<?php echo $this->form->ville; ?>
+			<?php echo $this->form->contrat; ?>
+			</table>
+			<div id="familial">
+				<br><br><hr><br>
+				<table>
+					<h3>Votre Famille</h3><br>
+					<?php echo $this->form->conjoint; ?>
+					<?php echo $this->form->civC; ?>
+					<?php echo $this->form->nomC; ?>
+					<?php echo $this->form->prenomC; ?>
+					<?php echo $this->form->dateC; ?>
+					<?php echo $this->form->nombreenfant; ?>
+				</table>
+			</div>
+			<div id="enfant1">
+				<table>
+					<?php echo $this->form->nom1; ?>
+					<?php echo $this->form->prenom1; ?>
+					<?php echo $this->form->date1; ?>
+				</table>
+			</div>
+			<div id="enfant2">
+				<table>
+					<?php echo $this->form->nom2; ?>
+					<?php echo $this->form->prenom2; ?>
+					<?php echo $this->form->date2; ?>
+				</table>
+			</div>
+			<div id="enfant3">
+				<table>
+					<?php echo $this->form->nom3; ?>
+					<?php echo $this->form->prenom3; ?>
+					<?php echo $this->form->date3; ?>
+				</table>
+			</div>
+			<div id="enfant4">
+				<table>
+					<?php echo $this->form->nom4; ?>
+					<?php echo $this->form->prenom4; ?>
+					<?php echo $this->form->date4; ?>
+				</table>
+			</div>
+			<div id="enfant5">
+				<table>
+					<?php echo $this->form->nom5; ?>
+					<?php echo $this->form->prenom5; ?>
+					<?php echo $this->form->date5; ?>
+				</table>
+			</div>
+
+			<div class="pager">
+				<a href="#" id="validAccident" onclick="return false;">Envoyer</a>
+			</div>
+		</form>
+		<p>Une fois votre devis envoyé nous ferons tout notre possible pour répondre dans les 48h.</p>
+	</div>
+</div>
+<br>

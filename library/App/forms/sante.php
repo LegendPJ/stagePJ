@@ -20,7 +20,7 @@ class App_forms_sante extends Zend_Form
 		               
 		$this->nom = new Zend_Form_Element_Text('nom');
 		$this->nom->setLabel("Votre Nom")
-			->addValidator('Alpha', true) //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -28,7 +28,7 @@ class App_forms_sante extends Zend_Form
 					   
 		$this->prenom = new Zend_Form_Element_Text('prenom');
 		$this->prenom->setLabel("Votre Prénom")
-			->addValidator('Alpha', true) //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -37,7 +37,8 @@ class App_forms_sante extends Zend_Form
 		$this->nbenfant = new Zend_Form_Element_Select('nbenfant');
 		$this->nbenfant->setLabel("Nombre d'enfants")
 			->setDecorators($decorators)
-			->addMultiOptions(array('aucun'=>'aucun','1'=>'1', '2'=>'2', '3'=>'3', 'plus de 3' => 'plus de 3'));
+			->setRequired(true)
+			->addMultiOptions(array('' => '', 'aucun'=>'aucun','1'=>'1', '2'=>'2', '3'=>'3', 'plus de 3' => 'plus de 3'));
 
 		$this->email = new Zend_Form_Element_Text('email');
 		$this->email->setLabel("Votre e-mail ")
@@ -66,7 +67,7 @@ class App_forms_sante extends Zend_Form
 
 		$this->ville = new Zend_Form_Element_Text('ville');
 		$this->ville->setLabel("Votre Ville ")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -85,7 +86,7 @@ class App_forms_sante extends Zend_Form
 			->setDecorators($decorators);
 
 		$this->conjoint = new Zend_Form_Element_Select('conjoint');
-		$this->conjoint->setLabel("Ajouter mon conjoint")
+		$this->conjoint->setLabel("Ajouter votre conjoint(e)")
 			->setDecorators($decorators)
 			->addMultiOptions(array('Non'=>'Non', 'Oui' => 'Oui'));
 

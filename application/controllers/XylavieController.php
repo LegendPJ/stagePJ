@@ -12,7 +12,8 @@ class XylavieController extends Zend_Controller_Action
 	{
 		$this->view->en 		= 	Entite::findEntity(strtoupper($this->view->controller));
 		$this->view->first		=	Encadre::findFirstEncadreEntite($this->view->en[0]->id);
-		$this->view->else		= 	Encadre::findEncadreEntiteNoFirst($this->view->en[0]->id);
+		$this->view->else		= 	Encadre::findEncadreNFNR($this->view->en[0]->id);
+		$this->view->rbt		= 	Encadre::findEncadreRbt($this->view->en[0]->id);
 								//on récupère les encadre relatifs à l'entité (XYLAVIE)
 	}
 
@@ -146,6 +147,15 @@ class XylavieController extends Zend_Controller_Action
 		}
         	}
         	
+        	public function devisaccidentsdelavieAction()
+        	{
+        		$this->view->form = new App_forms_accident();
+        		if ($this->getRequest()->isPost()) {
+			if($this->view->form->isValid($this->getRequest()->getParams())) {
+                    			//TESTS + TEST CAPTCHA
+			}
+		}
+        	}
 	public function contactAction()
 	{
 		$this->view->form = new App_forms_contact();	

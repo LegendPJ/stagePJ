@@ -15,7 +15,7 @@ class App_forms_contact extends Zend_Form
 		               
 		$this->nom = new Zend_Form_Element_Text('nom');
 		$this->nom->setLabel("Votre nom : ")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setRequired(true);

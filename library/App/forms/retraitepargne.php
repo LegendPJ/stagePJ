@@ -19,7 +19,7 @@ class App_forms_retraitepargne extends Zend_Form
 		               
 		$this->nom = new Zend_Form_Element_Text('nom');
 		$this->nom->setLabel("Votre Nom")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -27,7 +27,7 @@ class App_forms_retraitepargne extends Zend_Form
 					   
 		$this->prenom = new Zend_Form_Element_Text('prenom');
 		$this->prenom->setLabel("Votre Prénom")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)
@@ -62,7 +62,7 @@ class App_forms_retraitepargne extends Zend_Form
 
 		$this->ville = new Zend_Form_Element_Text('ville');
 		$this->ville->setLabel("Votre Ville")
-			->addValidator('Alpha') //que des lettres !
+			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Cette valeur ne contient pas que des lettres, pour les caractères spéciaux mettez un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators)

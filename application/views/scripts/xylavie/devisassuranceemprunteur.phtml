@@ -18,7 +18,6 @@
 				<div id="projet2">
 					<table>
 					<h3>&nbsp;</h3><br>
-					<?php echo $this->form->garanties; ?>
 					<?php echo $this->form->autre; ?>
 					<?php echo $this->form->type; ?>
 					<?php echo $this->form->banque; ?>
@@ -37,8 +36,7 @@
 						<?php echo $this->form->fumeur; ?>	
 						<?php echo $this->form->quotite; ?>
 						<?php echo $this->form->km; ?>
-						<?php echo $this->form->IPT; ?>
-						<?php echo $this->form->IPP; ?>
+						<?php echo $this->form->garantiesE; ?>
 						<?php echo $this->form->co; ?>
 					</table>
 				</div>
@@ -53,8 +51,7 @@
 						<?php echo $this->form->fumeurCo; ?>	
 						<?php echo $this->form->quotiteCo; ?>
 						<?php echo $this->form->kmCo; ?>
-						<?php echo $this->form->IPTCo; ?>
-						<?php echo $this->form->IPPCo; ?>
+						<?php echo $this->form->garantiesC; ?>
 					</table>
 				</div>
 				<br><br><br><br><hr><br><br>
@@ -71,7 +68,7 @@
 				<!-- <div class="QapTcha"></div> -->
 				<?php //echo $this->form->submit; ?>
 				<div class="pager">
-					<a href="#" id="Validation" onclick="return false;">Envoyer</a>
+					<a href="#" id="validEmprunt" onclick="return false;">Envoyer</a>
 				</div>
 		</form>
 		<p>Une fois votre devis envoyé nous ferons tout notre possible pour répondre dans les 48h.</p>

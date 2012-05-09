@@ -149,11 +149,11 @@ ul.nav-pills li a {
 	margin: -24% 10% 0 8%;
 }
 
-
+/*
 #first {
 	margin: 0 0 0 5%;
 	min-height: 360px;
-}
+}*/
 
 .span5 {
 	margin-left:8%;
@@ -189,15 +189,28 @@ ul.nav-pills li a {
 	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 }
 
+#titreH {
+	width:78%;
+	margin-left:8%;
+	margin-bottom:0;
+}
+
 #myModal{
 	margin-top: -150px;
 }
 
 #deleteModal {
-	width:400px;
-	left:60%;
+	width:540px;
+	left:50%;
 	margin-top: -150px;
 }
+
+#deleteModal p#q{
+	display: inline;
+	margin-left: 20px;
+	margin-bottom: 0;
+}
+
 /* FIN MODIFS BOOTSTRAP TWITTER */
 
 
@@ -362,13 +375,13 @@ ul#footer li a {
 
 /* DEVIS & CONTACT */
 
-#devisContact {
+/*#devisContact {
 	height:315px;
 	width:300px;
 	margin: -1% 4% 0 0;
 	display: inline;
 	float: right;
-}
+}*/
 
 .contact {
 	margin: 0 0 0 1.5%;
@@ -464,7 +477,7 @@ form dd {
 }
 
 
-input.erreur {
+.erreur {
 	border-color:rgba(255,0,0,0.8);
 }
 
@@ -490,6 +503,7 @@ input.erreur:focus {
 	margin-left:0;
 	margin-right:0;
 	width:90%;
+	margin-bottom:50px;
 }
 
 .ajout img { 
@@ -510,7 +524,7 @@ ul.nav h2 {
 #lentite {
 	text-align: center;
 	width:250px;
-	margin: 120px 0 0 555px;
+	margin: 120px 0 0 500px;
 	position: absolute;
 	font-family: "Comic Sans MS";
 	font-weight:bold;
@@ -601,8 +615,28 @@ select#rente {
 	color: #235d7f;
 }
 
-#devis th#civC-label label:first-child, #devis th#nomC-label label:first-child, #devis th#prenomC-label label:first-child, #devis th#dateC-label label:first-child {
+#devis th#civC-label label:first-child, #devis th#nomC-label label:first-child, #devis th#prenomC-label label:first-child, #devis th#dateC-label label:first-child, #devis th#conjoint-label label:first-child, #devis #famille th#dateNC-label label:first-child {
 	color: #69f;
+}
+
+#enfant1 th#nom1-label label:first-child, #enfant1 th#prenom1-label label:first-child, #enfant1 th#date1-label label:first-child {
+	color : #c00;
+}
+
+#enfant2 th#nom2-label label:first-child, #enfant2 th#prenom2-label label:first-child, #enfant2 th#date2-label label:first-child {
+	color : #03c;
+}
+
+#enfant3 th#nom3-label label:first-child, #enfant3 th#prenom3-label label:first-child, #enfant3 th#date3-label label:first-child {
+	color : #090;
+}
+
+#enfant4 th#nom4-label label:first-child, #enfant4 th#prenom4-label label:first-child, #enfant4 th#date4-label label:first-child {
+	color : #c90;
+}
+
+#enfant5 th#nom5-label label:first-child, #enfant5 th#prenom5-label label:first-child, #enfant5 th#date5-label label:first-child {
+	color : #099;
 }
 
 label.required:after, label.optional:after {
@@ -620,7 +654,7 @@ input[name^="projets[]"] {
 	margin: -3px 5px 0 0;
 }
 
-label[for^="type"]:after, label[for^="banque"]:after, label[for^="differe"]:after, label[for^="q4"]:after {
+label[for^="banque"]:after, label[for^="differe"]:after, label[for^="q4"]:after {
 	content: '';
 }
 
@@ -633,7 +667,7 @@ select#avenir {
 }
 
 #retraite {
-	background-image:url("../images/xylavie/fdevisR2.jpg");
+	background-image:url("../images/xylavie/fdevisR.jpg");
 }
 
 /* EMPRUNT */
@@ -667,7 +701,7 @@ select#avenir {
 	margin-left:60px;
 }
 
-#ident h3, #famille h3, #besoins h3 {
+#ident h3, #famille h3, #besoins h3, #familial h3 {
 	color: #235d7f;
 	text-decoration:underline;
 	margin-left:-20px;
@@ -710,14 +744,13 @@ select#avenir {
 	font-size:0.7em;
 }
 
-select#km, select#kmCo {
+select#km, select#kmCo, select#garantiesE, select#garantiesC, select#contrat {
 	width:110px;
 }
 
 select#profession, select#professionCo {
 	width:150px;
 }
-
 
 #emprunteur {
 	margin: 0 20px 0 200px;
@@ -742,7 +775,7 @@ select#profession, select#professionCo {
 	background-image:url("../images/xylavie/fdevisS.jpg");
 }
 
-#ident #nbenfant {
+#ident #nbenfant, #familial #nombreenfant {
 	width:90px;
 }
 
@@ -806,6 +839,9 @@ input[name^="q4[]"] {
 	margin: -3px 5px 0 0;
 }
 
+#familial {
+	 margin-left: 13px;enfant1
+}
 /* SCROLL TOP */
 
 .scroll {
