@@ -237,6 +237,8 @@ class XylavieController extends Zend_Controller_Action
 	public function confirmAction()
 	{
 		$this->view->infos = $this->_getParam('infos');
+		if(empty($this->view->infos))
+			$this->_redirect('/error');	
 	}
 	public function modifAction()
 	{

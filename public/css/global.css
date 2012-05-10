@@ -875,11 +875,26 @@ input[name^="q4[]"] {
 	text-align: center;
 	margin-top:20px;
 }
+
+#prix {
+	background-image:url('../images/xylavie/price.jpg');
+	background-repeat:no-repeat;
+	height:150px;
+	width:150px;
+	margin: 0 0 0 42%;
+}
+#prix h3 {
+	font-size:3.3em;
+	color: #FFF;
+	text-align:center;
+	padding: 55px 20px 0 0 ;
+}
 /* SCROLL TOP */
 
 .scroll {
 	bottom: 50px;
 	float: right;
+	padding: 58px 5px 0 0 ;
 	margin-left: 1005px;
 	position: fixed;
 	width: 100px;

@@ -12,7 +12,9 @@
 		<br>
 		<p>Vous voulez donc souscrire un contrat <span style="font-weight:bold"><?php echo $contrat; ?></span>, ainsi le tarif est le suivant : </p>
 		<br>
-		<h3 style="font-size:1.6em; color: #FFC90E; text-align:center"><?php echo ($contrat == "Individuel") ? '11€' : '20€'; ?></h3>
+		<div id="prix">
+			<h3><?php echo ($contrat == "Individuel") ? '11' : '20'; ?></h3>
+		</div>
 		<br>
 		<p>Pour souscrire un contrat GAV (Garanties des Accidents de la Vie) vous devez cliquer sur le moyen de paiment que vous souhaitez :</p>
 		<div class="row">
