@@ -288,43 +288,43 @@ class App_forms_accident extends Zend_Form
 		$this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),'Form'));             
 	}
 
-	public function getCivilite() { return $this->civ->getValue(); }
-	public function getNom() { return $this->nom->getValue(); }
-	public function getPrenom() { return $this->prenom->getValue(); }
-	public function getDateN() { return $this->dateN->getValue(); }
-	public function getMail() { return $this->email->getValue(); }
-	public function getTel() { return $this->telephone->getValue(); }
-	public function getCodeP() { return $this->codeP->getValue(); }
-	public function getVille() { return $this->ville->getValue(); }
+	// public function getCivilite() { return $this->civ->getValue(); }
+	// public function getNom() { return $this->nom->getValue(); }
+	// public function getPrenom() { return $this->prenom->getValue(); }
+	// public function getDateN() { return $this->dateN->getValue(); }
+	// public function getMail() { return $this->email->getValue(); }
+	// public function getTel() { return $this->telephone->getValue(); }
+	// public function getCodeP() { return $this->codeP->getValue(); }
+	// public function getVille() { return $this->ville->getValue(); }
 
-	public function getContrat() { return $this->contrat->getValue(); }
-	public function getConjoint() { return $this->conjoint->getValue(); }
+	// public function getContrat() { return $this->contrat->getValue(); }
+	// public function getConjoint() { return $this->conjoint->getValue(); }
 
-	public function getCivC() { return $this->civC->getValue(); }
-	public function getNomC() { return $this->nomC->getValue(); }
-	public function getPrenomC() { return $this->prenomC->getValue(); }
-	public function getDateC() { return $this->dateC->getValue(); }
+	// public function getCivC() { return $this->civC->getValue(); }
+	// public function getNomC() { return $this->nomC->getValue(); }
+	// public function getPrenomC() { return $this->prenomC->getValue(); }
+	// public function getDateC() { return $this->dateC->getValue(); }
 
-	public function getNombreEnfant() { return $this->nombreenfant->getValue(); }
+	// public function getNombreEnfant() { return $this->nombreenfant->getValue(); }
 
-	public function getNom1() { return $this->nom1->getValue(); }
-	public function getPrenom1() { return $this->prenom1->getValue(); }
-	public function getDate1() { return $this->date1->getValue(); }
+	// public function getNom1() { return $this->nom1->getValue(); }
+	// public function getPrenom1() { return $this->prenom1->getValue(); }
+	// public function getDate1() { return $this->date1->getValue(); }
 
-	public function getNom2() { return $this->nom2->getValue(); }
-	public function getPrenom2() { return $this->prenom2->getValue(); }
-	public function getDate2() { return $this->date2->getValue(); }
+	// public function getNom2() { return $this->nom2->getValue(); }
+	// public function getPrenom2() { return $this->prenom2->getValue(); }
+	// public function getDate2() { return $this->date2->getValue(); }
 
-	public function getNom3() { return $this->nom3->getValue(); }
-	public function getPrenom3() { return $this->prenom3->getValue(); }
-	public function getDate3() { return $this->date3->getValue(); }
+	// public function getNom3() { return $this->nom3->getValue(); }
+	// public function getPrenom3() { return $this->prenom3->getValue(); }
+	// public function getDate3() { return $this->date3->getValue(); }
 
-	public function getNom4() { return $this->nom4->getValue(); }
-	public function getPrenom4() { return $this->prenom4->getValue(); }
-	public function getDate4() { return $this->date4->getValue(); }
+	// public function getNom4() { return $this->nom4->getValue(); }
+	// public function getPrenom4() { return $this->prenom4->getValue(); }
+	// public function getDate4() { return $this->date4->getValue(); }
 
-	public function getNom5() { return $this->nom5->getValue(); }
-	public function getPrenom5() { return $this->prenom5->getValue(); }
-	public function getDate5() { return $this->date5->getValue(); }
+	// public function getNom5() { return $this->nom5->getValue(); }
+	// public function getPrenom5() { return $this->prenom5->getValue(); }
+	// public function getDate5() { return $this->date5->getValue(); }
 }
 ?>

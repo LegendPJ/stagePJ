@@ -842,6 +842,39 @@ input[name^="q4[]"] {
 #familial {
 	 margin-left: 13px;enfant1
 }
+
+#confirmation .span6 {
+	width:400px;
+	text-align: center;
+}
+
+#check img{
+	/*background-image:url("../images/xylavie/check2.jpg");*/
+	height: 263px;
+	border-radius: 15px;
+	border: 3px solid transparent;
+}
+
+#check img:hover {
+	border: 3px solid #999;
+}
+
+#card img{
+	/*background-image:url("../images/xylavie/card2.jpg");*/
+	height: 263px;
+	border-radius: 15px;
+	border: 3px solid transparent;
+}
+
+#card img:hover {
+	border: 3px solid #999;
+}
+
+#avert {
+	color:red;
+	text-align: center;
+	margin-top:20px;
+}
 /* SCROLL TOP */
 
 .scroll {

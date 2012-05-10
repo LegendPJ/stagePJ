@@ -12,14 +12,14 @@ class XylavieController extends Zend_Controller_Action
 	{
 		$this->view->en 		= 	Entite::findEntity(strtoupper($this->view->controller));
 		$this->view->first		=	Encadre::findFirstEncadreEntite($this->view->en[0]->id);
-		$this->view->else		= 	Encadre::findEncadreEntiteNoFirst($this->view->en[0]->id);
-								//on récupère les encadre relatifs à l'entité (XYLAVIE)
+		$this->view->else 		=   	Encadre::findEncadreNFNR($this->view->en[0]->id);
+		$this->view->rbt 		=   	Encadre::findEncadreRbt($this->view->en[0]->id);
 	}
 
 	public function devissanteAction()
 	{
-            	$this->view->form = new App_forms_sante();
-            	if ($this->getRequest()->isPost()) {
+		$this->view->form = new App_forms_sante();
+		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->civilite = $this->view->form->getCivilite();
 			}
@@ -29,30 +29,30 @@ class XylavieController extends Zend_Controller_Action
 
 	public function devisdependanceAction()
 	{
-            	$this->view->form = new App_forms_dependance();
-            	if ($this->getRequest()->isPost()) {
+		$this->view->form = new App_forms_dependance();
+		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
 				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
 				$this->view->dateJour = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
 
 				$this->view->civilite = $this->view->form->getCivilite();
-                    			$this->view->nom = $this->view->form->getNom();
-                    			$this->view->prenom = $this->view->form->getPrenom();
-                    			$this->view->date = $this->view->form->getDate();
-                    			$this->view->conjoint = $this->view->form->getConjoint();
-                    			if ($this->view->conjoint == "Oui") {
-                    				$this->view->civC = $this->view->form->getCivC();
-                    				$this->view->nomC = $this->view->form->getNomC();
-                    				$this->view->prenomC = $this->view->form->getPrenomC();
-                    				$this->view->dateC = $this->view->form->getDateC();
-                    			}
-                    			$this->view->adresse = $this->view->form->getAdresse().'<br>'. $this->view->form->getCodeP().' '.$this->view->form->getVille();
-                    			$this->view->mail  =  $this->view->form->getMail();
-                    			$this->view->tel  =  $this->view->form->getTel();
-                    			$this->view->rente  =  $this->view->form->getRente();
-                    			$this->view->depT  =  $this->view->form->getDepT();
-                    			$this->view->depTP  =  $this->view->form->getDepTP();
+				$this->view->nom = $this->view->form->getNom();
+				$this->view->prenom = $this->view->form->getPrenom();
+				$this->view->date = $this->view->form->getDate();
+				$this->view->conjoint = $this->view->form->getConjoint();
+				if ($this->view->conjoint == "Oui") {
+					$this->view->civC = $this->view->form->getCivC();
+					$this->view->nomC = $this->view->form->getNomC();
+					$this->view->prenomC = $this->view->form->getPrenomC();
+					$this->view->dateC = $this->view->form->getDateC();
+				}
+				$this->view->adresse = $this->view->form->getAdresse().'<br>'. $this->view->form->getCodeP().' '.$this->view->form->getVille();
+				$this->view->mail  =  $this->view->form->getMail();
+				$this->view->tel  =  $this->view->form->getTel();
+				$this->view->rente  =  $this->view->form->getRente();
+				$this->view->depT  =  $this->view->form->getDepT();
+				$this->view->depTP  =  $this->view->form->getDepTP();
 				//MAIL
 				// $html = new Zend_View();
 				// $html->setScriptPath(APPLICATION_PATH . '/views/emails/');
@@ -193,6 +193,51 @@ class XylavieController extends Zend_Controller_Action
 		}
 	}
 
+	public function devisaccidentsdelavieAction()
+	{
+		$this->view->form = new App_forms_accident();
+		if ($this->getRequest()->isPost()) {
+			if($this->view->form->isValid($this->getRequest()->getParams())) {
+				$this->view->infos = $this->getRequest()->getParams();
+				$this->_forward('confirm', $this->view->controller,null, array('infos'=> $this->view->infos));
+				// $this->view->civilite = getCivilite();
+				// $this->view->nom = getNom();
+				// $this->view->prenom = getPrenom();
+				// $this->view->dateN = getDateN();
+				// $this->view->email = getMail();
+				// $this->view->telephone = getTel();
+				// $this->view->codeP = getCodeP();
+				// $this->view->ville = getVille();
+				// $this->view->contrat = getContrat();
+				// $this->view->conjoint = getConjoint();
+				// $this->view->civC = getCivC();
+				// $this->view->nomC = getNomC();
+				// $this->view->prenomC = getPrenomC();
+				// $this->view->dateC = getDateC();
+				// $this->view->nombreEnfant = getNombreEnfant();
+				// $this->view->nom1 = getNom1();
+				// $this->view->nom2 = getNom2();
+				// $this->view->nom3 = getNom3();
+				// $this->view->nom4 = getNom4();
+				// $this->view->nom5 = getNom5();
+				// $this->view->prenom1 = getPrenom1();
+				// $this->view->prenom2 = getPrenom2();
+				// $this->view->prenom3 = getPrenom3();
+				// $this->view->prenom4 = getPrenom4();
+				// $this->view->prenom5 = getPrenom5();
+				// $this->view->date1 = getDate1();
+				// $this->view->date2 = getDate2();
+				// $this->view->date3 = getDate3();
+				// $this->view->date4 = getDate4();
+				// $this->view->date5 = getDate5();
+			}
+		}
+	}
+
+	public function confirmAction()
+	{
+		$this->view->infos = $this->_getParam('infos');
+	}
 	public function modifAction()
 	{
 		if (!Zend_Auth::getInstance()->hasIdentity())

@@ -7,7 +7,7 @@ jQuery(function($) {
 	$('.alert .close').click(function(){
 		$(this).parent().slideUp('slow');
 		return false;
-	}); 
+	});
 	//pour le scrollTop
 	$('#scroll').hide();
 	$(function(){
@@ -183,9 +183,6 @@ jQuery(function($) {
 	});
 
 	//Accident
-	if ($('#accident #contrat').val() == 'Familial') {
-		$('#familial').show();
-	}
 
 	if ($('#accident #contrat').val() == 'Individuel') {
 		$('#familial').hide();
@@ -197,61 +194,101 @@ jQuery(function($) {
 	}
 
 	$('#accident #contrat').change(function() {
-		if ($(this).val() == 'Familial') {
+		if ($(this).val() == 'Familial' && $('#nombreenfant').val() == '1') {
 			$('#familial').show();
+			$('#enfant1').show();
+			$('#enfant2').hide();
+			$('#enfant3').hide();
+			$('#enfant4').hide();
+			$('#enfant5').hide();
+		} else if ($(this).val() == 'Familial' && $('#nombreenfant').val() == '2') {
+			$('#familial').show();
+			$('#enfant1').show();
+			$('#enfant2').show();
+			$('#enfant3').hide();
+			$('#enfant4').hide();
+			$('#enfant5').hide();
+		} else if ($(this).val() == 'Familial' && $('#nombreenfant').val() == '3') {
+			$('#familial').show();
+			$('#enfant1').show();
+			$('#enfant2').show();
+			$('#enfant3').show();
+			$('#enfant4').hide();
+			$('#enfant5').hide();
+		} else if ($(this).val() == 'Familial' && $('#nombreenfant').val() == '4') {
+			$('#familial').show();
+			$('#enfant1').show();
+			$('#enfant2').show();
+			$('#enfant3').show();
+			$('#enfant4').show();
+			$('#enfant5').hide();
+		} else if ($(this).val() == 'Familial' && $('#nombreenfant').val() == '5') {
+			$('#familial').show();
+			$('#enfant1').show();
+			$('#enfant2').show();
+			$('#enfant3').show();
+			$('#enfant4').show();
+			$('#enfant5').show();
+		} else if ($(this).val() == 'Familial' && ($('#nombreenfant').val() == 'aucun' || $('#nombreenfant').val() == '')) {
+			$('#familial').show();
+			$('#enfant1').hide();
+			$('#enfant2').hide();
+			$('#enfant3').hide();
+			$('#enfant4').hide();
+			$('#enfant5').hide();
 		} else {
 			$('#familial').hide();
-			// $('#enfant1').hide();
-			// $('#enfant2').hide();
-			// $('#enfant3').hide();
-			// $('#enfant4').hide();
-			// $('#enfant5').hide();
+			$('#enfant1').hide();
+			$('#enfant2').hide();
+			$('#enfant3').hide();
+			$('#enfant4').hide();
+			$('#enfant5').hide();
 		}
 	});
-
-	if ($('#nombreenfant').val() == 'aucun' || $('#nombreenfant').val() == '') {
-		$('#enfant1').hide();
-		$('#enfant2').hide();
-		$('#enfant3').hide();
-		$('#enfant4').hide();
-		$('#enfant5').hide();
+	if ($('#accident #contrat').val() == 'Familial') {
+		if ($('#nombreenfant').val() == 'aucun' || $('#nombreenfant').val() == '') {
+			$('#enfant1').hide();
+			$('#enfant2').hide();
+			$('#enfant3').hide();
+			$('#enfant4').hide();
+			$('#enfant5').hide();
+		}
+		if ($('#nombreenfant').val() == '1') {
+			$('#enfant1').show();
+			$('#enfant2').hide();
+			$('#enfant3').hide();
+			$('#enfant4').hide();
+			$('#enfant5').hide();
+		}
+		if ($('#nombreenfant').val() == '2') {
+			$('#enfant1').show();
+			$('#enfant2').show();
+			$('#enfant3').hide();
+			$('#enfant4').hide();
+			$('#enfant5').hide();
+		}
+		if ($('#nombreenfant').val() == '3') {
+			$('#enfant1').show();
+			$('#enfant2').show();
+			$('#enfant3').show();
+			$('#enfant4').hide();
+			$('#enfant5').hide();
+		}
+		if ($('#nombreenfant').val() == '4') {
+			$('#enfant1').show();
+			$('#enfant2').show();
+			$('#enfant3').show();
+			$('#enfant4').show();
+			$('#enfant5').hide();
+		}
+		if ($('#nombreenfant').val() == '5') {
+			$('#enfant1').show();
+			$('#enfant2').show();
+			$('#enfant3').show();
+			$('#enfant4').show();
+			$('#enfant5').show();
+		}
 	}
-	if ($('#nombreenfant').val() == '1') {
-		$('#enfant1').show();
-		$('#enfant2').hide();
-		$('#enfant3').hide();
-		$('#enfant4').hide();
-		$('#enfant5').hide();
-	}
-	if ($('#nombreenfant').val() == '2') {
-		$('#enfant1').show();
-		$('#enfant2').show();
-		$('#enfant3').hide();
-		$('#enfant4').hide();
-		$('#enfant5').hide();
-	}
-	if ($('#nombreenfant').val() == '3') {
-		$('#enfant1').show();
-		$('#enfant2').show();
-		$('#enfant3').show();
-		$('#enfant4').hide();
-		$('#enfant5').hide();
-	}
-	if ($('#nombreenfant').val() == '4') {
-		$('#enfant1').show();
-		$('#enfant2').show();
-		$('#enfant3').show();
-		$('#enfant4').show();
-		$('#enfant5').hide();
-	}
-	if ($('#nombreenfant').val() == '5') {
-		$('#enfant1').show();
-		$('#enfant2').show();
-		$('#enfant3').show();
-		$('#enfant4').show();
-		$('#enfant5').show();
-	}
-
 	$('#nombreenfant').change(function() {
 		if ($(this).val() == '1') {
 			$('#enfant1').show();
@@ -316,6 +353,8 @@ jQuery(function($) {
 			alert("Attention, vous n'avez pas saisi toutes les informations de votre conjoint(e) !");
 		} else if ($('#accident #contrat').val() == 'Familial' && $('#accident select#nombreenfant').val() == '') {	
 			alert("Attention, vous n'avez pas selectionné votre nombre d'enfant !");
+		} else if ($('#accident #contrat').val() == 'Familial' && ($('#accident select#nombreenfant').val() == '' || $('#accident select#nombreenfant').val() == 'aucun') && $('#accident select#conjoint').val() == 'Non') { 
+			alert("Attention, le contrat ne peut être un contrat \"Familial\" si vous n'ajoutez pas au moins un enfant ou votre conjoint(e) ! Pour souscrire un contrat seul, selectionnez \"Individuel\".");
 		} else { $('form').submit(); }
 	});
 

@@ -1,0 +1,33 @@
+<?php $this->headTitle()->append('Confirmation Devis Garanties Accidents de la vie'); ?>
+
+<br>
+<h1>Confirmation Devis XYLAVIE</h1>
+
+<div class="row" id="confirmation">
+	<?php $contrat = $this->infos["contrat"]; ?>
+	<div class="span12">
+		<h2>Choix du moyen de paiement</h2>
+		<br>
+		<p>Suit à l'études des informations que vous nous avez transmises à l'écran précédent, nous avons determiné le tarif qui vous convenait le mieux.</p>
+		<br>
+		<p>Vous voulez donc souscrire un contrat <span style="font-weight:bold"><?php echo $contrat; ?></span>, ainsi le tarif est le suivant : </p>
+		<br>
+		<h3 style="font-size:1.6em; color: #FFC90E; text-align:center"><?php echo ($contrat == "Individuel") ? '11€' : '20€'; ?></h3>
+		<br>
+		<p>Pour souscrire un contrat GAV (Garanties des Accidents de la Vie) vous devez cliquer sur le moyen de paiment que vous souhaitez :</p>
+		<div class="row">
+			<br>
+			<div class="span6" id="card">
+				<a href="#" title="Prélèvement automatique"><img src="<?php echo $this->baseUrl; ?>/images/xylavie/card3.jpg"></a>
+			</div>
+			<div class="span6" id="check">
+				<a href="#" title="Chèque annuel"><img src="<?php echo $this->baseUrl; ?>/images/xylavie/check4.jpg"></a>
+			</div>
+			<br><br>
+			<div class="span12">
+				<p id="avert">Ce choix n'engage en rien, et aucun paiement n'est demandé sur ce site.</p>
+			</div>
+		</div>
+		<?php //echo var_dump($this->infos); ?>
+	</div>
+</div>
