@@ -200,36 +200,7 @@ class XylavieController extends Zend_Controller_Action
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
 				$this->_forward('confirm', $this->view->controller,null, array('infos'=> $this->view->infos));
-				// $this->view->civilite = getCivilite();
-				// $this->view->nom = getNom();
-				// $this->view->prenom = getPrenom();
-				// $this->view->dateN = getDateN();
-				// $this->view->email = getMail();
-				// $this->view->telephone = getTel();
-				// $this->view->codeP = getCodeP();
-				// $this->view->ville = getVille();
-				// $this->view->contrat = getContrat();
-				// $this->view->conjoint = getConjoint();
-				// $this->view->civC = getCivC();
-				// $this->view->nomC = getNomC();
-				// $this->view->prenomC = getPrenomC();
-				// $this->view->dateC = getDateC();
-				// $this->view->nombreEnfant = getNombreEnfant();
-				// $this->view->nom1 = getNom1();
-				// $this->view->nom2 = getNom2();
-				// $this->view->nom3 = getNom3();
-				// $this->view->nom4 = getNom4();
-				// $this->view->nom5 = getNom5();
-				// $this->view->prenom1 = getPrenom1();
-				// $this->view->prenom2 = getPrenom2();
-				// $this->view->prenom3 = getPrenom3();
-				// $this->view->prenom4 = getPrenom4();
-				// $this->view->prenom5 = getPrenom5();
-				// $this->view->date1 = getDate1();
-				// $this->view->date2 = getDate2();
-				// $this->view->date3 = getDate3();
-				// $this->view->date4 = getDate4();
-				// $this->view->date5 = getDate5();
+				// $this->_helper->redirector('confirm', $this->view->controller, null, array('infos'=> $this->view->infos));
 			}
 		}
 	}
@@ -238,8 +209,38 @@ class XylavieController extends Zend_Controller_Action
 	{
 		$this->view->infos = $this->_getParam('infos');
 		if(empty($this->view->infos))
-			$this->_redirect('/error');	
+			$this->_redirect('/error');
+		$this->view->form = new App_forms_hidden();
+		if ($this->getRequest()->isPost()) {
+			if($this->view->form->isValid($this->getRequest()->getParams())) {
+				$this->view->choix = $this->getRequest()->getParams();
+				// $this->_forward('souscription', $this->view->controller,null, array('perso'=> $this->view->infos, 'choix' => $this->view->choix));
+			}
+		}
 	}
+
+	// public function transitAction()
+	// {
+	// 	$this->view->paiement = $this->_getParam('p');
+
+	// }
+	public function souscriptionAction() 
+	{
+		$this->view->choix = $this->_getParam('choix');
+		$this->view->infos = $this->_getParam('infos');
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public function modifAction()
 	{
 		if (!Zend_Auth::getInstance()->hasIdentity())
@@ -269,6 +270,8 @@ class XylavieController extends Zend_Controller_Action
 
 	public function suppAction()
 	{
+		if (!Zend_Auth::getInstance()->hasIdentity())
+			$this->_redirect('/');
 		// Encadre::delete();
 		$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre supprimé!');
 		$this->_redirect('/xylavie/modif');

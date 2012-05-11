@@ -850,24 +850,24 @@ input[name^="q4[]"] {
 
 #check img{
 	/*background-image:url("../images/xylavie/check2.jpg");*/
-	height: 263px;
+	height: 450px;
 	border-radius: 15px;
-	border: 3px solid transparent;
+	border: 10px solid transparent;
 }
 
-#check img:hover {
-	border: 3px solid #999;
+#check img {
+	border: 10px solid #999;
 }
 
 #card img{
 	/*background-image:url("../images/xylavie/card2.jpg");*/
-	height: 263px;
+	height: 450px;
 	border-radius: 15px;
-	border: 3px solid transparent;
+	border: 10px solid transparent;
 }
 
-#card img:hover {
-	border: 3px solid #999;
+#card img {
+	border: 10px solid #999;
 }
 
 #avert {
@@ -876,19 +876,20 @@ input[name^="q4[]"] {
 	margin-top:20px;
 }
 
-#prix {
-	background-image:url('../images/xylavie/price.jpg');
-	background-repeat:no-repeat;
-	height:150px;
+.prix {
+	margin: 190px 0 0 120px;
+	position: absolute;
 	width:150px;
-	margin: 0 0 0 42%;
-}
-#prix h3 {
+	height:80px;
 	font-size:3.3em;
 	color: #FFF;
 	text-align:center;
-	padding: 55px 20px 0 0 ;
 }
+
+.tabul {
+	margin-left : 30px;
+}
+
 /* SCROLL TOP */
 
 .scroll {

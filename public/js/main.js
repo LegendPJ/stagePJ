@@ -339,17 +339,17 @@ jQuery(function($) {
 		civCM = document.getElementById('civC-M').checked;
 		civCMme = document.getElementById('civC-Mme').checked;
 		civCMlle = document.getElementById('civC-Mlle').checked;
-		if (($('#accident select#nombreenfant').val() == '1') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '') ) {
+		if ( $('#accident #contrat').val() == 'Familial' && ($('#accident select#nombreenfant').val() == '1') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '') ) {
 			alert("Attention, vous avez mal saisi les informations de votre premier enfant !");
-		} else if (($('#accident select#nombreenfant').val() == '2') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '' || $('#enfant2 input#nom2').val() == '' || $('#enfant2 input#prenom2').val() == '' || $('#enfant2 input#date2').val() == '') ) {
+		} else if ( $('#accident #contrat').val() == 'Familial' && ($('#accident select#nombreenfant').val() == '2') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '' || $('#enfant2 input#nom2').val() == '' || $('#enfant2 input#prenom2').val() == '' || $('#enfant2 input#date2').val() == '') ) {
 			alert("Attention, vous avez mal saisi les informations de l'un de vos enfants !");
-		} else if (($('#accident select#nombreenfant').val() == '3') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '' || $('#enfant2 input#nom2').val() == '' || $('#enfant2 input#prenom2').val() == '' || $('#enfant2 input#date2').val() == '' || $('#enfant3 input#nom3').val() == '' || $('#enfant3 input#prenom3').val() == '' || $('#enfant3 input#date3').val() == '') ) {
+		} else if ( $('#accident #contrat').val() == 'Familial' && ($('#accident select#nombreenfant').val() == '3') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '' || $('#enfant2 input#nom2').val() == '' || $('#enfant2 input#prenom2').val() == '' || $('#enfant2 input#date2').val() == '' || $('#enfant3 input#nom3').val() == '' || $('#enfant3 input#prenom3').val() == '' || $('#enfant3 input#date3').val() == '') ) {
 			alert("Attention, vous avez mal saisi les informations de l'un de vos enfants !");
-		} else if (($('#accident select#nombreenfant').val() == '4') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '' || $('#enfant2 input#nom2').val() == '' || $('#enfant2 input#prenom2').val() == '' || $('#enfant2 input#date2').val() == '' || $('#enfant3 input#nom3').val() == '' || $('#enfant3 input#prenom3').val() == '' || $('#enfant3 input#date3').val() == '' || $('#enfant4 input#nom4').val() == '' || $('#enfant4 input#prenom4').val() == '' || $('#enfant4 input#date4').val() == '') ) {
+		} else if ( $('#accident #contrat').val() == 'Familial' && ($('#accident select#nombreenfant').val() == '4') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '' || $('#enfant2 input#nom2').val() == '' || $('#enfant2 input#prenom2').val() == '' || $('#enfant2 input#date2').val() == '' || $('#enfant3 input#nom3').val() == '' || $('#enfant3 input#prenom3').val() == '' || $('#enfant3 input#date3').val() == '' || $('#enfant4 input#nom4').val() == '' || $('#enfant4 input#prenom4').val() == '' || $('#enfant4 input#date4').val() == '') ) {
 			alert("Attention, vous avez mal saisi les informations de l'un de vos enfants !");
-		} else if (($('#accident select#nombreenfant').val() == '5') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '' || $('#enfant2 input#nom2').val() == '' || $('#enfant2 input#prenom2').val() == '' || $('#enfant2 input#date2').val() == '' || $('#enfant3 input#nom3').val() == '' || $('#enfant3 input#prenom3').val() == '' || $('#enfant3 input#date3').val() == '' || $('#enfant4 input#nom4').val() == '' || $('#enfant4 input#prenom4').val() == '' || $('#enfant4 input#date4').val() == '' || $('#enfant5 input#nom5').val() == '' || $('#enfant5 input#prenom5').val() == '' || $('#enfant5 input#date5').val() == '') ) {
+		} else if ( $('#accident #contrat').val() == 'Familial' && ($('#accident select#nombreenfant').val() == '5') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '' || $('#enfant2 input#nom2').val() == '' || $('#enfant2 input#prenom2').val() == '' || $('#enfant2 input#date2').val() == '' || $('#enfant3 input#nom3').val() == '' || $('#enfant3 input#prenom3').val() == '' || $('#enfant3 input#date3').val() == '' || $('#enfant4 input#nom4').val() == '' || $('#enfant4 input#prenom4').val() == '' || $('#enfant4 input#date4').val() == '' || $('#enfant5 input#nom5').val() == '' || $('#enfant5 input#prenom5').val() == '' || $('#enfant5 input#date5').val() == '') ) {
 			alert("Attention, vous avez mal saisi les informations de l'un de vos enfants !");
-		} else if (($('#accident select#conjoint').val() == 'Oui') && (((civCM == false) && (civCMme == false) && (civCMlle == false)) || ($('#accident input#nomC').val() == '') || ($('#accident input#prenomC').val() == '') || ($('#accident input#dateC').val() == ''))) {
+		} else if ( $('#accident #contrat').val() == 'Familial' && ($('#accident select#conjoint').val() == 'Oui') && (((civCM == false) && (civCMme == false) && (civCMlle == false)) || ($('#accident input#nomC').val() == '') || ($('#accident input#prenomC').val() == '') || ($('#accident input#dateC').val() == ''))) {
 			alert("Attention, vous n'avez pas saisi toutes les informations de votre conjoint(e) !");
 		} else if ($('#accident #contrat').val() == 'Familial' && $('#accident select#nombreenfant').val() == '') {	
 			alert("Attention, vous n'avez pas selectionné votre nombre d'enfant !");
@@ -358,6 +358,24 @@ jQuery(function($) {
 		} else { $('form').submit(); }
 	});
 
+	//Confirmation
+	$('#confirmation #carte').click(function(){
+		$('#confirmation #check img').css({'border':'10px solid #999'});
+		$('#confirmation #carte img').css({'border':'10px solid #1CD159'});
+		$('#confirmation input#hide').val("carte");
+		// $('#confirmation form').submit();
+	});
+	$('#confirmation #cheque').click(function(){
+		$('#confirmation #carte img').css({'border':'10px solid #999'});
+		$('#confirmation #check img').css({'border':'10px solid #1CD159'});
+		$('#confirmation input#hide').val("cheque");
+		// $('#confirmation form').submit();
+	});
+	$('#validSouscription').click(function(){
+		$('#confirmation form').submit();
+	});
+	
+	$('#confirmation ul.errors').remove();
 	//POUR WEBKIT
 	$('label[for^="civ-"]').parent().find('ul').addClass('webkiit');
 	$('label[for^="q1-"]').parent().find('ul').addClass('webkiit');
