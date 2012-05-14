@@ -53,7 +53,7 @@ class App_forms_contact extends Zend_Form
 		$this->addElements(array(
 			$this->civilite,
 			$this->nom,
-			$this->mail,
+			$this->email,
 			$this->telephone,
 			$this->message,
 			$this->captcha

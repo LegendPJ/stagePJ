@@ -572,7 +572,7 @@ input#civ-M, input#civC-M, input#civ-Mme, input#civC-Mme, input#civ-Mlle, input#
 }
 
 #dependance {
-	background-image:url("../images/xylavie/fdevisD.jpg");
+	background-image:url("../images/xylavie/fdevisD2.jpg");
 }
 
 #epargne {
@@ -662,6 +662,10 @@ label[for^="banque"]:after, label[for^="differe"]:after, label[for^="q4"]:after 
 	margin-top:-140px;
 }
 
+#demande-label label {
+	margin-top:-35px;
+}
+
 select#avenir {
 	width: 130px;
 }
@@ -677,7 +681,7 @@ select#avenir {
 	background-image:url("../images/xylavie/fdevisA.jpg");
 }
 
-#devis #emprunt form {
+#devis #emprunt form, #devis #prevoyance form {
 	margin: 2% 0 0 0;
 }
 
@@ -834,7 +838,7 @@ label[for^="q4-"] {
 	clear:left;
 }
 
-input[name^="q4[]"] {
+input[name^="q4[]"], input[name^="demande[]"] {
 	display: inline;
 	margin: -3px 5px 0 0;
 }
@@ -859,6 +863,10 @@ input[name^="q4[]"] {
 	border: 10px solid #999;
 }
 
+#check img:hover, #card img:hover {
+	border: 10px solid #22ff66;
+}
+
 #card img{
 	/*background-image:url("../images/xylavie/card2.jpg");*/
 	height: 450px;
@@ -876,7 +884,7 @@ input[name^="q4[]"] {
 	margin-top:20px;
 }
 
-.prix {
+.prix, .prix2 {
 	margin: 190px 0 0 120px;
 	position: absolute;
 	width:150px;
@@ -890,6 +898,41 @@ input[name^="q4[]"] {
 	margin-left : 30px;
 }
 
+.description {
+	display: inline;
+	margin-left:10px;
+}
+
+.vChamp {
+	color:red;
+	display : inline;
+	margin-left: 10px;
+}
+.gras {
+	font-weight : bold;
+}
+
+#conditions {
+	font-size : 0.8em;
+	margin-left:50px;
+}
+
+
+#message-label {
+	display: block;
+}
+
+select#statut {
+	width : 90px;
+}
+
+#prevoyance ul.errors {
+	margin: 0 0 0 0;
+}
+
+#dependance .pager a, #sante .pager a,  #accident .pager a{
+	margin: 0 0 0 -150px;
+}
 /* SCROLL TOP */
 
 .scroll {

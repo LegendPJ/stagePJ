@@ -107,12 +107,6 @@ class App_forms_retraitepargne extends Zend_Form
 				->setRequired(true)
 				->setLabel("Vous souhaitez (1 choix mini)");
 
-		$this->submit = new Zend_Form_Element_Submit('Envoyer');
-		$this->submit->setDecorators(array('ViewHelper',
-						array(array('td' => 'HtmlTag'), array('tag' => 'td', 'colspan' => 2)),
-						array(array('tr' => 'HtmlTag'), array('tag' => 'tr')))
-						);
-
 		$this->addElements(array(
 			$this->civ,
 			$this->nom,

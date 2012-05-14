@@ -49,14 +49,6 @@ class App_forms_dependance extends Zend_Form
 			->setDecorators($decorators)
 			->addMultiOptions(array('Non'=>'Non','Oui'=>'Oui'));
 
-		// $this->conjoint = new Zend_Form_Element_Radio('conjoint');
-		// $this->conjoint->setLabel("Ajouter votre conjoint :")
-		// 	->setMultiOptions(array('Oui'=>'Oui','Non'=>'Non'))
-		// 	->setDecorators($decorators)
-		// 	->setOptions(array('separator'=>''));
-
-		// $this->conjoint->setValue('Non');
-
 		$this->civC = new Zend_Form_Element_Radio('civC');
 		$this->civC->setLabel("Votre conjoint(e) ")
 			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Mlle.' => 'Mlle.'))
@@ -144,12 +136,6 @@ class App_forms_dependance extends Zend_Form
 			->setDecorators($decorators)
 			->setRequired(true)
 			->addMultiOptions(array('' => '', 'Non'=>'Non','Oui'=>'Oui'));
-
-		$this->submit = new Zend_Form_Element_Submit('Envoyer');
-		$this->submit->setDecorators(array('ViewHelper',
-						array(array('td' => 'HtmlTag'), array('tag' => 'td', 'colspan' => 2)),
-						array(array('tr' => 'HtmlTag'), array('tag' => 'tr')))
-						);
 
 		$this->addElements(array(
 			$this->civ,

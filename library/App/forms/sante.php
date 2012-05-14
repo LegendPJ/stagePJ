@@ -163,11 +163,6 @@ class App_forms_sante extends Zend_Form
 				->setSeparator('')
 				->setLabel("Avez-vous recours à des médecines naturelles ?");
 
-		$this->submit = new Zend_Form_Element_Submit('Envoyer');
-		$this->submit->setDecorators(array('ViewHelper',
-						array(array('td' => 'HtmlTag'), array('tag' => 'td', 'colspan' => 2)),
-						array(array('tr' => 'HtmlTag'), array('tag' => 'tr'))));
-
 		$this->addElements(array(
 			$this->civ,
 			$this->nom,

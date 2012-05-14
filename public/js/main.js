@@ -182,6 +182,14 @@ jQuery(function($) {
 		} else { $('form').submit(); }
 	});
 
+	//Validation Retraite et Epargne
+	$('#validRetraite').click(function(){ 
+		$('form').submit();
+	});
+
+	$('#validEpargne').click(function(){ 
+		$('form').submit();
+	});
 	//Accident
 
 	if ($('#accident #contrat').val() == 'Individuel') {
@@ -335,10 +343,99 @@ jQuery(function($) {
 	});
 
 	//Validation enfants accident 
+	$('#confirmation').hide();
+	var nomok, prenomok, mailok, telok, codeok, villok = true;
+	$('#accident #nom').change(function(){
+		var lenom = $(this).val();
+		if(lenom.match(/[0-9]/)) {
+			$(this).css({'background-color':'#FF9696'});
+			$(this).parent().find('p.vChamp').remove();
+			$(this).parent().append('<p class="vChamp">Attention, le nom est invalide !</p>');
+			nomok = false;
+		}
+		else if(lenom.match(/[a-zA-Z]/)) {
+			$(this).css({'background-color':'white'});
+			$(this).parent().find('p.vChamp').remove();
+			nomok = true;
+		}
+	});
+
+	$('#accident #prenom').change(function(){
+		var leprenom = $(this).val();
+		if(leprenom.match(/[0-9]/)) {
+			$(this).css({'background-color':'#FF9696'});
+			$(this).parent().find('p.vChamp').remove();
+			$(this).parent().append('<p class="vChamp">Attention, le prénom est invalide !</p>');
+			prenomok = false;
+		}
+		else if(leprenom.match(/[a-zA-Z]/)) {
+			$(this).css({'background-color':'white'});
+			$(this).parent().find('p.vChamp').remove();
+			prenomok = true;
+		}
+	});
+	$('#accident #email').change(function(){
+		var lemail = $(this).val();
+		if(!lemail.match(/^[a-z0-9]+(?:[-\._]?[a-z0-9]+)*@(?:[a-z0-9]+(?:-?[a-z0-9]+)*\.)+[a-z]+$/i)) {
+			$(this).css({'background-color':'#FF9696'});
+			$(this).parent().find('p.vChamp').remove();
+			$(this).parent().append('<p class="vChamp">Attention, adresse email invalide !</p>');
+			mailok = false;
+		}
+		else if(lemail.match(/^[a-z0-9]+(?:[-\._]?[a-z0-9]+)*@(?:[a-z0-9]+(?:-?[a-z0-9]+)*\.)+[a-z]+$/i)) {
+			$(this).css({'background-color':'white'});
+			$(this).parent().find('p.vChamp').remove();
+			mailok = true;
+		}
+	});
+	$('#accident #telephone').change(function(){
+		var letel = $(this).val();
+		if(letel.match(/^0[1-9][0-9]{8}$/)) {
+			$(this).css({'background-color':'white'});
+			$(this).parent().find('p.vChamp').remove();
+			telok = true;
+		} else {
+			$(this).css({'background-color':'#FF9696'});
+			$(this).parent().find('p.vChamp').remove();
+			$(this).parent().append('<p class="vChamp">Attention, téléphone invalide !</p>');
+			telok = false;
+		}
+	});
+	$('#accident #codeP').change(function(){
+		var lecodep = $(this).val();
+		if(!lecodep.match(/^[0-9]{2,5}$/i)) {
+			$(this).css({'background-color':'#FF9696'});
+			$(this).parent().find('p.vChamp').remove();
+			$(this).parent().append('<p class="vChamp">Attention, code postal invalide !</p>');
+			codeok = false;
+		}
+		else if(lecodep.match(/^[0-9]{2,5}$/i)) {
+			$(this).css({'background-color':'white'});
+			$(this).find('p.vChamp').remove();
+			codeok = true;
+		}
+	});
+	$('#accident #ville').change(function(){
+		var laville = $(this).val();
+		if(laville.match(/[0-9]/)) {
+			$(this).css({'background-color':'#FF9696'});
+			$(this).parent().find('p.vChamp').remove();
+			$(this).parent().append('<p class="vChamp">Attention, la ville est invalide !</p>');
+			villok = false;
+		}
+		else if(laville.match(/[a-zA-Z]/)) {
+			$(this).css({'background-color':'white'});
+			$(this).parent().find('p.vChamp').remove();
+			villok = true;
+		}
+	});
 	$('#validAccident').click(function(){
 		civCM = document.getElementById('civC-M').checked;
 		civCMme = document.getElementById('civC-Mme').checked;
 		civCMlle = document.getElementById('civC-Mlle').checked;
+		civM = document.getElementById('civ-M').checked;
+		civMme = document.getElementById('civ-Mme').checked;
+		civMlle = document.getElementById('civ-Mlle').checked;
 		if ( $('#accident #contrat').val() == 'Familial' && ($('#accident select#nombreenfant').val() == '1') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '') ) {
 			alert("Attention, vous avez mal saisi les informations de votre premier enfant !");
 		} else if ( $('#accident #contrat').val() == 'Familial' && ($('#accident select#nombreenfant').val() == '2') && ($('#enfant1 input#nom1').val() == '' || $('#enfant1 input#prenom1').val() == '' || $('#enfant1 input#date1').val() == '' || $('#enfant2 input#nom2').val() == '' || $('#enfant2 input#prenom2').val() == '' || $('#enfant2 input#date2').val() == '') ) {
@@ -355,26 +452,66 @@ jQuery(function($) {
 			alert("Attention, vous n'avez pas selectionné votre nombre d'enfant !");
 		} else if ($('#accident #contrat').val() == 'Familial' && ($('#accident select#nombreenfant').val() == '' || $('#accident select#nombreenfant').val() == 'aucun') && $('#accident select#conjoint').val() == 'Non') { 
 			alert("Attention, le contrat ne peut être un contrat \"Familial\" si vous n'ajoutez pas au moins un enfant ou votre conjoint(e) ! Pour souscrire un contrat seul, selectionnez \"Individuel\".");
-		} else { $('form').submit(); }
+		} else if ((civM == false) && (civMme == false) && (civMlle == false)) {
+			alert("Attention, vous n'avez pas selectionné votre civilité !");
+		} else if ($('#s #nom').val() == '') {
+			alert("Attention, vous n'avez pas renseigné votre nom !");
+		} else if ($('#s #prenom').val() == '') {
+			alert("Attention, vous n'avez pas renseigné votre prénom !");
+		} else if ($('#s #dateN').val() == '') {
+			alert("Attention, vous n'avez pas renseigné votre date de naissance !");
+		} else if ($('#s #email').val() == '') {
+			alert("Attention, vous n'avez pas renseigné votre addresse mail !");
+		} else if ($('#s #telephone').val() == '') {
+			alert("Attention, vous n'avez pas renseigné votre téléphone !");
+		} else if ($('#s #adresse').val() == '') {
+			alert("Attention, vous n'avez pas renseigné votre adresse !");
+		} else if ($('#s #codeP').val() == '') {
+			alert("Attention, vous n'avez pas renseigné votre code postal !");
+		} else if ($('#s #ville').val() == '') {
+			alert("Attention, vous n'avez pas renseigné votre ville !");
+		} else if (nomok == false || prenomok == false || mailok == false || telok == false || codeok == false || villok == false ) {
+			alert("Attention, un des champs du formulaire n'est pas renseigné correctement !")
+		} else { 
+			var prix;
+			var contrat = $('#accident #contrat').val();
+			if (contrat == "Individuel") { prix = 11; } else { prix = 20; }
+			$('#typeC').append(contrat.toUpperCase());
+			$('#confirmation .prix').append(prix);
+			$('#confirmation .prix2').append(prix*12);
+			$('#accident').hide();
+			$('#confirmation').show();
+			
+		}
 	});
-
+	
 	//Confirmation
 	$('#confirmation #carte').click(function(){
 		$('#confirmation #check img').css({'border':'10px solid #999'});
 		$('#confirmation #carte img').css({'border':'10px solid #1CD159'});
 		$('#confirmation input#hide').val("carte");
-		// $('#confirmation form').submit();
 	});
 	$('#confirmation #cheque').click(function(){
 		$('#confirmation #carte img').css({'border':'10px solid #999'});
 		$('#confirmation #check img').css({'border':'10px solid #1CD159'});
 		$('#confirmation input#hide').val("cheque");
-		// $('#confirmation form').submit();
 	});
 	$('#validSouscription').click(function(){
-		$('#confirmation form').submit();
+		cg = document.getElementById('cg').checked;
+		if ($('input[type^="hidden"]').val() == '') {
+			alert("Attention, vous n'avez pas sélectionné votre type de paiement ! ");
+		}
+		else if (!cg) {
+			alert("Vous devez accepter les conditions générales! ");
+		}
+		else
+			$('form').submit();
 	});
 	
+	$('#validPrevoyance').click(function(){
+		$('form').submit();
+	});
+
 	$('#confirmation ul.errors').remove();
 	//POUR WEBKIT
 	$('label[for^="civ-"]').parent().find('ul').addClass('webkiit');

@@ -1,4 +1,5 @@
 jQuery(function($) {
+
 	tinyMCE.init({
 		mode : 'textareas',
 		theme : 'advanced',
@@ -6,7 +7,7 @@ jQuery(function($) {
 		skin : 'o2k7',
 	   		skin_variant : 'silver',
 		plugins : 'inlinepopups, paste',
-		theme_advanced_buttons1 : 'bold, italic, underline, |, bullist, numlist, |, justifyleft, justifyright, justifycenter, justifyfull, |, link, unlink, |, formatselect, fontselect,fontsizeselect, |,forecolor',
+		theme_advanced_buttons1 : 'bold, italic, underline, |, bullist, numlist, |, justifyleft, justifyright, justifycenter, justifyfull, |, link, unlink, |, formatselect, fontselect,fontsizeselect',
 		theme_advanced_buttons2 : '',
 		theme_advanced_buttons3 : '',
 		theme_advanced_buttons4 : '',

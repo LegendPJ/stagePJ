@@ -52,7 +52,7 @@ else {?>
 								switch($autres->ajout) {
 									case "r": echo '<p><a href="http://www.gmcgestion.fr" title="Faire une demande de devis"><img src="'.$this->baseUrl.'/images/xylavie/rbt3.png"></a></p>'; break;
 									case "d": echo '<a href="'.$this->url(array('controller'=>$this->controller,'action'=> 'devis'.strtolower($title).''), null, true).'" title="Faire une demande de devis"><p><img src="'.$this->baseUrl.'/images/using/devis.png"></p><p id="lentite">'.$autres->titre.'</p></a>'; break;
-									case "c": echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/xylavie/contact.png"></a></p>'; break;
+									case "c": echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=> strtolower($title)), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/xylavie/contact.png"></a></p>'; break;
 									default: break;
 								}
 								echo $autres->contenu;

@@ -19,45 +19,41 @@ class XylariskController extends Zend_Controller_Action
 		$this->view->form = new App_forms_contact();
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
-                    			$this->view->civilite = $this->view->form->getCivilite();
-                    			$this->view->nom = $this->view->form->getNom();
-                    			$this->view->email = $this->view->form->getEmail();
-                    			$this->view->telephone = $this->view->form->getTelephone();
-                    			$this->view->message = $this->view->form->getMessage();
-                    			
+                    			$this->view->infos = $this->getRequest()->getParams();
                     			$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
 				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
 				$date = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
-				//MAIL
-				$html = new Zend_View();
-				$html->setScriptPath(APPLICATION_PATH . '/views/emails/');
+				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
+				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
+                    			$layoutMailC->setScriptHtml("confirmcontact");
+                    			$layoutMail->setScriptHtml("contact");
+                    			$layoutMail->assign( array(
+					"date" => $date,
+					"controller" => strtoupper($this->view->controller),
+					"civilite" => $this->view->infos['civilite'],
+					"nom" => $this->view->infos['nom'],
+					"message" => $this->view->infos['message'],
+					"mail" => $this->view->infos['email'],
+					"tel" => $this->view->infos['telephone']
+					));
 
-				$html->assign('date', $date);
-				$html->assign('controller', strtoupper($this->view->controller));
-				$html->assign('civilite', $this->view->civilite);
-				$html->assign('nom', $this->view->nom);
-				$html->assign('message', $this->view->message);
-				$html->assign('mail', $this->view->mail);
-				$html->assign('tel', $this->view->telephone);
-
-				$mail = new Zend_Mail('utf-8');
-
-				$bodyText = $html->render('contact.phtml');
-				// $mailT = new Zend_Mail_Transport_Sendmail();
-				// $mail->send($mailT);
-				$mail->setFrom('noreply@xylarisk.fr', 'Contact - XYLARISK')
-					->addTo('pierrejulien.martinez@gmail.com', 'XYLARISK')
-					->setBodyHtml($bodyText)
-					->setSubject('Mail de contact - XYLARISK')
-					->send();
-				// $mailT = new Zend_Mail_Transport_Sendmail();
-				// $mail = new Zend_Mail();
-				// $contenu = '<span style="font-weight:bold">Bonjour, <br><br>En date du '.$date.' la société '.strtoupper($this->view->controller).' a reçu un message de la part de '.$this->view->civilite.' '.$this->view->nom.'</span><br><br>'.$this->view->message.'<br>Ses coordonnées sont les suivantes : <br>Email : '.$this->view->email.'<br>Tel : '.$this->view->telephone.'<br><br>Bonne journée';
-				// $mail->setFrom('noreply@xylarisk.fr', 'Contact - XYLARISK')
-				// 	->addTo('info@xylarisk.fr', 'XYLARISK')
-				// 	->setBodyHtml($contenu, 'UTF-8')
-				// 	->setSubject('Sujet de test')
-				// 	->send($mailT);
+                    			$layoutMailC->assign( array(
+					"date" => $date,
+					"controller" => strtoupper($this->view->controller)
+					));
+                    			$mail = new Webf_Mail($layoutMail);
+                    			$mailC = new Webf_Mail($layoutMailC);
+                    			// $sendGridTransporter = new Webf_Mail_Smtp_SendGrid('legendpj','legendpj');
+				// $mail->setSmtpTransporter($sendGridTransporter);
+                    			$mail->setFrom('noreply@xylarisk.fr', 'XYLARISK - Service Contact');
+                    			$mailC->setFrom('noreply@xylarisk.fr', 'XYLARISK - Service Contact');
+				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLARISK');
+				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mail->setSubject('Contact XYLARISK');
+				$mailC->setSubject('Contact XYLARISK');
+				$mail->send();
+				$mailC->send();
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_helper->Redirector->gotoUrl('/xylarisk/');
 			}
 			else {

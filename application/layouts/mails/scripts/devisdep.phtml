@@ -1,0 +1,15 @@
+<body>
+<p><span style="font-weight:bold">Bonjour, <br><br>En date du <?php echo $this->dateJour; ?>, la société <?php echo strtoupper($this->controller); ?> a reçu une demande de devis de la part de <?php echo $this->civilite; ?> <?php echo $this->nom; ?> <?php echo $this->prenom; ?></span>
+<br>
+<br>
+Voici les informations relatives à cette personne <?php if($this->conjoint == "Oui") {echo 'ainsi que celles de '; echo ($this->civC == "Mme." || $this->civC == "Mlle.") ? "sa conjointe " : "son conjoint ";}?> :
+<br>
+<?php echo $this->civilite; ?> <?php echo $this->nom; ?> <?php echo $this->prenom; ?>, qui est le demandeur, est né<?php echo ($this->civilite == "Mme." || $this->civilite == "Mlle.") ? "e" : "";?> le <?php echo $this->date; ?><?php if($this->conjoint == "Oui") {echo ' et '.$this->civC.' '.$this->nomC.' '.$this->prenomC.', '; echo ($this->civC == "Mme." || $this->civC == "Mlle.") ? "sa conjointe, est née" : "son conjoint, est né"; echo ' le '.$this->dateC;}?>.<br><br> L'adresse relative à la demande est : <br><br>
+<?php echo $this->adresse; ?>
+<br><br>
+Son adresse e-mail est <?php echo $this->mail; ?> et son numéro de téléphone est le <?php echo $this->tel; ?>
+<br>
+Cette personne dispose d'une rente de <?php echo $this->rente; ?>, <?php echo ($this->depT == "Oui") ? "souhaite" : "ne souhaite pas";?> une dépendance totale, et <?php echo ($this->depTP == "Oui") ? "souhaite" : "ne souhaite pas";?> une dépendance totale ou partielle.<br><br>Bonne journée</p>
+
+<p style="color:#435d74; margin-left : 13px; font-size: 0.7em"><?php echo $this->controller; ?> SARL au capital de 50 000 € / 492 320 320 Lyon / Société de Courtage en Assurances / NAF 6622Z / Siège Social : 3 Chemin de Parenty 69250 NEUVILLE SUR SAONE / 07007951 ORIAS / Inscriptions au registre des intermédiaires d’assurances vérifiables sur www.orias.fr</p>
+</body>

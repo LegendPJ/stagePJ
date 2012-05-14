@@ -32,71 +32,52 @@ class XylavieController extends Zend_Controller_Action
 		$this->view->form = new App_forms_dependance();
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
+				$this->view->infos = $this->getRequest()->getParams();
 				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
 				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
 				$this->view->dateJour = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
+				$this->view->adresse = $this->view->infos['adresse'].'<br>'. $this->view->infos['codeP'].' '.$this->view->infos['ville'];
+				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
+				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
+                    			$layoutMailC->setScriptHtml("confirmDevisDep");
+                    			$layoutMail->setScriptHtml("devisdep");
+                    			$layoutMail->assign( array(
+					"dateJour" => $this->view->dateJour,
+					"controller" => strtoupper($this->view->controller),
+					"civilite" => $this->view->infos['civilite'],
+					"nom" => $this->view->infos['nom'],
+					"prenom" => $this->view->infos['prenom'],
+					"date" => $this->view->infos['dateN'],
+					"conjoint" => $this->view->infos['conjoint'],
+					"civC" => $this->view->infos['civC'],
+					"nomC" => $this->view->infos['nomC'],
+					"prenomC" => $this->view->infos['prenomC'],
+					"dateC" => $this->view->infos['dateC'],
+					"adresse" => $this->view->adresse,
+					"mail" => $this->view->infos['email'],
+					"tel" => $this->view->infos['telephone'],
+					"rente" => $this->view->infos['rente'],
+					"depT" => $this->view->infos['depT'],
+					"depTP" => $this->view->infos['depTP']
+					));
 
-				$this->view->civilite = $this->view->form->getCivilite();
-				$this->view->nom = $this->view->form->getNom();
-				$this->view->prenom = $this->view->form->getPrenom();
-				$this->view->date = $this->view->form->getDate();
-				$this->view->conjoint = $this->view->form->getConjoint();
-				if ($this->view->conjoint == "Oui") {
-					$this->view->civC = $this->view->form->getCivC();
-					$this->view->nomC = $this->view->form->getNomC();
-					$this->view->prenomC = $this->view->form->getPrenomC();
-					$this->view->dateC = $this->view->form->getDateC();
-				}
-				$this->view->adresse = $this->view->form->getAdresse().'<br>'. $this->view->form->getCodeP().' '.$this->view->form->getVille();
-				$this->view->mail  =  $this->view->form->getMail();
-				$this->view->tel  =  $this->view->form->getTel();
-				$this->view->rente  =  $this->view->form->getRente();
-				$this->view->depT  =  $this->view->form->getDepT();
-				$this->view->depTP  =  $this->view->form->getDepTP();
-				//MAIL
-				// $html = new Zend_View();
-				// $html->setScriptPath(APPLICATION_PATH . '/views/emails/');
-
-				// $html->assign('dateJour', $this->view->dateJour);
-				// $html->assign('controller', strtoupper($this->view->controller));
-				// $html->assign('civilite', $this->view->civilite);
-				// $html->assign('nom', $this->view->nom);
-				// $html->assign('prenom', $this->view->prenom);
-				// $html->assign('date', $this->view->date);
-				// $html->assign('conjoint', $this->view->conjoint);
-				// $html->assign('civC', $this->view->civC);
-				// $html->assign('nomC', $this->view->nomC);
-				// $html->assign('prenomC', $this->view->prenomC);
-				// $html->assign('dateC', $this->view->dateC);
-				// $html->assign('adresse', $this->view->adresse);
-				// $html->assign('mail', $this->view->mail);
-				// $html->assign('tel', $this->view->tel);
-				// $html->assign('rente', $this->view->rente);
-				// $html->assign('depT', $this->view->depT);
-				// $html->assign('depTP', $this->view->depTP);
-
-				// $mail = new Zend_Mail('utf-8');
-
-				// $bodyText = $html->render('devisdep.phtml');
-				// // $mailT = new Zend_Mail_Transport_Sendmail();
-				// // $mail->send($mailT);
-				// $mail->setFrom('noreply@xylavie.fr', 'Demande de Devis - XYLAVIE')
-				// 	->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE')
-				// 	->setBodyHtml($bodyText)
-				// 	->setSubject('Demande de Devis')
-				// 	->send();
-                    			$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
-                    			$layoutMail->setScriptHtml("contact");
+                    			$layoutMailC->assign( array(
+					"date" => $date,
+					"controller" => strtoupper($this->view->controller)
+					));
                     			$mail = new Webf_Mail($layoutMail);
-                    			$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('wizbii','wizbii38');
-				$mail->setSmtpTransporter($sendGridTransporter);
-                    			$mail->setFrom('noreply@xylavie.fr', 'Demande de Devis - XYLAVIE');
+                    			$mailC = new Webf_Mail($layoutMailC);
+                    			// $sendGridTransporter = new Webf_Mail_Smtp_SendGrid('legendpj','legendpj');
+				// $mail->setSmtpTransporter($sendGridTransporter);
+                    			$mail->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Dépendance');
+                    			$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Dépendance');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
-				// ->setBodyHtml($bodyText)
-				$mail->setSubject('Demande de Devis');
+				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mail->setSubject('Demande de Devis Dependance');
+				$mailC->setSubject('Demande de Devis Dependance');
 				$mail->send();
-				//FIN MAIL
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société'.$this->controller.'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
+				$mailC->send();
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_helper->Redirector->gotoUrl('/xylavie/');
 			} else {	
 				$this->_helper->FlashMessenger('Le formulaire comporte des erreurs')->setNamespace('error');
@@ -146,45 +127,56 @@ class XylavieController extends Zend_Controller_Action
 		}
         	}
         	
+        	public function prevoyanceAction()
+        	{
+        		$this->view->form = new App_forms_prevoyance();
+        		if ($this->getRequest()->isPost()) {
+
+			if($this->view->form->isValid($this->getRequest()->getParams())) {
+				
+			}
+		}
+        	}
 	public function contactAction()
 	{
 		$this->view->form = new App_forms_contact();	
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
-                    			$this->view->civilite = $this->view->form->getCivilite();
-                    			$this->view->nom = $this->view->form->getNom();
-                    			$this->view->mail = $this->view->form->getEmail();
-                    			$this->view->tel = $this->view->form->getTelephone();
-                    			$this->view->message = $this->view->form->getMessage();
-                            			
-                            		$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
+                            		$this->view->infos = $this->getRequest()->getParams();
+                    			$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
 				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
 				$date = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
+				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
+				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
+                    			$layoutMailC->setScriptHtml("confirmcontact");
+                    			$layoutMail->setScriptHtml("contact");
+                    			$layoutMail->assign( array(
+					"date" => $date,
+					"controller" => strtoupper($this->view->controller),
+					"civilite" => $this->view->infos['civilite'],
+					"nom" => $this->view->infos['nom'],
+					"message" => $this->view->infos['message'],
+					"mail" => $this->view->infos['email'],
+					"tel" => $this->view->infos['telephone']
+					));
 
-				//MAIL
-				$html = new Zend_View();
-				$html->setScriptPath(APPLICATION_PATH . '/views/emails/');
-
-				$html->assign('date', $date);
-				$html->assign('controller', strtoupper($this->view->controller));
-				$html->assign('civilite', $this->view->civilite);
-				$html->assign('nom', $this->view->nom);
-				$html->assign('message', $this->view->message);
-				$html->assign('mail', $this->view->mail);
-				$html->assign('tel', $this->view->tel);
-
-				$mail = new Zend_Mail('utf-8');
-
-				$bodyText = $html->render('contact.phtml');
-				// $mailT = new Zend_Mail_Transport_Sendmail();
-				// $mail->send($mailT);
-				$mail->setFrom('noreply@xylavie.fr', 'Contact - XYLAVIE')
-					->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE')
-					->setBodyHtml($bodyText)
-					->setSubject('Mail de contact XYLAVIE')
-					->send();
-				//FIN MAIL
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Message envoyé correctement à la société'.$this->controller.'.');
+                    			$layoutMailC->assign( array(
+					"date" => $date,
+					"controller" => strtoupper($this->view->controller)
+					));
+                    			$mail = new Webf_Mail($layoutMail);
+                    			$mailC = new Webf_Mail($layoutMailC);
+                    			// $sendGridTransporter = new Webf_Mail_Smtp_SendGrid('legendpj','legendpj');
+				// $mail->setSmtpTransporter($sendGridTransporter);
+                    			$mail->setFrom('noreply@xylavie.fr', 'XYLAVIE - Service Contact');
+                    			$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Service Contact');
+				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
+				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mail->setSubject('Contact XYLAVIE');
+				$mailC->setSubject('Contact XYLAVIE');
+				$mail->send();
+				$mailC->send();
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_helper->Redirector->gotoUrl('/xylavie/');
 			} else {	
 				$this->_helper->FlashMessenger('Le Formulaire comporte des erreurs')->setNamespace('error');
@@ -199,47 +191,16 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				$this->_forward('confirm', $this->view->controller,null, array('infos'=> $this->view->infos));
-				// $this->_helper->redirector('confirm', $this->view->controller, null, array('infos'=> $this->view->infos));
+				//MAIL + Recap
+				$this->_forward('souscription', $this->view->controller, null, array('infos'=> $this->view->infos));
 			}
 		}
 	}
 
-	public function confirmAction()
-	{
-		$this->view->infos = $this->_getParam('infos');
-		if(empty($this->view->infos))
-			$this->_redirect('/error');
-		$this->view->form = new App_forms_hidden();
-		if ($this->getRequest()->isPost()) {
-			if($this->view->form->isValid($this->getRequest()->getParams())) {
-				$this->view->choix = $this->getRequest()->getParams();
-				// $this->_forward('souscription', $this->view->controller,null, array('perso'=> $this->view->infos, 'choix' => $this->view->choix));
-			}
-		}
-	}
-
-	// public function transitAction()
-	// {
-	// 	$this->view->paiement = $this->_getParam('p');
-
-	// }
 	public function souscriptionAction() 
 	{
-		$this->view->choix = $this->_getParam('choix');
 		$this->view->infos = $this->_getParam('infos');
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 	public function modifAction()
 	{

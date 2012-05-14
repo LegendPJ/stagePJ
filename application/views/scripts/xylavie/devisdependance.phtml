@@ -4,28 +4,32 @@
 		<h2>Demande de devis Dépendance</h2>
 		<p>Afin d'améliorer la qualité de nos réponses, tous les champs sont obligatoires.</p>
 		<hr>
+		<span style="margin-left: 90px;" class="label label-important">Attention</span><h4 style="display:inline;font-size:0.7em">  Veillez à être concis et ne pas faire d'erreurs dans vos coordonnées</h4>
 		<form enctype="application/x-www-form-urlencoded" action="" method="post">
-			<table>
-			<?php
-				echo $this->form->civ;
-				echo $this->form->nom;
-				echo $this->form->prenom;
-				echo $this->form->dateN;
-				echo $this->form->conjoint;
-				echo $this->form->civC;
-				echo $this->form->nomC;
-				echo $this->form->prenomC;
-				echo $this->form->dateC;
-				echo $this->form->adresse;
-				echo $this->form->codeP;
-				echo $this->form->ville;
-				echo $this->form->email;
-				echo $this->form->telephone;
-				echo $this->form->rente;
-				echo $this->form->depT;
-				echo $this->form->depTP;
-			?>
-			</table>
+			<div>
+				<table>
+				<?php
+					echo $this->form->civ;
+					echo $this->form->nom;
+					echo $this->form->prenom;
+					echo $this->form->dateN;
+					echo $this->form->conjoint;
+					echo $this->form->civC;
+					echo $this->form->nomC;
+					echo $this->form->prenomC;
+					echo $this->form->dateC;
+					echo $this->form->adresse;
+					echo $this->form->codeP;
+					echo $this->form->ville;
+					echo $this->form->email;
+					echo $this->form->telephone;
+					echo $this->form->rente;
+					echo $this->form->depT;
+					echo $this->form->depTP;
+				?>
+				</table>
+			</div>
+			<br>
 			<div class="pager">
 				<a href="#" id="validDependance" onclick="return false;">Envoyer</a>
 			</div>

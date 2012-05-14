@@ -49,7 +49,7 @@ class App_forms_accident extends Zend_Form
 		$this->email->setLabel("Votre e-mail ")
 				->setAttrib('placeholder', 'Format: you@you.me')
 				->addValidator('StringLength', false,array(6,70))
-				->addValidator('EmailAddress')
+				// ->addValidator('EmailAddress')
 				->setDecorators($decorators)
 				->setRequired(true);
 
@@ -59,6 +59,11 @@ class App_forms_accident extends Zend_Form
 				->addValidator('Digits')
 				->setDecorators($decorators)
 				->addValidator('StringLength', false,array(10,10))
+				->setRequired(true);
+
+		$this->adresse = new Zend_Form_Element_Text('adresse');
+		$this->adresse->setLabel("Votre adresse ")
+				->setDecorators($decorators)
 				->setRequired(true);
 
 		$this->codeP = new Zend_Form_Element_Text('codeP');
@@ -246,12 +251,13 @@ class App_forms_accident extends Zend_Form
 			->addValidator('Date', true, array('format' => 'dd/mm/aaaa'))
 			->setDecorators($decorators);
 
-		
+		$this->hide = new Zend_Form_Element_Hidden('hide');
+		$this->hide->setDecorators($decorators)->setRequired(true);
 
-		$this->submit = new Zend_Form_Element_Submit('Envoyer');
-		$this->submit->setDecorators(array('ViewHelper',
-						array(array('td' => 'HtmlTag'), array('tag' => 'td', 'colspan' => 2)),
-						array(array('tr' => 'HtmlTag'), array('tag' => 'tr'))));
+		$this->cg = new Zend_Form_Element_Checkbox('cg');
+		$this->cg->setDescription('Je déclare avoir pris connaissance dans conditions générales de vente relatives au contrat GAV')
+			->setDecorators($decorators)
+			->setRequired(true);
 
 		$this->addElements(array(
 			$this->civ,
@@ -260,6 +266,7 @@ class App_forms_accident extends Zend_Form
 			$this->dateN,
 			$this->email,
 			$this->telephone,
+			$this->adresse,
 			$this->codeP,
 			$this->ville,
 			$this->contrat,
@@ -283,48 +290,12 @@ class App_forms_accident extends Zend_Form
 			$this->date4,
 			$this->nom5,
 			$this->prenom5,
-			$this->date5
+			$this->date5,
+			$this->hide,
+			$this->cg
 		));
+
 		$this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),'Form'));             
 	}
-
-	// public function getCivilite() { return $this->civ->getValue(); }
-	// public function getNom() { return $this->nom->getValue(); }
-	// public function getPrenom() { return $this->prenom->getValue(); }
-	// public function getDateN() { return $this->dateN->getValue(); }
-	// public function getMail() { return $this->email->getValue(); }
-	// public function getTel() { return $this->telephone->getValue(); }
-	// public function getCodeP() { return $this->codeP->getValue(); }
-	// public function getVille() { return $this->ville->getValue(); }
-
-	// public function getContrat() { return $this->contrat->getValue(); }
-	// public function getConjoint() { return $this->conjoint->getValue(); }
-
-	// public function getCivC() { return $this->civC->getValue(); }
-	// public function getNomC() { return $this->nomC->getValue(); }
-	// public function getPrenomC() { return $this->prenomC->getValue(); }
-	// public function getDateC() { return $this->dateC->getValue(); }
-
-	// public function getNombreEnfant() { return $this->nombreenfant->getValue(); }
-
-	// public function getNom1() { return $this->nom1->getValue(); }
-	// public function getPrenom1() { return $this->prenom1->getValue(); }
-	// public function getDate1() { return $this->date1->getValue(); }
-
-	// public function getNom2() { return $this->nom2->getValue(); }
-	// public function getPrenom2() { return $this->prenom2->getValue(); }
-	// public function getDate2() { return $this->date2->getValue(); }
-
-	// public function getNom3() { return $this->nom3->getValue(); }
-	// public function getPrenom3() { return $this->prenom3->getValue(); }
-	// public function getDate3() { return $this->date3->getValue(); }
-
-	// public function getNom4() { return $this->nom4->getValue(); }
-	// public function getPrenom4() { return $this->prenom4->getValue(); }
-	// public function getDate4() { return $this->date4->getValue(); }
-
-	// public function getNom5() { return $this->nom5->getValue(); }
-	// public function getPrenom5() { return $this->prenom5->getValue(); }
-	// public function getDate5() { return $this->date5->getValue(); }
 }
 ?>

@@ -4,6 +4,57 @@
 <h1>Souscription Devis XYLAVIE</h1>
 
 <div class="row" id="souscription">
-	<?php echo var_dump($this->infos); ?>
-	<?php echo var_dump($this->choix); ?>
+	<div class="span12">
+		<h2 style="text-align : center; font-size: 2em">XYLAGROUP vous remercie !</h2><br>
+		<h3><span class="tabul">Vous</span> venez de souscrire un contrat GAV (Garanties des Accidents de la Vie). </h3><br>
+		<p>Voici un récapitulatif de ce que vous nous avez envoyé : </p>
+		<?php if ($this->infos['hide'] == "carte") {?>
+			<p class="tabul" style="color:red">Attention, pour que le paiement par prélèvement automatique se fasse correctement, vous devez IMPERATIVEMENT fournir un <span style="text-decoration:underline">RIB</span> (Relevé d'Identité Bancaire) ainsi qu'une <span style="text-decoration:underline">AUTORISATION DE PRÉLÈVEMENT</span>. <br>Si l'un de ces deux documents venait à manquer, le contrat ne pourra pas être établi.</p>
+		<?php } ?>
+		<br>
+		<h3 style="color:#FFC90E">Votre Identité</h3>
+		<br>
+		<p class="tabul">Vous êtes <span class="gras"><?php echo $this->infos['civ'].' '.$this->infos['nom'].' '.$this->infos['prenom']; ?></span></p>
+		<p class="tabul">Vous date de naissance est le <span class="gras"><?php echo $this->infos['dateN']; ?></span></p>
+		<p class="tabul">Votre numéro de téléphone est le <span class="gras"><?php echo $this->infos['telephone']; ?></span></p>
+		<p class="tabul">Votre email est <span class="gras"><?php echo $this->infos['email']; ?></span></p>
+		<p class="tabul">Votre adresse est la suivante : <br>
+			<span class="gras"><?php echo $this->infos['adresse']; ?></span><br>
+			<span class="gras"><?php echo $this->infos['codeP']; ?></span> <span class="gras"><?php echo $this->infos['ville']; ?></span><br>
+		</p>
+		<br>
+		<?php if($this->infos['contrat'] == "Familial") : ?>
+		<h3 style="color:#FFC90E">Votre Famille</h3>
+		<br>
+			<?php if($this->infos['conjoint'] == "Oui") : ?>
+				<p class="tabul">Vous avez ajouté votre <?php echo ($this->infos['civC'] == "M.") ? 'conjoint' : 'conjointe';?> <span class="gras"><?php echo $this->infos['civC'].' '.$this->infos['nomC'].' '.$this->infos['prenomC']; ?></span></p>
+				<p class="tabul">Sa date de naissance est le <span class="gras"><?php echo $this->infos['dateC']; ?></span></p>
+			<?php endif; ?>
+			<?php $nbe = $this->infos['nombreenfant']; 
+
+			if($nbe != "" || $nbe != "aucun") : ?>
+				<p class="tabul">Vous avez ajouté <span class="gras"><?php echo $nbe; ?> <?php echo ($nbe > 1) ? 'enfants' : 'enfant';?></span> à votre contrat :</p>
+				<?php for ($tot = 1; $tot  <= $nbe; $tot ++) { 
+					echo '<p><span style="margin-left : 60px;">- '.$this->infos["prenom".$tot].' '.$this->infos["nom".$tot].', qui est né(e) le '.$this->infos["date".$tot].'</p>';
+				}
+			endif; ?>
+		<br>
+		<?php endif; ?>
+		<h3 style="color:#FFC90E">Votre Contrat</h3>
+		<br>
+		<p class="tabul">Vous avez choisi un contrat <span class="gras"><?php echo strtoupper($this->infos['contrat']); ?></span></p>
+		<?php if ($this->infos['hide'] == "carte") {?>
+			<p class="tabul">Le moyen de paiement que vous avez choisi est <span class="gras">le prélèvement banquaire automatique MENSUEL.</span>
+			<p class="tabul" style="color:green">Votre contrat GAV prendra effet immédiatement dès réception de ces deux documents (cachet de la poste faisant foi).<br>
+			Ainsi, un prévlèvement automatique d'un montant de <span style="font-size:2em"><?php echo ($this->infos['contrat'] == "Familial") ? 20 : 11?>€</span> sera effectué chaque mois sur votre compte bancaire.<br>
+			Une fois qu'il sera établi par nos services, votre contrat vous sera envoyé par voie postale.</p>
+		<?php } else { ?>
+			<p class="tabul">Le moyen de paiement que vous avez choisi est <span class="gras">le paiement par chèque MENSUEL.</span>
+			<p class="tabul" style="color:green">Votre contrat GAV prendra effet immédiatement dès réception du chèque d'un montant de <span style="font-size:2em"><?php echo ($this->infos['contrat'] == "Familial") ? 20*12 : 11*12?>€</span> (cachet de la poste faisant foi), de plus, il vous sera envoyé par voie postale.</p>
+		<?php } ?>
+		<br>
+		<p>Nous vous remercions d'avoir choisi nos services.</p>
+		<br><br>
+	</div>
+	<?php //echo var_dump($this->infos); ?>
 </div>

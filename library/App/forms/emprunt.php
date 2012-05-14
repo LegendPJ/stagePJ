@@ -14,7 +14,7 @@ class App_forms_emprunt extends Zend_Form
 		$this->montant = new Zend_Form_Element_Text('montant');
 		$this->montant->setLabel("Montant (en €)")
 			->setAttrib('placeholder', 'ex : 2000,50')
-			->addValidator('Float', true)	
+			->addValidator('Float', true)
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->addValidator('StringLength', false, array(3,20))
@@ -138,20 +138,6 @@ class App_forms_emprunt extends Zend_Form
 			->setDecorators($decorators)
 			->addMultiOptions(array('- de 15.000'=>'- de 15.000', '+ de 15.000'=>'+ de 15.000'));
 
-		// $this->IPT = new Zend_Form_Element_Radio('IPT');
-		// $this->IPT->setLabel("Option IPT/ITT")
-		// 	->setDecorators($decorators)
-		// 	->setOptions(array('separator'=>''))
-		// 	->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'))
-		// 	->setRequired(true);
-
-		// $this->IPP = new Zend_Form_Element_Radio('IPP');
-		// $this->IPP->setLabel("Option IPP")
-		// 	->setDecorators($decorators)
-		// 	->setOptions(array('separator'=>''))
-		// 	->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'))
-		// 	->setRequired(true);
-
 		$this->garantiesE = new Zend_Form_Element_Select('garantiesE');
 		$this->garantiesE->setLabel("Garanties souhaitées")
 			->setDecorators($decorators)
@@ -216,18 +202,6 @@ class App_forms_emprunt extends Zend_Form
 			->setDecorators($decorators)
 			->addMultiOptions(array('- de 15.000'=>'- de 15.000', '+ de 15.000'=>'+ de 15.000'));
 
-		// $this->IPTCo = new Zend_Form_Element_Radio('IPTCo');
-		// $this->IPTCo->setLabel("Option IPT/ITT")
-		// 	->setDecorators($decorators)
-		// 	->setOptions(array('separator'=>''))
-		// 	->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
-
-		// $this->IPPCo = new Zend_Form_Element_Radio('IPPCo');
-		// $this->IPPCo->setLabel("Option IPP")
-		// 	->setDecorators($decorators)
-		// 	->setOptions(array('separator'=>''))
-		// 	->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
-
 		$this->garantiesC = new Zend_Form_Element_Select('garantiesC');
 		$this->garantiesC->setLabel("Garanties souhaitées")
 			->setDecorators($decorators)
@@ -276,10 +250,6 @@ class App_forms_emprunt extends Zend_Form
 				->setRequired(true);
 
 		//FIN COORDONNEES
-		$this->submit = new Zend_Form_Element_Submit('Envoyer');
-		$this->submit->setDecorators(array('ViewHelper',
-						array(array('td' => 'HtmlTag'), array('tag' => 'td', 'colspan' => 2)),
-						array(array('tr' => 'HtmlTag'), array('tag' => 'tr'))));
 
 		$this->addElements(array(
 			$this->montant,
