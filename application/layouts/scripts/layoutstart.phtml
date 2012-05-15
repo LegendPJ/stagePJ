@@ -3,10 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php echo $this->headTitle(); ?>
-<!-- Feuilles de style CSS : Bootstrap & Global -->
-  <?php echo $this->headLink()->appendStylesheet('/css/body_base.css')->appendStylesheet('/css/start.css'); ?>
-<!-- Fichiers jQuery pour les animations -->
-
+<?php echo $this->headLink()->appendStylesheet('/css/body_base.css')->appendStylesheet('/css/start.css'); ?>
 </head>
 <body>
 	<div id="flashMessengers">
@@ -35,9 +32,8 @@
 			<a href="<?php echo $this->baseUrl;?>/donnees/logout/" title="Se déconnecter"> </a>
 		</div>
 		<div class="retour">
-			<a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'index'), null, true);?>" title="Retour au Site Web"></a>
+			<a target="_blank" href="<?php echo $this->url(array('controller'=>'index', 'action'=>'index'), null, true);?>" title="Retour au Site Web"></a>
 		</div>
-		
 	</div>
 
 	<div id="headerP">
@@ -60,7 +56,6 @@
 	<div id="containerP">
 		<?php echo $this->layout()->content ?>
 	</div>
-
 </body>
   <?php echo $this->headScript(); ?>
 </html>

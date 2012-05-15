@@ -21,7 +21,7 @@ class XylavieController extends Zend_Controller_Action
 		$this->view->form = new App_forms_sante();
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
-				$this->view->civilite = $this->view->form->getCivilite();
+				$this->view->infos = $this->getRequest()->getParams();
 			}
 		}
 
@@ -199,6 +199,7 @@ class XylavieController extends Zend_Controller_Action
 
 	public function souscriptionAction() 
 	{
+		//Regarder sur Github ce qu'il y avait pour rediriger lorsque l'on ne trouve pas d'infos !
 		$this->view->infos = $this->_getParam('infos');
 	}
 
@@ -215,12 +216,14 @@ class XylavieController extends Zend_Controller_Action
 		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$id = $query->getParam('id');
+			//utile ? 
 			$notEmptyValidator = new Zend_Validate_NotEmpty();
 			if(!$notEmptyValidator->isValid($titre)) {
 				$errors[] = "Le titre ne peut être vide !";
 			}
 			if( count($errors) ) {
 				$fm = $this->_helper->flashMessenger->addMessage($errors);
+			//Utile ?
 			} else {
 				Encadre::updateTEncadre($titre, $id);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre modifié avec succès!');
