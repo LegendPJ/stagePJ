@@ -44,7 +44,7 @@ class XylavieController extends Zend_Controller_Action
                     			$layoutMail->assign( array(
 					"dateJour" => $this->view->dateJour,
 					"controller" => strtoupper($this->view->controller),
-					"civilite" => $this->view->infos['civilite'],
+					"civilite" => $this->view->infos['civ'],
 					"nom" => $this->view->infos['nom'],
 					"prenom" => $this->view->infos['prenom'],
 					"date" => $this->view->infos['dateN'],
@@ -67,10 +67,12 @@ class XylavieController extends Zend_Controller_Action
 					));
                     			$mail = new Webf_Mail($layoutMail);
                     			$mailC = new Webf_Mail($layoutMailC);
-                    			// $sendGridTransporter = new Webf_Mail_Smtp_SendGrid('legendpj','legendpj');
-				// $mail->setSmtpTransporter($sendGridTransporter);
-                    			$mail->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Dépendance');
-                    			$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Dépendance');
+                    			$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('xylagroup','xylagroup2012');
+				$mail->setSmtpTransporter($sendGridTransporter);
+				$mailC->setSmtpTransporter($sendGridTransporter);
+                    			$mail->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Dependance');
+                    			$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Dependance');
+				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
 				$mailC->addTo('pierrejulien.martinez@gmail.com');
 				$mail->setSubject('Demande de Devis Dependance');

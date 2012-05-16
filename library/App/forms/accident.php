@@ -83,7 +83,6 @@ class App_forms_accident extends Zend_Form
 			->setDecorators($decorators)
 			->setRequired(true);
 
-
 		//CONTRAT
 		$this->contrat = new Zend_Form_Element_Select('contrat');
 		$this->contrat->setLabel("Type de contrat souhaité")
@@ -294,7 +293,6 @@ class App_forms_accident extends Zend_Form
 			$this->hide,
 			$this->cg
 		));
-
 		$this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),'Form'));             
 	}
 }
