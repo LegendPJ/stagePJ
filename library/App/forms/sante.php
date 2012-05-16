@@ -56,6 +56,13 @@ class App_forms_sante extends Zend_Form
 				->addValidator('StringLength', false,array(10,10))
 				->setRequired(true);
 
+		$this->adresse = new Zend_Form_Element_Text('adresse');
+		$this->adresse->setLabel("Votre Adresse ")
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->setDecorators($decorators)
+			->setRequired(true);
+
 		$this->codeP = new Zend_Form_Element_Text('codeP');
 		$this->codeP->setLabel("Code Postal ")
 			->addValidator('Digits') //que des chiffres !
@@ -139,7 +146,7 @@ class App_forms_sante extends Zend_Form
 			->setOptions(array('separator'=>''));
 
 		$this->q2 = new Zend_Form_Element_Radio('q2');
-		$this->q2->setLabel("J'ai de forts besoins optiques ou dentaires")
+		$this->q2->setLabel("J'ai de forts besoins optique ou dentaire")
 			->setMultiOptions(array('Oui'=>'Oui', 'Non' => 'Non'))
 			->setDecorators($decorators)
 			->setRequired(true)
@@ -170,11 +177,12 @@ class App_forms_sante extends Zend_Form
 			$this->nbenfant,
 			$this->email,
 			$this->telephone,
+			$this->adresse,
 			$this->codeP,
 			$this->ville,
 			$this->dateN,
 			$this->conjoint,
-			$this->dateNc,
+			$this->dateNC,
 			$this->date1,
 			$this->date2,
 			$this->date3,
@@ -186,29 +194,5 @@ class App_forms_sante extends Zend_Form
 
 		$this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),'Form'));             
 	}
-
-	public function getCivilite() { return $this->civ->getValue(); }
-	public function getNom() { return $this->nom->getValue(); }
-	public function getPrenom() { return $this->prenom->getValue(); }
-	public function getNbEnfant() { return $this->nbenfant->getValue(); }
-	public function getMail() { return $this->email->getValue(); }
-	public function getTel() { return $this->telephone->getValue(); }
-	public function getCodeP() { return $this->codeP->getValue(); }
-	public function getVille() { return $this->ville->getValue(); }
-
-	public function getDateN() { return $this->dateN->getValue(); }
-	public function getConjoint() { return $this->conjoint->getValue(); }
-	public function getDateNC() { return $this->dateNC->getValue(); }
-	public function getDate1() { return $this->date1->getValue(); }
-	public function getDate2() { return $this->date2->getValue(); }
-	public function getDate3() { return $this->date3->getValue(); }
-
-	public function getQ1() { return $this->q1->getValue(); }
-	public function getQ2() { return $this->q2->getValue(); }
-	public function getQ3() { return $this->q3->getValue(); }
-	public function getQ4() { return $this->q4->getValue(); }
-
-
-
 }
 ?>

@@ -161,23 +161,5 @@ class App_forms_dependance extends Zend_Form
 					array('HtmlTag', array('tag' => 'table')),
 				'Form'));             
 	}
-
-	public function getCivilite() { return $this->civ->getValue(); }
-	public function getNom() { return $this->nom->getValue(); }
-	public function getPrenom() { return $this->prenom->getValue(); }
-	public function getDate() { return $this->dateN->getValue(); }
-	public function getConjoint() { return $this->conjoint->getValue(); }
-	public function getCivC() { return $this->civC->getValue(); }
-	public function getNomC() { return $this->nomC->getValue(); }
-	public function getPrenomC() { return $this->prenomC->getValue(); }
-	public function getDateC() { return $this->dateC->getValue(); }
-	public function getAdresse() { return $this->adresse->getValue(); }
-	public function getCodeP() { return $this->codeP->getValue(); }
-	public function getVille() { return $this->ville->getValue(); }
-	public function getMail() { return $this->email->getValue(); }
-	public function getTel() { return $this->telephone->getValue(); }
-	public function getRente() { return $this->rente->getValue(); }
-	public function getDepT() { return $this->depT->getValue(); }
-	public function getDepTP() { return $this->depTP->getValue(); }
 }
  ?>

@@ -91,16 +91,16 @@ class App_forms_retraitepargne extends Zend_Form
 			->addMultiOptions(array(' ' => ' ', 'Confiant'=>'Confiant','Très Confiant'=>'Très Confiant', 'Inquiet'=>'Inquiet', 'Très Inquiet'=>'Très Inquiet'));
 
 		$this->projets = new Zend_Form_Element_MultiCheckbox('projets', array(
-			'multiOptions' => array('Epargner' => 'Epargner pour vous mettre à l\'abri d\'un coup dur ou vous constituer une épargne.' ,
-						'Préparer' => 'Préparer l\'achat d\'un bien.',
-						'Financer' => 'Financer les études et/ou l\'installation de vos enfants.',
-						'Fructifier' => 'Faire fructifier une somme dont vous disposez déjà.',
-						'Rechercher' => 'Rechercher un rendement maximal en acceptant une prise de risques.',
-						'Transmettre' => 'Transmettre tout ou partie de votre épargne à vos enfants, petits enfants.',
-						'Rémunérer' => 'Rémunérer votre épargne de précaution sans prendre de risque.',
-						'Retraite' => 'Préparer la retraite de vos souhaits.',
-						'Bénéficier' => 'Bénéficier d\'un complément de ressources.',
-						'Impôts' => 'Payer moins d\'impôts.'
+			'multiOptions' => array('Epargner pour se mettre à l\'abri d\'un coup dur ou se constituer une épargne' => 'Epargner pour vous mettre à l\'abri d\'un coup dur ou vous constituer une épargne',
+						'Préparer l\'achat d\'un bien' => 'Préparer l\'achat d\'un bien',
+						'Financer les études et/ou l\'installation de ses enfants' => 'Financer les études et/ou l\'installation de vos enfants',
+						'Faire fructifier une somme dont elle dispose déjà' => 'Faire fructifier une somme dont vous disposez déjà',
+						'Rechercher un rendement maximal en acceptant une prise de risques' => 'Rechercher un rendement maximal en acceptant une prise de risques',
+						'Transmettre tout ou partie de son épargne à ses enfants, petits enfants' => 'Transmettre tout ou partie de votre épargne à vos enfants, petits enfants',
+						'Rémunérer son épargne de précaution sans prendre de risque' => 'Rémunérer votre épargne de précaution sans prendre de risque',
+						'Préparer la retraite de ses souhaits' => 'Préparer la retraite de vos souhaits',
+						'Bénéficier d\'un complément de ressources' => 'Bénéficier d\'un complément de ressources',
+						'Payer moins d\'impôts' => 'Payer moins d\'impôts'
 					)));
 		$this->projets->setDecorators($decorators)
 				->setSeparator('')
@@ -125,17 +125,5 @@ class App_forms_retraitepargne extends Zend_Form
 					array('HtmlTag', array('tag' => 'table')),
 				'Form'));             
 	}
-
-	public function getCivilite() { return $this->civ->getValue(); }
-	public function getNom() { return $this->nom->getValue(); }
-	public function getPrenom() { return $this->prenom->getValue(); }	
-	public function getDateN() { return $this->dateN->getValue(); }	
-	public function getAdresse() { return $this->adresse->getValue(); }
-	public function getCodeP() { return $this->codeP->getValue(); }
-	public function getVille() { return $this->ville->getValue(); }
-	public function getMail() { return $this->email->getValue(); }
-	public function getTel() { return $this->telephone->getValue(); }	
-	public function getAvenir() { return $this->avenir->getValue(); }
-	public function getProjets() { return $this->projets->getValue(); }
 }
  ?>

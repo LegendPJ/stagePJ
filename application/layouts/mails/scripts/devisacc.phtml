@@ -1,0 +1,68 @@
+<body>
+<p>Bonjour, <br><br>En date du <?php echo $this->dateJour; ?>, la société <?php echo strtoupper($this->controller); ?> a reçu une demande de devis <strong>GAV</strong>.
+<br>
+<br>
+Voici les informations relatives à la demande :
+<br>
+Le demandeur est <span style="font-weight:bold"><?php echo $this->civilite; ?> <?php echo $this->nom; ?> <?php echo $this->prenom; ?></span>.
+<p style="color:#FFC90E; text-decoration : underline">Les personnes assurées</p>
+<br>
+- <p><?php echo $this->nom; ?> <p><?php echo $this->prenom; ?>, né<?php echo ($this->civilite == "Mme." || $this->civilite == "Mlle.") ? "e" : "";?> le <span style="font-weight:bold"><?php echo $this->date; ?></span><br>
+<?php 	if($this->contrat == "Familial") : ?>
+	<?php 	if($this->conjoint == "Oui") : ?>
+		<p>- <?php echo $this->nomC; ?> <?php echo $this->prenomC; ?>, né(e) le <span style="font-weight:bold"><?php echo $this->dateC; ?></span><br>
+	<?php 	endif; ?>
+	<?php $nbe = $this->nombreenfant; ?>
+	<?php 	if($this->nombreenfant == 1) { 
+			echo '<p>- '.$this->nom1.' '.$this->prenom1.' né(e) le <span style="font-weight:bold">'.$this->date1.'</span><br>';
+		} elseif ($this->nombreenfant == 2) {
+			echo '<p>- '.$this->nom1.' '.$this->prenom1.' né(e) le <span style="font-weight:bold">'.$this->date1.'</span><br>';
+			echo '<p>- '.$this->nom2.' '.$this->prenom2.' né(e) le <span style="font-weight:bold">'.$this->date2.'</span><br>';
+		} elseif ($this->nombreenfant == 3) {
+			echo '<p>- '.$this->nom1.' '.$this->prenom1.' né(e) le <span style="font-weight:bold">'.$this->date1.'</span><br>';
+			echo '<p>- '.$this->nom2.' '.$this->prenom2.' né(e) le <span style="font-weight:bold">'.$this->date2.'</span><br>';
+			echo '<p>- '.$this->nom3.' '.$this->prenom3.' né(e) le <span style="font-weight:bold">'.$this->date3.'</span><br>';
+		} elseif ($this->nombreenfant == 4) {
+			echo '<p>- '.$this->nom1.' '.$this->prenom1.' né(e) le <span style="font-weight:bold">'.$this->date1.'</span><br>';
+			echo '<p>- '.$this->nom2.' '.$this->prenom2.' né(e) le <span style="font-weight:bold">'.$this->date2.'</span><br>';
+			echo '<p>- '.$this->nom3.' '.$this->prenom3.' né(e) le <span style="font-weight:bold">'.$this->date3.'</span><br>';
+			echo '<p>- '.$this->nom4.' '.$this->prenom4.' né(e) le <span style="font-weight:bold">'.$this->date4.'</span><br>';
+		} elseif ($this->nombreenfant == 5) {
+			echo '<p>- '.$this->nom1.' '.$this->prenom1.' né(e) le <span style="font-weight:bold">'.$this->date1.'</span><br>';
+			echo '<p>- '.$this->nom2.' '.$this->prenom2.' né(e) le <span style="font-weight:bold">'.$this->date2.'</span><br>';
+			echo '<p>- '.$this->nom3.' '.$this->prenom3.' né(e) le <span style="font-weight:bold">'.$this->date3.'</span><br>';
+			echo '<p>- '.$this->nom4.' '.$this->prenom4.' né(e) le <span style="font-weight:bold">'.$this->date4.'</span><br>';
+			echo '<p>- '.$this->nom5.' '.$this->prenom5.' né(e) le <span style="font-weight:bold">'.$this->date5.'</span><br>';
+		}?>
+<?php 	endif; ?>
+<br>
+<p style="color:#FFC90E; text-decoration : underline">Les coordonnées</p>
+<br>
+<p style="margin-left : 30px">Téléphone : <span style="font-weight : bold"><?php echo $this->tel; ?></span></p>
+<p style="margin-left : 30px">Email : <span style="font-weight : bold"><?php echo $this->email; ?></span></p>
+<p style="margin-left : 30px">Adresse : 
+	<span style="font-weight : bold"><?php echo $this->adresse; ?></span> - <span style="font-weight : bold"><?php echo $this->codeP; ?></span> <span style="font-weight : bold"><?php echo $this->ville; ?></span><br>
+</p>
+<br>
+<p style="color:#FFC90E; text-decoration : underline">Le Contrat</p>
+<br>
+<p style="margin-left : 30px">Le client a choisi un contrat <span style="font-weight : bold"><?php echo strtoupper($this->contrat); ?></span></p>
+<?php if ($this->hide == "carte") {?>
+	<p style="margin-left : 30px">Le moyen de paiement choisi est <span style="font-weight : bold">le prélèvement banquaire automatique MENSUEL.</span>
+	<p style="margin-left : 30px" style="color:green">Le contrat GAV prendra effet immédiatement dès réception de son RIB et de l'autorisation de prélèvement.<br>
+	Ainsi, le client vous doit, chaque mois <span style="font-weight : bold"><?php echo ($this->contrat == "Familial") ? 20 : 11 ?>€</span>.<br>
+	Il faudra envoyer le contrat par voie postale à l'adresse ci-dessus.</p>
+<?php } else { ?>
+	<p style="margin-left : 30px">Le moyen de paiement choisi est <span style="font-weight : bold">le paiement par chèque ANNUEL.</span>
+	<p style="margin-left : 30px" style="color:green">Le contrat GAV prendra effet immédiatement dès encaissement du chèque.<br>
+	Ainsi, le client vous doit, chaque mois <span style="font-weight : bold"><?php echo ($this->contrat == "Familial") ? 20*12 : 11*12 ?>€</span>.<br>
+	Il faudra envoyer le contrat par voie postale à l'adresse ci-dessus.</p>
+<?php } ?>
+<?php if($this->cg == 1) ?>
+	<?php echo 'Enfin, le client à bien accepté les conditions générales de vente du contrat GAV.'; ?>
+
+<br><br>Bonne journée</p>
+<p style="margin:0 0 0 0; padding-bottom: 5px; font-size: 0.8em; border-bottom: 2px solid #e0e0e0;"><span style="margin-left:10px;">Ceci est un email automatique, merci de ne pas y répondre.</span></p>
+<p style="margin: 5px 0 0 10px;"><a style="text-decoration:none;  font-weight:bold; " href=""><span style="color:#9ebad1;">www.</span><span style="color:#4c657d;">xylagroup</span><span style="color:#9ebad1;">.fr</span></a></p>
+<p style="color:#435d74; margin-left : 13px; font-size: 0.7em"><?php echo $this->controller; ?> SARL au capital de 50 000 € / 492 320 320 Lyon / Société de Courtage en Assurances / NAF 6622Z / Siège Social : 3 Chemin de Parenty 69250 NEUVILLE SUR SAONE / 07007951 ORIAS / Inscriptions au registre des intermédiaires d’assurances vérifiables sur www.orias.fr</p>
+</body>

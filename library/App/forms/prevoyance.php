@@ -57,9 +57,9 @@ class App_forms_prevoyance extends Zend_Form
 			->addMultiOptions(array('' => '', 'Salarié'=>'Salarié','TNS'=>'TNS', 'Retraité' => 'Retraité'));
 
 		$this->demande = new Zend_Form_Element_MultiCheckbox('demande', array(
-			'multiOptions' => array('deces' => 'Une garantie décès' ,
-						'incapacite' => 'Une garantie d\'incapacité',
-						'invalidite' => 'Une garantie d\'invalidité'
+			'multiOptions' => array('Une garantie décès' => 'Une garantie décès' ,
+						'Une garantie d\'incapacité' => 'Une garantie d\'incapacité',
+						'Une garantie d\'invalidité' => 'Une garantie d\'invalidité'
 					)));
 
 		$this->demande->setDecorators($decorators)
