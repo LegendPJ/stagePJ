@@ -335,31 +335,30 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
-				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
-				$date = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC->setScriptHtml("confirmcontact");
 				$layoutMail->setScriptHtml("contact");
-				$layoutMail->assign( array(
-					"date" => $date,
-					"controller" => strtoupper($this->view->controller),
-					"civilite" => $this->view->infos['civilite'],
-					"nom" => $this->view->infos['nom'],
-					"message" => $this->view->infos['message'],
-					"mail" => $this->view->infos['email'],
-					"tel" => $this->view->infos['telephone']
-				));
+				$layoutMail->assign(array("infos" => $this->view->infos, "date" => $this->view->date));
+				// $layoutMail->assign( array(
+				// 	"date" => $date,
+				// 	"controller" => strtoupper($this->view->controller),
+				// 	"civilite" => $this->view->infos['civilite'],
+				// 	"nom" => $this->view->infos['nom'],
+				// 	"message" => $this->view->infos['message'],
+				// 	"mail" => $this->view->infos['email'],
+				// 	"tel" => $this->view->infos['telephone']
+				// ));
 
 				$layoutMailC->assign( array(
-					"date" => $date,
+					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller)
 				));
 				$mail = new Webf_Mail($layoutMail);
 				$mailC = new Webf_Mail($layoutMailC);
 				$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('xylagroup','xylagroup2012');
 				$mail->setSmtpTransporter($sendGridTransporter);
+				$mailC->setSmtpTransporter($sendGridTransporter);
 				$mail->setFrom('noreply@xylavie.fr', 'XYLAVIE - Service Contact');
 				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Service Contact');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
