@@ -390,12 +390,16 @@ class XylavieController extends Zend_Controller_Action
 		$query = $this->getRequest();
 		$errors = array();
 		if($query->isPost()) {
+			$this->view->enid = Entite::findEntity(strtoupper($this->view->controller));
 			$encadre = new Encadre();
 			$this->view->ordre	=	Encadre::getLastOrdre();
-			// $encadre->titre = $query->getParam('titre');
-			// $encadre->contenu = $query->getParam('contenu');
-			// $encadre->ordre = $this->view->ordre[0]['MAX'];
-			// $encadre->save();
+			$encadre->titre = $query->getParam('titre');
+			$encadre->entite_id = $this->view->enid[0]->id;
+			$encadre->contenu = $query->getParam('contenu');
+			$encadre->ordre = $this->view->ordre[0]['MAX'];
+			$encadre->save();
+			$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Grand Titre ajouté!');
+			$this->_redirect('/xylavie/modif');
 		}
 		
 
