@@ -9,22 +9,33 @@
 	<div id="flashMessengers">
 	<?php $flashMessenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
 		if ($flashMessenger->setNamespace('success')->hasMessages()): ?>
-		    <div class="alert alert-success">
-		    <a class="close" data-dismiss="alert">×</a>
-		    <?php foreach ($flashMessenger->getMessages() as $msg): ?>
-		        <?php echo $msg ?>
-		    <?php endforeach; ?>
-		    </div>
+		<div id="noty_success_1337595673730" class="noty_bar noty_theme_mitgux noty_layout_topCenter noty_success noty_closable" style="left: 400px; display: block;">
+			<div class="noty_message">
+				<span class="noty_text">
+					<?php foreach ($flashMessenger->getMessages() as $msg): ?>
+					<?php echo $msg ?>
+					<?php endforeach; ?>
+				</span>
+				<div class="noty_close"></div>
+			</div>
+		</div>
+		<div class="noty_modal noty_theme_mitgux" style="display: block;"></div>
+
+
+
+<!-- 		    <div class="noty-message">
+		    <a class="close" data-dismiss="alert">×</a> -->
+<!-- 		    </div> -->
 		<?php endif; ?>
 
-		<?php if ($flashMessenger->setNamespace('error')->hasMessages()): ?>
+<!-- 		<?php if ($flashMessenger->setNamespace('error')->hasMessages()): ?>
 		    <div class="alert alert-error">
 		    <a class="close" data-dismiss="alert">×</a>
 		    <?php foreach ($flashMessenger->getMessages() as $msg): ?>
 		        <?php echo $msg ?>
 		    <?php endforeach; ?>
 		    </div>
-		<?php endif; ?>
+		<?php endif; ?> -->
 	</div>
 	<div id="headerP">
 		<div id="bandeau">		

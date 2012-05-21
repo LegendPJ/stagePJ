@@ -161,7 +161,10 @@
 	/* noty_alert */
 	.noty_bar.noty_theme_default.noty_alert {
 		background-color: #fff;
-		border-color: #ccc;
+		background-image:url("../images/using/loader.gif"); /* Ajout de PJ*/
+		background-position:5px 3px; /* Ajout de PJ*/
+		background-repeat:no-repeat; /* Ajout de PJ*/
+		border-color: #ccc; /* Ajout de PJ*/
 	}
 	/* noty_error */
 	.noty_bar.noty_theme_default.noty_error {

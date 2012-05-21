@@ -22,40 +22,14 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
-				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
-				$this->view->dateJour = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
 				$this->view->adresse = $this->view->infos['adresse'].'<br>'. $this->view->infos['codeP'].' '.$this->view->infos['ville'];
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC->setScriptHtml("confirmDevisSan");
 				$layoutMail->setScriptHtml("devissan");
-				$layoutMail->assign( array(
-				"dateJour" => $this->view->dateJour,
-				"controller" => strtoupper($this->view->controller),
-				"civilite" => $this->view->infos['civ'],
-				"nom" => $this->view->infos['nom'],
-				"prenom" => $this->view->infos['prenom'],
-				"date" => $this->view->infos['dateN'],
-				"conjoint" => $this->view->infos['conjoint'],
-				"dateC" => $this->view->infos['dateNC'],
-				"nbenfant" => $this->view->infos['nbenfant'],
-				"date1" => $this->view->infos['date1'],
-				"date2" => $this->view->infos['date2'],
-				"date3" => $this->view->infos['date3'],
-				"adresse" => $this->view->adresse,
-				"mail" => $this->view->infos['email'],
-				"tel" => $this->view->infos['telephone'],
-				"q1" => $this->view->infos['q1'],
-				"q2" => $this->view->infos['q2'],
-				"q3" => $this->view->infos['q3']
-				));
-
-				if (count($this->infos["q4"]) != 0)
-					$layoutMail->assign(array("q4" => $this->view->infos['q4']));
-
-				$layoutMailC->assign( array(
-					"date" => $this->view->dateJour,
+				$layoutMail->assign(array("infos" => $this->view->infos, "date" => $this->view->date));
+				$layoutMailC->assign(array(
+					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller),
 					"civilite" => $this->view->infos['civ'],
 					"nom" => $this->view->infos['nom']
@@ -90,36 +64,13 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
-				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
-				$this->view->dateJour = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
-				$this->view->adresse = $this->view->infos['adresse'].'<br>'. $this->view->infos['codeP'].' '.$this->view->infos['ville'];
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC->setScriptHtml("confirmDevisDep");
 				$layoutMail->setScriptHtml("devisdep");
-				$layoutMail->assign( array(
-				"dateJour" => $this->view->dateJour,
-				"controller" => strtoupper($this->view->controller),
-				"civilite" => $this->view->infos['civ'],
-				"nom" => $this->view->infos['nom'],
-				"prenom" => $this->view->infos['prenom'],
-				"date" => $this->view->infos['dateN'],
-				"conjoint" => $this->view->infos['conjoint'],
-				"civC" => $this->view->infos['civC'],
-				"nomC" => $this->view->infos['nomC'],
-				"prenomC" => $this->view->infos['prenomC'],
-				"dateC" => $this->view->infos['dateC'],
-				"adresse" => $this->view->adresse,
-				"mail" => $this->view->infos['email'],
-				"tel" => $this->view->infos['telephone'],
-				"rente" => $this->view->infos['rente'],
-				"depT" => $this->view->infos['depT'],
-				"depTP" => $this->view->infos['depTP']
-				));
-
+				$layoutMail->assign( array("date" => $this->view->date,"infos" => $this->view->infos));
 				$layoutMailC->assign( array(
-					"date" => $this->view->dateJour,
+					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller),
 					"civilite" => $this->view->infos['civ'],
 					"nom" => $this->view->infos['nom']
@@ -153,30 +104,13 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
-				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
-				$this->view->dateJour = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
-				$this->view->adresse = $this->view->infos['adresse'].'<br>'. $this->view->infos['codeP'].' '.$this->view->infos['ville'];
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC->setScriptHtml("confirmDevisRet");
 				$layoutMail->setScriptHtml("devisret");
-				$layoutMail->assign( array(
-					"dateJour" => $this->view->dateJour,
-					"controller" => strtoupper($this->view->controller),
-					"civilite" => $this->view->infos['civ'],
-					"nom" => $this->view->infos['nom'],
-					"prenom" => $this->view->infos['prenom'],
-					"date" => $this->view->infos['dateN'],
-					"adresse" => $this->view->adresse,
-					"mail" => $this->view->infos['email'],
-					"tel" => $this->view->infos['telephone'],
-					"avenir" => $this->view->infos['avenir'],
-					"projets" => $this->view->infos['projets']
-					));
-
+				$layoutMail->assign(array("date" => $this->view->date, "infos" => $this->view->infos));
 				$layoutMailC->assign( array(
-					"date" => $this->view->dateJour,
+					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller),
 					"civilite" => $this->view->infos['civ'],
 					"nom" => $this->view->infos['nom']
@@ -210,30 +144,13 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
-				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
-				$this->view->dateJour = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
-				$this->view->adresse = $this->view->infos['adresse'].'<br>'. $this->view->infos['codeP'].' '.$this->view->infos['ville'];
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC->setScriptHtml("confirmDevisEpa");
 				$layoutMail->setScriptHtml("devisepa");
-				$layoutMail->assign( array(
-					"dateJour" => $this->view->dateJour,
-					"controller" => strtoupper($this->view->controller),
-					"civilite" => $this->view->infos['civ'],
-					"nom" => $this->view->infos['nom'],
-					"prenom" => $this->view->infos['prenom'],
-					"date" => $this->view->infos['dateN'],
-					"adresse" => $this->view->adresse,
-					"mail" => $this->view->infos['email'],
-					"tel" => $this->view->infos['telephone'],
-					"avenir" => $this->view->infos['avenir'],
-					"projets" => $this->view->infos['projets']
-					));
-
+				$layoutMail->assign(array("date" => $this->view->date, "infos" => $this->view->infos));
 				$layoutMailC->assign( array(
-					"date" => $this->view->dateJour,
+					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller),
 					"civilite" => $this->view->infos['civ'],
 					"nom" => $this->view->infos['nom']
@@ -266,10 +183,37 @@ class XylavieController extends Zend_Controller_Action
 		$this->view->form = new App_forms_emprunt();
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
-				$this->view->civilite = $this->view->form->getCivilite();
-				$this->view->nom = $this->view->form->getNom();
-				$this->view->prenom = $this->view->form->getPrenom();
-				//TESTS + TEST CAPTCHA
+				$this->view->infos = $this->getRequest()->getParams();
+				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
+				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
+				$layoutMailC->setScriptHtml("confirmDevisAss");
+				$layoutMail->setScriptHtml("devisass");
+				$layoutMail->assign(array("date" => $this->view->date, "infos" => $this->view->infos));
+				$layoutMailC->assign(array(
+					"date" => $this->view->date,
+					"controller" => strtoupper($this->view->controller),
+					"civilite" => $this->view->infos['civ'],
+					"nom" => $this->view->infos['nom']
+				));
+				$mail = new Webf_Mail($layoutMail);
+				$mailC = new Webf_Mail($layoutMailC);
+				$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('xylagroup','xylagroup2012');
+				$mail->setSmtpTransporter($sendGridTransporter);
+				$mailC->setSmtpTransporter($sendGridTransporter);
+				$mail->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Assurance Emprunteur');
+				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Assurance Emprunteur');
+				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
+				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
+				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mail->setSubject('Demande de Devis Assurance Emprunteur');
+				$mailC->setSubject('Demande de Devis Assurance Emprunteur');
+				$mail->send();
+				$mailC->send();
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de renseignements envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
+				$this->_helper->Redirector->gotoUrl('/xylavie/');
+			} else {
+				$this->_helper->FlashMessenger('Le formulaire comporte des erreurs')->setNamespace('error');
+				$this->view->errorElements = $this->view->form->getMessages();
 			}
 		}
 	}
@@ -280,28 +224,13 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
-				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
-				$this->view->dateJour = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC->setScriptHtml("confirmDevisPre");
 				$layoutMail->setScriptHtml("devispre");
-				$layoutMail->assign( array(
-					"dateJour" => $this->view->dateJour,
-					"controller" => strtoupper($this->view->controller),
-					"civilite" => $this->view->infos['civ'],
-					"nom" => $this->view->infos['nom'],
-					"prenom" => $this->view->infos['prenom'],
-					"mail" => $this->view->infos['email'],
-					"tel" => $this->view->infos['telephone'],
-					"statut" => $this->view->infos['statut'],
-					"demande" => $this->view->infos['demande'],
-					"message" => $this->view->infos['message']
-					));
-
-				$layoutMailC->assign( array(
-					"date" => $this->view->dateJour,
+				$layoutMail->assign(array("date" => $this->view->date, "infos" => $this->view->infos));
+				$layoutMailC->assign(array(
+					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller),
 					"civilite" => $this->view->infos['civ'],
 					"nom" => $this->view->infos['nom']
@@ -340,19 +269,11 @@ class XylavieController extends Zend_Controller_Action
 				$layoutMailC->setScriptHtml("confirmcontact");
 				$layoutMail->setScriptHtml("contact");
 				$layoutMail->assign(array("infos" => $this->view->infos, "date" => $this->view->date));
-				// $layoutMail->assign( array(
-				// 	"date" => $date,
-				// 	"controller" => strtoupper($this->view->controller),
-				// 	"civilite" => $this->view->infos['civilite'],
-				// 	"nom" => $this->view->infos['nom'],
-				// 	"message" => $this->view->infos['message'],
-				// 	"mail" => $this->view->infos['email'],
-				// 	"tel" => $this->view->infos['telephone']
-				// ));
-
 				$layoutMailC->assign( array(
-					"date" => $this->view->date,
-					"controller" => strtoupper($this->view->controller)
+					"date" => $this->view->dateJour,
+					"controller" => strtoupper($this->view->controller),
+					"civilite" => $this->view->infos['civ'],
+					"nom" => $this->view->infos['nom']
 				));
 				$mail = new Webf_Mail($layoutMail);
 				$mailC = new Webf_Mail($layoutMailC);
@@ -382,54 +303,13 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
-				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
-				$this->view->dateJour = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC->setScriptHtml("confirmDevisAcc");
 				$layoutMail->setScriptHtml("devisacc");
-				$layoutMail->assign( array(
-					"dateJour" => $this->view->dateJour,
-					"controller" => strtoupper($this->view->controller),
-					"civilite" => $this->view->infos['civ'],
-					"nom" => $this->view->infos['nom'],
-					"prenom" => $this->view->infos['prenom'],
-					"date" => $this->view->infos['dateN'],
-					"mail" => $this->view->infos['email'],
-					"tel" => $this->view->infos['telephone'],
-					"adresse" => $this->view->infos['adresse'],
-					"codeP" => $this->view->infos['codeP'],
-					"ville" => $this->view->infos['ville'],
-					"contrat" => $this->view->infos['contrat'],
-					"conjoint" => $this->view->infos['conjoint'],
-					"nomC" => $this->view->infos['nomC'],
-					"prenomC" => $this->view->infos['prenomC'],
-					"dateC" => $this->view->infos['dateC'],
-					"nombreenfant" => $this->view->infos['nombreenfant'],
-					"nom1" => $this->view->infos['nom1'],
-					"prenom1" => $this->view->infos['prenom1'],
-					"date1" => $this->view->infos['date1'],
-					"nom2" => $this->view->infos['nom2'],
-					"prenom2" => $this->view->infos['prenom2'],
-					"date2" => $this->view->infos['date2'],
-					"nom3" => $this->view->infos['nom3'],
-					"prenom3" => $this->view->infos['prenom3'],
-					"date3" => $this->view->infos['date3'],
-					"nom4" => $this->view->infos['nom4'],
-					"prenom4" => $this->view->infos['prenom4'],
-					"date4" => $this->view->infos['date4'],
-					"nom5" => $this->view->infos['nom5'],
-					"prenom5" => $this->view->infos['prenom5'],
-					"date5" => $this->view->infos['date5'],
-					"paiement" => $this->view->infos['hide'],
-					"cg" => $this->view->infos['cg']
-					));
-				if (isset( $this->view->infos['civC']))
-					$layoutMail->assign( array("civC" => $this->view->infos['civC']));
-				
+				$layoutMail->assign(array("date" => $this->view->date,"infos" => $this->view->infos));				
 				$layoutMailC->assign( array(
-					"date" => $this->view->dateJour,
+					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller),
 					"civilite" => $this->view->infos['civ'],
 					"nom" => $this->view->infos['nom']
@@ -448,7 +328,6 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setSubject('Demande de Devis Garanties Accidents de la Vie');
 				$mail->send();
 				$mailC->send();
-				// $this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_forward('souscription', $this->view->controller, null, array('infos'=> $this->view->infos));
 			} else {
 				$this->_helper->FlashMessenger('Le formulaire comporte des erreurs')->setNamespace('error');

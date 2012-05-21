@@ -1,27 +1,27 @@
 <body>
-<p>Bonjour, <br><br>En date du <?php echo $this->dateJour; ?>, la société <?php echo strtoupper($this->controller); ?> a reçu une demande de devis <strong>Epargne</strong>.
+<p>Bonjour, <br><br>En date du <span style="font-weight:bold"><?php echo $this->date; ?></span>, la société <?php echo strtoupper($this->infos['controller']); ?> a reçu une demande de devis <strong>Epargne</strong>.
 <br>
 <br>
 Voici les informations relatives à la demande de devis :
 <br>
-Le demandeur est <span style="font-weight:bold"><?php echo $this->civilite; ?> <?php echo $this->nom; ?> <?php echo $this->prenom; ?></span>, <?php echo ($this->civilite == "M.") ? "il" : "elle";?> est né<?php echo ($this->civilite == "Mme." || $this->civilite == "Mlle.") ? "e" : "";?> le <span style="font-weight:bold"><?php echo $this->date; ?></span>.
+Le demandeur est <span style="font-weight:bold"><?php echo $this->infos['civ']; ?> <?php echo $this->infos['nom']; ?> <?php echo $this->infos['prenom']; ?></span>, <?php echo ($this->infos['civ'] == "M.") ? "il" : "elle";?> est né<?php echo ($this->infos['civ'] == "Mme." || $this->infos['civ'] == "Mlle.") ? "e" : "";?> le <span style="font-weight:bold"><?php echo $this->infos['dateN']; ?></span>.
 <br>
 <br> L'adresse relative à la demande est : <br>
-<span style="font-weight:bold"><?php echo $this->adresse; ?></span>
+<span style="font-weight:bold"><?php echo $this->infos['adresse']; ?></span><br>
+<span style="font-weight:bold"><?php echo $this->infos['codeP']; ?> <?php echo $this->infos['ville']; ?></span>
 <br><br>
-Son adresse e-mail est <?php echo $this->mail; ?> et son numéro de téléphone est le <span style="font-weight:bold"><?php echo $this->tel; ?></span>
+Son adresse e-mail est <?php echo $this->infos['email']; ?> et son numéro de téléphone est le <span style="font-weight:bold"><?php echo $this->infos['telephone']; ?></span>
 <br>
 
-Cette personne est <span style="font-weight:bold"><?php echo $this->avenir;?>e par rapport à son avenir</span>, et souhaite : 
+Cette personne est <span style="font-weight:bold"><?php echo $this->infos['avenir'];?>e par rapport à son avenir</span>, et souhaite : 
 <br>
-<?php $nbMed = count($this->projets);
-		for ($tot=0; $tot < $nbMed ; $tot++) { 
-			echo '<span style="font-weight:bold;margin-left : 30px;">- '.$this->projets[$tot].'<br></span>';
-		} ?>
-<br>
+<?php $nbMed = count($this->infos['projets']);
+	for ($tot=0; $tot < $nbMed ; $tot++) { 
+		echo '<span style="font-weight:bold;margin-left : 30px;">- '.$this->infos['projets'][$tot].'<br></span>';
+	} ?>
 <br>
 Bonne journée</p>
 <p style="margin:0 0 0 0; padding-bottom: 5px; font-size: 0.8em; border-bottom: 2px solid #e0e0e0;"><span style="margin-left:10px;">Ceci est un email automatique, merci de ne pas y répondre.</span></p>
-<p style="margin: 5px 0 0 10px;"><a style="text-decoration:none;  font-weight:bold; " href=""><span style="color:#9ebad1;">www.</span><span style="color:#4c657d;">xylagroup</span><span style="color:#9ebad1;">.fr</span></a></p>
-<p style="color:#435d74; margin-left : 13px; font-size: 0.7em"><?php echo $this->controller; ?> SARL au capital de 50 000 € / 492 320 320 Lyon / Société de Courtage en Assurances / NAF 6622Z / Siège Social : 3 Chemin de Parenty 69250 NEUVILLE SUR SAONE / 07007951 ORIAS / Inscriptions au registre des intermédiaires d’assurances vérifiables sur www.orias.fr</p>
+<p style="margin: 5px 0 0 10px;"><a style="text-decoration:none;  font-weight:bold; " href="http://www.xylagroup.fr"><span style="color:#9ebad1;">www.</span><span style="color:#4c657d;">xylagroup</span><span style="color:#9ebad1;">.fr</span></a></p>
+<p style="color:#435d74; margin-left : 13px; font-size: 0.7em"><?php echo $this->infos['controller']; ?> SARL au capital de 50 000 € / 492 320 320 Lyon / Société de Courtage en Assurances / NAF 6622Z / Siège Social : 3 Chemin de Parenty 69250 NEUVILLE SUR SAONE / 07007951 ORIAS / Inscriptions au registre des intermédiaires d’assurances vérifiables sur www.orias.fr</p>
 </body>

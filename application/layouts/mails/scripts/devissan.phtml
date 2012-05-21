@@ -1,49 +1,53 @@
 <body>
-<p>Bonjour, <br><br>En date du <?php echo $this->dateJour; ?>, la société <?php echo strtoupper($this->controller); ?> a reçu une demande de devis <strong>Santé</strong>.
+<p>Bonjour, <br><br>En date du <span style="font-weight:bold"><?php echo $this->date; ?></span>, la société <?php echo strtoupper($this->infos['controller']); ?> a reçu une demande de devis <strong>Santé</strong>.
 <br>
 <br>
 Voici les informations relatives à la demande de devis :
 <br>
-<span style="font-weight:bold"><?php echo $this->civilite; ?> <?php echo $this->nom; ?> <?php echo $this->prenom; ?></span>, qui est le demandeur, est né<?php echo ($this->civilite == "Mme." || $this->civilite == "Mlle.") ? "e" : "";?> le <span style="font-weight:bold"><?php echo $this->date; ?></span><?php if($this->conjoint == "Oui") {echo ' et son(sa) conjoint(e), est né(e) le <span style="font-weight:bold">'.$this->dateC.'</span>';}?>.
-<?php 	if ($this->nbenfant != "aucun") :?>
-	<?php echo ($this->civilite == "M.") ? "Le client" : "La cliente";?> a ajouté <?php echo $this->nbenfant; ?> enfant<?php echo ($this->nbenfant == 1) ? "" : "s";?>.
-	<br><br>
-<?php 	if($this->nbenfant == 1) { 
-		echo 'Voici sa date de naissance : '.$this->date1.'.'; 
-	} elseif ($this->nbenfant == 2) {
-		echo '<span style="margin-left : 30px;">- date de naissance du 1er enfant : '.$this->date1.'.<br></span>'; 
-		echo '<span style="margin-left : 30px;">- date de naissance du 2e enfant : '.$this->date2.'.<br></span>'; 
-	} elseif ($this->nbenfant == 3) {
-		echo '<span style="margin-left : 30px;">- date de naissance du 1er enfant : '.$this->date1.'.<br></span>'; 
-		echo '<span style="margin-left : 30px;">- date de naissance du 2e enfant : '.$this->date2.'.<br></span>'; 
-		echo '<span style="margin-left : 30px;">- date de naissance du 3e enfant : '.$this->date3.'.<br></span>'; 
-	} elseif ($this->nbenfant == "plus de 3") {
-		echo '<span style="margin-left : 30px;">- date de naissance du 1er enfant : '.$this->date1.'.<br></span>'; 
-		echo '<span style="margin-left : 30px;">- date de naissance du 2e enfant : '.$this->date2.'.<br></span>'; 
-		echo '<span style="margin-left : 30px;">- date de naissance du 3e enfant : '.$this->date3.'.<br></span>'; 
-		echo '<span style="margin-left : 30px;" style="font-weight:bold">';echo ($this->civilite == "M.") ? "Le client" : "La cliente";echo ' a plus de 3 enfants.</span>';
+<span style="font-weight:bold"><?php echo $this->infos['civ']; ?> <?php echo $this->infos['nom']; ?> <?php echo $this->infos['prenom']; ?></span>, qui est le demandeur, est né<?php echo ($this->infos['civ'] == "Mme." || $this->infos['civ'] == "Mlle.") ? "e" : "";?> le <span style="font-weight:bold"><?php echo $this->infos['dateN']; ?></span><?php if($this->infos['conjoint'] == "Oui") {echo ' et son(sa) conjoint(e), est né(e) le <span style="font-weight:bold">'.$this->infos['dateNC'].'</span>';}?>.
+<?php 	if ($this->infos['nbenfant'] != "aucun") :?>
+	<?php echo ($this->infos['civ'] == "M.") ? "Le client" : "La cliente";?> a ajouté <?php echo $this->infos['nbenfant']; ?> enfant<?php echo ($this->infos['nbenfant'] == 1) ? "" : "s";?>.
+	<br>
+<?php 	if($this->infos['nbenfant'] == 1) { 
+		echo 'Voici sa date de naissance : '.$this->infos['date1'].'.'; 
+	} elseif ($this->infos['nbenfant'] == 2) {
+		echo '<span style="margin-left : 30px;">- date de naissance du 1er enfant : '.$this->infos['date1'].'.<br></span>'; 
+		echo '<span style="margin-left : 30px;">- date de naissance du 2e enfant  : '.$this->infos['date2'].'.<br></span>'; 
+	} elseif ($this->infos['nbenfant'] == 3) {
+		echo '<span style="margin-left : 30px;">- date de naissance du 1er enfant : '.$this->infos['date1'].'.<br></span>'; 
+		echo '<span style="margin-left : 30px;">- date de naissance du 2e enfant  : '.$this->infos['date2'].'.<br></span>'; 
+		echo '<span style="margin-left : 30px;">- date de naissance du 3e enfant  : '.$this->infos['date3'].'.<br></span>'; 
+	} elseif ($this->infos['nbenfant'] == "plus de 3") {
+		echo '<span style="margin-left : 30px;">- date de naissance du 1er enfant : '.$this->infos['date1'].'.<br></span>'; 
+		echo '<span style="margin-left : 30px;">- date de naissance du 2e enfant  : '.$this->infos['date2'].'.<br></span>'; 
+		echo '<span style="margin-left : 30px;">- date de naissance du 3e enfant  : '.$this->infos['date3'].'.<br></span>'; 
+		echo '<span style="margin-left : 30px; font-weight:bold">';echo ($this->infos['civ'] == "M.") ? "Le client" : "La cliente";echo ' a plus de 3 enfants.</span>';
 	}?>
 <?php 	endif; ?>
 <br>
 <br> L'adresse relative à la demande est : <br>
-<span style="font-weight:bold"><?php echo $this->adresse; ?></span>
+<span style="font-weight:bold"><?php echo $this->infos['adresse']; ?></span><br>
+<span style="font-weight:bold"><?php echo $this->infos['codeP']; ?> <?php echo $this->infos['ville']; ?></span>
+
 <br><br>
-Son adresse e-mail est <?php echo $this->mail; ?> et son numéro de téléphone est le <span style="font-weight:bold"><?php echo $this->tel; ?></span>
+Son adresse e-mail est <?php echo $this->infos['email']; ?> et son numéro de téléphone est le <span style="font-weight:bold"><?php echo $this->infos['telephone']; ?></span>
 <br>
 
-Cette personne <span style="font-weight:bold"><?php echo ($this->q1 == "Oui") ? "consulte" : "ne consulte pas";?> régulièrement </span>des spécialistes, <span style="font-weight:bold"><?php echo ($this->q2 == "Oui") ? "a" : "n'a pas";?> de forts besoins </span>en optique ou en dentaire. De plus, <?php echo ($this->civilite == "M.") ? "le client" : "la cliente";?> <span style="font-weight:bold"><?php echo ($this->q3 == "Oui") ? "souhaite" : "ne souhaite pas";?> être remboursé<?php echo ($this->civilite == "M.") ? "" : "e";?> </span>de la chambre particulière ou des frais annexes lors de son hospitalisation.
-<br>
-<?php $nbMed = count($this->q4); ?>
+Cette personne <span style="font-weight:bold"><?php echo ($this->infos['q1'] == "Oui") ? "consulte" : "ne consulte pas";?> régulièrement </span>des spécialistes, <span style="font-weight:bold"><?php echo ($this->infos['q2'] == "Oui") ? "a" : "n'a pas";?> de forts besoins </span>en optique ou en dentaire. De plus, <?php echo ($this->infos['civ'] == "M.") ? "le client" : "la cliente";?> <span style="font-weight:bold"><?php echo ($this->infos['q3'] == "Oui") ? "souhaite" : "ne souhaite pas";?> être remboursé<?php echo ($this->infos['civ'] == "M.") ? "" : "e";?> </span>de la chambre particulière ou des frais annexes lors de son hospitalisation.
+<br><br>
+<?php if(!empty($this->infos['q4'])) { 
+	$nbMed = count($this->infos['q4']); 
+} else $nbMed = 0; ?>
 <?php if ($nbMed != 0) {
 	echo 'Cette personne a recours à des médecines naturelles :<br>';
 		for ($tot=0; $tot < $nbMed ; $tot++) { 
-			echo '<span style="margin-left : 30px;font-weight:bold">- '.$this->q4[$tot].'<br></span>';
+			echo '<span style="margin-left : 30px;font-weight:bold">- '.$this->infos['q4'][$tot].'<br></span>';
 		} 
 	} else { echo'Cette personne n\'a pas recours à des médecines naturelles.'; } ?>
 <br>
 <br>
 Bonne journée</p>
 <p style="margin:0 0 0 0; padding-bottom: 5px; font-size: 0.8em; border-bottom: 2px solid #e0e0e0;"><span style="margin-left:10px;">Ceci est un email automatique, merci de ne pas y répondre.</span></p>
-<p style="margin: 5px 0 0 10px;"><a style="text-decoration:none;  font-weight:bold; " href=""><span style="color:#9ebad1;">www.</span><span style="color:#4c657d;">xylagroup</span><span style="color:#9ebad1;">.fr</span></a></p>
-<p style="color:#435d74; margin-left : 13px; font-size: 0.7em"><?php echo $this->controller; ?> SARL au capital de 50 000 € / 492 320 320 Lyon / Société de Courtage en Assurances / NAF 6622Z / Siège Social : 3 Chemin de Parenty 69250 NEUVILLE SUR SAONE / 07007951 ORIAS / Inscriptions au registre des intermédiaires d’assurances vérifiables sur www.orias.fr</p>
+<p style="margin: 5px 0 0 10px;"><a style="text-decoration:none;  font-weight:bold; " href="http://www.xylagroup.fr"><span style="color:#9ebad1;">www.</span><span style="color:#4c657d;">xylagroup</span><span style="color:#9ebad1;">.fr</span></a></p>
+<p style="color:#435d74; margin-left : 13px; font-size: 0.7em"><?php echo $this->infos['controller']; ?> SARL au capital de 50 000 € / 492 320 320 Lyon / Société de Courtage en Assurances / NAF 6622Z / Siège Social : 3 Chemin de Parenty 69250 NEUVILLE SUR SAONE / 07007951 ORIAS / Inscriptions au registre des intermédiaires d’assurances vérifiables sur www.orias.fr</p>
 </body>

@@ -152,20 +152,20 @@ class App_forms_emprunt extends Zend_Form
 
 		//DEBUT CO-EMPRUNTEUR
 		$this->civCo = new Zend_Form_Element_Radio('civCo');
-		$this->civCo->setLabel("Vous êtes")
+		$this->civCo->setLabel("Sa civilité")
 			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Mlle.' => 'Mlle.'))
 			->setDecorators($decorators)
 			->setOptions(array('separator'=>''));
 		               
 		$this->nomCo = new Zend_Form_Element_Text('nomCo');
-		$this->nomCo->setLabel("Votre Nom")
+		$this->nomCo->setLabel("Son Nom")
 			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Remplacez les caractères spéciaux par un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
 			->setDecorators($decorators);
 					   
 		$this->prenomCo = new Zend_Form_Element_Text('prenomCo');
-		$this->prenomCo->setLabel("Votre Prénom")
+		$this->prenomCo->setLabel("Son Prénom")
 			->addValidator('Alpha', true, array('allowWhiteSpace' => true, 'messages' => 'Remplacez les caractères spéciaux par un espace')) //que des lettres !
 			->addFilter('StripTags')
 			->addFilter('StringTrim')
@@ -182,12 +182,12 @@ class App_forms_emprunt extends Zend_Form
 			->setDecorators($decorators);
 
 		$this->professionCo = new Zend_Form_Element_Select('professionCo');
-		$this->professionCo->setLabel("Profession")
+		$this->professionCo->setLabel("Sa Profession")
 			->setDecorators($decorators)
 			->addMultiOptions(array('' => '','Artisan'=>'Artisan','Commerçant'=>'Commerçant','Salarié Cadre'=>'Salarié Cadre','Salarié non cadre'=>'Salarié non cadre','Fonctionnaire'=>'Fonctionnaire','Auxiliaire Médical'=>'Auxiliaire Médical','Avocat'=>'Avocat','Expert-Ingénieur'=>'Expert-Ingénieur','Médecin'=>'Médecin','Pharmacien'=>'Pharmacien','Sans Profession'=>'Sans Profession','Autre'=>'Autre'	));
 
 		$this->fumeurCo = new Zend_Form_Element_Radio('fumeurCo');
-		$this->fumeurCo->setLabel("Êtes-vous fumeur ?")
+		$this->fumeurCo->setLabel("Est-il fumeur ?")
 			->setDecorators($decorators)
 			->setOptions(array('separator'=>''))
 			->addMultiOptions(array('Oui'=>'Oui','Non'=>'Non'));
@@ -202,8 +202,8 @@ class App_forms_emprunt extends Zend_Form
 			->setDecorators($decorators)
 			->addMultiOptions(array('- de 15.000'=>'- de 15.000', '+ de 15.000'=>'+ de 15.000'));
 
-		$this->garantiesC = new Zend_Form_Element_Select('garantiesC');
-		$this->garantiesC->setLabel("Garanties souhaitées")
+		$this->garantiesCo = new Zend_Form_Element_Select('garantiesCo');
+		$this->garantiesCo->setLabel("Garanties souhaitées")
 			->setDecorators($decorators)
 			->addMultiOptions(array('' => '', 'Décès'=>'Décès','Décès et Chômage'=>'Décès et Chômage', 'Décès et Option Arrêt de Travail/Invalidité'=>'Décès et Option Arrêt de Travail/Invalidité', 'Décès et Option Arrêt de Travail/Invalidité et Chômage'=>'Décès et Option Arrêt de Travail/Invalidité et Chômage'));
 		//FIN CO-EMPRUNTEUR 
@@ -279,7 +279,7 @@ class App_forms_emprunt extends Zend_Form
 			$this->fumeurCo,
 			$this->quotiteCo,
 			$this->kmCo,
-			$this->garantiesC,
+			$this->garantiesCo,
 			$this->adresse,
 			$this->codeP,
 			$this->ville,

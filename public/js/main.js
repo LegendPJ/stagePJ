@@ -4,8 +4,9 @@ jQuery(function($) {
 	$('ul.errors').parent().find('input').addClass('erreur');
 	$('ul.errors').parent().find('select').addClass('erreur');
 	//pour fermer le flash messenger
-	$('.alert .close').click(function(){
-		$(this).parent().slideUp('slow');
+	$('.noty_close').click(function(){
+		$(this).parent().parent().slideUp('slow');
+		$('.noty_modal').css({'display':'none'});
 		return false;
 	});
 	//pour le scrollTop
@@ -143,7 +144,7 @@ jQuery(function($) {
 	//Pour noty
 	$(function(){
 		if($('ul.errors').length > 0) {
-			noty({"text":"Attention ! Le formulaire comporte une ou plusieurs erreurs !","theme":"noty_theme_mitgux","layout":"center","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":4000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":true,"modal":true});
+			noty({"text":"Attention ! Le formulaire comporte une ou plusieurs erreurs !","theme":"noty_theme_mitgux","layout":"topCenter","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":4000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":true,"modal":true});
 		}
 	});
 
@@ -157,7 +158,10 @@ jQuery(function($) {
 			alert("Attention, vous n'avez pas saisi la date de naissance de votre premier, deuxième ou troisième enfant !");
 		} else if (($('#famille select#conjoint').val() == 'Oui') && ($('#famille input#dateNC').val() == '') ) {
 			alert("Attention, vous n'avez pas saisi la date de naissance de votre conjoint(e) !");
-		} else { $('form').submit(); }
+		} else { 
+			$('form').submit(); 
+			noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
+		}
 	});
 	
 	//Validation conjoint dependance
@@ -167,7 +171,10 @@ jQuery(function($) {
 		civCMlle = document.getElementById('civC-Mlle').checked;
 		if (($('#dependance select#conjoint').val() == 'Oui') && (((civCM == false) && (civCMme == false) && (civCMlle == false)) || ($('#dependance input#nomC').val() == '') || ($('#dependance input#prenomC').val() == '') || ($('#dependance input#dateC').val() == ''))) {
 			alert("Attention, vous n'avez pas saisi toutes les informations de votre conjoint(e) !");
-		} else { $('form').submit(); }
+		} else { 
+			$('form').submit(); 
+			noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
+		}
 	});
 
 	//Validation conjoint dependance
@@ -179,16 +186,21 @@ jQuery(function($) {
 		fumeurCoN = document.getElementById('fumeurCo-Non').checked;
 		if (($('#emprunt select#co').val() == 'Oui') && (((civCoM == false) && (civCoMme == false) && (civCoMlle == false)) || ($('#coemprunteur input#nomCo').val() == '') || ($('#coemprunteur input#prenomCo').val() == '') || ($('#coemprunteur input#dateNCo').val() == '') || ($('#coemprunteur select#professionCo').val() == '') || ($('#coemprunteur select#quotiteCo').val() == '') || ((fumeurCoN == false) && (fumeurCoO == false))) ) {
 			alert("Attention, vous n'avez pas saisi toutes les informations de votre co-emprunteur !");
-		} else { $('form').submit(); }
+		} else { 
+			$('form').submit(); 
+			noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
+		}
 	});
 
 	//Validation Retraite et Epargne
 	$('#validRetraite').click(function(){ 
 		$('form').submit();
+		noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
 	});
 
 	$('#validEpargne').click(function(){ 
 		$('form').submit();
+		noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
 	});
 	//Accident
 
@@ -504,14 +516,22 @@ jQuery(function($) {
 		else if (!cg) {
 			alert("Vous devez accepter les conditions générales! ");
 		}
-		else
+		else {
 			$('form').submit();
+			noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
+		}
 	});
 	
 	$('#validPrevoyance').click(function(){
 		$('form').submit();
+		noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
 	});
 
+	$('#validContact').click(function(){
+		$('form').submit();
+		noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
+	});
+	
 	$('#confirmation ul.errors').remove();
 	//POUR WEBKIT
 	$('label[for^="civ-"]').parent().find('ul').addClass('webkiit');

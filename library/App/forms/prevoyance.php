@@ -78,6 +78,7 @@ class App_forms_prevoyance extends Zend_Form
 			$this->email,
 			$this->telephone,
 			$this->statut,
+			$this->demande,
 			$this->message
 		));
 
