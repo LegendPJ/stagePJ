@@ -375,9 +375,31 @@ class XylavieController extends Zend_Controller_Action
 	public function suppAction()
 	{
 		if (!Zend_Auth::getInstance()->hasIdentity())
-		$this->_redirect('/');
+			$this->_redirect('/');
+		$query = $this->getRequest();
 		// Encadre::delete();
 		$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre supprimé!');
 		$this->_redirect('/xylavie/modif');
 	}
+
+	public function ajouterAction()
+	{
+		if (!Zend_Auth::getInstance()->hasIdentity())
+			$this->_redirect('/');
+		$this->_helper->layout->setLayout('layoutstart');
+		$query = $this->getRequest();
+		$errors = array();
+		if($query->isPost()) {
+			$encadre = new Encadre();
+			$this->view->ordre	=	Encadre::getLastOrdre();
+			// $encadre->titre = $query->getParam('titre');
+			// $encadre->contenu = $query->getParam('contenu');
+			// $encadre->ordre = $this->view->ordre[0]['MAX'];
+			// $encadre->save();
+		}
+		
+
+
+	}
+
 }?>

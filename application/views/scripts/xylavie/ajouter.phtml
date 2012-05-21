@@ -1,0 +1,17 @@
+<?php $this->headTitle()->append('Administration - '.strtoupper($this->controller)); ?>
+<?php $this->headScript()->appendFile('/js/tinyModif.js'); ?>
+<br><br>
+<div class="row">
+	<div class="span12" id="ajouter">
+		<h2><?php echo strtoupper($this->controller); ?> - Ajout Grand Titre</h2><br>
+		<form action="" method="post">
+			<label for="titre">Titre<span style="color:#C33">*</span></label>
+			<!-- <span class="help-inline">Faites attention à l'orthographe</span> -->
+			<input type="text" name="titre" value="">
+			<br><br>
+			<label for="contenu">Contenu<span style="color:#C33">*</span></label>
+			<textarea name="contenu"></textarea>
+		</form>
+			<a href="#" class="btn btn-success btn-large" style="margin-left:65px" id="validModif" onclick="return false;"><i class="icon-white icon-ok"></i>Ajouter ce Titre à <?php echo strtoupper($this->controller); ?></a>
+	</div>
+</div>

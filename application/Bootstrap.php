@@ -61,25 +61,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	}
 
-	// protected function _initDefaultEmailTransport()
-	// {
-	// 	$emailConfig = $this->getOption('email');
-
-	// 	$smtpHost = $emailConfig['transportOptionsSmtp']['host'];
-	// 	unset($smtpHost);
-
-	// 	$mailTransport = new Zend_Mail_Transport_Smtp('smtp.gmail.com', $emailConfig['transportOptionsSmtp']);
-
-	// 	Zend_Mail::setDefaultTransport($mailTransport);
-	// }
-    
 	protected function _initPlaceholders()
 	{
 		$this->bootstrap('View');
 		$view = $this->getResource('View');
 		$view->doctype('HTML5');
-
-
 		// Feuilles de style
 		$view->headLink()->prependStylesheet('/css/aristo.css');
 		$view->headLink()->prependStylesheet('/css/jquery.noty.css');
@@ -87,25 +73,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view->headLink()->prependStylesheet('/css/noty_theme_mitgux.css');
 		$view->headLink()->prependStylesheet('/css/global.css');
 		$view->headLink()->prependStylesheet('/css/bmin.css')
-		// $view->headLink()->prependStylesheet('/css/QapTcha.jquery.css');
-		->headLink(array('rel' => 'shortcut icon',
-		                                    'href' => '/images/using/favicon.ico'),
-		                          	    'PREPEND');
-
+		->headLink(array('rel' => 'shortcut icon','href' => '/images/using/favicon.ico'),'PREPEND');
 		// Fichiers jQuery
 		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js'); //TINY
-		//BOOTSTRAP
-		$view->headScript()->prependFile('/js/bootstrap-tab.js');
-		$view->headScript()->prependFile('/js/bootstrap-carousel.js');
-		$view->headScript()->prependFile('/js/bootstrap-tooltip.js');
-		$view->headScript()->prependFile('/js/bootstrap-dropdown.js');
-		$view->headScript()->prependFile('/js/bootstrap-modal.js');
-		//Q
-		// $view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.js');
+		$view->headScript()->prependFile('/js/bootstrap-tab.js'); //Bootstrap
+		$view->headScript()->prependFile('/js/bootstrap-carousel.js'); //Bootstrap
+		$view->headScript()->prependFile('/js/bootstrap-tooltip.js'); //Bootstrap
+		$view->headScript()->prependFile('/js/bootstrap-dropdown.js'); //Bootstrap
+		$view->headScript()->prependFile('/js/bootstrap-modal.js'); //Bootstrap
 		$view->headScript()->prependFile('/js/jquery.noty.js');
-		// $view->headScript()->prependFile('/js/jqueryQ/QapTcha.jquery.min.js');
-		// $view->headScript()->prependFile('/js/jqueryQ/jquery.ui.touch.js');
-		// $view->headScript()->prependFile('/js/jqueryQ/jquery-ui.js');
 		$view->headScript()->prependFile('/js/datepicker.js');
 		$view->headScript()->prependFile('/js/main.js');
 		$view->headScript()->prependFile('/js/jquery-ui.js');

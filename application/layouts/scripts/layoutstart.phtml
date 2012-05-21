@@ -6,7 +6,7 @@
 <?php echo $this->headLink()->appendStylesheet('/css/body_base.css')->appendStylesheet('/css/start.css'); ?>
 </head>
 <body>
-	<div id="flashMessengers">
+<!-- 	<div id="flashMessengers">
 	<?php $flashMessenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
 		if ($flashMessenger->setNamespace('success')->hasMessages()): ?>
 		    <div class="alert alert-success">
@@ -25,7 +25,7 @@
 		    <?php endforeach; ?>
 		    </div>
 		<?php endif; ?>
-	</div>
+	</div> -->
 
 	<div class="side">
 		<div class="logout">
@@ -39,7 +39,7 @@
 	<div id="headerP">
 		<div id="bandeau">		
 			<a href="<?php echo $this->url(array('controller'=>'donnees',
-                				 			'action'=>'start'), null, true);?>" title="Administration du site"><img src="<?php echo $this->baseUrl;?>/images/using/bandeauS.png"></a>
+                				 			'action'=>'start'), null, true);?>" title="Administration du site"><img src="<?php echo $this->baseUrl;?>/images/using/bandeauS.jpg"></a>
 		</div>
 	</div>
 		<div id="menu">

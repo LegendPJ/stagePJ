@@ -931,6 +931,27 @@ select#statut {
 #dependance .pager a, #sante .pager a,  #accident .pager a{
 	margin: 0 0 0 -150px;
 }
+
+/* MODIFS */
+
+#ajouter label {
+	color: white;
+	font-size:1.2em;
+	margin-right:20px;
+}
+
+#ajouter input {
+	margin-left:30px;
+}
+
+#ajouter #contenu_tbl {
+	margin-left:30px;
+}
+
+#ajouter textarea {
+	width:500px;
+	height:400px;
+} 
 /* SCROLL TOP */
 
 .scroll {

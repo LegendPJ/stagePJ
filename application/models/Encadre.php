@@ -17,9 +17,15 @@ class Encadre extends BaseEncadre
 		return 	Doctrine_Query::create()
 					->from('encadre en')
 					->execute();
-
 	}
 
+	public function getLastOrdre() {
+
+		return 	Doctrine_Query::create()
+					->select('MAX(en.ordre)')
+					->from('Encadre en')
+					->execute();
+	}
 	public function findEncadreEntite($idEntity) {
 
 		return 	Doctrine_Query::create()
@@ -88,5 +94,9 @@ class Encadre extends BaseEncadre
 				->where("id = ?", $id)
 				->execute();
 				// update Encadre set titre = "Bonjour" where id = 7;
+	}
+
+	public function addEncadre($titre) {
+
 	}
 }
