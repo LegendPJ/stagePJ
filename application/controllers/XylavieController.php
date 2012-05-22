@@ -370,10 +370,10 @@ class XylavieController extends Zend_Controller_Action
 				for ($i=0; $i < $nb; $i++) { 
 					$o = $_POST[$i+1];
 					$elems = explode("-", $o);
-					// $e = 'idAmod'.$i;
-					// $$e = $elems[1];
-					// $var = 'encadre'.$i;
-					// $$var = Encadre::getLOrdre($elems[0]);
+					// $e = 'idAmod'.$i; CA NE SERT PLUS A RIEN C'EST JUSTE AU CAS OU 
+					// $$e = $elems[1]; CA NE SERT PLUS A RIEN C'EST JUSTE AU CAS OU 
+					// $var = 'encadre'.$i; CA NE SERT PLUS A RIEN C'EST JUSTE AU CAS OU 
+					// $$var = Encadre::getLOrdre($elems[0]); CA NE SERT PLUS A RIEN C'EST JUSTE AU CAS OU 
 					$this->view->tabID[$i] = $elems[1];
 					$this->view->tabOrdre[$i] = $elems[0];
 				}
