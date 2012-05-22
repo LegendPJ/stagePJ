@@ -50,4 +50,24 @@ jQuery(function($) {
 			titreok = true;
 		}
 	});
+
+
+	$(function() {
+		$("#sortable").sortable();
+		$("#sortable").disableSelection();
+	});
+
+	$('#ordreModal input:submit').click(function(){
+		var result = $('#sortable').sortable('toArray');
+		var nb = result.length;
+		for (var i = result.length - 1; i >= 0; i--) {
+			$('#ordreModal input#'+nb).val(result[i]+'-'+($('#ordreModal input#'+nb).attr('class')));
+			nb--;
+		};
+		$('form').submit();
+		// for (var i = 1; i >= result.length; i++) {
+		// 	$('#ordreModal input#'+nb).val(i);
+		// 	nb--;
+		// };
+	});
 });

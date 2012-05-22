@@ -28,6 +28,15 @@ class Encadre extends BaseEncadre
 					->execute();
 	}
 
+	public function getLOrdre($idEncadre) {
+
+		return 	Doctrine_Query::create()
+					->select('en.ordre')
+					->from('Encadre en')
+					->where('en.id = ?', $idEncadre)
+					->execute();
+	}
+
 	public function findEncadreEntite($idEntity) {
 
 		return 	Doctrine_Query::create()
@@ -83,7 +92,15 @@ class Encadre extends BaseEncadre
 				->set("titre", "?", $newT)
 				->where("id = ?", $id)
 				->execute();
-				// update Encadre set titre = "Bonjour" where id = 7;
+	}
+
+	public function updateOrdre($ordre, $idEncadre) {
+
+		return Doctrine_Query::create()
+				->update("Encadre")
+				->set("ordre", "?", $ordre)
+				->where("id = ?", $idEncadre)
+				->execute();
 	}
 
 	public function deleteEncadre($id) {

@@ -359,10 +359,29 @@ class XylavieController extends Zend_Controller_Action
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre modifié avec succès!');
 				$this->_redirect('/xylavie/modif');
 			} elseif ($_POST['send'] == 'Supprimer') {
-				$iddel = $id = $_POST['id_del'];
+				$iddel = $_POST['id_del'];
 				Encadre::deleteEncadre($iddel);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre supprimé avec succès!');
 				$this->_redirect('/xylavie/modif');
+			} elseif ($_POST['send'] == 'Ordonner') {
+				$nb = $_POST['nombre'];
+				$this->view->tabID = array();
+				$this->view->tabOrdre = array();
+				for ($i=0; $i < $nb; $i++) { 
+					$o = $_POST[$i+1];
+					$elems = explode("-", $o);
+					// $e = 'idAmod'.$i;
+					// $$e = $elems[1];
+					// $var = 'encadre'.$i;
+					// $$var = Encadre::getLOrdre($elems[0]);
+					$this->view->tabID[$i] = $elems[1];
+					$this->view->tabOrdre[$i] = $elems[0];
+				}
+				// for ($i=0; $i < $nb; $i++) { 
+				// 	Encadre::updateOrdre($tabOrdre['encadre'.$i], $tabID['encadre'.$i]);
+				// }
+				// $this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Ordre modifié avec succès!');
+				// $this->_redirect('/xylavie/modif');
 			}	
 		}
 	}
