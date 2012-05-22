@@ -57,6 +57,10 @@ jQuery(function($) {
 		$("#sortable").disableSelection();
 	});
 
+	$( "#sortable" ).sortable({
+		update: function(event, ui) { console.log(event); console.log(ui); }
+	});
+
 	$('#ordreModal input:submit').click(function(){
 		var result = $('#sortable').sortable('toArray');
 		var nb = result.length;
@@ -65,9 +69,5 @@ jQuery(function($) {
 			nb--;
 		};
 		$('form').submit();
-		// for (var i = 1; i >= result.length; i++) {
-		// 	$('#ordreModal input#'+nb).val(i);
-		// 	nb--;
-		// };
 	});
 });

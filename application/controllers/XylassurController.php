@@ -83,7 +83,22 @@ class XylassurController extends Zend_Controller_Action
 				Encadre::deleteEncadre($iddel);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre supprimé avec succès!');
 				$this->_redirect('/xylassur/modif');
-			}	
+			} elseif ($_POST['send'] == 'Ordonner') {
+				$nb = $_POST['nombre'];
+				$this->view->tabID = array();
+				$this->view->tabOrdre = array();
+				for ($i=0; $i < $nb; $i++) { 
+					$o = $_POST[$i+1];
+					$elems = explode("-", $o);
+					$this->view->tabID[$i] = $elems[1];
+					$this->view->tabOrdre[$i] = Encadre::getLOrdre($elems[0]);
+				}
+				for ($i=0; $i < $nb; $i++) { 
+					Encadre::updateOrdre($this->view->tabOrdre[$i][0]->ordre, $this->view->tabID[$i]);
+				}
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Ordre modifié avec succès!');
+				$this->_redirect('/xylassur/modif');
+			}
 		}
 	}
 

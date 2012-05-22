@@ -377,11 +377,11 @@ class XylavieController extends Zend_Controller_Action
 					$this->view->tabID[$i] = $elems[1];
 					$this->view->tabOrdre[$i] = Encadre::getLOrdre($elems[0]);
 				}
-				// for ($i=0; $i < $nb; $i++) { 
-				// 	Encadre::updateOrdre($tabOrdre['encadre'.$i], $tabID['encadre'.$i]);
-				// }
-				// $this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Ordre modifié avec succès!');
-				// $this->_redirect('/xylavie/modif');
+				for ($i=0; $i < $nb; $i++) { 
+					Encadre::updateOrdre($this->view->tabOrdre[$i], $this->view->tabID[$i][0]->ordre);
+				}
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Ordre modifié avec succès!');
+				$this->_redirect('/xylavie/modif');
 			}	
 		}
 	}
