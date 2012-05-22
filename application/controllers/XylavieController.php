@@ -351,24 +351,19 @@ class XylavieController extends Zend_Controller_Action
 		$this->view->en = Entite::findEntity(strtoupper($this->view->controller));
 		$this->view->encadres = Encadre::findEncadreEntite($this->view->en[0]->id);
 
-		$query = $this->getRequest();
-		$errors = array();
-		if($query->isPost()) {
-			$titre = $query->getParam('titre');
-			$id = $query->getParam('id');
-			//utile ?
-			$notEmptyValidator = new Zend_Validate_NotEmpty();
-			if(!$notEmptyValidator->isValid($titre)) {
-				$errors[] = "Le titre ne peut être vide !";
-			}
-			if( count($errors) ) {
-				$fm = $this->_helper->flashMessenger->addMessage($errors);
-			//Utile ?
-			} else {
+		if (!empty($_POST)){ 
+			if ($_POST['send'] == 'Sauvegarder'){ 
+				$titre = $_POST['titre'];
+				$id = $_POST['id'];
 				Encadre::updateTEncadre($titre, $id);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre modifié avec succès!');
 				$this->_redirect('/xylavie/modif');
-			}
+			} elseif ($_POST['send'] == 'Supprimer') {
+				$iddel = $id = $_POST['id_del'];
+				Encadre::deleteEncadre($iddel);
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre supprimé avec succès!');
+				$this->_redirect('/xylavie/modif');
+			}	
 		}
 	}
 
@@ -388,22 +383,22 @@ class XylavieController extends Zend_Controller_Action
 			$this->_redirect('/');
 		$this->_helper->layout->setLayout('layoutstart');
 		$query = $this->getRequest();
-		$errors = array();
 		if($query->isPost()) {
-			$this->view->enid = Entite::findEntity(strtoupper($this->view->controller));
-			$encadre = new Encadre();
-			$this->view->ordre	=	Encadre::getLastOrdre();
-			$encadre->titre = $query->getParam('titre');
-			$encadre->entite_id = $this->view->enid[0]->id;
-			$encadre->contenu = $query->getParam('contenu');
-			$encadre->ordre = $this->view->ordre[0]['MAX'];
-			$encadre->save();
-			$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Grand Titre ajouté!');
-			$this->_redirect('/xylavie/modif');
+			$titre = $query->getParam('titre');
+			$contenu = $query->getParam('contenu');
+			if (strlen($titre) != 0) {
+				$this->view->enid 	= 	Entite::findEntity(strtoupper($this->view->controller));
+				$this->view->ordre	=	Encadre::getLastOrdre($this->view->enid[0]->id);
+				$encadre 		= 	new Encadre();
+				$encadre->titre 	= 	$titre;
+				$encadre->entite_id 	= 	$this->view->enid[0]->id;
+				$encadre->contenu 	= 	$contenu;
+				$encadre->ordre 	= 	$this->view->ordre[0]['MAX']+1;
+				$encadre->save();
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Grand Titre ajouté!');
+				$this->_redirect('/xylavie/modif');
+			}
 		}
-		
-
-
 	}
 
 }?>

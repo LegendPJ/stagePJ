@@ -149,12 +149,6 @@ ul.nav-pills li a {
 	margin: -24% 10% 0 8%;
 }
 
-/*
-#first {
-	margin: 0 0 0 5%;
-	min-height: 360px;
-}*/
-
 .span5 {
 	margin-left:8%;
 	margin-right:2%;
@@ -211,6 +205,15 @@ ul.nav-pills li a {
 	margin-bottom: 0;
 }
 
+.btn [class^="icon-"] {
+	margin: 2px 4px 2px 0;
+}
+
+.btn-large [class^="icon-"] {
+	margin: 6px 6px 0 0;
+}
+
+.icon-wrench {background-position: -360px -144px;}
 /* FIN MODIFS BOOTSTRAP TWITTER */
 
 
@@ -903,6 +906,12 @@ input[name^="q4[]"], input[name^="demande[]"] {
 
 .vChamp {
 	color:red;
+	display : inline;
+	margin-left: 10px;
+}
+
+#ajouter .vChamp {
+	color:#CC3333;
 	display : inline;
 	margin-left: 10px;
 }

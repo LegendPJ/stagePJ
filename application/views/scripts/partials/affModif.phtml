@@ -6,10 +6,10 @@
 		<h2><?php echo strtoupper($this->controller); ?> - Modifications</h2><br>
 
 		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouter'), null, true);?>"
-		     title="Ajouter un titre pour <?php echo $this->controller; ?>"><button class="btn btn-success">Ajouter</button></a>
+		     title="Ajouter un titre pour <?php echo $this->controller; ?>"><button class="btn btn-success"><i class="icon-white icon-plus"></i>Ajouter</button></a>
 		&nbsp;
 		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ordre'), null, true);?>"
-		     title="Ajouter un titre pour <?php echo $this->controller; ?>"><button class="btn btn-warning">Modifier l'ordre</button></a>
+		     title="Ajouter un titre pour <?php echo $this->controller; ?>"><button class="btn btn-warning"><i class="icon-white icon-wrench"></i>Modifier l'ordre</button></a>
 		<br><br>
 		<table class="table table-bordered">
 			<thead style="background-color:white; color:black">
@@ -24,8 +24,8 @@
 				<tr>
 					<td><?php echo $en->titre; ?></td>
 					<td>
-						<a class="btn btn-mini btn-primary" id="edit" href="#myModal" data-id="<?php echo $en->id; ?>" data-titre="<?php echo $en->titre; ?>" title="Modifier ce Titre" data-toggle="modal">modifier</a>&nbsp;&nbsp;
-						<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Titre" data-toggle="modal" data-id="<?php echo $en->id; ?>" >supprimer</a>
+						<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $en->id; ?>" data-titre="<?php echo $en->titre; ?>" title="Modifier ce Titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px"class="icon-white icon-pencil"></i>modifier</a>&nbsp;&nbsp;
+						<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Titre" data-toggle="modal" data-id="<?php echo $en->id; ?>" ><i style="margin:3px 4px 1px 1px"class="icon-white icon-remove"></i>supprimer</a>
 					</td>
 					<td><?php echo $en->ordre; ?></td>
 				</tr>
@@ -47,22 +47,25 @@
 		</div>
 		<div class="modal-footer">
 			<a class="btn" data-dismiss="modal" href="#">Annuler</a>
-			<input class="btn btn-primary" type="submit" value="Sauvegarder" >
+			<input name="send" class="btn btn-primary" type="submit" value="Sauvegarder">
 		</div>
 	</form>
 </div>
 
 <div id="deleteModal" class="modal hide fade" style="display: none;">
-	<div class="modal-header">
-		<button class="close" data-dismiss="modal">×</button>
-		<h3>Suppression d'un titre</h3>
-	</div>
-	<div class="modal-body">
-		<img src="<?php echo $this->baseUrl;?>/images/using/attention.png" alt="Attention !"><p id="q">Êtes-vous sûr de vouloir supprimer ce titre ?</p><br><p style="color:red">(Attention, cela supprimera également tous les sous-titres relatifs à ce titre!)</p>
-		<input type="hidden" name="id" value="">
-	</div>
-	<div class="modal-footer">
-		<a class="btn" data-dismiss="modal" href="#">Non</a>
-		<a class="btn btn-primary" href="<?php echo $this->url(array('controller'=> $this->controller, 'action'=>'supp', 'id' => 5), null, true);?>">Oui</a>
-	</div>
+	<form action="" method="post">
+		<div class="modal-header">
+			<button class="close" data-dismiss="modal">×</button>
+			<h3>Suppression d'un titre</h3>
+		</div>
+		<div class="modal-body">
+			<img src="<?php echo $this->baseUrl;?>/images/using/attention.png" alt="Attention !"><p id="q">Êtes-vous sûr de vouloir supprimer ce titre ?</p><br><p style="color:red">(Attention, cela supprimera également tous les sous-titres relatifs à ce titre!)</p>
+			<input type="hidden" name="id_del" value="">
+		</div>
+		<div class="modal-footer">
+			<a class="btn" data-dismiss="modal" href="#">Annuler</a>
+			<input name="send" class="btn btn-primary" type="submit" value="Supprimer">
+			<!-- <input class="btn btn-primary" href="<?php echo $this->url(array('controller'=> $this->controller, 'action'=>'supp', 'id' => 5), null, true);?>"> -->
+		</div>
+	</form>
 </div>

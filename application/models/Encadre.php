@@ -19,13 +19,15 @@ class Encadre extends BaseEncadre
 					->execute();
 	}
 
-	public function getLastOrdre() {
+	public function getLastOrdre($idEntity) {
 
 		return 	Doctrine_Query::create()
 					->select('MAX(en.ordre)')
 					->from('Encadre en')
+					->where('en.entite_id = ?', $idEntity)
 					->execute();
 	}
+
 	public function findEncadreEntite($idEntity) {
 
 		return 	Doctrine_Query::create()
@@ -48,18 +50,6 @@ class Encadre extends BaseEncadre
 					->orderBy('en.ordre ASC, s.ordre ASC')
 					->execute();
 	}
-
-	// public function findEncadreEntiteNoFirst($idEntity) {
-
-	// 	return 	Doctrine_Query::create()
-	// 				->select('en.*, s.titre')
-	// 				->from('encadre en')
-	// 				->where('en.entite_id = ?', $idEntity)
-	// 				->andWhere('en.ordre != ?', 1)
-	// 				->leftJoin('en.sousencad s') // On joint les deux tables.
-	// 				->orderBy('en.ordre ASC, s.ordre ASC')
-	// 				->execute();
-	// }
 
 	public function findEncadreNFNR($idEntity) {
 
@@ -96,7 +86,11 @@ class Encadre extends BaseEncadre
 				// update Encadre set titre = "Bonjour" where id = 7;
 	}
 
-	public function addEncadre($titre) {
+	public function deleteEncadre($id) {
 
+		return Doctrine_Query::create()
+				->delete('encadre e')
+				->where('e.id = ?', $id)
+				->execute();
 	}
 }

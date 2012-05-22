@@ -9,7 +9,7 @@
 	<div id="flashMessengers">
 	<?php $flashMessenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
 		if ($flashMessenger->setNamespace('success')->hasMessages()): ?>
-		<div id="noty_success_1337595673730" class="noty_bar noty_theme_mitgux noty_layout_topCenter noty_success noty_closable" style="left: 400px; display: block;">
+		<div id="noty_success_1337595673730" class="noty_bar noty_theme_mitgux noty_layout_top noty_success noty_closable" style="display: block;">
 			<div class="noty_message">
 				<span class="noty_text">
 					<?php foreach ($flashMessenger->getMessages() as $msg): ?>

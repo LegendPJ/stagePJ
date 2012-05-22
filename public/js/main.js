@@ -62,13 +62,11 @@ jQuery(function($) {
 		if ($(this).val() == 'Oui') {
 			$('#coemprunteur').show();
 			$('#coemprunteur th label').attr('class', 'required');
-			// $('#emprunteur').hide('slide', { direction: 'left' }, 1000);
 			$('#emprunteur').css({'margin-left':'30px', 'float':'left'});
 		} else {
 			$('#coemprunteur').hide();
 			$('#coemprunteur th label').attr('class', 'optional');
 			$('#emprunteur').css({'margin-left':'200px', 'float':'none'});
-			// $('#emprunteur').show('slide', { direction: 'right' }, 1000);
 		}
 	});
 
@@ -530,11 +528,6 @@ jQuery(function($) {
 	$('#validContact').click(function(){
 		$('form').submit();
 		noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
-	});
-	
-	$('#validModif').click(function(){
-		$('form').submit();
-		//noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
 	});
 
 	$('#confirmation ul.errors').remove();

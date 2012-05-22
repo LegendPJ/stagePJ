@@ -21,4 +21,12 @@ class Sousencadre extends BaseSousencadre
 					->execute();
 
 	}
+
+	public function deleteFromEncadre($idEncadre) {
+
+		return Doctrine_Query::create()
+					->delete('Sousencadre s')
+					->where('s.encadre_id = ?', $idEncadre)
+					->execute();
+	}
 }
