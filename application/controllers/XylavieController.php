@@ -375,7 +375,7 @@ class XylavieController extends Zend_Controller_Action
 					// $var = 'encadre'.$i; CA NE SERT PLUS A RIEN C'EST JUSTE AU CAS OU 
 					// $$var = Encadre::getLOrdre($elems[0]); CA NE SERT PLUS A RIEN C'EST JUSTE AU CAS OU 
 					$this->view->tabID[$i] = $elems[1];
-					$this->view->tabOrdre[$i] = $elems[0];
+					$this->view->tabOrdre[$i] = Encadre::getLOrdre($elems[0]);
 				}
 				// for ($i=0; $i < $nb; $i++) { 
 				// 	Encadre::updateOrdre($tabOrdre['encadre'.$i], $tabID['encadre'.$i]);
