@@ -13,14 +13,12 @@
 class Encadre extends BaseEncadre
 {
 	public function findAll() {
-
 		return 	Doctrine_Query::create()
 					->from('encadre en')
 					->execute();
 	}
 
 	public function getLastOrdre($idEntity) {
-
 		return 	Doctrine_Query::create()
 					->select('MAX(en.ordre)')
 					->from('Encadre en')
@@ -28,17 +26,7 @@ class Encadre extends BaseEncadre
 					->execute();
 	}
 
-	public function getLOrdre($idEncadre) {
-
-		return 	Doctrine_Query::create()
-					->select('en.ordre')
-					->from('Encadre en')
-					->where('en.id = ?', $idEncadre)
-					->execute();
-	}
-
 	public function findEncadreEntite($idEntity) {
-
 		return 	Doctrine_Query::create()
 					->select('en.*, s.titre')
 					->from('encadre en')
@@ -48,8 +36,15 @@ class Encadre extends BaseEncadre
 					->execute();
 	}
 
-	public function findFirstEncadreEntite($idEntity) {
+	public function findEncadre($idEncadre) {
+		return 	Doctrine_Query::create()
+					->select('en.*')
+					->from('encadre en')
+					->where('en.id = ?', $idEncadre)
+					->execute();
+	}
 
+	public function findFirstEncadreEntite($idEntity) {
 		return 	Doctrine_Query::create()
 					->select('en.*, s.titre')
 					->from('encadre en')
@@ -61,7 +56,6 @@ class Encadre extends BaseEncadre
 	}
 
 	public function findEncadreNFNR($idEntity) {
-
 		return 	Doctrine_Query::create()
 					->select('en.*, s.titre')
 					->from('encadre en')
@@ -74,7 +68,6 @@ class Encadre extends BaseEncadre
 	}
 
 	public function findEncadreRbt($idEntity) {
-
 		return 	Doctrine_Query::create()
 					->select('en.*, s.titre')
 					->from('encadre en')
@@ -86,7 +79,6 @@ class Encadre extends BaseEncadre
 	}
 
 	public function updateTEncadre($newT, $id) {
-
 		return Doctrine_Query::create()
 				->update("Encadre")
 				->set("titre", "?", $newT)
@@ -95,7 +87,6 @@ class Encadre extends BaseEncadre
 	}
 
 	public function updateOrdre($ordre, $idEncadre) {
-
 		return Doctrine_Query::create()
 				->update("Encadre")
 				->set("ordre", "?", $ordre)
@@ -103,8 +94,16 @@ class Encadre extends BaseEncadre
 				->execute();
 	}
 
-	public function deleteEncadre($id) {
+	public function updateEnca($titre, $contenu, $idEncadre) {
+		return Doctrine_Query::create()
+				->update("Encadre")
+				->set("titre", "?", $titre)
+				->set("contenu", "?", $contenu)
+				->where("id = ?", $idEncadre)
+				->execute();
+	}
 
+	public function deleteEncadre($id) {
 		return Doctrine_Query::create()
 				->delete('encadre e')
 				->where('e.id = ?', $id)

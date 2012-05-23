@@ -40,11 +40,15 @@
 	</div>
 		<div id="menu">
 			<ul id="navMenu">
-				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'news','action'=>'modif'), null, true);?>" title="Modifications des news">News</a></li>
-				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
-				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(
-																						'controller'=>strtolower($entite->nom),
-																						'action'=>'modif'), null, true);?>"  title="Modifications de <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
+				<li class="oneS"><a <?php echo ($this->controller == "news" || $this->controller == "pages") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'news','action'=>'modif'), null, true);?>" title="Modifications des news">News</a></li>
+				<?php foreach (Entite::findAll() as $entite) : ?>
+					<?php if ($entite->nom == 'ACCUEIL') { ?>
+					<li><a <?php echo ($this->controller == "index") ? 'class="current"' : "";?>
+					href="<?php echo $this->url(array('controller'=> 'index' ,'action'=>'modif'), null, true);?>"  title="Modifications de <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
+					<?php } else { ?>
+					<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>
+					href="<?php echo $this->url(array('controller'=>strtolower($entite->nom),'action'=>'modif'), null, true);?>"  title="Modifications de <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
+					<?php } ?>
 					</a></li>
 				<?php endforeach; ?>
 			</ul> 

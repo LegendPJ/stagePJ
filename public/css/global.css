@@ -59,6 +59,7 @@ h2 {
 }*/
 
 li.one {margin-left: 24%;}
+li.oneS {margin-left: 17%;}
 
 #containerP {
 	margin: 0 0 0 0;
@@ -214,6 +215,8 @@ ul.nav-pills li a {
 }
 
 .icon-wrench {background-position: -360px -144px;}
+.icon-thumbs-up {background-position: -96px -144px;}
+
 /* FIN MODIFS BOOTSTRAP TWITTER */
 
 
@@ -943,21 +946,21 @@ select#statut {
 
 /* MODIFS */
 
-#ajouter label {
+#ajouter label, #editer label {
 	color: white;
 	font-size:1.2em;
 	margin-right:20px;
 }
 
-#ajouter input {
+#ajouter input , #editer input {
 	margin-left:30px;
 }
 
-#ajouter #contenu_tbl {
+#ajouter #contenu_tbl, #editer #contenu_tbl {
 	margin-left:30px;
 }
 
-#ajouter textarea {
+#ajouter textarea, #editer textarea {
 	width:500px;
 	height:400px;
 } 
@@ -1001,6 +1004,6 @@ ul.webkiit {
 	-webkit-padding-start: 40px;
 }
 
-	#sortable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
-	#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
-	/*#sortable li span { position: absolute; margin-left: -1.3em; }*/
+#sortable {list-style-type: none; margin: 0; padding: 0; width: 100%;}
+#sortable li {margin: 0 3px 10px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px;}
+.ui-state-default {border-radius:15px;}

@@ -25,10 +25,8 @@ jQuery(function($) {
 		$('input:text+ul').remove();
 	});
 	//Bouton Ajouter le Grand Titre
-	var titreok = true;
 	$('#validModif').click(function(){
 		if ($.trim($('#ajouter input#titre').val()) == "") {
-			titreok = false;
 			noty({"text":"Attention ! Vous devez au moins remplir le titre !","theme":"noty_theme_mitgux","layout":"topCenter","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":false,"modal":true});
 		} else {
 			$('form').submit();
@@ -36,6 +34,15 @@ jQuery(function($) {
 		}
 	});
 
+	//Bouton pour editer l'encadre
+	$('#validEdit').click(function(){
+		if ($.trim($('#editer input#titre').val()) == "") {
+			noty({"text":"Attention ! Vous devez au moins remplir le titre !","theme":"noty_theme_mitgux","layout":"topCenter","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":false,"modal":true});
+		} else {
+			$('form').submit();
+			noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
+		}
+	});
 	$('#ajouter input#titre').change(function(){
 		var titre = $(this).val();
 		if(titre == '') {
@@ -51,23 +58,12 @@ jQuery(function($) {
 		}
 	});
 
-
-	$(function() {
-		$("#sortable").sortable();
-		$("#sortable").disableSelection();
-	});
-
-	$( "#sortable" ).sortable({
-		update: function(event, ui) { console.log(event); console.log(ui); }
-	});
-
-	$('#ordreModal input:submit').click(function(){
-		var result = $('#sortable').sortable('toArray');
-		var nb = result.length;
-		for (var i = result.length - 1; i >= 0; i--) {
-			$('#ordreModal input#'+nb).val(result[i]+'-'+($('#ordreModal input#'+nb).attr('class')));
-			nb--;
-		};
+	$("#sortable").sortable().disableSelection();
+		$('#ordreModal input:submit').click(function(){
+			var result = $('#sortable').sortable('toArray');
+			for (var i in result){
+				$('#ordreModal li#'+result[i]+' input').val(result[i]+'-'+i);
+			}
 		$('form').submit();
 	});
 });

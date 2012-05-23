@@ -13,20 +13,56 @@
 class Sousencadre extends BaseSousencadre
 {
 	public function findSEEncadre($idEncadre) {
-
 		return 	Doctrine_Query::create()
 					->from('Sousencadre se')
 					->where('se.encadre_id = ?', $idEncadre)
 					->orderBy('en.ordre ASC')
 					->execute();
+	}
 
+	public function getLastOrdre($idEncadre) {
+		return 	Doctrine_Query::create()
+					->select('MAX(se.ordre)')
+					->from('sousencadre se')
+					->where('se.encadre_id = ?', $idEncadre)
+					->execute();
 	}
 
 	public function deleteFromEncadre($idEncadre) {
-
 		return Doctrine_Query::create()
 					->delete('Sousencadre s')
 					->where('s.encadre_id = ?', $idEncadre)
 					->execute();
+	}
+
+	public function findSousencadEncad($idEncadre) {
+		return 	Doctrine_Query::create()
+					->select('se.*')
+					->from('sousencadre se')
+					->where('se.encadre_id = ?', $idEncadre)
+					->orderBy('se.ordre ASC')
+					->execute();
+	}
+
+	public function updateTsousencadre($newT, $id) {
+		return Doctrine_Query::create()
+				->update("Sousencadre")
+				->set("titre", "?", $newT)
+				->where("id = ?", $id)
+				->execute();
+	}
+
+	public function updateOrdre($ordre, $idSousencadre) {
+		return Doctrine_Query::create()
+				->update("sousencadre")
+				->set("ordre", "?", $ordre)
+				->where("id = ?", $idSousencadre)
+				->execute();
+	}
+	public function deleteSousencadre($id) {
+		return Doctrine_Query::create()
+				->delete('sousencadre se')
+				->where('se.id = ?', $id)
+				->execute();
 	}
 }

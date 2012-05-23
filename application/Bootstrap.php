@@ -67,11 +67,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$view = $this->getResource('View');
 		$view->doctype('HTML5');
 		// Feuilles de style
-		$view->headLink()->prependStylesheet('/css/aristo.css');
 		$view->headLink()->prependStylesheet('/css/jquery.noty.css');
 		$view->headLink()->prependStylesheet('/css/noty_theme_default.css');
 		$view->headLink()->prependStylesheet('/css/noty_theme_mitgux.css');
 		$view->headLink()->prependStylesheet('/css/global.css');
+		$view->headLink()->prependStylesheet('/css/aristo.css');
 		$view->headLink()->prependStylesheet('/css/bmin.css')
 		->headLink(array('rel' => 'shortcut icon','href' => '/images/using/favicon.ico'),'PREPEND');
 		// Fichiers jQuery

@@ -15,13 +15,13 @@ body {
 .logout a {
 	text-decoration: none;
 	position: fixed;
-	width:64px;
+	width:67px;
 	height:70px;
-	background: url("../images/using/sprite_button.png") no-repeat;
+	background: url("../images/using/sprite_button2.png") no-repeat;
   }
 
 .logout a:active {
-	background-position:-64px;
+	background-position:-66px;
 }
 
 .logout a:before {

@@ -7,16 +7,17 @@
 <br>
 <a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br>
 <div class="row">
-	<div class="span12" id="ajouter">
-		<h2><?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?> - Ajout Grand Titre</h2><br>
+	<div class="span12" id="editer">
+		<h2><?php echo strtoupper($this->controller); ?> - Modifier un Grand Titre</h2><br>
 		<form action="" method="post">
 			<label for="titre">Titre<span style="color:#C33">*</span></label>
-			<input id="titre" type="text" name="titre" value="">
+			<input id="titre" type="text" name="titre" value="<?php echo $this->encadre[0]->titre; ?>">
+			<input id="id_enca" type="hidden" name="id_enca" value="<?php echo $this->encadre[0]->id; ?>">
 			<br><br>
 			<label for="contenu">Contenu<span style="color:#C33">*</span></label>
-			<textarea id="contenu" name="contenu"></textarea>
+			<textarea id="contenu" name="contenu"><?php echo $this->encadre[0]->contenu; ?></textarea>
 		</form>
-			<a href="#" class="btn btn-success btn-large" style="margin-left:65px" id="validModif" onclick="return false;"><i class="icon-white icon-ok"></i>Ajouter ce Titre à <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?></a>
+			<a href="#" class="btn btn-success btn-large" style="margin-left:65px" id="validEdit" onclick="return false;"><i class="icon-white icon-thumbs-up"></i>Modifier l'Encadre</a>
 	</div>
 </div>
 

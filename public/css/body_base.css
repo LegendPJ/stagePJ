@@ -9,7 +9,7 @@ body {
 	margin-bottom :0;
 	color:#1e3847;
 
-	background-color: #759ebb;
+	background-color: #235d7f;
 	/* dégradé de couleurs reprenant les couleurs du bandeau */
 	background: -khtml-gradient(linear, left, right, from(#235d7f), to(#759ebb)); 
     	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#235d7f, endColorstr=#759ebb); /* IE 5.5 - 7 */
