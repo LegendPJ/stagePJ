@@ -8,13 +8,13 @@ $m = $this->message == 'Le mot de passe est incorrect';
 <div class="row">
 	<div class="span6">
 		<form id="connexion" action="" method="post" >
-		<label for="username">Identifiant</label>
-		<input type="text" class="x-large <?php if ($c) echo 'erreur'?>" id="username" name="username" value="" placeholder="Login" />
-		<?php if($c) echo '<span class="info">'.$this->message.'</span>';?>
-		<label id="pass" for="password">Mot de passe</label>
-		<input type="password" class="x-large <?php if ($m) echo 'erreur'?>" id="password" name="password" placeholder="Password"/>
-		<?php if($m) echo '<span class="info">'.$this->message.'</span>';?>
-		<input type="submit" id="connex" value="Login" name="submit" />
+			<label for="username">Identifiant</label>
+			<input type="text" class="x-large <?php if ($c) echo 'erreur'?>" id="username" name="username" value="" placeholder="Login" />
+			<?php if($c) echo '<span class="info">'.$this->message.'</span>';?>
+			<label id="pass" for="password">Mot de passe</label>
+			<input type="password" class="x-large <?php if ($m) echo 'erreur'?>" id="password" name="password" placeholder="Password"/>
+			<?php if($m) echo '<span class="info">'.$this->message.'</span>';?>
+			<input type="submit" id="connex" value="Login" name="submit" />
 		</form>
 	</div>
 </div>

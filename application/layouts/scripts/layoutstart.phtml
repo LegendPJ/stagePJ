@@ -30,6 +30,9 @@
 		<div class="retour">
 			<a target="_blank" href="<?php echo $this->url(array('controller'=>'index', 'action'=>'index'), null, true);?>" title="Retour au Site Web"></a>
 		</div>
+		<div class="user">
+			<p style="color:white;"><?php echo $this->ident->name; ?></p><br><br>
+		</div>
 	</div>
 
 	<div id="headerP">
@@ -40,7 +43,8 @@
 	</div>
 		<div id="menu">
 			<ul id="navMenu">
-				<li class="oneS"><a <?php echo ($this->controller == "news" || $this->controller == "pages") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'news','action'=>'modif'), null, true);?>" title="Modifications des news">News</a></li>
+				<li class="oneS" style="width:3%;margin-top:14px;height:30px"><a <?php echo ($this->controller == "donnees") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'donnees','action'=>'start'), null, true);?>" title="Administration">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li><a <?php echo ($this->controller == "news") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'news','action'=>'modif'), null, true);?>" title="Modifications des news">News</a></li>
 				<?php foreach (Entite::findAll() as $entite) : ?>
 					<?php if ($entite->nom == 'ACCUEIL') { ?>
 					<li><a <?php echo ($this->controller == "index") ? 'class="current"' : "";?>

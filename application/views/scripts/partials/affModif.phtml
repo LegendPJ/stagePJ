@@ -7,17 +7,14 @@
 <br>
 <div class="row">
 	<div class="span12">
-		<h2>Modifications - <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?></h2><br>
+		<h2>Modifications - Titres de <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?></h2><br>
 		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouter'), null, true);?>"
-		     title="Ajouter un titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-success"><i class="icon-white icon-plus"></i>Ajouter un Titre</a>
+		     title="Ajouter un titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-success couleurNoire"><i class="icon-plus"></i>Ajouter un Titre</a>
 		&nbsp;
-		<a href="#ordreModal"  data-toggle="modal" title="Modifier l'ordre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-warning"><i class="icon-white icon-wrench"></i>Modifier l'ordre</a><!-- 
-		&nbsp;
-		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouter'), null, true);?>"
-		     title="Ajouter un sous-titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-success btn-info"><i class="icon-white icon-plus-sign"></i>Ajouter un Sous-titre</a> -->
+		<a href="#ordreModal"  data-toggle="modal" title="Modifier l'ordre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-warning couleurNoire"><i class="icon-wrench"></i>Modifier l'ordre</a>
 		<br><br>
-		<table class="table table-bordered">
-			<thead style="background-color:white; color:black">
+		<table class="table table-bordered" id="tabNoir">
+			<thead>
 				<tr>
 					<th>Grand titre</th>
 					<th>Actions</th>
@@ -27,17 +24,21 @@
 			<tbody>
 				<?php foreach ($this->encadres as $en): ?>				
 				<tr>
-					<td><a title="Modifier le contenu du titre" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'edit','id' => $en->id), null, true);?>"><?php echo $en->titre; ?></a></td>
-					<td style="text-align:left; padding-left:10%;">
+					<?php if($en->contenu == "<p>NeWsXyLaGrOuP</p>") {?>
+						<td class="tdGrey"><?php echo $en->titre; ?></td>
+					<?php } else { ?>
+					<td class="tdGrey"><a title="Modifier le contenu du titre" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'edit','id' => $en->id), null, true);?>"><?php echo $en->titre; ?></a></td>
+					<?php } ?>
+					<td class="tdLeft">
 						<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $en->id; ?>" data-titre="<?php echo $en->titre; ?>" title="Modifier ce Titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px" class="icon-white icon-pencil"></i>modifier le titre</a>
 						<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Titre" data-toggle="modal" data-id="<?php echo $en->id; ?>" ><i style="margin:3px 4px 1px 1px" class="icon-white icon-remove"></i>supprimer</a>
 						<?php if(count($en->sousencad) != 0) {?>
-							<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'soustitre','id' => $en->id), null, true);?>" class="btn btn-info btn-mini" title="Voir les sous-titres de <?php echo $en->titre;?>"><i class="icon-white icon-share-alt"></i>Voir les Sous-titres</a>
+							<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'soustitre','id' => $en->id), null, true);?>" class="btn btn-info btn-mini couleurNoire" title="Voir les sous-titres de <?php echo $en->titre;?>"><i class="icon-share-alt"></i>Voir les Sous-titres</a>
 						<?php } else {?>
-							<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouterst', 'id' => $en->id), null, true);?>" class="btn btn-info btn-mini"title="Ajouter un sous-titre pour <?php echo $en->titre;?>"><i class="icon-white icon-plus-sign"></i>Ajouter un Sous-titre</a>
+							<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouterst', 'id' => $en->id), null, true);?>" class="btn btn-success btn-mini couleurNoire"title="Ajouter un sous-titre pour <?php echo $en->titre;?>"><i class="icon-plus-sign"></i>Ajouter un Sous-titre</a>
 		     				<?php } ?>
 					</td>
-					<td><?php echo $en->ordre; ?></td>
+					<td class="tdGrey"><?php echo $en->ordre; ?></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>
@@ -71,7 +72,7 @@
 	<form action="" method="post">
 		<div class="modal-header">
 			<button class="close" data-dismiss="modal">×</button>
-			<h3>Modifier un Titre et son Contenu</h3>
+			<h3>Modifier un Titre</h3>
 		</div>
 		<div class="modal-body">
 			<input type="hidden" name="id" value="">

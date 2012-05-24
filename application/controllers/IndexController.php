@@ -3,10 +3,7 @@
 class IndexController extends Zend_Controller_Action
 {
 
-	public function init()
-	{
-
-	}
+	public function init() {}
 
 	public function indexAction()
 	{
@@ -61,7 +58,7 @@ class IndexController extends Zend_Controller_Action
 			$idEncadre = $query->getParam('id_enca');
 			if (strlen($titre) != 0) {
 				Encadre::updateEnca($titre, $contenu, $idEncadre);
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('L\'encadré à été modifié!');
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Grand Titre modifié avec succès!');
 				$this->_redirect('/index/modif');
 			}
 		}
@@ -144,6 +141,27 @@ class IndexController extends Zend_Controller_Action
 				$sousencadre->save();
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Sous Titre ajouté!');
 				$this->_redirect('/index/soustitre/id/'.$this->view->idT);
+			}
+		}
+	}
+
+	public function editstAction()
+	{
+		if (!Zend_Auth::getInstance()->hasIdentity())
+			$this->_redirect('/');
+		$this->_helper->layout->setLayout('layoutstart');
+		$this->view->idSt = $this->_getParam('id');
+		$this->view->soustitre = Sousencadre::findSousEncadre($this->view->idSt);
+		$this->view->titre = Encadre::findEncadre($this->view->soustitre[0]->encadre_id);
+		$query = $this->getRequest();
+		if($query->isPost()) {
+			$titre = $query->getParam('titre');
+			$contenu = $query->getParam('contenu');
+			$idSousencadre = $query->getParam('id_sousenca');
+			if (strlen($titre) != 0) {
+				Sousencadre::updateSousEnca($titre, $contenu, $idSousencadre);
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Le Sous-Titre à été modifié avec succès!');
+				$this->_redirect('/index/soustitre/id/'.$this->view->soustitre[0]->encadre_id);
 			}
 		}
 	}

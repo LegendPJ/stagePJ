@@ -12,6 +12,11 @@ body {
 	position:absolute;
 }
 
+.user {
+	margin: 315px 0 0 -90px;
+	position:fixed;
+}
+
 .logout a {
 	text-decoration: none;
 	position: fixed;

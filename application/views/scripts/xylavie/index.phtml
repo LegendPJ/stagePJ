@@ -9,23 +9,21 @@
 else {?>
 	<div class="row">
 		<div id="titreH" class="span12 ajout">
-			<h2><?php echo $this->first[0]->titre; ?></h2><br>
-			<p><a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true) ?>" title="Contactez nous !"><img src="<?php echo $this->baseUrl ?>/images/contact/xylavieContact.png"></a></p>
+			<div class="span12" id="rembourse">
+			<h2><?php echo $this->first[0]->titre; ?><a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true) ?>" title="Contactez nous !"><img src="<?php echo $this->baseUrl ?>/images/contact/xylavieContact.png"></a></h2>
 			<?php echo $this->first[0]->contenu;
 				echo $this->partial('partials/affLoop.phtml', array('e' => $this->first[0])); ?>
-				<h2 style="color:#5AA2CE;">Vous êtes client ou affilié ?</h2><br>
-
- 				<div class="row">
-					<div class="span12 ajout">
-						<h2><?php echo $this->rbt[0]->titre; ?></h2><br>
-						<p><a href="http://www.gmcgestion.fr" target="_blank" title="Faire une demande de devis"><img src="<?php echo $this->baseUrl; ?>/images/xylavie/rbt3.png"></a></p>
-						<p><?php echo $this->rbt[0]->contenu; ?></p>
-						<?php //echo $this->partial('partials/affLoop.phtml', array('e' => $this->rbt[0])); ?>
-					</div>
-					<div class="span12">
-						<hr class="soften">
-					</div>
-				</div>	
+			</div>
+			<div class="span12" id="rembourse">
+				<h2><?php echo $this->rbt[0]->titre; ?><a href="http://www.gmcgestion.fr" target="_blank" title="Faire une demande de devis"><img src="<?php echo $this->baseUrl; ?>/images/xylavie/rbt.png"></a></h2>
+				<p><?php echo $this->rbt[0]->contenu; ?></p>
+				<?php if(count($this->rbt[0]->sousencad) != 0) {
+					echo $this->partial('partials/affLoop.phtml', array('e' => $this->rbt[0]));
+				} ?>
+			</div>
+			<div class="span12">
+				<hr class="soften">
+			</div>
 
 			<ul class="nav nav-tabs">
 				<h2>Nos offres et nos devis <small style="font-size:0.65em; color:#235D7F;"> Pour les particuliers</small></h2><br>
@@ -46,11 +44,10 @@ else {?>
 							array('', 'a', 'a', 'a', 'a', 'a', 'a', 'i', 'i', 'i', 'i', 'o', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'e', 'e', 'e', 'e', 'c', 'y', 'n', ),$autres->titre);
 						echo ($j == 0) ? '<div class="tab-pane active" id="'.$lien.'">' : '<div class="tab-pane" id="'.$lien.'">';
 						echo '<div class="row">';
-						// on test la valeur de ajout
 							echo '<div class="span12 ajout">
 								<h2>'.$autres->titre.'</h2><br>';
 								switch($autres->ajout) {
-									case "r": echo '<p><a href="http://www.gmcgestion.fr" title="Faire une demande de devis"><img src="'.$this->baseUrl.'/images/xylavie/rbt3.png"></a></p>'; break;
+									// case "r": echo '<p><a href="http://www.gmcgestion.fr" title="Faire une demande de devis"><img src="'.$this->baseUrl.'/images/xylavie/rbt.png"></a></p>'; break;
 									case "d": echo '<a href="'.$this->url(array('controller'=>$this->controller,'action'=> 'devis'.strtolower($title).''), null, true).'" title="Faire une demande de devis"><p><img src="'.$this->baseUrl.'/images/using/devis.png"></p><p id="lentite">'.$autres->titre.'</p></a>'; break;
 									case "c": echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=> strtolower($title)), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/xylavie/contact.png"></a></p>'; break;
 									default: break;

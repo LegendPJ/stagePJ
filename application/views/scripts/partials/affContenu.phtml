@@ -2,44 +2,44 @@
 	echo '<h2> Nous sommes désolé mais cette page ne contient pour le moment aucun contenu, ceci devrait être rectifié d\'ici quelques jours!</h2>';
 else { $i=0;?>
 	<div class="row">
-		<?php foreach ($this->encadreEnti as $e): ?>
-		<?php if($i == 0) { echo '<div class="span12 ajout" id="titreH">'; } else { echo '<div class="span12">'; }?>
-			<h2><?php echo $e->titre; ?></h2>
-			<br>
-		<?php  if($i == 0) {echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/contact/'.$this->controller.'Contact.png"></a></p>';} ?>
-			<?php echo $e->contenu;?>
-		<?php if (count($e->sousencad) != 0) { ?>
-			<?php if (strlen($e->contenu) != 0) //si le contenu de l'encadre n'est pas nul, alors on affiche un hr pour séparer le contenu des sous encadres
-				echo '<br><hr class="resize"><br>'; ?>
-			</div>
-			<div class="span5">
-				<div class="tabbable tabs-left">
-					<ul id="tab" class="nav nav-pills nav-stacked">
-						<?php $i =0;
-						foreach ($e->sousencad as $s) : 
-							echo ($i == 0) ? '<li class="active">' : '<li>' ; 
-							echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
-							$i++;
-						endforeach; ?>
-					</ul>
+		<div id="titreH" class="span12 ajout">
+			<?php foreach ($this->encadreEnti as $e): ?>
+			<?php if($i == 0) { echo '<div class="span12" id="rembourse">'; } else { echo '<div class="span12" style="margin-left:0;width:100%">'; }?>
+				<h2><?php echo $e->titre; ?><?php  if($i == 0) {echo '<a href="'.$this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/contact/'.$this->controller.'Contact.png"></a>';} ?></h2>
+				<?php echo $e->contenu;?>
+			<?php if (count($e->sousencad) != 0) { ?>
+				<?php if (strlen($e->contenu) != 0) //si le contenu de l'encadre n'est pas nul, alors on affiche un hr pour séparer le contenu des sous encadres
+					echo '<br><hr class="resize"><br>'; ?>
 				</div>
-			</div>
-			<div class="span7" id="alignLeft">
-				<div id="myTabContent" class="tab-content">
-					<?php 
-					$j = 0;
-					foreach ($e->sousencad as $s) : 
-						echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
-						echo $s->contenu;
-						echo '</div>'; //celui de tab-pane
-						$j++;
-					endforeach; ?>
-				</div><!--  celui de tab content -->
-			</div><!--  celui de alignLeft -->
-			<div class="span12">
-				<hr class="soften">
-			</div>
-		<?php } else { echo '<hr class="soften"></div>'; $i++;} ?>
-		<?php endforeach ?>
+				<div class="span5">
+					<div class="tabbable tabs-left">
+						<ul id="tab" class="nav nav-pills nav-stacked">
+							<?php $i =0;
+							foreach ($e->sousencad as $s) : 
+								echo ($i == 0) ? '<li class="active">' : '<li>' ; 
+								echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
+								$i++;
+							endforeach; ?>
+						</ul>
+					</div>
+				</div>
+				<div class="span7" id="alignLeft">
+					<div id="myTabContent" class="tab-content">
+						<?php 
+						$j = 0;
+						foreach ($e->sousencad as $s) : 
+							echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
+							echo $s->contenu;
+							echo '</div>'; //celui de tab-pane
+							$j++;
+						endforeach; ?>
+					</div><!--  celui de tab content -->
+				</div><!--  celui de alignLeft -->
+				<div class="span12">
+					<hr class="soften">
+				</div>
+			<?php } else { echo '<hr class="soften"></div>'; $i++;} ?>
+			<?php endforeach ?>
+		</div>
 	</div>
 <?php } ?>

@@ -8,14 +8,14 @@
 <a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i>Menu des Titres</a><br>
 <div class="row">
 	<div class="span12">
-		<h2>Modifications - Sous-Titres de "<?php echo $this->titre[0]->titre; ?>"</h2><br>
+		<h2>Modifications - Sous-Titres de <span style="color:#FFC90E">"<?php echo $this->titre[0]->titre; ?>"</span></h2><br>
 		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouterst', 'id' => $this->titre[0]->id), null, true);?>"
-		     title="Ajouter un sous-titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-success"><i class="icon-white icon-plus"></i>Ajouter</a>
+		     title="Ajouter un sous-titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-success couleurNoire"><i class="icon-plus"></i>Ajouter un sous-titre</a>
 		&nbsp;
-		<a href="#ordreModal"  data-toggle="modal" title="Ajouter un titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-warning"><i class="icon-white icon-wrench"></i>Modifier l'ordre</a>
+		<a href="#ordreModal"  data-toggle="modal" title="Ajouter un titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-warning couleurNoire"><i class="icon-wrench"></i>Modifier l'ordre</a>
 		<br><br>
-		<table class="table table-bordered">
-			<thead style="background-color:white; color:black">
+		<table class="table table-bordered" id="tabNoir">
+			<thead>
 				<tr>
 					<th>Sous titre</th>
 					<th>Actions</th>
@@ -25,12 +25,12 @@
 			<tbody>
 				<?php foreach ($this->soustitres as $se): ?>				
 				<tr>
-					<td><a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'editSE','id' => $se->id), null, true);?>"><?php echo $se->titre; ?></a></td>
-					<td style="text-align:left; padding-left:14%;">
+					<td class="tdGrey"><a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'editst','id' => $se->id), null, true);?>"><?php echo $se->titre; ?></a></td>
+					<td class="LeftMore">
 						<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $se->id; ?>" data-titre="<?php echo $se->titre; ?>" title="Modifier ce Titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px" class="icon-white icon-pencil"></i>modifier le titre</a>
 						<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Titre" data-toggle="modal" data-id="<?php echo $se->id; ?>" ><i style="margin:3px 4px 1px 1px" class="icon-white icon-remove"></i>supprimer</a>
 					</td>
-					<td><?php echo $se->ordre; ?></td>
+					<td class="tdGrey"><?php echo $se->ordre; ?></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>

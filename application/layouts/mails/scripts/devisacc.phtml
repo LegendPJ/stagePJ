@@ -6,7 +6,6 @@ Voici les informations relatives à la demande :
 <br>
 Le demandeur est <span style="font-weight:bold"><?php echo $this->infos['civ']; ?> <?php echo $this->infos['nom']; ?> <?php echo $this->infos['prenom']; ?></span>.
 <p style="color:#F60; text-decoration : underline">Les personnes assurées</p>
-<br>
 <p style="margin-left : 30px">- <?php echo $this->infos['civ']; ?> <?php echo $this->infos['nom']; ?> <?php echo $this->infos['prenom']; ?>, né<?php echo ($this->infos['civ'] == "Mme." || $this->infos['civ'] == "Mlle.") ? "e" : "";?> le <span style="font-weight:bold"><?php echo $this->infos['dateN']; ?></span></p>
 <?php 	if($this->infos['contrat'] == "Familial") : ?>
 	<?php 	if($this->infos['conjoint'] == "Oui") : ?>
@@ -40,18 +39,14 @@ Le demandeur est <span style="font-weight:bold"><?php echo $this->infos['civ']; 
 			echo '- '.$this->infos['nom5'].' '.$this->infos['prenom5'].' né(e) le <span style="font-weight:bold">'.$this->infos['date5'].'</span></p><br>';
 		}?>
 <?php 	endif; ?>
-<br>
 <p style="color:#F60; text-decoration : underline">Les coordonnées</p>
-<br>
 <p style="margin-left : 30px">Téléphone : <span style="font-weight : bold"><?php echo $this->infos['telephone']; ?></span></p>
 <p style="margin-left : 30px">Email : <span style="font-weight : bold"><?php echo $this->infos['email']; ?></span></p>
 <p style="margin-left : 30px">Adresse : 
 	<span style="font-weight : bold"><?php echo $this->infos['adresse']; ?></span> - <span style="font-weight : bold"><?php echo $this->infos['codeP']; ?></span> <span style="font-weight : bold"><?php echo $this->infos['ville']; ?></span><br>
 </p>
-<br>
 <p style="color:#F60; text-decoration : underline">Le Contrat</p>
-<br>
-<p style="margin-left : 30px">Le client a choisi un contrat <span style="font-weight : bold"><?php echo strtoupper($this->infos['contrat']); ?></span></p>
+<p style="margin-left : 30px">Le client a choisi un contrat <span style="font-weight : bold"><?php echo strtoupper($this->infos['contrat']); ?></span>.</p>
 <?php if ($this->infos['hide'] == "carte") {?>
 	<p style="margin-left : 30px">Le moyen de paiement choisi est <span style="font-weight : bold">le prélèvement banquaire automatique MENSUEL.</span></p>
 	<p style="margin-left : 30px" style="color:green">Le contrat GAV prendra effet immédiatement dès réception de son RIB et de l'autorisation de prélèvement.<br>

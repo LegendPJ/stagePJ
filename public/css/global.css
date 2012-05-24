@@ -31,7 +31,8 @@ h1 {
 h2 {
 	color: #235d7f;
 	text-align: left;
-	margin-left:10%;
+	/*margin-left:10%;*/
+	text-decoration:underline;
 }
 
 #headerP {
@@ -59,7 +60,7 @@ h2 {
 }*/
 
 li.one {margin-left: 24%;}
-li.oneS {margin-left: 17%;}
+
 
 #containerP {
 	margin: 0 0 0 0;
@@ -217,6 +218,39 @@ ul.nav-pills li a {
 .icon-wrench {background-position: -360px -144px;}
 .icon-thumbs-up {background-position: -96px -144px;}
 
+.couleurNoire {
+	color: black;
+}
+
+#tabNoir {
+	border-color: grey;
+}
+
+#tabNoir thead {
+	background-color:black; 
+	color:white;
+}
+
+#tabNoir th {
+	border-left: 1px solid grey;
+}
+
+#tabNoir .tdGrey {
+	border-left: 1px solid grey;
+	border-top: 1px solid grey;
+}
+
+#tabNoir .tdLeft {
+	text-align:left;
+	padding-left:10%;
+	border-left: 1px solid grey;
+	border-top: 1px solid grey;
+}
+
+#tabNoir .LeftMore {
+	border-left: 1px solid grey;
+	border-top: 1px solid grey;
+}
 /* FIN MODIFS BOOTSTRAP TWITTER */
 
 
@@ -278,7 +312,6 @@ ul.nav-pills li a {
 
 .little {
 	background-image: url("../images/using/news.png");
-	 /*background:url(data:image/gif;base64,<? base64_encode(file_get_contents('../images/using/papier_note_skotchgBlancGris.png'))?>;);*/
 	height:243px;
 	width:460px;
 	float: left;
@@ -520,9 +553,18 @@ input.erreur:focus {
 	width:110%;
 }
 
+#rembourse {
+	margin-left: 0;
+	width:100%;
+}
 
-ul.nav h2 {
-	color: #5aa2ce;
+#rembourse h2 {
+	/*margin-bottom: 30px; margin-top:30px;*/
+	margin-bottom: 55px; margin-top:30px;
+}
+
+#rembourse img {
+	margin : -30px -50px 0 20px
 }
 
 #lentite {
@@ -533,7 +575,7 @@ ul.nav h2 {
 	font-family: "Comic Sans MS";
 	font-weight:bold;
 	font-size:1.3em;
-	color: #f9ac04;
+	color: #2b6284;
 }
 
 label[for^="civ-M"], label[for^="civC-M"], label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"], label[for^="civCo-M"], label[for^="fumeurCo-"], label[for^="IPPCo-"], label[for^="IPTCo-"] {
@@ -544,18 +586,11 @@ label[for^="civ-M"], label[for^="civC-M"], label[for^="fumeur-"], label[for^="IP
 label[for^="fumeur-"], label[for^="IPP-"], label[for^="IPT-"] {
 	margin-right:30px;
 }
-/*label[for^="conjoint"] {
-	float: left;
-}
-*/
+
 input#civ-M, input#civC-M, input#civ-Mme, input#civC-Mme, input#civ-Mlle, input#civC-Mlle, input#fumeur-Oui, input#fumeur-Non, input#IPT-Oui, input#IPT-Non, input#IPP-Oui, input#IPP-Non, input#civCo-M, input#civCo-Mme, input#civCo-Mlle, input#fumeurCo-Oui, input#fumeurCo-Non, input#IPTCo-Oui, input#IPTCo-Non, input#IPPCo-Oui, input#IPPCo-Non {
 	margin-right:3px;
 	float: left;
 }
-
-/*input#conjoint-Oui {
-	margin-right:30px;
-}*/
 
 #devis form {
 	margin: 2% 0 0 20%;
@@ -674,6 +709,9 @@ select#avenir {
 	width: 130px;
 }
 
+ select#garantiesE, select#garantiesCo {
+ 	width: 150px;
+ }
 #retraite {
 	background-image:url("../images/xylavie/fdevisR.jpg");
 }
@@ -752,7 +790,7 @@ select#avenir {
 	font-size:0.7em;
 }
 
-select#km, select#kmCo, select#garantiesE, select#garantiesC, select#contrat {
+select#km, select#kmCo, select#contrat {
 	width:110px;
 }
 
@@ -1006,4 +1044,15 @@ ul.webkiit {
 
 #sortable {list-style-type: none; margin: 0; padding: 0; width: 100%;}
 #sortable li {margin: 0 3px 10px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px;}
-.ui-state-default {border-radius:15px;}
+#ordreModal .ui-state-default {border-radius:15px;}
+
+li.oneS {
+	margin-left: 16%;
+	background-image:url("../images/using/home_sprite.png");
+	background-position:5px 0;
+	background-repeat:no-repeat;
+}
+
+.oneS img {
+	margin: -5px 0 0 0;
+}

@@ -4,11 +4,11 @@
 <h1>XYLAGROUP</h1>
 <div class="row">
 	<?php if (count($this->encadreAccueil) ==0)
-			echo '<h2> Et bien non...il n\'y a pas de contenu...et ce n \'est pas un 404 page not found !';
+			echo '<p>Nous sommes désolé mais il n\'y a pas de contenu pour le moment, nous faisons notre possible pour remedier à cela.</p>';
 		else { ?>
 		<?php foreach ($this->encadreAccueil as $e): ?>
 			<div class="span12">
-				<?php if ($e->contenu == "<news>") { 
+				<?php if ($e->contenu == "<p>NeWsXyLaGrOuP</p>") { 
 					//DEBUT NEWS
 					$news = $this->last[0]; ?>
 					<h2><?php echo $e->titre." #".$news->numero;?></h2><br>

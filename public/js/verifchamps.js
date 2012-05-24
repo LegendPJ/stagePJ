@@ -49,14 +49,26 @@ jQuery(function($) {
 			$(this).css({'border':'1px solid red', 'background-color':'#FF9696'}).addClass('erreur');
 			$(this).parent().find('p.vChamp').remove();
 			$(this).after('<p class="vChamp">Attention, le titre est vide !</p>');
-			titreok = false;
 		}
 		else if(titre != '') {
 			$(this).css({'border':'1px solid #CCC','background-color':'white'}).removeClass('erreur');
 			$(this).parent().find('p.vChamp').remove();
-			titreok = true;
 		}
 	});
+
+	$('#editer input#titre').change(function(){
+		var titre = $(this).val();
+		if(titre == '') {
+			$(this).css({'border':'1px solid red', 'background-color':'#FF9696'}).addClass('erreur');
+			$(this).parent().find('p.vChamp').remove();
+			$(this).after('<p class="vChamp">Attention, le titre est vide !</p>');
+		}
+		else if(titre != '') {
+			$(this).css({'border':'1px solid #CCC','background-color':'white'}).removeClass('erreur');
+			$(this).parent().find('p.vChamp').remove();
+		}
+	});
+
 
 	$("#sortable").sortable().disableSelection();
 		$('#ordreModal input:submit').click(function(){

@@ -22,7 +22,7 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				$this->view->adresse = $this->view->infos['adresse'].'<br>'. $this->view->infos['codeP'].' '.$this->view->infos['ville'];
+				//$this->view->adresse = $this->view->infos['adresse'].'<br>'. $this->view->infos['codeP'].' '.$this->view->infos['ville'];
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC->setScriptHtml("confirmDevisSan");
@@ -39,11 +39,11 @@ class XylavieController extends Zend_Controller_Action
 				$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('xylagroup','xylagroup2012');
 				$mail->setSmtpTransporter($sendGridTransporter);
 				$mailC->setSmtpTransporter($sendGridTransporter);
-				$mail->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Sante');
-				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Sante');
+				$mail->setFrom('noreply@xylavie.fr', 'XYLAVIE - Sante');
+				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Sante');
 				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
-				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mailC->addTo($this->view->infos['email']);
 				$mail->setSubject('Demande de Devis Sante');
 				$mailC->setSubject('Demande de Devis Sante');
 				$mail->send();
@@ -84,7 +84,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Dependance');
 				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
-				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mailC->addTo($this->view->infos['email']);
 				$mail->setSubject('Demande de Devis Dependance');
 				$mailC->setSubject('Demande de Devis Dependance');
 				$mail->send();
@@ -124,7 +124,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Retraite');
 				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
-				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mailC->addTo($this->view->infos['email']);
 				$mail->setSubject('Demande de Devis Retraite');
 				$mailC->setSubject('Demande de Devis Retraite');
 				$mail->send();
@@ -164,7 +164,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Epargne');
 				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
-				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mailC->addTo($this->view->infos['email']);
 				$mail->setSubject('Demande de Devis Epargne');
 				$mailC->setSubject('Demande de Devis Epargne');
 				$mail->send();
@@ -204,7 +204,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis Assurance Emprunteur');
 				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
-				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mailC->addTo($this->view->infos['email']);
 				$mail->setSubject('Demande de Devis Assurance Emprunteur');
 				$mailC->setSubject('Demande de Devis Assurance Emprunteur');
 				$mail->send();
@@ -244,7 +244,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Renseignements Prevoyance');
 				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
-				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mailC->addTo($this->view->infos['email']);
 				$mail->setSubject('Demande de Renseignements Prevoyance');
 				$mailC->setSubject('Demande de Renseignements Prevoyance');
 				$mail->send();
@@ -270,9 +270,9 @@ class XylavieController extends Zend_Controller_Action
 				$layoutMail->setScriptHtml("contact");
 				$layoutMail->assign(array("infos" => $this->view->infos, "date" => $this->view->date));
 				$layoutMailC->assign( array(
-					"date" => $this->view->dateJour,
+					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller),
-					"civilite" => $this->view->infos['civ'],
+					"civilite" => $this->view->infos['civilite'],
 					"nom" => $this->view->infos['nom']
 				));
 				$mail = new Webf_Mail($layoutMail);
@@ -283,7 +283,7 @@ class XylavieController extends Zend_Controller_Action
 				$mail->setFrom('noreply@xylavie.fr', 'XYLAVIE - Service Contact');
 				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Service Contact');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
-				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mailC->addTo($this->view->infos['email']);
 				$mail->setSubject('Contact XYLAVIE');
 				$mailC->setSubject('Contact XYLAVIE');
 				$mail->send();
@@ -312,7 +312,9 @@ class XylavieController extends Zend_Controller_Action
 					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller),
 					"civilite" => $this->view->infos['civ'],
-					"nom" => $this->view->infos['nom']
+					"nom" => $this->view->infos['nom'],
+					"hide" => $this->view->infos['hide'],
+					"contrat" => $this->view->infos['contrat']
 				));
 				$mail = new Webf_Mail($layoutMail);
 				$mailC = new Webf_Mail($layoutMailC);
@@ -323,7 +325,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Devis GAV ');
 				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
-				$mailC->addTo('pierrejulien.martinez@gmail.com');
+				$mailC->addTo($this->view->infos['email']);
 				$mail->setSubject('Demande de Devis Garanties Accidents de la Vie');
 				$mailC->setSubject('Demande de Devis Garanties Accidents de la Vie');
 				$mail->send();
@@ -389,7 +391,7 @@ class XylavieController extends Zend_Controller_Action
 			$idEncadre = $query->getParam('id_enca');
 			if (strlen($titre) != 0) {
 				Encadre::updateEnca($titre, $contenu, $idEncadre);
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('L\'encadré à été modifié!');
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Grand Titre modifié avec succès!');
 				$this->_redirect('/xylavie/modif');
 			}
 		}
@@ -476,5 +478,24 @@ class XylavieController extends Zend_Controller_Action
 		}
 	}
 
-
+	public function editstAction()
+	{
+		if (!Zend_Auth::getInstance()->hasIdentity())
+			$this->_redirect('/');
+		$this->_helper->layout->setLayout('layoutstart');
+		$this->view->idSt = $this->_getParam('id');
+		$this->view->soustitre = Sousencadre::findSousEncadre($this->view->idSt);
+		$this->view->titre = Encadre::findEncadre($this->view->soustitre[0]->encadre_id);
+		$query = $this->getRequest();
+		if($query->isPost()) {
+			$titre = $query->getParam('titre');
+			$contenu = $query->getParam('contenu');
+			$idSousencadre = $query->getParam('id_sousenca');
+			if (strlen($titre) != 0) {
+				Sousencadre::updateSousEnca($titre, $contenu, $idSousencadre);
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Le Sous-Titre à été modifié avec succès!');
+				$this->_redirect('/xylavie/soustitre/id/'.$this->view->soustitre[0]->encadre_id);
+			}
+		}
+	}
 }?>

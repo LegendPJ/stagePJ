@@ -5,17 +5,17 @@
 } ?>
 <?php $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps.js'); ?>
 <br>
-<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br>
+<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'soustitre', 'id' => $this->soustitre[0]->encadre_id), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br>
 <div class="row">
 	<div class="span12" id="editer">
-		<h2><?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?> - Modifier un Grand Titre</h2><br>
+		<h2>Modifier le Sous-titre</h2><br>
 		<form action="" method="post">
 			<label for="titre">Titre<span style="color:#C33">*</span></label>
-			<input id="titre" type="text" name="titre" value="<?php echo $this->encadre[0]->titre; ?>">
-			<input id="id_enca" type="hidden" name="id_enca" value="<?php echo $this->encadre[0]->id; ?>">
+			<input id="titre" type="text" name="titre" value="<?php echo $this->soustitre[0]->titre; ?>">
+			<input id="id_sousenca" type="hidden" name="id_sousenca" value="<?php echo $this->soustitre[0]->id; ?>">
 			<br><br>
 			<label for="contenu">Contenu<span style="color:#C33">*</span></label>
-			<textarea id="contenu" name="contenu"><?php echo $this->encadre[0]->contenu; ?></textarea>
+			<textarea id="contenu" name="contenu"><?php echo $this->soustitre[0]->contenu; ?></textarea>
 		</form>
 			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="validEdit" onclick="return false;"><i class="icon-ok"></i>Modifier l'Encadre</a>
 	</div>

@@ -60,7 +60,7 @@ class Encadre extends BaseEncadre
 					->select('en.*, s.titre')
 					->from('encadre en')
 					->where('en.entite_id = ?', $idEntity)
-					->andWhere('en.titre != ?', 'Remboursement')
+					->andWhere('en.ajout != ?', 'r')
 					->andWhere('en.ordre != ?', 1)
 					->leftJoin('en.sousencad s') // On joint les deux tables.
 					->orderBy('en.ordre ASC, s.ordre ASC')
@@ -72,7 +72,7 @@ class Encadre extends BaseEncadre
 					->select('en.*, s.titre')
 					->from('encadre en')
 					->where('en.entite_id = ?', $idEntity)
-					->andWhere('en.titre = ?', 'Remboursement')
+					->andWhere('en.ajout = ?', 'r')
 					->leftJoin('en.sousencad s') // On joint les deux tables.
 					->orderBy('en.ordre ASC, s.ordre ASC')
 					->execute();

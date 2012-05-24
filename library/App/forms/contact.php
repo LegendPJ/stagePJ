@@ -8,7 +8,7 @@ class App_forms_contact extends Zend_Form
 
 		$this->civilite = new Zend_Form_Element_Radio('civilite');
 		$this->civilite->setLabel("Civilité :")
-			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.'))
+			->setMultiOptions(array('M.'=>'M.','Mme.'=>'Mme.', 'Mlle.' => 'Mlle.'))
 			->setOptions(array('separator'=>''));
 
 		$this->civilite->setValue('M.');

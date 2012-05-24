@@ -15,7 +15,7 @@ class Helpers_Action_Start extends Zend_Controller_Action_Helper_Abstract
 		$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
 		$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
 		$this->view->date = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
-
+		$this->view->ident = Zend_Auth::getInstance()->getIdentity();
 	}
 
 	public function getView()

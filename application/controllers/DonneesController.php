@@ -3,10 +3,7 @@
 class DonneesController extends Zend_Controller_Action
 {
 
-	public function init()
-	{
-
-	}
+	public function init() {}
 
 	public function indexAction()
 	{
@@ -14,14 +11,16 @@ class DonneesController extends Zend_Controller_Action
 		
 		if ($this->getRequest()->isPost())
 		{
-			$adapter = new Donnees_Auth_Adapter($this->_getParam('username'), $this->_getParam('password'));
+			$crypt = new Webf_RevCrypt("jHdfsbhzepovhOIHSGVBOgqsebIHPHOihIOgoGgfPPOMNvXRWezQZrYCyJFAqruUUJ");
+			$ul = $crypt->code($this->_getParam('username'));
+			$pm = $crypt->code($this->_getParam('password'));
+			$adapter = new Donnees_Auth_Adapter($ul, $pm);
 			$result = Zend_Auth::getInstance()->authenticate($adapter);
 
 			if (Zend_Auth::getInstance()->hasIdentity())
 				$this->_forward('start');
 			else
 				$this->view->message = implode(' ' ,$result->getMessages());
-
 		}
 	}
 
@@ -33,9 +32,11 @@ class DonneesController extends Zend_Controller_Action
 	}
 
 	public function logoutAction()
-	{
+	{	
+		if (!Zend_Auth::getInstance()->hasIdentity())
+			$this->_redirect('/');
 		Zend_Auth::getInstance()->clearIdentity();
 		$this->_redirect('/donnees/');
 	}
 
-}	
+}

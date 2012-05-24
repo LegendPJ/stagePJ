@@ -3,9 +3,7 @@
 class XylassurController extends Zend_Controller_Action
 {
 
-	public function init()
-	{
-	}
+	public function init() {}
 
 	public function indexAction()
 	{
@@ -20,31 +18,22 @@ class XylassurController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
                     			$this->view->infos = $this->getRequest()->getParams();
-                    			$jour = array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
-				$mois = array("","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
-				$date = $jour[date("w")]." ".date("d")." ".$mois[date("n")]." ".date("Y");
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
                     			$layoutMailC->setScriptHtml("confirmcontact");
                     			$layoutMail->setScriptHtml("contact");
-                    			$layoutMail->assign( array(
-					"date" => $date,
+				$layoutMail->assign(array("infos" => $this->view->infos, "date" => $this->view->date));
+				$layoutMailC->assign( array(
+					"date" => $this->view->date,
 					"controller" => strtoupper($this->view->controller),
 					"civilite" => $this->view->infos['civilite'],
-					"nom" => $this->view->infos['nom'],
-					"message" => $this->view->infos['message'],
-					"mail" => $this->view->infos['email'],
-					"tel" => $this->view->infos['telephone']
-					));
-
-                    			$layoutMailC->assign( array(
-					"date" => $date,
-					"controller" => strtoupper($this->view->controller)
-					));
+					"nom" => $this->view->infos['nom']
+				));
                     			$mail = new Webf_Mail($layoutMail);
                     			$mailC = new Webf_Mail($layoutMailC);
-                    			// $sendGridTransporter = new Webf_Mail_Smtp_SendGrid('legendpj','legendpj');
-				// $mail->setSmtpTransporter($sendGridTransporter);
+				$sendGridTransporter = new Webf_Mail_Smtp_SendGrid('xylagroup','xylagroup2012');
+				$mail->setSmtpTransporter($sendGridTransporter);
+				$mailC->setSmtpTransporter($sendGridTransporter);
                     			$mail->setFrom('noreply@xylassur.fr', 'XYLASSUR - Service Contact');
                     			$mailC->setFrom('noreply@xylassur.fr', 'XYLASSUR - Service Contact');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLASSUR');
@@ -108,7 +97,7 @@ class XylassurController extends Zend_Controller_Action
 			$idEncadre = $query->getParam('id_enca');
 			if (strlen($titre) != 0) {
 				Encadre::updateEnca($titre, $contenu, $idEncadre);
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('L\'encadré à été modifié!');
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Grand Titre modifié avec succès!');
 				$this->_redirect('/xylassur/modif');
 			}
 		}
@@ -191,6 +180,27 @@ class XylassurController extends Zend_Controller_Action
 				$sousencadre->save();
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Sous Titre ajouté!');
 				$this->_redirect('/index/soustitre/id/'.$this->view->idT);
+			}
+		}
+	}
+
+	public function editstAction()
+	{
+		if (!Zend_Auth::getInstance()->hasIdentity())
+			$this->_redirect('/');
+		$this->_helper->layout->setLayout('layoutstart');
+		$this->view->idSt = $this->_getParam('id');
+		$this->view->soustitre = Sousencadre::findSousEncadre($this->view->idSt);
+		$this->view->titre = Encadre::findEncadre($this->view->soustitre[0]->encadre_id);
+		$query = $this->getRequest();
+		if($query->isPost()) {
+			$titre = $query->getParam('titre');
+			$contenu = $query->getParam('contenu');
+			$idSousencadre = $query->getParam('id_sousenca');
+			if (strlen($titre) != 0) {
+				Sousencadre::updateSousEnca($titre, $contenu, $idSousencadre);
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Le Sous-Titre à été modifié avec succès!');
+				$this->_redirect('/xylassur/soustitre/id/'.$this->view->soustitre[0]->encadre_id);
 			}
 		}
 	}

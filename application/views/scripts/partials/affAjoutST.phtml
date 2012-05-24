@@ -8,7 +8,7 @@
 <a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'soustitre', 'id' => $this->titre[0]->id), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i>Retour</a><br>
 <div class="row">
 	<div class="span12" id="ajouter">
-		<h2>Ajout d'un Sous-Titre à "<?php echo $this->titre[0]->titre; ?>"</h2><br>
+		<h2>Ajout d'un Sous-Titre à <span style="color:#FFC90E">"<?php echo $this->titre[0]->titre; ?>"</span></h2><br>
 		<form action="" method="post">
 			<label for="titre">Sous-titre<span style="color:#C33">*</span></label>
 			<input id="titre" type="text" name="titre" value="">
@@ -16,7 +16,7 @@
 			<label for="contenu">Contenu<span style="color:#C33">*</span></label>
 			<textarea id="contenu" name="contenu"></textarea>
 		</form>
-			<a href="#" class="btn btn-success btn-large" style="margin-left:65px" id="validModif" onclick="return false;"><i class="icon-white icon-ok"></i>Ajouter ce Sous-titre à "<?php echo $this->titre[0]->titre; ?>"</a>
+			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="validModif" onclick="return false;"><i class="icon-ok"></i>Ajouter ce Sous-titre à "<?php echo $this->titre[0]->titre; ?>"</a>
 	</div>
 </div>
 
