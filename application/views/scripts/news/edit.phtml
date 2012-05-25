@@ -1,0 +1,30 @@
+<?php $this->headTitle()->append('Administration - News');
+$this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps.js'); ?>
+<br>
+<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br>
+<div class="row">
+	<div class="span12" id="editer">
+		<h2>Editer une News</h2><br>
+		<form action="" method="post">
+			<label for="titre">Titre<span style="color:#C33">*</span></label>
+			<input class="span6" id="titre" type="text" name="titre" value="<?php echo $this->news[0]->titre; ?>">
+			<br><br>
+			<label for="contenu">Contenu<span style="color:#C33">*</span></label>
+			<textarea id="contenu" name="contenu"><?php echo $this->news[0]->contenu; ?></textarea><br>
+			<label for="lien">Lien<span style="color:#C33">*</span></label>
+			<input id="lien" type="text" name="lien" value="<?php echo $this->news[0]->lien; ?>" placeholder="www.google.fr"><br><br>
+			<?php $entite = explode('.',$this->news[0]->photo); ?>
+			<label for="entite">Entité<span style="color:#C33">*</span></label>
+			<input type="radio" name="entite" value="xylagroup" <?php echo ($entite[0] == 'xylagroup') ? 'checked="checked"' : '' ?>>&nbsp;XYLAGROUP
+			<input type="radio" name="entite" value="xylassur" <?php echo ($entite[0] == 'xylassur') ? 'checked="checked"' : '' ?>>&nbsp;XYLASSUR
+			<input type="radio" name="entite" value="xylavie" <?php echo ($entite[0] == 'xylavie') ? 'checked="checked"' : '' ?>>&nbsp;XYLAVIE
+			<input type="radio" name="entite" value="xylabtp" <?php echo ($entite[0] == 'xylabtp') ? 'checked="checked"' : '' ?>>&nbsp;XYLABTP
+			<input type="radio" name="entite" value="xylarisk" <?php echo ($entite[0] == 'xylarisk') ? 'checked="checked"' : '' ?>>&nbsp;XYLARISK<br><br>
+			<label for="visible">Visible<span style="color:#C33">*</span></label>
+			<input type="radio" name="visible" value="oui" <?php echo ($this->news[0]->visible == "oui") ? 'checked="checked"' : '' ?>>&nbsp;Oui
+			<input type="radio" name="visible" value="non" <?php echo ($this->news[0]->visible == "non") ? 'checked="checked"' : '' ?>>&nbsp;Non
+		</form>
+			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="editNews" onclick="return false;"><i class="icon-ok"></i>Editer cette News</a>
+	</div>
+</div>
+<br><br>

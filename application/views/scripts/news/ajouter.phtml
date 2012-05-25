@@ -1,0 +1,29 @@
+<?php $this->headTitle()->append('Administration -  '.strtoupper($this->controller));
+$this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps.js'); ?>
+<br>
+<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br>
+<div class="row">
+	<div class="span12" id="ajouter">
+		<h2>Ajout une News</h2><br>
+		<form action="" method="post">
+			<label for="titre">Titre<span style="color:#C33">*</span></label>
+			<input class="span6" id="titre" type="text" name="titre" value="">
+			<br><br>
+			<label for="contenu">Contenu<span style="color:#C33">*</span></label>
+			<textarea id="contenu" name="contenu"></textarea><br>
+			<label for="lien">Lien<span style="color:#C33">*</span></label>
+			<input id="lien" type="text" name="lien" value="" placeholder="www.google.fr"><br><br>
+			<label for="lien">Entité<span style="color:#C33">*</span></label>
+			<input type="radio" name="entite" value="xylagroup" checked="checked">&nbsp;XYLAGROUP
+			<input type="radio" name="entite" value="xylassur">&nbsp;XYLASSUR
+			<input type="radio" name="entite" value="xylavie">&nbsp;XYLAVIE
+			<input type="radio" name="entite" value="xylabtp">&nbsp;XYLABTP
+			<input type="radio" name="entite" value="xylarisk">&nbsp;XYLARISK<br><br>
+			<label for="lien">Visible<span style="color:#C33">*</span></label>
+			<input type="radio" name="visible" value="oui">&nbsp;Oui
+			<input type="radio" name="visible" value="non" checked="checked">&nbsp;Non
+		</form>
+			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="ajoutNews" onclick="return false;"><i class="icon-ok"></i>Ajouter cette News</a>
+	</div>
+</div>
+<br><br>

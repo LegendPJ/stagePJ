@@ -4,8 +4,8 @@ jQuery(function($) {
 	$('ul.errors').parent().find('input').addClass('erreur');
 	$('ul.errors').parent().find('select').addClass('erreur');
 	//pour fermer le flash messenger
-	$('.noty_close').click(function(){
-		$(this).parent().parent().slideUp('slow');
+	$('.noty_message').click(function(){
+		$(this).parent().slideUp('slow');
 		$('.noty_modal').css({'display':'none'});
 		return false;
 	});

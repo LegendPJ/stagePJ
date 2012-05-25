@@ -29,7 +29,10 @@ News:
   photo:
    type: string
   date: 
-   type: date
+   type: string
+   notnull: true
+  visible:
+   type: string
    notnull: true
 
 
@@ -49,6 +52,9 @@ Users:
    notnull: true
   name:
    type: string()
+   notnull: true
+  droit:
+   type: integer
    notnull: true
 
 

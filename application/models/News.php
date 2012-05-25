@@ -13,54 +13,87 @@
 class News extends BaseNews
 {
 	public static function findAll() {
-
 		return Doctrine_Query::create()->from('news n')->execute();
 	}
-
+	public static function findAllDesc() {
+		return Doctrine_Query::create()->from('news n')->orderBy('n.numero DESC')->execute();
+	}
 	public static function findLastNews() {
-
 		return Doctrine_Query::create()
 					->select('n.date, n.titre, n.auteur, n.contenu')
 					->from('news n')
-					->where('n.date IN (SELECT MAX(ne.date) as date FROM news ne)')
+					->where('n.date IN (SELECT MAX(ne.date) as date FROM news ne WHERE ne.visible =?)', 'oui')
+					->andWhere('n.visible = ?', 'oui')
 					->execute();
 	}
-
+	public static function findNewsVisible($idNews) {
+		return 	Doctrine_Query::create()
+					->from('news n')
+					->where('n.id = ?', $idNews)
+					->andWhere('n.visible = ?', 'oui')
+					->execute();
+	}
 	public static function findNews($idNews) {
-
 		return 	Doctrine_Query::create()
 					->from('news n')
 					->where('n.id = ?', $idNews)
 					->execute();
 	}
-
 	public function findPrecNews($dateNews) {
-		
 		return 	Doctrine_Query::create()
 					->from('news n')
 					->where('n.date < ?', $dateNews)
+					->andWhere('n.visible = ?', 'oui')
 					->orderBy('n.date DESC')
 					->limit(0,1)
 					->execute();
 	}	
-
 	public function findNextNews($dateNews) {
-		
 		return 	Doctrine_Query::create()
 					->from('news n')
 					->where('n.date > ?', $dateNews)
+					->andWhere('n.visible = ?', 'oui')
 					->orderBy('n.date ASC')
 					->limit(0,1)
 					->execute();
 	}	
-
-	public function othersNews($idNews) {
-
+	public function newsVisible() {
 		return 	Doctrine_Query::create()
 					->from('news n')
-					->where('n.id NOT IN (SELECT ne.id FROM news ne WHERE ne.id = ?)', $idNews)
+					->where('n.visible =?', 'oui')
 					->orderBy('n.date DESC')
 					->execute();
 	}
+	public function getLastNumero() {
+		return Doctrine_Query::create()
+					->select('MAX(n.numero)')
+					->from('news n')
+					->execute();
+	}
+	public function updateTNews($newT, $id) {
+			return Doctrine_Query::create()
+			->update("News")
+			->set("titre", "?", $newT)
+			->where("id = ?", $id)
+			->execute();
+	}
+	public function updateNews($titre, $contenu, $idNews, $lien, $photo, $visible) {
+		return Doctrine_Query::create()
+				->update("Encadre")
+				->set("titre", "?", $titre)
+				->set("contenu", "?", $contenu)
+				->set("lien", "?", $lien)
+				->set("photo", "?", $photo)
+				->set("visible", "?", $visible)
+				->where("id = ?", $idNews)
+				->execute();
+	}
+	public function deleteNews($id) {
+		return Doctrine_Query::create()
+				->delete('news n')
+				->where('n.id = ?', $id)
+				->execute();
+	}
+
 }
 

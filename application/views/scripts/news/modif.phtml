@@ -1,8 +1,81 @@
 <?php $this->headTitle()->append('Administration - News'); ?>
-<br><br>
+<?php $this->headScript()->appendFile('/js/verifchamps.js'); ?>
+<br>
 <div class="row">
 	<div class="span12">
 		<h2>News - Modifications</h2>
-
+		<br>
+		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouter'), null, true);?>" title="Ajouter une news" class="btn btn-success couleurNoire"><i class="icon-plus"></i>Ajouter une News</a>
+		<br><br>
+		<table class="table table-bordered" id="tabNoir">
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Numéro</th>
+					<th>Visible</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($this->news as $n) : ?>
+				<?php $nb_mots = 5;
+					$texte = explode(' ', $n->titre, $nb_mots+1);
+					unset($texte[$nb_mots]); ?>
+					<tr>
+						<td class="tdGrey" style="text-align:left">
+						<?php if (count($texte) < 3)
+							echo '<a title="Modifier le contenu de la news" href="'.$this->url(array('controller'=> $this->controller,'action'=>'edit','id' => $n->id), null, true).'">'.implode(' ', $texte).'</a>';
+						else
+							echo '<a title="Modifier le contenu de la news" href="'.$this->url(array('controller'=> $this->controller,'action'=>'edit','id' => $n->id), null, true).'">'.implode(' ', $texte).'...</a>';?>
+						</td>
+						<td class="tdGrey">
+							<?php echo $n->numero; ?>
+						</td>
+						<td class="tdGrey">
+							<?php echo $n->visible; ?>
+						</td>
+						<td class="tdGrey">
+							<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $n->id; ?>" data-titre="<?php echo $n->titre; ?>" title="Modifier ce Titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px" class="icon-white icon-pencil"></i>modifier le titre</a>
+							<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Titre" data-toggle="modal" data-id="<?php echo $n->id; ?>" ><i style="margin:3px 4px 1px 1px" class="icon-white icon-remove"></i>supprimer</a>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+				
+			</tbody>
+		</table>
 	</div>
+</div>
+
+<div id="myModal" class="modal hide fade" style="display: none;">
+	<form action="" method="post">
+		<div class="modal-header">
+			<button class="close" data-dismiss="modal">×</button>
+			<h3>Modifier un Titre</h3>
+		</div>
+		<div class="modal-body">
+			<input type="hidden" name="id" value="">
+			<input class="span6" type="text" name="titre" value="">
+		</div>
+		<div class="modal-footer">
+			<a class="btn" data-dismiss="modal" href="#">Annuler</a>
+			<input name="send" class="btn btn-primary" type="submit" value="Sauvegarder">
+		</div>
+	</form>
+</div>
+
+<div id="deleteModal" class="modal hide fade" style="display: none;">
+	<form action="" method="post">
+		<div class="modal-header">
+			<button class="close" data-dismiss="modal">×</button>
+			<h3>Suppression d'un Titre</h3>
+		</div>
+		<div class="modal-body">
+			<img src="<?php echo $this->baseUrl;?>/images/using/attention.png" alt="Attention !"><p id="q">Êtes-vous sûr de vouloir supprimer ce titre ?</p><br><p style="color:red">(Attention, cela supprimera également tous les sous-titres relatifs à ce titre!)</p>
+			<input type="hidden" name="id_del" value="">
+		</div>
+		<div class="modal-footer">
+			<a class="btn" data-dismiss="modal" href="#">Annuler</a>
+			<input name="send" class="btn btn-primary" type="submit" value="Supprimer">
+		</div>
+	</form>
 </div>

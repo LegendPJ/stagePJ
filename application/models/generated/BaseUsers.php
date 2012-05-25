@@ -9,6 +9,7 @@
  * @property string $username
  * @property string $password
  * @property string $name
+ * @property integer $droit
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -39,6 +40,10 @@ abstract class BaseUsers extends Doctrine_Record
              'type' => 'string',
              'notnull' => true,
              'length' => '',
+             ));
+        $this->hasColumn('droit', 'integer', null, array(
+             'type' => 'integer',
+             'notnull' => true,
              ));
 
         $this->option('type', 'INNODB');

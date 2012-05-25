@@ -6,7 +6,7 @@
 
 <?php $news = $this->theNews[0]; ?>
 
-<h2>News #<?php echo $news->numero;?></h2><br>
+<h2 style="margin-left:5%">News #<?php echo $news->numero;?></h2><br>
 
 <div id="vueSeule" class="row">
 	<div class="span5">
@@ -14,7 +14,6 @@
 	</div>
 	<div class="span6">
 		<h3><?php echo $news->titre; ?></h3>
-		<!-- <h2><?php //echo $news->titre; ?></h2> -->
 	</div>
 
 	
@@ -53,4 +52,4 @@
 	                				 	'action'=>'index'), null, true);?>">> Accéder à toutes les news <</a></p>
 	</div>
 </div>
-
+<br>

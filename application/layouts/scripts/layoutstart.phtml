@@ -43,7 +43,7 @@
 	</div>
 		<div id="menu">
 			<ul id="navMenu">
-				<li class="oneS" style="width:3%;margin-top:14px;height:30px"><a <?php echo ($this->controller == "donnees") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'donnees','action'=>'start'), null, true);?>" title="Administration">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				<li class="oneS" <?php echo ($this->controller == "donnees") ? 'id="homecur"' : "";?> style="width:3%;margin-top:14px;height:30px"><a href="<?php echo $this->url(array('controller'=>'donnees','action'=>'start'), null, true);?>" title="Administration">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 					<li><a <?php echo ($this->controller == "news") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'news','action'=>'modif'), null, true);?>" title="Modifications des news">News</a></li>
 				<?php foreach (Entite::findAll() as $entite) : ?>
 					<?php if ($entite->nom == 'ACCUEIL') { ?>

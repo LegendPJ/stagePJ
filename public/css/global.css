@@ -1047,12 +1047,15 @@ ul.webkiit {
 #ordreModal .ui-state-default {border-radius:15px;}
 
 li.oneS {
+	width:24px;
 	margin-left: 16%;
 	background-image:url("../images/using/home_sprite.png");
-	background-position:5px 0;
+	background-position:-22px 0;
 	background-repeat:no-repeat;
-}
+} /* Non selectionné */
 
-.oneS img {
-	margin: -5px 0 0 0;
-}
+li.oneS:hover {background-position:-49px 0;} /* Au dessus */
+
+li#homecur:hover {background-position:-49px 0;} /* Au dessus */
+
+li#homecur {background-position:5px 0;} /* Selectionné */

@@ -12,7 +12,8 @@
  * @property string $auteur
  * @property string $lien
  * @property string $photo
- * @property date $date
+ * @property string $date
+ * @property string $visible
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -53,8 +54,12 @@ abstract class BaseNews extends Doctrine_Record
         $this->hasColumn('photo', 'string', null, array(
              'type' => 'string',
              ));
-        $this->hasColumn('date', 'date', null, array(
-             'type' => 'date',
+        $this->hasColumn('date', 'string', null, array(
+             'type' => 'string',
+             'notnull' => true,
+             ));
+        $this->hasColumn('visible', 'string', null, array(
+             'type' => 'string',
              'notnull' => true,
              ));
 
