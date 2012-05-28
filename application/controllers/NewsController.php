@@ -64,7 +64,7 @@ class NewsController extends Zend_Controller_Action
 				$news->titre 		= 	$titre;
 				$news->numero 	= 	$numero[0]->MAX+1;
 				$news->contenu 	= 	$contenu;
-				$news->auteur 	= 	$this->ident->name;
+				$news->auteur 	= 	$this->view->ident->name;
 				$news->lien 		= 	$lien;
 				$news->photo 	= 	$entite.'.jpg';
 				$news->date 		= 	$date;

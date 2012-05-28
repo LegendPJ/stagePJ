@@ -20,10 +20,11 @@ class News extends BaseNews
 	}
 	public static function findLastNews() {
 		return Doctrine_Query::create()
-					->select('n.date, n.titre, n.auteur, n.contenu')
+					->select('n.*')
 					->from('news n')
 					->where('n.date IN (SELECT MAX(ne.date) as date FROM news ne WHERE ne.visible =?)', 'oui')
 					->andWhere('n.visible = ?', 'oui')
+					->orderBy('id DESC')
 					->execute();
 	}
 	public static function findNewsVisible($idNews) {
@@ -79,7 +80,7 @@ class News extends BaseNews
 	}
 	public function updateNews($titre, $contenu, $idNews, $lien, $photo, $visible) {
 		return Doctrine_Query::create()
-				->update("Encadre")
+				->update("News")
 				->set("titre", "?", $titre)
 				->set("contenu", "?", $contenu)
 				->set("lien", "?", $lien)

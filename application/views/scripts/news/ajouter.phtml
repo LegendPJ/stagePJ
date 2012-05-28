@@ -1,10 +1,10 @@
 <?php $this->headTitle()->append('Administration -  '.strtoupper($this->controller));
 $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps.js'); ?>
 <br>
-<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br>
+<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br><br>
 <div class="row">
 	<div class="span12" id="ajouter">
-		<h2>Ajout une News</h2><br>
+		<h2>Ajouter une News</h2><br>
 		<form action="" method="post">
 			<label for="titre">Titre<span style="color:#C33">*</span></label>
 			<input class="span6" id="titre" type="text" name="titre" value="">
