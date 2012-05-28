@@ -12,8 +12,8 @@ class DonneesController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost())
 		{
 			$crypt = new Webf_RevCrypt("");
-			$ul = $this->_getParam('username');
-			$pm = $this->_getParam('password');
+			$ul = $crypt->code($this->_getParam('username'));
+			$pm = $crypt->code($this->_getParam('password'));
 			$adapter = new Donnees_Auth_Adapter($ul, $pm);
 			$result = Zend_Auth::getInstance()->authenticate($adapter);
 
