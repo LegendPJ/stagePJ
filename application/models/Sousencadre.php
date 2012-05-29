@@ -12,13 +12,6 @@
  */
 class Sousencadre extends BaseSousencadre
 {
-	public function findSEEncadre($idEncadre) {
-		return 	Doctrine_Query::create()
-					->from('Sousencadre se')
-					->where('se.encadre_id = ?', $idEncadre)
-					->orderBy('en.ordre ASC')
-					->execute();
-	}
 	public function findSousEncadre($idSousencadre) {
 		return 	Doctrine_Query::create()
 					->from('Sousencadre se')
@@ -60,11 +53,12 @@ class Sousencadre extends BaseSousencadre
 				->where("id = ?", $idSousencadre)
 				->execute();
 	}
-	public function updateSousEnca($titre, $contenu, $idSousencadre) {
+	public function updateSousEnca($titre, $contenu, $idSousencadre, $visible) {
 		return Doctrine_Query::create()
 				->update("Sousencadre")
 				->set("titre", "?", $titre)
 				->set("contenu", "?", $contenu)
+				->set("visible", "?", $visible)
 				->where("id = ?", $idSousencadre)
 				->execute();
 	}

@@ -2,30 +2,32 @@
 <?php if (count($enti->sousencad) != 0) { ?>
 	<?php if (strlen($enti->contenu) != 0) //si le contenu de l'encadre n'est pas nul, alors on affiche un hr pour séparer le contenu des sous encadres
 		echo '<br><hr class="resize"><br>'; ?>
-	<div class="span5">
-		<div class="tabbable tabs-left">
-			<ul id="tab" class="nav nav-pills nav-stacked">
-				<?php $i =0;
-				foreach ($enti->sousencad as $s) : 
-					echo ($i == 0) ? '<li class="active">' : '<li>' ; 
-					echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
-					$i++;
-				endforeach; ?>
-			</ul>
+	<div class="soustitres">
+		<div class="span5">
+			<div class="tabbable tabs-left">
+				<ul id="tab" class="nav nav-pills nav-stacked">
+					<?php $i =0;
+					foreach ($enti->sousencad as $s) : 
+						echo ($i == 0) ? '<li class="active">' : '<li>' ; 
+						echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
+						$i++;
+					endforeach; ?>
+				</ul>
+			</div>
 		</div>
-	</div>
-	<div class="span7" id="alignLeft">
-		<div id="myTabContent" class="tab-content">
-			<?php 
-			$j = 0;
-			foreach ($enti->sousencad as $s) : 
-				echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
-				echo $s->contenu;
-				echo '</div>'; //celui de tab-pane
-				$j++;
-			endforeach; ?>
-		</div><!--  celui de tab content -->
-	</div><!--  celui de alignLeft -->
+		<div class="span7" id="alignLeft">
+			<div id="myTabContent" class="tab-content">
+				<?php 
+				$j = 0;
+				foreach ($enti->sousencad as $s) : 
+					echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
+					echo $s->contenu;
+					echo '</div>'; //celui de tab-pane
+					$j++;
+				endforeach; ?>
+			</div><!--  celui de tab content -->
+		</div><!--  celui de alignLeft -->
+	</div><!-- fin div global -->
 <!-- 	<div class="span12">
 		<hr class="soften">
 	</div> -->

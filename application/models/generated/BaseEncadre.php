@@ -11,6 +11,7 @@
  * @property integer $entite_id
  * @property integer $ordre
  * @property string $ajout
+ * @property string $visible
  * @property Entite $Entite
  * @property Doctrine_Collection $Sousencadre
  * 
@@ -51,6 +52,10 @@ abstract class BaseEncadre extends Doctrine_Record
              'type' => 'string',
              'notnull' => true,
              'length' => '1',
+             ));
+        $this->hasColumn('visible', 'string', null, array(
+             'type' => 'string',
+             'notnull' => true,
              ));
 
         $this->option('type', 'INNODB');

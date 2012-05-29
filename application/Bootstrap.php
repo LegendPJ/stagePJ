@@ -76,13 +76,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		->headLink(array('rel' => 'shortcut icon','href' => '/images/using/favicon.ico'),'PREPEND');
 		// Fichiers jQuery
 		$view->headScript()->prependFile('/js/tiny_mce/tiny_mce.js'); //TINY
-		$view->headScript()->prependFile('/js/bootstrap-tab.js'); //Bootstrap
-		$view->headScript()->prependFile('/js/bootstrap-carousel.js'); //Bootstrap
-		$view->headScript()->prependFile('/js/bootstrap-tooltip.js'); //Bootstrap
-		$view->headScript()->prependFile('/js/bootstrap-dropdown.js'); //Bootstrap
-		$view->headScript()->prependFile('/js/bootstrap-modal.js'); //Bootstrap
+		$view->headScript()->prependFile('/js/bootstrap-tab.js');
+		$view->headScript()->prependFile('/js/bootstrap-popover.js');
+		$view->headScript()->prependFile('/js/bootstrap-tooltip.js');
+		$view->headScript()->prependFile('/js/bootstrap-dropdown.js');
+		$view->headScript()->prependFile('/js/bootstrap-modal.js');
 		$view->headScript()->prependFile('/js/jquery.noty.js');
 		$view->headScript()->prependFile('/js/datepicker.js');
+		$view->headScript()->prependFile('/js/googlA.js');
 		$view->headScript()->prependFile('/js/main.js');
 		$view->headScript()->prependFile('/js/jquery-ui.js');
 		$view->headScript()->prependFile('/js/jquery-1.7.1.min.js');

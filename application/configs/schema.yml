@@ -105,6 +105,9 @@ Encadre:
   ajout :
    type: string(1)
    notnull: true
+  visible:
+   type: string
+   notnull: true
  relations:
   Entite:
    class: Entite
@@ -141,6 +144,9 @@ Sousencadre:
    notnull: true
   ordre :
    type: integer
+   notnull: true
+  visible:
+   type: string
    notnull: true
  relations:
   Encadre:

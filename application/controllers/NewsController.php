@@ -57,9 +57,10 @@ class NewsController extends Zend_Controller_Action
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
 			$visible = $query->getParam('visible');
+			if (empty($visible)) {$visible = "non";}
 			if (strlen($titre) != 0 && strlen($lien) != 0) {
 				$numero		=	News::getLastNumero();
-				$date			=	date("j, n, Y");  
+				$date			=	date("j-n-Y");  
 				$news 			= 	new News();
 				$news->titre 		= 	$titre;
 				$news->numero 	= 	$numero[0]->MAX+1;
@@ -90,6 +91,7 @@ class NewsController extends Zend_Controller_Action
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
 			$visible = $query->getParam('visible');
+			if (empty($visible)) {$visible = "non";}
 			if (strlen($titre) !=  0 && strlen($lien) != 0) {
 				$photo = $entite.'.jpg';
 				News::updateNews($titre, $contenu, $this->view->idNews, $lien, $photo, $visible);

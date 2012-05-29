@@ -1,7 +1,7 @@
-<?php $this->headTitle()->append('Administration - News');
+<?php $this->headTitle()->append('Administration - '.strtoupper($this->controller));
 $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps.js'); ?>
 <br>
-<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br>
+<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br><br>
 <div class="row">
 	<div class="span12" id="editer">
 		<h2>Editer une News</h2><br>
@@ -20,9 +20,11 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 			<input type="radio" name="entite" value="xylavie" <?php echo ($entite[0] == 'xylavie') ? 'checked="checked"' : '' ?>>&nbsp;XYLAVIE
 			<input type="radio" name="entite" value="xylabtp" <?php echo ($entite[0] == 'xylabtp') ? 'checked="checked"' : '' ?>>&nbsp;XYLABTP
 			<input type="radio" name="entite" value="xylarisk" <?php echo ($entite[0] == 'xylarisk') ? 'checked="checked"' : '' ?>>&nbsp;XYLARISK<br><br>
-			<label for="visible">Visible<span style="color:#C33">*</span></label>
-			<input type="radio" name="visible" value="oui" <?php echo ($this->news[0]->visible == "oui") ? 'checked="checked"' : '' ?>>&nbsp;Oui
-			<input type="radio" name="visible" value="non" <?php echo ($this->news[0]->visible == "non") ? 'checked="checked"' : '' ?>>&nbsp;Non
+			<?php if($this->ident->droit > 15) {?>
+				<label for="visible">Visible<span style="color:#C33">*</span></label>
+				<input type="radio" name="visible" value="oui" <?php echo ($this->news[0]->visible == "oui") ? 'checked="checked"' : '' ?>>&nbsp;Oui
+				<input type="radio" name="visible" value="non" <?php echo ($this->news[0]->visible == "non") ? 'checked="checked"' : '' ?>>&nbsp;Non
+			<?php } ?>
 		</form>
 			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="editNews" onclick="return false;"><i class="icon-ok"></i>Editer cette News</a>
 	</div>

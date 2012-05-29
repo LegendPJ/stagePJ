@@ -10,6 +10,7 @@
  * @property string $contenu
  * @property integer $encadre_id
  * @property integer $ordre
+ * @property string $visible
  * @property Encadre $Encadre
  * 
  * @package    ##PACKAGE##
@@ -43,6 +44,10 @@ abstract class BaseSousencadre extends Doctrine_Record
              ));
         $this->hasColumn('ordre', 'integer', null, array(
              'type' => 'integer',
+             'notnull' => true,
+             ));
+        $this->hasColumn('visible', 'string', null, array(
+             'type' => 'string',
              'notnull' => true,
              ));
 

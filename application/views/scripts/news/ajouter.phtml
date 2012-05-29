@@ -19,9 +19,11 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 			<input type="radio" name="entite" value="xylavie">&nbsp;XYLAVIE
 			<input type="radio" name="entite" value="xylabtp">&nbsp;XYLABTP
 			<input type="radio" name="entite" value="xylarisk">&nbsp;XYLARISK<br><br>
-			<label for="lien">Visible<span style="color:#C33">*</span></label>
-			<input type="radio" name="visible" value="oui">&nbsp;Oui
-			<input type="radio" name="visible" value="non" checked="checked">&nbsp;Non
+			<?php if($this->ident->droit > 15) {?>
+				<label for="lien">Visible<span style="color:#C33">*</span></label>
+				<input type="radio" name="visible" value="oui">&nbsp;Oui
+				<input type="radio" name="visible" value="non" checked="checked">&nbsp;Non
+			<?php } ?>
 		</form>
 			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="ajoutNews" onclick="return false;"><i class="icon-ok"></i>Ajouter cette News</a>
 	</div>

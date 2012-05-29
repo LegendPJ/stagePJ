@@ -539,4 +539,6 @@ jQuery(function($) {
 	$('label[for^="fumeur-"]').parent().find('ul').addClass('webkiit');
 	$('label[for^="IPT-"]').parent().find('ul').addClass('webkiit');
 	$('label[for^="IPP-"]').parent().find('ul').addClass('webkiit');
+
+	$('.pop').popover();
 });

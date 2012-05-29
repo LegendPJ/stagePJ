@@ -5,31 +5,33 @@
 } ?>
 <?php $this->headScript()->appendFile('/js/verifchamps.js'); ?>
 <br>
-<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i>Menu des Titres</a><br>
+<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i>Menu des Titres</a><br><br>
 <div class="row">
 	<div class="span12">
 		<h2>Modifications - Sous-Titres de <span style="color:#FFC90E">"<?php echo $this->titre[0]->titre; ?>"</span></h2><br>
 		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouterst', 'id' => $this->titre[0]->id), null, true);?>"
-		     title="Ajouter un sous-titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-success couleurNoire"><i class="icon-plus"></i>Ajouter un sous-titre</a>
+		     title="Ajouter un Sous-titre pour <?php echo$this->titre[0]->titre; ?>" class="btn btn-success couleurNoire"><i class="icon-plus"></i>Ajouter un sous-titre</a>
 		&nbsp;
-		<a href="#ordreModal"  data-toggle="modal" title="Ajouter un titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-warning couleurNoire"><i class="icon-wrench"></i>Modifier l'ordre</a>
+		<a href="#ordreModal"  data-toggle="modal" title="Modifier l'ordre des Sous-titres" class="btn btn-warning couleurNoire"><i class="icon-wrench"></i>Modifier l'ordre</a>
 		<br><br>
 		<table class="table table-bordered" id="tabNoir">
 			<thead>
 				<tr>
 					<th>Sous titre</th>
 					<th>Actions</th>
+					<th>Visible</th>
 					<th>Ordre</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php foreach ($this->soustitres as $se): ?>				
 				<tr>
-					<td class="tdGrey"><a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'editst','id' => $se->id), null, true);?>"><?php echo $se->titre; ?></a></td>
+					<td class="tdGrey"><a title="Modifier le contenu du Sous-titre" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'editst','id' => $se->id), null, true);?>"><?php echo $se->titre; ?></a></td>
 					<td class="LeftMore">
-						<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $se->id; ?>" data-titre="<?php echo $se->titre; ?>" title="Modifier ce Titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px" class="icon-white icon-pencil"></i>modifier le titre</a>
-						<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Titre" data-toggle="modal" data-id="<?php echo $se->id; ?>" ><i style="margin:3px 4px 1px 1px" class="icon-white icon-remove"></i>supprimer</a>
+						<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $se->id; ?>" data-titre="<?php echo $se->titre; ?>" title="Modifier ce Sous-titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px" class="icon-white icon-pencil"></i>modifier le titre</a>
+						<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Sous-titre" data-toggle="modal" data-id="<?php echo $se->id; ?>" ><i style="margin:3px 4px 1px 1px" class="icon-white icon-remove"></i>supprimer</a>
 					</td>
+					<td class="tdGrey"><?php echo $se->visible; ?></td>
 					<td class="tdGrey"><?php echo $se->ordre; ?></td>
 				</tr>
 				<?php endforeach; ?>
@@ -42,7 +44,7 @@
 	<form action="" method="post">
 		<div class="modal-header">
 			<button class="close" data-dismiss="modal">×</button>
-			<h3>Modifier l'ordre des encadres</h3>
+			<h3>Modifier l'ordre des Sous-titres</h3>
 		</div>
 		<div class="modal-body">
 			<ul id="sortable">
@@ -64,7 +66,7 @@
 	<form action="" method="post">
 		<div class="modal-header">
 			<button class="close" data-dismiss="modal">×</button>
-			<h3>Modifier un Titre et son Contenu</h3>
+			<h3>Modifier un le titre d'un Sous-titre</h3>
 		</div>
 		<div class="modal-body">
 			<input type="hidden" name="id" value="">
@@ -81,7 +83,7 @@
 	<form action="" method="post">
 		<div class="modal-header">
 			<button class="close" data-dismiss="modal">×</button>
-			<h3>Suppression d'un titre</h3>
+			<h3>Suppression d'un sous-titre</h3>
 		</div>
 		<div class="modal-body">
 			<img src="<?php echo $this->baseUrl;?>/images/using/attention.png" alt="Attention !"><p id="q">Êtes-vous sûr de vouloir supprimer ce sous-titre ?</p><br><p style="color:red">(Ce choix sera irréversible!)</p>

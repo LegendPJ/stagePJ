@@ -5,7 +5,7 @@
 } ?>
 <?php $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps.js'); ?>
 <br>
-<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'soustitre', 'id' => $this->soustitre[0]->encadre_id), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br>
+<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'soustitre', 'id' => $this->soustitre[0]->encadre_id), null, true);?>" title="Retour aux menu des modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br><br>
 <div class="row">
 	<div class="span12" id="editer">
 		<h2>Modifier le Sous-titre</h2><br>
@@ -15,9 +15,14 @@
 			<input id="id_sousenca" type="hidden" name="id_sousenca" value="<?php echo $this->soustitre[0]->id; ?>">
 			<br><br>
 			<label for="contenu">Contenu<span style="color:#C33">*</span></label>
-			<textarea id="contenu" name="contenu"><?php echo $this->soustitre[0]->contenu; ?></textarea>
+			<textarea id="contenu" name="contenu"><?php echo $this->soustitre[0]->contenu; ?></textarea><br>
+			<?php if($this->ident->droit > 15) {?>
+				<label for="visible">Visible<span style="color:#C33">*</span></label>
+				<input type="radio" name="visible" value="oui" <?php echo ($this->soustitre[0]->visible == "oui") ? 'checked="checked"' : '' ?>>&nbsp;Oui
+				<input type="radio" name="visible" value="non" <?php echo ($this->soustitre[0]->visible == "non") ? 'checked="checked"' : '' ?>>&nbsp;Non
+			<?php } ?>
 		</form>
-			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="validEdit" onclick="return false;"><i class="icon-ok"></i>Modifier l'Encadre</a>
+			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="validEdit" onclick="return false;"><i class="icon-ok"></i>Modifier le Sous-titre</a>
 	</div>
 </div>
 

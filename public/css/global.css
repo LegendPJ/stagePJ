@@ -157,12 +157,19 @@ ul.nav-pills li a {
 	width:20%;
 }
 
+.soustitres {margin-left:-10px;}
+.soustitres .span5 {
+	margin-left:0;
+	width:25%;
+}
+
 #alignLeft {
 	width:60%;
 	margin-top:1%;
 	margin-left:1%;
 }
 
+.soustitres #alignLeft { width:70%;}
 .carousel {
 	text-align: left;
 }
@@ -177,7 +184,6 @@ ul.nav-pills li a {
 .pager a:hover {
 	border: 1px solid #215675;
 	background-color: #235d7f;
-	
 	-webkit-box-shadow: 0 1px 4px black;
 	-moz-box-shadow: 0 1px 4px black;
 	box-shadow: 0 1px 4px black;
@@ -250,6 +256,11 @@ ul.nav-pills li a {
 #tabNoir .LeftMore {
 	border-left: 1px solid grey;
 	border-top: 1px solid grey;
+}
+
+.popover-title {
+	background-color:#058;
+	color: black;
 }
 /* FIN MODIFS BOOTSTRAP TWITTER */
 
@@ -570,7 +581,7 @@ input.erreur:focus {
 #lentite {
 	text-align: center;
 	width:250px;
-	margin: 120px 0 0 500px;
+	margin: 112px 0 0 500px;
 	position: absolute;
 	font-family: "Comic Sans MS";
 	font-weight:bold;

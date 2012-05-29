@@ -22,7 +22,6 @@
 		<div class="noty_modal noty_theme_mitgux" style="display: block;"></div>
 		<?php endif; ?>
 	</div>
-
 	<div class="side">
 		<div class="logout">
 			<a href="<?php echo $this->baseUrl;?>/donnees/logout/" title="Se déconnecter"> </a>
@@ -31,34 +30,34 @@
 			<a target="_blank" href="<?php echo $this->url(array('controller'=>'index', 'action'=>'index'), null, true);?>" title="Retour au Site Web"></a>
 		</div>
 		<div class="user">
-			<p style="color:white;"><?php echo $this->ident->name; ?></p><br><br>
+			<p style="color:white;"><?php echo $this->ident->name; ?></p>
 		</div>
 	</div>
-
 	<div id="headerP">
 		<div id="bandeau">		
 			<a href="<?php echo $this->url(array('controller'=>'donnees',
                 				 			'action'=>'start'), null, true);?>" title="Administration du site"><img src="<?php echo $this->baseUrl;?>/images/using/bandeauS.jpg"></a>
 		</div>
 	</div>
-		<div id="menu">
-			<ul id="navMenu">
-				<li class="oneS" <?php echo ($this->controller == "donnees") ? 'id="homecur"' : "";?> style="width:3%;margin-top:14px;height:30px"><a href="<?php echo $this->url(array('controller'=>'donnees','action'=>'start'), null, true);?>" title="Administration">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-					<li><a <?php echo ($this->controller == "news") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'news','action'=>'modif'), null, true);?>" title="Modifications des news">News</a></li>
-				<?php foreach (Entite::findAll() as $entite) : ?>
-					<?php if ($entite->nom == 'ACCUEIL') { ?>
-					<li><a <?php echo ($this->controller == "index") ? 'class="current"' : "";?>
-					href="<?php echo $this->url(array('controller'=> 'index' ,'action'=>'modif'), null, true);?>"  title="Modifications de <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
-					<?php } else { ?>
-					<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>
-					href="<?php echo $this->url(array('controller'=>strtolower($entite->nom),'action'=>'modif'), null, true);?>"  title="Modifications de <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
-					<?php } ?>
-					</a></li>
-				<?php endforeach; ?>
-			</ul> 
-		</div>
+	<div id="menu">
+		<ul id="navMenu">
+			<li class="oneS" <?php echo ($this->controller == "donnees") ? 'id="homecur"' : "";?> style="width:3%;margin-top:14px;height:30px"><a href="<?php echo $this->url(array('controller'=>'donnees','action'=>'start'), null, true);?>" title="Administration">&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				<li><a style="margin-right:-15px;" <?php echo ($this->controller == "news") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'news','action'=>'modif'), null, true);?>" title="Modifications des news">News</a></li>
+			<?php foreach (Entite::findAll() as $entite) : ?>
+				<?php if ($entite->nom == 'ACCUEIL') { ?>
+				<li><a <?php echo ($this->controller == "index") ? 'class="current"' : "";?>
+				href="<?php echo $this->url(array('controller'=> 'index' ,'action'=>'modif'), null, true);?>"  title="Modifications de <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
+				<?php } else { ?>
+				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>
+				href="<?php echo $this->url(array('controller'=>strtolower($entite->nom),'action'=>'modif'), null, true);?>"  title="Modifications de <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
+				<?php } ?>
+				</a></li>
+			<?php endforeach; ?>
+		</ul> 
+	</div>
 	<div id="containerP">
 		<?php echo $this->layout()->content ?>
+		<br><br>
 	</div>
 </body>
   <?php echo $this->headScript(); ?>

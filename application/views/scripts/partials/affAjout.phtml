@@ -5,7 +5,7 @@
 } ?>
 <?php $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps.js'); ?>
 <br>
-<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu de modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br>
+<a style="margin-left:35px" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'modif'), null, true);?>" title="Retour aux menu des modifications" class="btn"><i class="icon-arrow-left"></i> Retour</a><br><br>
 <div class="row">
 	<div class="span12" id="ajouter">
 		<h2>Ajout Grand Titre à <span style="color:#FFC90E"><?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?></span></h2><br>
@@ -14,7 +14,12 @@
 			<input id="titre" type="text" name="titre" value="">
 			<br><br>
 			<label for="contenu">Contenu<span style="color:#C33">*</span></label>
-			<textarea id="contenu" name="contenu"></textarea>
+			<textarea id="contenu" name="contenu"></textarea><br>
+			<?php if($this->ident->droit > 15) {?>
+				<label for="lien">Visible<span style="color:#C33">*</span></label>
+				<input type="radio" name="visible" value="oui">&nbsp;Oui
+				<input type="radio" name="visible" value="non" checked="checked">&nbsp;Non
+			<?php } ?>
 		</form>
 			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="validModif" onclick="return false;"><i class="icon-ok"></i>Ajouter ce Titre à <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?></a>
 	</div>

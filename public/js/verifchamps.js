@@ -30,6 +30,9 @@ jQuery(function($) {
 			noty({"text":"Attention ! Vous devez au moins remplir le titre !","theme":"noty_theme_mitgux","layout":"topCenter","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":false,"modal":true});
 		} else {
 			$('form').submit();
+			// $('form').submit(function() {
+			// 	$(":submit", this).attr("disabled", "disabled");
+			// });
 			noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
 		}
 	});

@@ -9,7 +9,7 @@
 	<div class="span12">
 		<h2>Modifications - Titres de <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?></h2><br>
 		<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouter'), null, true);?>"
-		     title="Ajouter un titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-success couleurNoire"><i class="icon-plus"></i>Ajouter un Titre</a>
+		     title="Ajouter un Titre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-success couleurNoire"><i class="icon-plus"></i>Ajouter un Titre</a>
 		&nbsp;
 		<a href="#ordreModal"  data-toggle="modal" title="Modifier l'ordre pour <?php echo ($this->controller == "index") ? "ACCUEIL" : strtoupper($this->controller); ?>" class="btn btn-warning couleurNoire"><i class="icon-wrench"></i>Modifier l'ordre</a>
 		<br><br>
@@ -18,26 +18,34 @@
 				<tr>
 					<th>Grand titre</th>
 					<th>Actions</th>
+					<th>Visible</th>
 					<th>Ordre</th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach ($this->encadres as $en): ?>				
+				<?php foreach ($this->encadres as $en): ?>	
+				<?php $nb_mots = 4;
+					$texte = explode(' ', $en->titre, $nb_mots+1);
+					unset($texte[$nb_mots]); ?>
 				<tr>
-					<?php if($en->contenu == "<p>NeWsXyLaGrOuP</p>") {?>
-						<td class="tdGrey"><?php echo $en->titre; ?></td>
-					<?php } else { ?>
-					<td class="tdGrey"><a title="Modifier le contenu du titre" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'edit','id' => $en->id), null, true);?>"><?php echo $en->titre; ?></a></td>
-					<?php } ?>
+
+				<?php if($en->contenu == "<p>NeWsXyLaGrOuP</p>")
+					echo '<td class="tdGrey">'.$en->titre.'</td>';
+				elseif (count($texte) < 4)
+					echo '<td class="tdGrey"><a title="Modifier le contenu du Titre" href="'.$this->url(array('controller'=> $this->controller,'action'=>'edit','id' => $en->id), null, true).'">'.implode(' ', $texte).'</a></td>';
+				else
+					echo '<td class="tdGrey"><a title="Modifier le contenu du Titre" href="'.$this->url(array('controller'=> $this->controller,'action'=>'edit','id' => $en->id), null, true).'">'.implode(' ', $texte).'...</a></td>';
+				?>
 					<td class="tdLeft">
 						<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $en->id; ?>" data-titre="<?php echo $en->titre; ?>" title="Modifier ce Titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px" class="icon-white icon-pencil"></i>modifier le titre</a>
 						<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Titre" data-toggle="modal" data-id="<?php echo $en->id; ?>" ><i style="margin:3px 4px 1px 1px" class="icon-white icon-remove"></i>supprimer</a>
 						<?php if(count($en->sousencad) != 0) {?>
-							<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'soustitre','id' => $en->id), null, true);?>" class="btn btn-info btn-mini couleurNoire" title="Voir les sous-titres de <?php echo $en->titre;?>"><i class="icon-share-alt"></i>Voir les Sous-titres</a>
+							<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'soustitre','id' => $en->id), null, true);?>" class="btn btn-info btn-mini couleurNoire" title="Voir les Sous-titres de <?php echo $en->titre;?>"><i class="icon-share-alt"></i>Voir les Sous-titres</a>
 						<?php } else {?>
-							<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouterst', 'id' => $en->id), null, true);?>" class="btn btn-success btn-mini couleurNoire"title="Ajouter un sous-titre pour <?php echo $en->titre;?>"><i class="icon-plus-sign"></i>Ajouter un Sous-titre</a>
+							<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouterst', 'id' => $en->id), null, true);?>" class="btn btn-success btn-mini couleurNoire"title="Ajouter un Sous-titre pour <?php echo $en->titre;?>"><i class="icon-plus-sign"></i>Ajouter un Sous-titre</a>
 		     				<?php } ?>
 					</td>
+					<td class="tdGrey"><?php echo $en->visible; ?></td>
 					<td class="tdGrey"><?php echo $en->ordre; ?></td>
 				</tr>
 				<?php endforeach; ?>

@@ -27,11 +27,12 @@
 						unset($texte[$nb_mots]);?>
 						
 						<div class="span12">
-							<?php 	if ( count($texte) < 50) 
-									echo implode(' ', $texte);
-								else {
+							<?php 	if ( count($texte) < 50) {
+									echo implode(' ', $texte); ?>
+									<p><a href="<?php echo $this->url(array('controller'=>'news','action'=>'newsvue','id' => $news->id), null, true);?>">(Afficher la news...)</a></p>
+							<?php  } else {
 									echo implode(' ', $texte).'...';?>
-							<p><a href="<?php echo $this->url(array('controller'=>'news','action'=>'newsvue','id' => $news->id), null, true);?>">(Lire la suite...)</a></p>
+									<p><a href="<?php echo $this->url(array('controller'=>'news','action'=>'newsvue','id' => $news->id), null, true);?>">(Lire la suite...)</a></p>
 							<?php 	} ?>
 						</div>
 						<div class="ribbon"></div>
@@ -51,32 +52,32 @@
 					<?php if (strlen($e->contenu) != 0)
 						echo '<br><hr class="resize">'; ?>
 			</div>
-				<div class="span5">
-					<ul id="tab" class="nav nav-pills nav-stacked">
-						<?php $i =0;
-						foreach ($e->sousencad as $s) : 
-							echo ($i == 0) ? '<li class="active">' : '<li>' ; 
-							echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
-							$i++;
-						endforeach; ?>
-					</ul>
+			<div class="span5">
+				<ul id="tab" class="nav nav-pills nav-stacked">
+					<?php $i =0;
+					foreach ($e->sousencad as $s) : 
+						echo ($i == 0) ? '<li class="active">' : '<li>' ; 
+						echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
+						$i++;
+					endforeach; ?>
+				</ul>
+			</div>
+			<div class="span7" id="alignLeft">
+				<div id="myTabContent" class="tab-content">
+					<?php 
+					$j = 0;
+					foreach ($e->sousencad as $s) : 
+						echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
+						echo $s->contenu;
+						echo '</div>';
+						$j++;
+					endforeach; ?>
 				</div>
-				<div class="span7" id="alignLeft">
-					<div id="myTabContent" class="tab-content">
-						<?php 
-						$j = 0;
-						foreach ($e->sousencad as $s) : 
-							echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
-							echo $s->contenu;
-							echo '</div>';
-							$j++;
-						endforeach; ?>
-					</div>
-				</div>
-				<div class="span12">
-					<hr class="soften">
-				</div>
-				<?php } else { echo '<hr class="soften"></div>'; } 
+			</div>
+			<div class="span12">
+				<hr class="soften">
+			</div>
+			<?php } else { echo '<hr class="soften"></div>'; } 
 			endforeach ?>
 	<?php } ?>
 </div>

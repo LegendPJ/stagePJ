@@ -8,7 +8,7 @@ class XylabtpController extends Zend_Controller_Action
 	public function indexAction()
 	{
 		$this->view->en 		= 	Entite::findEntity(strtoupper($this->view->controller));
-		$this->view->encEnti		= 	Encadre::findEncadreEntite($this->view->en[0]->id);
+		$this->view->encEnti		= 	Encadre::findEncadreEntiteV($this->view->en[0]->id);
 	}
 
 	public function contactAction()
@@ -94,8 +94,10 @@ class XylabtpController extends Zend_Controller_Action
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
 			$idEncadre = $query->getParam('id_enca');
+			$visible = $query->getParam('visible');
+			if (empty($visible)) {$visible = "non";}
 			if (strlen($titre) != 0) {
-				Encadre::updateEnca($titre, $contenu, $idEncadre);
+				Encadre::updateEnca($titre, $contenu, $idEncadre, $visible);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Le Grand Titre à été modifié!');
 				$this->_redirect('/xylabtp/modif');
 			}
@@ -111,6 +113,8 @@ class XylabtpController extends Zend_Controller_Action
 		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
+			$visible = $query->getParam('visible');
+			if (empty($visible)) {$visible = "non";}
 			if (strlen($titre) != 0) {
 				$this->view->enid 	= 	Entite::findEntity(strtoupper($this->view->controller));
 				$this->view->ordre	=	Encadre::getLastOrdre($this->view->enid[0]->id);
@@ -119,6 +123,7 @@ class XylabtpController extends Zend_Controller_Action
 				$encadre->entite_id 	= 	$this->view->enid[0]->id;
 				$encadre->contenu 	= 	$contenu;
 				$encadre->ordre 	= 	$this->view->ordre[0]['MAX']+1;
+				$encadre->visible	=	$visible;
 				$encadre->save();
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Grand Titre ajouté!');
 				$this->_redirect('/xylabtp/modif');
@@ -169,6 +174,8 @@ class XylabtpController extends Zend_Controller_Action
 		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
+			$visible = $query->getParam('visible');
+			if (empty($visible)) {$visible = "non";}
 			if (strlen($titre) != 0) {
 				$this->view->ordre		=	Sousencadre::getLastOrdre($this->view->idT);
 				$sousencadre 			= 	new Sousencadre();
@@ -176,9 +183,10 @@ class XylabtpController extends Zend_Controller_Action
 				$sousencadre->encadre_id 	= 	$this->view->idT;
 				$sousencadre->contenu 	= 	$contenu;
 				$sousencadre->ordre 		= 	$this->view->ordre[0]['MAX']+1;
+				$sousencadre->visible	=	$visible;
 				$sousencadre->save();
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Sous Titre ajouté!');
-				$this->_redirect('/index/soustitre/id/'.$this->view->idT);
+				$this->_redirect('/xylabtp/soustitre/id/'.$this->view->idT);
 			}
 		}
 	}
@@ -196,8 +204,10 @@ class XylabtpController extends Zend_Controller_Action
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
 			$idSousencadre = $query->getParam('id_sousenca');
+			$visible = $query->getParam('visible');
+			if (empty($visible)) {$visible = "non";}
 			if (strlen($titre) != 0) {
-				Sousencadre::updateSousEnca($titre, $contenu, $idSousencadre);
+				Sousencadre::updateSousEnca($titre, $contenu, $idSousencadre, $visible);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Le Sous-Titre à été modifié avec succès!');
 				$this->_redirect('/xylabtp/soustitre/id/'.$this->view->soustitre[0]->encadre_id);
 			}

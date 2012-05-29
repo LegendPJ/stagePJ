@@ -9,12 +9,17 @@ body {
 	width:80px;
 	height:80px;
 	margin: 200px 0 0 -78px;
-	position:absolute;
+	position:fixed;
 }
 
 .user {
-	margin: 315px 0 0 -90px;
+	margin: 315px 0 0 -155px;
+	width:150px;
 	position:fixed;
+}
+
+.user p{
+	text-align:right;
 }
 
 .logout a {
@@ -39,7 +44,7 @@ body {
 	width:80px;
 	height:80px;
 	margin: 270px 0 0 -90px;
-	position:absolute;
+	position:fixed;
 }
 
 .retour a {

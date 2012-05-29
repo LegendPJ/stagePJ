@@ -12,12 +12,6 @@
  */
 class Encadre extends BaseEncadre
 {
-	public function findAll() {
-		return 	Doctrine_Query::create()
-					->from('encadre en')
-					->execute();
-	}
-
 	public function getLastOrdre($idEntity) {
 		return 	Doctrine_Query::create()
 					->select('MAX(en.ordre)')
@@ -36,6 +30,17 @@ class Encadre extends BaseEncadre
 					->execute();
 	}
 
+	public function findEncadreEntiteV($idEntity) {
+		return 	Doctrine_Query::create()
+					->select('en.*, s.titre')
+					->from('encadre en')
+					->where('en.entite_id = ?', $idEntity)
+					->andWhere('en.visible = ?', 'oui')
+					->leftJoin('en.sousencad s WITH s.visible = ?', "oui") // On joint les deux tables.
+					->orderBy('en.ordre ASC, s.ordre ASC')
+					->execute();
+	}
+
 	public function findEncadre($idEncadre) {
 		return 	Doctrine_Query::create()
 					->select('en.*')
@@ -50,6 +55,7 @@ class Encadre extends BaseEncadre
 					->from('encadre en')
 					->where('en.entite_id = ?', $idEntity)
 					->andWhere('en.ordre = ?', 1)
+					->andWhere('en.visible = ?', 'oui')
 					->leftJoin('en.sousencad s') // On joint les deux tables.
 					->orderBy('en.ordre ASC, s.ordre ASC')
 					->execute();
@@ -62,6 +68,7 @@ class Encadre extends BaseEncadre
 					->where('en.entite_id = ?', $idEntity)
 					->andWhere('en.ajout != ?', 'r')
 					->andWhere('en.ordre != ?', 1)
+					->andWhere('en.visible = ?', 'oui')
 					->leftJoin('en.sousencad s') // On joint les deux tables.
 					->orderBy('en.ordre ASC, s.ordre ASC')
 					->execute();
@@ -94,11 +101,12 @@ class Encadre extends BaseEncadre
 				->execute();
 	}
 
-	public function updateEnca($titre, $contenu, $idEncadre) {
+	public function updateEnca($titre, $contenu, $idEncadre, $visible) {
 		return Doctrine_Query::create()
 				->update("Encadre")
 				->set("titre", "?", $titre)
 				->set("contenu", "?", $contenu)
+				->set("visible", "?", $visible)
 				->where("id = ?", $idEncadre)
 				->execute();
 	}
