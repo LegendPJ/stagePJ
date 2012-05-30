@@ -2,7 +2,7 @@
 <div class="logo">			
 	<img src="<?php echo $this->baseUrl;?>/images/bandeaux/<?php echo $this->controller;?>.jpg" alt="<?php echo $this->controller;?>">
 </div>
-<br><br>
+
 <h1>XYLAVIE</h1>
 <?php if ((count($this->first) == 0) and (count($this->else) == 0))
 	echo '<h2> Nous sommes désolé mais cette page ne contient pour le moment aucun contenu, ceci devrait être rectifié d\'ici quelques jours!</h2>';
@@ -10,6 +10,7 @@ else {?>
 	<div class="row">
 		<div id="titreH" class="span12 ajout">
 			<div class="span12" id="rembourse">
+			<br>
 			<h2><?php echo $this->first[0]->titre; ?><a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true) ?>" title="Contactez nous !"><img src="<?php echo $this->baseUrl ?>/images/contact/xylavieContact.png"></a></h2>
 			<?php echo $this->first[0]->contenu;
 				echo $this->partial('partials/affLoop.phtml', array('e' => $this->first[0])); ?>
@@ -23,13 +24,13 @@ else {?>
 			</div>
 			<div class="span12">
 				<hr class="soften">
-			</div>
-
-			<ul class="nav nav-tabs">
-				<h2>Nos offres et nos devis</h2><br>
-				<p> <span style="font-size : 1.1em; font-weight:bold;">Pour les contrats collectifs (entreprises)</span>, il est impératif de prendre contact avec nous car aucune tarification en ligne n'est envisageable.</p>
 				<br>
-				<p><span style="font-size : 1.1em; font-weight:bold;">Pour les particuliers</span>, cliquez sur l'onglet de votre choix.</p>
+			</div>
+			<h2>Nos offres et nos devis</h2><br>
+			<p> <span style="font-size : 1.1em; font-weight:bold;">Pour les contrats collectifs (entreprises)</span>, il est impératif de prendre contact avec nous car aucune tarification en ligne n'est envisageable.</p>
+			<br>
+			<p><span style="font-size : 1.1em; font-weight:bold;">Pour les particuliers</span>, cliquez sur l'onglet de votre choix.</p>
+			<ul class="nav nav-tabs">
 				<?php $i =0;
 					foreach ($this->else as $autres) : 
 						echo ($i == 0) ? '<li class="active">' : '<li>' ; 

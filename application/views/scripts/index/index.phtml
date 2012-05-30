@@ -1,6 +1,5 @@
 <?php $this->headTitle()->append('Xylagroup'); ?>
 <br>
-<br>
 <h1>XYLAGROUP</h1>
 <div class="row">
 	<?php if (count($this->encadreAccueil) ==0)
@@ -11,7 +10,7 @@
 				<?php if ($e->contenu == "<p>NeWsXyLaGrOuP</p>") { 
 					//DEBUT NEWS
 					$news = $this->last[0]; ?>
-					<h2><?php echo $e->titre." #".$news->numero;?></h2><br>
+					<br><h2><?php echo $e->titre." #".$news->numero;?></h2><br>
 
 					<div id="row-encadre" class="row">
 						<div class="span5">
@@ -40,11 +39,12 @@
 					<br>
 					<div class="span12">
 						<p><a href="<?php echo $this->url(array('controller'=>'news',
-	                				 					'action'=>'index'), null, true);?>">> Accéder à toutes les news <</a></p>
+	                				 					'action'=>'index'), null, true);?>" class="btn btn-primary"> Accéder à toutes les news</a></p>
 					</div>
 					<hr class="soften">
 				<!-- FIN NEWS -->
 				<?php } else { ?>
+					<br>
 					<h2><?php echo $e->titre; ?></h2>
 					<br>
 				<?php echo $e->contenu;}?>

@@ -61,17 +61,19 @@ class NewsController extends Zend_Controller_Action
 			} else {
 				$visible = $query->getParam('visible'); }
 			if (strlen($titre) != 0) {
+				$now = Zend_Date::now();
+				$today = explode(' ', $now);
 				$numero		=	News::getLastNumero();
-				$date			=	date("j-n-Y");  
+				$date			=	$today[0].' '.$today[1].' '.$today[2];
 				$news 			= 	new News();
 				$news->titre 		= 	$titre;
 				$news->numero 	= 	$numero[0]->MAX+1;
 				$news->contenu 	= 	$contenu;
 				$news->auteur 	= 	$this->view->ident->name;
 				$news->lien 		= 	$lien;
-				$news->photo 	= 	$entite.'.jpg';
+				$news->photo 		= 	$entite.'.jpg';
 				$news->date 		= 	$date;
-				$news->visible	= 	$visible;
+				$news->visible		= 	$visible;
 				$news->save();
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('News ajoutée!');
 				$this->_redirect('/news/modif');

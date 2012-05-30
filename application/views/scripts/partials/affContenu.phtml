@@ -5,10 +5,11 @@
 	else { $i=0;?>
 		<?php foreach ($this->encadreEnti as $e): ?>
 		<?php if($i == 0) { echo '<div class="span12" id="rembourse">'; } else { echo '<div class="span12" style="margin-left:0;width:100%">'; }?>
+			<br>
 			<h2><?php echo $e->titre; ?><?php  if($i == 0) {echo '<a href="'.$this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/contact/'.$this->controller.'Contact.png"></a>';} ?></h2>
 			<?php echo $e->contenu;?>
 		<?php if (count($e->sousencad) != 0) { ?>
-			<?php if (strlen($e->contenu) != 0) //si le contenu de l'encadre n'est pas nul, alors on affiche un hr pour séparer le contenu des sous encadres
+			<?php if (strlen($e->contenu) != 0)
 				echo '<br>'; ?>
 			</div>
 			<div class="soustitres">

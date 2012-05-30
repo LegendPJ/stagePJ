@@ -31,8 +31,7 @@ h1 {
 h2 {
 	color: #235d7f;
 	text-align: left;
-	/*margin-left:10%;*/
-	text-decoration:underline;
+	/*text-decoration:underline;*/
 }
 
 #headerP {
@@ -414,7 +413,7 @@ ul#footer li a {
 }
 
 .first {
-	margin-left: 23%;
+	margin-left: 18%;
 }
 /* FIN FOOTER */
 

@@ -22,9 +22,9 @@ class News extends BaseNews
 		return Doctrine_Query::create()
 					->select('n.*')
 					->from('news n')
-					->where('n.date IN (SELECT MAX(ne.date) as date FROM news ne WHERE ne.visible =?)', 'oui')
-					->andWhere('n.visible = ?', 'oui')
-					->orderBy('id DESC')
+					// ->where('n.date IN (SELECT MAX(ne.date) as date FROM news ne WHERE ne.visible =?)', 'oui')
+					->where('n.visible = ?', 'oui')
+					->orderBy('n.numero DESC')
 					->execute();
 	}
 	public static function findNewsVisible($idNews) {
@@ -62,7 +62,7 @@ class News extends BaseNews
 		return 	Doctrine_Query::create()
 					->from('news n')
 					->where('n.visible =?', 'oui')
-					->orderBy('n.date DESC')
+					->orderBy('n.numero DESC')
 					->execute();
 	}
 	public function getLastNumero() {
