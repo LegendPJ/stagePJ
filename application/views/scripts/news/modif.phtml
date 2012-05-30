@@ -32,7 +32,9 @@
 							<?php echo $n->numero; ?>
 						</td>
 						<td class="tdGrey">
-							<?php echo $n->visible; ?>
+							<?php if($n->visible == 'oui') { echo '<img src="'.$this->baseUrl.'/images/using/visible.png" alt="Contenu visible">'; }
+								else { echo '<img src="'.$this->baseUrl.'/images/using/nonvisible.png" alt="Contenu non visible">'; }
+							?>
 						</td>
 						<td class="tdGrey">
 							<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $n->id; ?>" data-titre="<?php echo $n->titre; ?>" title="Modifier ce Titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px" class="icon-white icon-pencil"></i>modifier le titre</a>

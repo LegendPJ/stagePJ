@@ -262,6 +262,10 @@ ul.nav-pills li a {
 	background-color:#058;
 	color: black;
 }
+
+.table td {
+	padding: 6px 8px 6px 8px;
+}
 /* FIN MODIFS BOOTSTRAP TWITTER */
 
 
@@ -276,14 +280,8 @@ ul.nav-pills li a {
 
 #row-encadre {
 	border:2px solid #000;
-	/*margin-left:5%; /* pour le site en 1200px */
-	width:100%; /* pour le site en 1200px *
-	/*width:100%;*/
+	width:100%;
 	padding: 2%;
-	/*box-shadow: 0 0 20px black;*/
-	/*box-shadow: 5px 5px black;*/
-	/*box-shadow: 0 0 10px black;*/
-	/*box-shadow: 2px 2px black;*/
 }
 
 #row-encadre h3 a{
@@ -416,7 +414,7 @@ ul#footer li a {
 }
 
 .first {
-	margin-left: 28%;
+	margin-left: 23%;
 }
 /* FIN FOOTER */
 
@@ -424,21 +422,12 @@ ul#footer li a {
 
 
 /* DEVIS & CONTACT */
-
-/*#devisContact {
-	height:315px;
-	width:300px;
-	margin: -1% 4% 0 0;
-	display: inline;
-	float: right;
-}*/
-
 .contact {
 	margin: 0 0 0 1.5%;
 }
 
 .enveloppe {
-	background-image: url("../images/using/feuille8.png");
+	background-image: url("../images/using/feuille.png");
 	background-repeat: no-repeat;
 	background-position: 0px 50px;
 	width: 880px;
@@ -514,7 +503,6 @@ ul.errors {
 ul.errors li {
 	color: red;
 	font-size:0.9em;
-	/*font-weight:bold;*/
 }
 
 form dd {
@@ -540,11 +528,7 @@ input.erreur:focus {
 /* FIN DEVIS & CONTACT */
 
 /* Flash Messenger */
-
-.flashMessengers {
-	position: relative;
-}
-
+.flashMessengers {position: relative;}
 /* XYLAVIE */
 
 .ajout {
@@ -570,7 +554,6 @@ input.erreur:focus {
 }
 
 #rembourse h2 {
-	/*margin-bottom: 30px; margin-top:30px;*/
 	margin-bottom: 55px; margin-top:30px;
 }
 

@@ -35,6 +35,23 @@ News:
    type: string
    notnull: true
 
+## Article page Erreur
+Article:
+ columns:
+  id:
+   type: integer
+   primary: true
+   autoincrement: true
+   notnull: true
+  chapitre:
+   type: string
+   notnull: true
+  numero:
+   type: string
+   notnull: true
+  contenu:
+   type: string
+   notnull: true
 
 ## Users
 Users:

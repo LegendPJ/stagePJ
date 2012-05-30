@@ -14,5 +14,10 @@ jQuery(function($) {
 		theme_advanced_toolbar_align : 'left',
 		paste_remove_styles : true,
 		paste_remove_spans : true,
+		        template_external_list_url : "js/template_list.js",
+        external_link_list_url : "js/link_list.js",
+        external_image_list_url : "js/image_list.js",
+        media_external_list_url : "js/media_list.js",
+
 		paste_stip_class_attributes : 'all'});
 });

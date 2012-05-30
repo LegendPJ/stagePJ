@@ -56,9 +56,11 @@ class NewsController extends Zend_Controller_Action
 			$contenu = $query->getParam('contenu');
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
-			if (strlen($titre) != 0 && strlen($lien) != 0) {
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
+			if (strlen($titre) != 0) {
 				$numero		=	News::getLastNumero();
 				$date			=	date("j-n-Y");  
 				$news 			= 	new News();
@@ -90,9 +92,15 @@ class NewsController extends Zend_Controller_Action
 			$contenu = $query->getParam('contenu');
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
-			if (strlen($titre) !=  0 && strlen($lien) != 0) {
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
+			if (strlen($titre) !=  0) {
 				$photo = $entite.'.jpg';
 				News::updateNews($titre, $contenu, $this->view->idNews, $lien, $photo, $visible);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('News modifiée avec succès!');

@@ -72,7 +72,6 @@ jQuery(function($) {
 		}
 	});
 
-
 	$("#sortable").sortable().disableSelection();
 		$('#ordreModal input:submit').click(function(){
 			var result = $('#sortable').sortable('toArray');
@@ -85,8 +84,6 @@ jQuery(function($) {
 	$('#ajoutNews').click(function(){
 		if ($.trim($('#ajouter input#titre').val()) == "") {
 			noty({"text":"Attention ! Vous devez remplir le champ du titre !","theme":"noty_theme_mitgux","layout":"topCenter","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":false,"modal":true});
-		} else if ($.trim($('#ajouter input#lien').val()) == "") {
-			noty({"text":"Attention ! Vous devez remplir le champ du lien !","theme":"noty_theme_mitgux","layout":"topCenter","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":false,"modal":true});
 		} else {
 			$('form').submit();
 			noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});
@@ -96,8 +93,6 @@ jQuery(function($) {
 	$('#editNews').click(function(){
 		if ($.trim($('#editer input#titre').val()) == "") {
 			noty({"text":"Attention ! Vous devez remplir le champ du titre !","theme":"noty_theme_mitgux","layout":"topCenter","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":false,"modal":true});
-		} else if ($.trim($('#editer input#lien').val()) == "") {
-			noty({"text":"Attention ! Vous devez remplir le champ du lien !","theme":"noty_theme_mitgux","layout":"topCenter","type":"error","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":true,"closeOnSelfClick":true,"closeOnSelfOver":false,"modal":true});
 		} else {
 			$('form').submit();
 			noty({"text":"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chargement en cours...","layout":"center","type":"alert","animateOpen":{"height":"toggle"},"animateClose":{"height":"toggle"},"speed":500,"timeout":100000,"closeButton":false,"closeOnSelfClick":false,"closeOnSelfOver":false,"modal":true});

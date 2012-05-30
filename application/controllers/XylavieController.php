@@ -22,7 +22,6 @@ class XylavieController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {
 				$this->view->infos = $this->getRequest()->getParams();
-				//$this->view->adresse = $this->view->infos['adresse'].'<br>'. $this->view->infos['codeP'].' '.$this->view->infos['ville'];
 				$layoutMail = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC = new Webf_Mail_Layout($path = APPLICATION_PATH."/layouts/mails","main");
 				$layoutMailC->setScriptHtml("confirmDevisSan");
@@ -389,8 +388,10 @@ class XylavieController extends Zend_Controller_Action
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
 			$idEncadre = $query->getParam('id_enca');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
 			if (strlen($titre) != 0) {
 				Encadre::updateEnca($titre, $contenu, $idEncadre, $visible);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Grand Titre modifié avec succès!');
@@ -408,8 +409,10 @@ class XylavieController extends Zend_Controller_Action
 		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
 			if (strlen($titre) != 0) {
 				$this->view->enid 	= 	Entite::findEntity(strtoupper($this->view->controller));
 				$this->view->ordre	=	Encadre::getLastOrdre($this->view->enid[0]->id);
@@ -469,8 +472,10 @@ class XylavieController extends Zend_Controller_Action
 		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
 			if (strlen($titre) != 0) {
 				$this->view->ordre		=	Sousencadre::getLastOrdre($this->view->idT);
 				$sousencadre 			= 	new Sousencadre();
@@ -499,8 +504,10 @@ class XylavieController extends Zend_Controller_Action
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
 			$idSousencadre = $query->getParam('id_sousenca');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
 			if (strlen($titre) != 0) {
 				Sousencadre::updateSousEnca($titre, $contenu, $idSousencadre, $visible);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Le Sous-Titre à été modifié avec succès!');

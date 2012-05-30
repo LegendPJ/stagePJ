@@ -56,8 +56,10 @@ class IndexController extends Zend_Controller_Action
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
 			$idEncadre = $query->getParam('id_enca');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
 			if (strlen($titre) != 0) {
 				Encadre::updateEnca($titre, $contenu, $idEncadre, $visible);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Grand Titre modifié avec succès!');
@@ -75,8 +77,10 @@ class IndexController extends Zend_Controller_Action
 		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
 			if (strlen($titre) != 0) {
 				$this->view->enid 	= 	Entite::findEntity('ACCUEIL');
 				$this->view->ordre	=	Encadre::getLastOrdre($this->view->enid[0]->id);
@@ -136,8 +140,10 @@ class IndexController extends Zend_Controller_Action
 		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
 			if (strlen($titre) != 0) {
 				$this->view->ordre		=	Sousencadre::getLastOrdre($this->view->idT);
 				$sousencadre 			= 	new Sousencadre();
@@ -166,8 +172,10 @@ class IndexController extends Zend_Controller_Action
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
 			$idSousencadre = $query->getParam('id_sousenca');
-			$visible = $query->getParam('visible');
-			if (empty($visible)) {$visible = "non";}
+			if($this->view->ident->droit < 15) {
+				$visible = "non";
+			} else {
+				$visible = $query->getParam('visible'); }
 			if (strlen($titre) != 0) {
 				Sousencadre::updateSousEnca($titre, $contenu, $idSousencadre, $visible);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Le Sous-Titre à été modifié avec succès!');

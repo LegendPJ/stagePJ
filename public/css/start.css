@@ -27,7 +27,7 @@ body {
 	position: fixed;
 	width:67px;
 	height:70px;
-	background: url("../images/using/sprite_button2.png") no-repeat;
+	background: url("../images/using/sprite_button.png") no-repeat;
   }
 
 .logout a:active {

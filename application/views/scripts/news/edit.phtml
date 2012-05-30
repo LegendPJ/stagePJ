@@ -11,7 +11,7 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 			<br><br>
 			<label for="contenu">Contenu<span style="color:#C33">*</span></label>
 			<textarea id="contenu" name="contenu"><?php echo $this->news[0]->contenu; ?></textarea><br>
-			<label for="lien">Lien<span style="color:#C33">*</span></label>
+			<label for="lien">Lien</label>
 			<input id="lien" type="text" name="lien" value="<?php echo $this->news[0]->lien; ?>" placeholder="www.google.fr"><br><br>
 			<?php $entite = explode('.',$this->news[0]->photo); ?>
 			<label for="entite">Entité<span style="color:#C33">*</span></label>

@@ -289,42 +289,5 @@ class App_forms_emprunt extends Zend_Form
 
 		$this->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'table')),'Form'));             
 	}
-
-	public function getMontant() { return $this->montant->getValue(); }
-	public function getTaux() { return $this->taux->getValue(); }
-	public function getDuree() { return $this->duree->getValue(); }
-	public function getDateE() { return $this->dateE->getValue(); }
-	public function getAutre() { return $this->autre->getValue(); }
-	public function getType() { return $this->type->getValue(); }
-	public function getBanque() { return $this->banque->getValue(); }
-	public function getDiffere() { return $this->differe->getValue(); }
-
-	public function getCivilite() { return $this->civ->getValue(); }
-	public function getNom() { return $this->nom->getValue(); }
-	public function getPrenom() { return $this->prenom->getValue(); }
-	public function getDateN() { return $this->dateN->getValue(); }
-	public function getProfession() { return $this->profession->getValue(); }
-	public function getFumeur() { return $this->fumeur->getValue(); }
-	public function getQuotite() { return $this->quotite->getValue(); }
-	public function getKm() { return $this->km->getValue(); }
-	public function getGarantiesE() { return $this->garantiesE->getValue(); }
-
-	public function getCo() { return $this->co->getValue(); }
-
-	public function getCivCo() { return $this->civCo->getValue(); }
-	public function getNomCo() { return $this->nomCo->getValue(); }
-	public function getPrenomCo() { return $this->prenomCo->getValue(); }
-	public function getDateNCo() { return $this->dateNCo->getValue(); }
-	public function getProfessionCo() { return $this->professionCo->getValue(); }
-	public function getFumeurCo() { return $this->fumeurCo->getValue(); }
-	public function getQuotiteCo() { return $this->quotiteCo->getValue(); }
-	public function getKmCo() { return $this->kmCo->getValue(); }
-	public function getGarantiesC() { return $this->garantiesC->getValue(); }
-
-	public function getAdresse() { return $this->adresse->getValue(); }
-	public function getCodeP() { return $this->codeP->getValue(); }
-	public function getVille() { return $this->ville->getValue(); }
-	public function getMail() { return $this->email->getValue(); }
-	public function getTel() { return $this->telephone->getValue(); }
 }
  ?>

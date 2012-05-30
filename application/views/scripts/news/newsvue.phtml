@@ -24,7 +24,7 @@
 		<h5>News créée par <?php echo $news->auteur; ?> le <?php echo $news->date; ?>.</h5>
 	</div>
 	<div class="span12">
-		<?php if (strlen ($news->lien) !=0 ) { ?>
+		<?php if (strlen($news->lien) !=0 ) { ?>
 			<p><span id="source">Source :</span> <a href="<?php echo $news->lien;?>" title="Source"><?php echo $news->lien;?></a></p>
 		<?php } ?>
 	</div>

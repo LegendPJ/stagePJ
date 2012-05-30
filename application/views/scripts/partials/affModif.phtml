@@ -45,7 +45,11 @@
 							<a href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'ajouterst', 'id' => $en->id), null, true);?>" class="btn btn-success btn-mini couleurNoire"title="Ajouter un Sous-titre pour <?php echo $en->titre;?>"><i class="icon-plus-sign"></i>Ajouter un Sous-titre</a>
 		     				<?php } ?>
 					</td>
-					<td class="tdGrey"><?php echo $en->visible; ?></td>
+					<td class="tdGrey">
+						<?php 	if($en->visible == 'oui') { echo '<img src="'.$this->baseUrl.'/images/using/visible.png" alt="Contenu visible">'; }
+							else { echo '<img src="'.$this->baseUrl.'/images/using/nonvisible.png" alt="Contenu non visible">'; }
+						?>
+					</td>
 					<td class="tdGrey"><?php echo $en->ordre; ?></td>
 				</tr>
 				<?php endforeach; ?>

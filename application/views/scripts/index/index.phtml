@@ -21,13 +21,13 @@
 							<h3 style="min-height:55px" ><a href="<?php echo $this->url(array('controller'=>'news','action'=>'newsvue','id' => $news->id), null, true);?>"><?php echo $news->titre; ?></a></h3>
 							<h5>Postée par <?php echo $news->auteur; ?> le <?php echo $news->date; ?>.</h5>
 						<?php echo '<img src="'.$this->baseUrl.'/images/using/ribbon.png" alt="Dernière News">'; ?></div>
-						<?php  $nb_mots = 50;
+						<?php  $nb_mots = 100;
 						$inter = $news->contenu;
 						$texte = explode(' ', $inter, $nb_mots+1);
 						unset($texte[$nb_mots]);?>
 						
 						<div class="span12">
-							<?php 	if ( count($texte) < 50) {
+							<?php 	if ( count($texte) < 100) {
 									echo implode(' ', $texte); ?>
 									<p><a href="<?php echo $this->url(array('controller'=>'news','action'=>'newsvue','id' => $news->id), null, true);?>">(Afficher la news...)</a></p>
 							<?php  } else {

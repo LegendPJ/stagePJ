@@ -29,7 +29,7 @@
 		</div>
 		<div id="menu">
 			<ul id="navMenu">
-				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Vous dirige vers l'accueil">ACCUEIL</a></li>
+				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages" || $this->controller == "error") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Vous dirige vers l'accueil">ACCUEIL</a></li>
 				
 				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
 				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(
@@ -50,11 +50,11 @@
  			<li class="separator">-</li>
  			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'conditions'), null, true);?>" title="Vous dirige vers les Conditions d'utilisation">Conditions d'utilisation</a></li>
  			<li class="separator">|</li>
- 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'mentions'), null, true);?>" title="Vous dirige vers les Mentions Légales">Mentions Légales</a></li><!-- 
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'mentions'), null, true);?>" title="Vous dirige vers les Mentions Légales">Mentions Légales</a></li>
+<!--  			<li class="separator">|</li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'contact'), null, true);?>" title="Vous dirige vers Contact">Contact</a></li> -->
  			<li class="separator">|</li>
- 			<li><a href="<?php //echo $this->url(array('controller'=>'pages', 'action'=>'plan'), null, true);?>" title="Vous dirige vers le Plan du site">Plan du site ou Qui sommes nous ?</a></li> -->
- 			<li class="separator">|</li>
- 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'contact'), null, true);?>" title="Vous dirige vers Contact">Contact</a></li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'bug'), null, true);?>" title="Vous dirige vers Signaler une erreur">Signaler une Erreur</a></li>
  		</ul>
  	</div>
 </body>
