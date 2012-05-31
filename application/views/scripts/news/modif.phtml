@@ -1,4 +1,4 @@
-<?php $this->headTitle()->append('Administration -'.strtoupper($this->controller)); ?>
+<?php $this->headTitle()->append('Administration - '.strtoupper($this->controller)); ?>
 <?php $this->headScript()->appendFile('/js/verifchamps.js'); ?>
 <br>
 <div class="row">
@@ -37,9 +37,13 @@
 							?>
 						</td>
 						<td class="tdGrey">
+<?php 						if($this->ident->droit > 15) {?>
 							<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $n->id; ?>" data-titre="<?php echo $n->titre; ?>" title="Modifier ce Titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px" class="icon-white icon-pencil"></i>modifier le titre</a>
 							<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Titre" data-toggle="modal" data-id="<?php echo $n->id; ?>" ><i style="margin:3px 4px 1px 1px" class="icon-white icon-remove"></i>supprimer</a>
+<?php 						} else { ?>
+							<p class="rougeErreur">Vous n'avez pas d'action sur les news</p>
 						</td>
+<?php 						} ?>
 					</tr>
 				<?php endforeach; ?>
 				

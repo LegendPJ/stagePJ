@@ -60,13 +60,13 @@ class XylassurController extends Zend_Controller_Action
 		$this->view->encadres	= 	Encadre::findEncadreEntite($this->view->en[0]->id); 
 		
 		if (!empty($_POST)){ 
-			if ($_POST['send'] == 'Sauvegarder'){ 
+			if ($_POST['send'] == 'Sauvegarder' && $this->view->ident->droit > 15){ 
 				$titre = $_POST['titre'];
 				$id = $_POST['id'];
 				Encadre::updateTEncadre($titre, $id);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre modifié avec succès!');
 				$this->_redirect('/xylassur/modif');
-			} elseif ($_POST['send'] == 'Supprimer') {
+			} elseif ($_POST['send'] == 'Supprimer' && $this->view->ident->droit > 15) {
 				$iddel = $_POST['id_del'];
 				Sousencadre::deleteFromEncadre($iddel);
 				Encadre::deleteEncadre($iddel);
@@ -146,13 +146,13 @@ class XylassurController extends Zend_Controller_Action
 		$this->view->soustitres = Sousencadre::findSousencadEncad($this->view->idSE);
 
 		if (!empty($_POST)){ 
-			if ($_POST['send'] == 'Sauvegarder'){ 
+			if ($_POST['send'] == 'Sauvegarder' && $this->view->ident->droit > 15){ 
 				$titre = $_POST['titre'];
 				$id = $_POST['id'];
 				Sousencadre::updateTsousencadre($titre, $id);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Sous-Titre modifié avec succès!');
 				$this->_redirect('/xylassur/soustitre/id/'.$this->view->idSE);
-			} elseif ($_POST['send'] == 'Supprimer') {
+			} elseif ($_POST['send'] == 'Supprimer' && $this->view->ident->droit > 15) {
 				$iddel = $_POST['id_del'];
 				Sousencadre::deleteSousencadre($iddel);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Sous-Titre supprimé avec succès!');
@@ -222,8 +222,4 @@ class XylassurController extends Zend_Controller_Action
 			}
 		}
 	}
-
-}
-
-?>
-
+}?>

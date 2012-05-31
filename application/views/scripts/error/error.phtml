@@ -1,11 +1,12 @@
 <?php $this->headTitle()->append('Erreur - Page introuvable'); ?>
+<br>
 <div class="row">
 	<div id="titreH" class="span12 ajout">
 			<h1>Erreur XYLAGROUP</h1>
 		<br>
 			<img src="<?php $this->baseUrl; ?>/images/using/404.png" alt="" style="float:left">
 		<br><br><br><br><br><br>
-			<p>Attention, la page que vous avez demandé est introuvable. <br>Si vous pensez que cette page devrait exister, n'hésitez pas à le signaler en <a href="<?php echo $this->url(array('controller'=>'pages','action'=>'bug'), null, true);?>" title="Signaler une erreur">contactant le webmaster</a>.</p>
+			<p><strong>Attention, la page que vous avez demandé est introuvable.</strong></p><br><p>Si vous pensez que cette page devrait exister, n'hésitez pas à le signaler en <a href="<?php echo $this->url(array('controller'=>'pages','action'=>'bug'), null, true);?>" title="Signaler une erreur">contactant le webmaster</a>.</p>
 		<hr>
 			<p>Maintenant que vous êtes arrivés jusqu'ici, autant que cela vous soit bénéfique :</p>
 		<br>
@@ -20,6 +21,4 @@
 		<br>
 			<p><a href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Menu principal">Cliquez ici</a> pour revenir au menu principal.</p>
 	</div>
-</div>
-<?php //echo $this->today; ?>
-<?php //echo var_dump($this->today); ?>
+</div>	

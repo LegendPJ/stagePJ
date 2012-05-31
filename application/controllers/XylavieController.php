@@ -47,7 +47,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setSubject('Demande de Devis Sante');
 				$mail->send();
 				$mailC->send();
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis Santé envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_helper->Redirector->gotoUrl('/xylavie/');
 			} else {
 				$this->_helper->FlashMessenger('Le formulaire comporte des erreurs')->setNamespace('error');
@@ -88,7 +88,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setSubject('Demande de Devis Dependance');
 				$mail->send();
 				$mailC->send();
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis Dépendance envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_helper->Redirector->gotoUrl('/xylavie/');
 			} else {
 				$this->_helper->FlashMessenger('Le formulaire comporte des erreurs')->setNamespace('error');
@@ -128,7 +128,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setSubject('Demande de Devis Retraite');
 				$mail->send();
 				$mailC->send();
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis Retraite envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_helper->Redirector->gotoUrl('/xylavie/');
 			} else {
 				$this->_helper->FlashMessenger('Le formulaire comporte des erreurs')->setNamespace('error');
@@ -168,7 +168,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setSubject('Demande de Devis Epargne');
 				$mail->send();
 				$mailC->send();
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis Epargne envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_helper->Redirector->gotoUrl('/xylavie/');
 			} else {
 				$this->_helper->FlashMessenger('Le formulaire comporte des erreurs')->setNamespace('error');
@@ -208,7 +208,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setSubject('Demande de Devis Assurance Emprunteur');
 				$mail->send();
 				$mailC->send();
-				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de renseignements envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
+				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Demande de devis Assurance Emprunteur envoyée correctement à la société '.strtoupper($this->view->controller).'. Nous mettons tout en oeuvre pour vous répondre au plus vite. Merci');
 				$this->_helper->Redirector->gotoUrl('/xylavie/');
 			} else {
 				$this->_helper->FlashMessenger('Le formulaire comporte des erreurs')->setNamespace('error');
@@ -350,16 +350,15 @@ class XylavieController extends Zend_Controller_Action
 			$this->_redirect('/');
 		$this->_helper->layout->setLayout('layoutstart');
 		$this->view->en 		= 	Entite::findEntity(strtoupper($this->view->controller));
-		$this->view->encadres 	= 	Encadre::findEncadreEntite($this->view->en[0]->id);
-
-		if (!empty($_POST)){ 
-			if ($_POST['send'] == 'Sauvegarder'){ 
+		$this->view->encadres 		= 	Encadre::findEncadreEntite($this->view->en[0]->id);
+		if (!empty($_POST)){
+			if ($_POST['send'] == 'Sauvegarder' && $this->view->ident->droit > 15){
 				$titre = $_POST['titre'];
 				$id = $_POST['id'];
 				Encadre::updateTEncadre($titre, $id);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre modifié avec succès!');
 				$this->_redirect('/xylavie/modif');
-			} elseif ($_POST['send'] == 'Supprimer') {
+			} elseif ($_POST['send'] == 'Supprimer' && $this->view->ident->droit > 15) {
 				$iddel = $_POST['id_del'];
 				Sousencadre::deleteFromEncadre($iddel);
 				Encadre::deleteEncadre($iddel);
@@ -439,13 +438,13 @@ class XylavieController extends Zend_Controller_Action
 		$this->view->soustitres = Sousencadre::findSousencadEncad($this->view->idSE);
 
 		if (!empty($_POST)){ 
-			if ($_POST['send'] == 'Sauvegarder'){ 
+			if ($_POST['send'] == 'Sauvegarder' && $this->view->ident->droit > 15){ 
 				$titre = $_POST['titre'];
 				$id = $_POST['id'];
 				Sousencadre::updateTsousencadre($titre, $id);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Sous-Titre modifié avec succès!');
 				$this->_redirect('/xylavie/soustitre/id/'.$this->view->idSE);
-			} elseif ($_POST['send'] == 'Supprimer') {
+			} elseif ($_POST['send'] == 'Supprimer' && $this->view->ident->droit > 15) {
 				$iddel = $_POST['id_del'];
 				Sousencadre::deleteSousencadre($iddel);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Sous-Titre supprimé avec succès!');

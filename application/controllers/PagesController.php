@@ -12,6 +12,8 @@ class PagesController extends Zend_Controller_Action
 
 	public function mentionsAction(){} //check
 
+	public function infosAction(){} //check
+
 	public function bugAction()
 	{
 		$this->view->form = new App_forms_erreur();
@@ -52,11 +54,6 @@ class PagesController extends Zend_Controller_Action
 
 	public function contactAction()
 	{
-		$this->view->mdp = "";
-		$crypt = new Webf_RevCrypt("");
-		$this->view->encod = $crypt->code($this->view->mdp);
-		$this->view->decod = $crypt->decode("");
-
 		$this->view->form = new App_forms_contact();
 		if ($this->getRequest()->isPost()) {
 			if($this->view->form->isValid($this->getRequest()->getParams())) {

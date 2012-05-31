@@ -1,6 +1,6 @@
 jQuery(function($) {
 	//pour l'affichage des erreurs
-	$('#write ul.errors').parent().css({'background-color':'#FF9696'});
+	// $('#write ul.errors').parent().css({'background-color':'#FF9696'});
 	$('ul.errors').parent().find('input').addClass('erreur');
 	$('ul.errors').parent().find('select').addClass('erreur');
 	//pour fermer le flash messenger

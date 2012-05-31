@@ -19,7 +19,7 @@
 				<div class="noty_close"></div>
 			</div>
 		</div>
-		<div class="noty_modal noty_theme_mitgux" style="display: block;"></div>
+		<div class="noty_theme_mitgux" style="display: block;"></div>
 		<?php endif; ?>
 	</div>
 	<div id="headerP">
@@ -29,10 +29,10 @@
 		</div>
 		<div id="menu">
 			<ul id="navMenu">
-				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages" || $this->controller == "error") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Vous dirige vers l'accueil">ACCUEIL</a></li>
+				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages" || $this->controller == "error") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Vous dirige vers Accueil" onclick="_gaq.push(['_trackEvent', 'Clic sur Accueil', 'clic'])">ACCUEIL</a></li>
 				
 				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
-				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?>  href="<?php echo $this->url(array(
+				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?> onclick="_gaq.push(['_trackEvent', 'Clic sur <?php echo strtoupper($entite->nom); ?>', 'clic'])" href="<?php echo $this->url(array(
 																						'controller'=>strtolower($entite->nom),
 																						'action'=>'index'), null, true);?>"  title="Vous dirige vers <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
 					</a></li>
@@ -48,13 +48,15 @@
  		<ul id="footer">
  			<li class="first">&copy; Xylagroup 2012</li>
  			<li class="separator">-</li>
- 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'conditions'), null, true);?>" title="Vous dirige vers les Conditions d'utilisation">Conditions d'utilisation</a></li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'conditions'), null, true);?>" onclick="_gaq.push(['_trackEvent', 'Clic sur Conditions d'utilisation, 'clic'])" title="Vous dirige vers les Conditions d'utilisation">Conditions d'utilisation</a></li>
  			<li class="separator">|</li>
- 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'mentions'), null, true);?>" title="Vous dirige vers les Mentions Légales">Mentions Légales</a></li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'mentions'), null, true);?>" onclick="_gaq.push(['_trackEvent', 'Clic sur Mentions Légales, 'clic'])" title="Vous dirige vers les Mentions Légales">Mentions Légales</a></li>
+ 			<li class="separator">|</li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'infos'), null, true);?>" onclick="_gaq.push(['_trackEvent', 'Clic sur Infos Complémentaires, 'clic'])" title="Vous dirige vers les Informations Complémentaires">Informations</a></li>
   			<li class="separator">|</li>
- 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'contact'), null, true);?>" title="Vous dirige vers Contact">Contact</a></li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'contact'), null, true);?>" onclick="_gaq.push(['_trackEvent', 'Clic sur Contact, 'clic'])" title="Vous dirige vers Contact">Contact</a></li>
  			<li class="separator">|</li>
- 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'bug'), null, true);?>" title="Vous dirige vers Signaler une erreur">Signaler une Erreur</a></li>
+ 			<li><a href="<?php echo $this->url(array('controller'=>'pages', 'action'=>'bug'), null, true);?>" onclick="_gaq.push(['_trackEvent', 'Clic sur Signaler une erreur, 'clic'])" title="Vous dirige vers Signaler une erreur">Signaler une Erreur</a></li>
  		</ul>
  	</div>
 </body>

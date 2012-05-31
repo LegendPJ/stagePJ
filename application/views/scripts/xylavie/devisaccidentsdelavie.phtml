@@ -1,5 +1,6 @@
 <?php $this->headTitle()->append('Devis Garanties Accidents de la Vie'); ?>
 <div class="row" id="devis">
+	<br><a id="boutonRetour" href="<?php echo $this->url(array('controller'=>'xylavie','action'=>'index'), null, true);?>" class="btn"><i class="icon-arrow-left"></i> Retour</a>
 	<div class="span12" id="accident">
 		<h2>Demande de devis Garanties Accidents de la vie </h2>
 		<p>Afin d'améliorer la qualité de nos réponses, tous les champs sont obligatoires.</p>
@@ -67,7 +68,7 @@
 			</div>
 			<br>
 			<div class="pager">
-				<a href="#" id="validAccident" onclick="return false;">Passer à la dernière étape</a>
+				<a href="#" id="validAccident" onclick="_gaq.push(['_trackEvent', 'Clic sur Première étape GAV', 'clic']); return false;">Passer à la dernière étape</a>
 			</div>
 	</div>
 </div>
@@ -99,12 +100,12 @@
 			<br><br>
 			<div class="span12" style="margin-bottom : 15px">
 				<table> <?php echo $this->form->hide; ?> </table>
-					<a id="conditions" href="<?php echo $this->baseUrl; ?>/images/xylavie/CG contrat GAV.pdf" target="_blank" title="Conditions Générales du contrat">Voir les conditions générales</a>
+					<a onclick="_gaq.push(['_trackEvent', 'Clic sur Voir les CGV (GAV)', 'clic'])" id="conditions" href="<?php echo $this->baseUrl; ?>/images/xylavie/CG contrat GAV.pdf" target="_blank" title="Conditions Générales du contrat">Voir les conditions générales</a>
 				<table> <?php echo $this->form->cg; ?> </table>
 		</form> <!-- FERMETURE du FORMULAIRE -->
 			</div>
 			<div class="pager">
-				<a href="#" id="validSouscription" onclick="return false;">Je souscris mon contrat</a>
+				<a href="#" id="validSouscription" onclick="_gaq.push(['_trackEvent', 'Clic sur Envoyer Devis GAV', 'envoi']); return false;">Je souscris mon contrat</a>
 			</div>
 		</div>
 	</div>

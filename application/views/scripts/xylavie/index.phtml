@@ -9,14 +9,14 @@
 else {?>
 	<div class="row">
 		<div id="titreH" class="span12 ajout">
-			<div class="span12" id="rembourse">
+			<div class="span12 rembourse">
 			<br>
-			<h2><?php echo $this->first[0]->titre; ?><a href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true) ?>" title="Contactez nous !"><img src="<?php echo $this->baseUrl ?>/images/contact/xylavieContact.png"></a></h2>
+			<h2><?php echo $this->first[0]->titre; ?><a onclick="_gaq.push(['_trackEvent', 'Clic sur Contact XYLAVIE', 'clic'])" href="<?php echo $this->url(array('controller'=>$this->controller,'action'=>'contact'), null, true) ?>" title="Contactez nous !"><img src="<?php echo $this->baseUrl ?>/images/contact/xylavieContact.png"></a></h2>
 			<?php echo $this->first[0]->contenu;
 				echo $this->partial('partials/affLoop.phtml', array('e' => $this->first[0])); ?>
 			</div>
-			<div class="span12" id="rembourse">
-				<h2><?php echo $this->rbt[0]->titre; ?><a href="http://www.gmcgestion.fr" target="_blank" title="Faire une demande de devis"><img src="<?php echo $this->baseUrl; ?>/images/xylavie/rbt.png"></a></h2>
+			<div class="span12 rembourse">
+				<h2><?php echo $this->rbt[0]->titre; ?><a href="http://www.gmcgestion.fr" target="_blank" title="Faire une demande de devis" onclick="_gaq.push(['_trackEvent', 'Clic sur Remboursement', 'clic'])"><img src="<?php echo $this->baseUrl; ?>/images/xylavie/rbt.png"></a></h2>
 				<p><?php echo $this->rbt[0]->contenu; ?></p>
 				<?php if(count($this->rbt[0]->sousencad) != 0) {
 					echo $this->partial('partials/affLoop.phtml', array('e' => $this->rbt[0]));
@@ -26,7 +26,7 @@ else {?>
 				<hr class="soften">
 				<br>
 			</div>
-			<h2>Nos offres et nos devis</h2><br>
+			<h2 id="devis">Nos offres et nos devis</h2><br>
 			<p> <span style="font-size : 1.1em; font-weight:bold;">Pour les contrats collectifs (entreprises)</span>, il est impératif de prendre contact avec nous car aucune tarification en ligne n'est envisageable.</p>
 			<br>
 			<p><span style="font-size : 1.1em; font-weight:bold;">Pour les particuliers</span>, cliquez sur l'onglet de votre choix.</p>
@@ -51,8 +51,8 @@ else {?>
 							echo '<div class="span12 ajout">
 								<h2>'.$autres->titre.'</h2><br>';
 								switch($autres->ajout) {
-									case "d": echo '<a href="'.$this->url(array('controller'=>$this->controller,'action'=> 'devis'.strtolower($title).''), null, true).'" title="Faire une demande de devis"><p><img src="'.$this->baseUrl.'/images/using/devis.png"></p><p id="lentite">'.$autres->titre.'</p></a>'; break;
-									case "c": echo '<p><a href="'.$this->url(array('controller'=>$this->controller,'action'=> strtolower($title)), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/xylavie/contact.png"></a></p>'; break;
+									case "d": echo '<a onclick="_gaq.push([\'_trackEvent\', \'Clic sur Devis '.strtoupper($autres->titre).'\', \'clic\'])" href="'.$this->url(array('controller'=>$this->controller,'action'=> 'devis'.strtolower($title).''), null, true).'" title="Faire une demande de devis"><p><img src="'.$this->baseUrl.'/images/xylavie/devis.png"></p><p id="lentite">'.$autres->titre.'</p></a>'; break;
+									case "c": echo '<p><a onclick="_gaq.push([\'_trackEvent\', \'Clic sur Rensiegnements Prévoyance\', \'clic\'])" href="'.$this->url(array('controller'=>$this->controller,'action'=> strtolower($title)), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/xylavie/contact.png"></a></p>'; break;
 									default: break;
 								}
 								echo $autres->contenu;

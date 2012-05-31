@@ -28,9 +28,13 @@
 				<tr>
 					<td class="tdGrey"><a title="Modifier le contenu du Sous-titre" href="<?php echo $this->url(array('controller'=> $this->controller,'action'=>'editst','id' => $se->id), null, true);?>"><?php echo $se->titre; ?></a></td>
 					<td class="LeftMore">
+<?php 					if($this->ident->droit > 15) {?>
 						<a class="btn btn-primary btn-mini" id="edit" href="#myModal" data-id="<?php echo $se->id; ?>" data-titre="<?php echo $se->titre; ?>" title="Modifier ce Sous-titre" data-toggle="modal"><i style="margin:3px 4px 1px 1px" class="icon-white icon-pencil"></i>modifier le titre</a>
 						<a class="btn btn-mini btn-danger" id="delete" href="#deleteModal" title="Supprimer ce Sous-titre" data-toggle="modal" data-id="<?php echo $se->id; ?>" ><i style="margin:3px 4px 1px 1px" class="icon-white icon-remove"></i>supprimer</a>
+<?php 					} else { ?>
+						<p class="rougeErreur">Vous n'avez pas d'action sur les sous-titres</p>
 					</td>
+<?php 					} ?>
 					<td class="tdGrey">
 						<?php 	if($se->visible == 'oui') { echo '<img src="'.$this->baseUrl.'/images/using/visible.png" alt="Contenu visible">'; }
 							else { echo '<img src="'.$this->baseUrl.'/images/using/nonvisible.png" alt="Contenu non visible">'; }

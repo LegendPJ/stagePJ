@@ -26,6 +26,5 @@ body {
 	background-image: -webkit-linear-gradient(left, #235d7f 0%, #759ebb 100%);
 	/* Proposed W3C Markup */ 
 	background-image: linear-gradient(left, #235d7f 0%, #759ebb 100%);
-	/* IE9 ?????????????????????*/
 	/* fin dégradé de couleurs reprenant les couleurs du bandeau */
 }

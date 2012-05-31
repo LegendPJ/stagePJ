@@ -30,13 +30,13 @@ class NewsController extends Zend_Controller_Action
 		$this->_helper->layout->setLayout('layoutstart');
 		$this->view->news = News::findAllDesc();
 		if (!empty($_POST)){ 
-			if ($_POST['send'] == 'Sauvegarder'){ 
+			if ($_POST['send'] == 'Sauvegarder' && $this->view->ident->droit > 15){ 
 				$titre = $_POST['titre'];
 				$id = $_POST['id'];
 				News::updateTNews($titre, $id);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('Titre de la news modifié avec succès!');
 				$this->_redirect('/news/modif');
-			} elseif ($_POST['send'] == 'Supprimer') {
+			} elseif ($_POST['send'] == 'Supprimer' && $this->view->ident->droit > 15) {
 				$iddel = $_POST['id_del'];
 				News::deleteNews($iddel);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('News supprimée avec succès!');

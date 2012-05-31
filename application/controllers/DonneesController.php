@@ -11,12 +11,11 @@ class DonneesController extends Zend_Controller_Action
 		
 		if ($this->getRequest()->isPost())
 		{
-			$crypt = new Webf_RevCrypt("");
+			$crypt = new Webf_RevCrypt("jHdfsbhz34epovhOIHS14572GVBOgqfdxsebIHPpzoesgvv35ozb598634gfPPOMNvXRWezQZ354rYCyJFAqruUUJ");
 			$ul = $crypt->code($this->_getParam('username'));
 			$pm = $crypt->code($this->_getParam('password'));
 			$adapter = new Donnees_Auth_Adapter($ul, $pm);
 			$result = Zend_Auth::getInstance()->authenticate($adapter);
-
 			if (Zend_Auth::getInstance()->hasIdentity())
 				$this->_forward('start');
 			else

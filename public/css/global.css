@@ -413,7 +413,7 @@ ul#footer li a {
 }
 
 .first {
-	margin-left: 18%;
+	margin-left: 13%;
 }
 /* FIN FOOTER */
 
@@ -522,6 +522,7 @@ input.erreur:focus {
 	-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(255, 0, 0, 0.8);
 	-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(255, 0, 0, 0.8);
 	box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(255, 0, 0, 0.8);
+	border-color: rgba(255,0,0,0.8);
 }
 
 /* FIN DEVIS & CONTACT */
@@ -530,6 +531,9 @@ input.erreur:focus {
 .flashMessengers {position: relative;}
 /* XYLAVIE */
 
+#boutonRetour {
+	margin-left: 35px;
+}
 .ajout {
 	margin-left:0;
 	margin-right:0;
@@ -540,30 +544,30 @@ input.erreur:focus {
 .ajout img { 
 	display: inline-block; 
 	float: right;
-	margin: 20px 0 0 10px;
+	margin: -20px 0 0 10px;
 }
 
 .ajout p {
 	width:110%;
 }
 
-#rembourse {
+.rembourse {
 	margin-left: 0;
 	width:100%;
 }
 
-#rembourse h2 {
+.rembourse h2 {
 	margin-bottom: 55px; margin-top:30px;
 }
 
-#rembourse img {
+.rembourse img {
 	margin : -30px -50px 0 20px
 }
 
 #lentite {
 	text-align: center;
 	width:250px;
-	margin: 112px 0 0 500px;
+	margin: 35px 0 0 485px;
 	position: absolute;
 	font-family: "Comic Sans MS";
 	font-weight:bold;
@@ -599,7 +603,7 @@ input#civ-M, input#civC-M, input#civ-Mme, input#civC-Mme, input#civ-Mlle, input#
 }
 
 #devis .span12 {
-	margin-top:5%;
+	margin-top:2%;
 	border:5px solid #235d7f;
 }
 
@@ -712,7 +716,7 @@ select#avenir {
 /* EMPRUNT */
 
 
-#emprunt {
+#emprunt, #accident, #prevoyance {
 	background-image:url("../images/xylavie/fdevisA.jpg");
 }
 
@@ -811,7 +815,9 @@ select#profession, select#professionCo {
 /*Sante */
 
 #sante {
+	background-color: #f1f4f6;
 	background-image:url("../images/xylavie/fdevisS.jpg");
+	background-repeat:no-repeat;
 }
 
 #ident #nbenfant, #familial #nombreenfant {
@@ -1039,6 +1045,7 @@ ul.webkiit {
 #sortable li {margin: 0 3px 10px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px;}
 #ordreModal .ui-state-default {border-radius:15px;}
 
+.rougeErreur {color:red; margin:0; text-align:center;}
 li.oneS {
 	width:24px;
 	margin-left: 16%;
