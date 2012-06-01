@@ -71,9 +71,9 @@ class NewsController extends Zend_Controller_Action
 				$news->contenu 	= 	$contenu;
 				$news->auteur 	= 	$this->view->ident->name;
 				$news->lien 		= 	$lien;
-				$news->photo 		= 	$entite.'.jpg';
+				$news->photo 	= 	$entite.'.jpg';
 				$news->date 		= 	$date;
-				$news->visible		= 	$visible;
+				$news->visible	= 	$visible;
 				$news->save();
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('News ajoutée!');
 				$this->_redirect('/news/modif');

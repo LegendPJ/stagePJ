@@ -42,6 +42,7 @@ class XylavieController extends Zend_Controller_Action
 				$mailC->setFrom('noreply@xylavie.fr', 'XYLAVIE - Sante');
 				// $mail->addTo('eberard@xylavie.fr', 'XYLAVIE');
 				$mail->addTo('pierrejulien.martinez@gmail.com', 'XYLAVIE');
+				$mail->addCc('pierrejulien.martinez@live.fr', 'XYLAVIE');
 				$mailC->addTo($this->view->infos['email']);
 				$mail->setSubject('Demande de Devis Sante');
 				$mailC->setSubject('Demande de Devis Sante');
