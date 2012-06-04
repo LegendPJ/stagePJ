@@ -29,12 +29,27 @@
 		</div>
 		<div id="menu">
 			<ul id="navMenu">
-				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages" || $this->controller == "error") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Vous dirige vers Accueil" onclick="_gaq.push(['_trackEvent', 'Clic sur Accueil', 'clic'])">ACCUEIL</a></li>
+				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages" || $this->controller == "error") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Accueil du site de XYLAGROUP" onclick="_gaq.push(['_trackEvent', 'Clic sur Accueil', 'clic'])">ACCUEIL</a></li>
 				
 				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
 				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?> onclick="_gaq.push(['_trackEvent', 'Clic sur <?php echo strtoupper($entite->nom); ?>', 'clic'])" href="<?php echo $this->url(array(
 																						'controller'=>strtolower($entite->nom),
-																						'action'=>'index'), null, true);?>"  title="Vous dirige vers <?php echo $entite->nom; ?>"><?php echo strtoupper($entite->nom);?>
+																						'action'=>'index'), null, true);?>"  title="<?php 
+																						switch ($entite->nom) {
+																							case 'XYLASSUR':
+																								echo 'Courtier spécialiste en assurances de dommages et de responsabilité';
+																								break;
+																							case 'XYLAVIE':
+																								echo 'Courtier spécialiste de la protection sociale et financière des personnes';
+																								break;
+																							case 'XYLABTP':
+																								echo 'Courtier spécialiste de l\'assurance des constructeurs et des chantiers';
+																								break;
+																							case 'XYLARISK':
+																								echo 'Courtier spécialisé dans les risques d\'entreprise et du management des risques';
+																								break;
+																						}	
+																						?>"><?php echo strtoupper($entite->nom);?>
 					</a></li>
 				<?php endforeach; ?>
 			</ul> 
