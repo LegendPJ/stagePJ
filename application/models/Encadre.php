@@ -61,14 +61,26 @@ class Encadre extends BaseEncadre
 					->execute();
 	}
 
-	public function findEncadreNFNR($idEntity) {
+	public function findNonDevis($idEntity) {
 		return 	Doctrine_Query::create()
 					->select('en.*, s.titre')
 					->from('encadre en')
 					->where('en.entite_id = ?', $idEntity)
-					->andWhere('en.ajout != ?', 'r')
+					->andWhereNotIn('en.ajout', array('d', 'c', 'r'))
 					->andWhere('en.ordre != ?', 1)
-					->andWhere('en.visible = ?', 'oui')
+					->andWhere('en.visible = ?', "oui")
+					->leftJoin('en.sousencad s') // On joint les deux tables.
+					->orderBy('en.ordre ASC, s.ordre ASC')
+					->execute();
+	}
+
+	public function findDevis($idEntity) {
+		return 	Doctrine_Query::create()
+					->select('en.*, s.titre')
+					->from('encadre en')
+					->where('en.entite_id = ?', $idEntity)
+					->whereIn('en.ajout', array('d', 'c'))
+					->andWhere('en.visible = ?', "oui")
 					->leftJoin('en.sousencad s') // On joint les deux tables.
 					->orderBy('en.ordre ASC, s.ordre ASC')
 					->execute();
@@ -80,6 +92,7 @@ class Encadre extends BaseEncadre
 					->from('encadre en')
 					->where('en.entite_id = ?', $idEntity)
 					->andWhere('en.ajout = ?', 'r')
+					->andWhere('en.visible = ?', "oui")
 					->leftJoin('en.sousencad s') // On joint les deux tables.
 					->orderBy('en.ordre ASC, s.ordre ASC')
 					->execute();

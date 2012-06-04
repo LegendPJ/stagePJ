@@ -26,13 +26,70 @@ else {?>
 				<hr class="soften">
 				<br>
 			</div>
+
+
+
+
+
+
+		<?php foreach ($this->nonDevis as $e): ?>
+			<div class="span12" style="margin-left:0;width:100%">
+			<br>
+			<h2><?php echo $e->titre; ?></h2>
+			<?php echo $e->contenu;?>
+		<?php if (count($e->sousencad) != 0) { ?>
+			<?php if (strlen($e->contenu) != 0)
+				echo '<br>'; ?>
+			</div>
+			<div class="soustitres">
+				<div class="span5">
+					<div class="tabbable tabs-left">
+						<ul id="tab" class="nav nav-pills nav-stacked">
+							<?php $i =0;
+							foreach ($e->sousencad as $s) : 
+								echo ($i == 0) ? '<li class="active">' : '<li>' ; 
+								echo '<a href="#'.$s->id.'" data-toggle="tab">'.$s->titre.'</a></li>';
+								$i++;
+							endforeach; ?>
+						</ul>
+					</div>
+				</div>
+				<div class="span7" id="alignLeft">
+					<div id="myTabContent" class="tab-content">
+						<?php 
+						$j = 0;
+						foreach ($e->sousencad as $s) : 
+							echo ($j == 0) ? '<div class="tab-pane fade in active" id="'.$s->id.'">' : '<div class="tab-pane fade" id="'.$s->id.'">';
+							echo $s->contenu;
+							echo '</div>'; //celui de tab-pane
+							$j++;
+						endforeach; ?>
+					</div><!--  celui de tab content -->
+				</div><!--  celui de alignLeft -->					
+			</div><!-- fin du div englobant les sous-titres -->
+			<div class="span12">
+				<hr class="soften">
+			</div>
+		<?php } else { echo '<hr class="soften"></div>';} ?>
+		<?php endforeach ?>
+
+
+
+
+
+
+
+
+
+
+
 			<h2 id="devis">Nos offres et nos devis</h2><br>
 			<p> <span style="font-size : 1.1em; font-weight:bold;">Pour les contrats collectifs (entreprises)</span>, il est impératif de prendre contact avec nous car aucune tarification en ligne n'est envisageable.</p>
 			<br>
 			<p><span style="font-size : 1.1em; font-weight:bold;">Pour les particuliers</span>, cliquez sur l'onglet de votre choix.</p>
-			<ul class="nav nav-tabs">
+			<ul class="nav nav-pills">
 				<?php $i =0;
-					foreach ($this->else as $autres) : 
+					foreach ($this->devis as $autres) : 
 						echo ($i == 0) ? '<li class="active">' : '<li>' ; 
 						$lien = $autres->id + 2000;
 						echo '<a href="#'.$lien.'" data-toggle="tab" title="Vous dirige vers '.$autres->titre.'">'.$autres->titre.'</a></li>';
@@ -42,7 +99,7 @@ else {?>
 			<div class="tab-content">
 					<?php 
 					$j = 0;
-					foreach ($this->else as $autres) : 
+					foreach ($this->devis as $autres) : 
 						$lien = $autres->id + 2000;
 						$title = str_replace(array(' ','à', 'â', 'ä', 'á', 'ã', 'å','î', 'ï', 'ì', 'í', 'ô', 'ö', 'ò', 'ó', 'õ', 'ø', 'ù', 'û', 'ü', 'ú', 'é', 'è', 'ê', 'ë', 'ç', 'ÿ', 'ñ', ),
 							array('', 'a', 'a', 'a', 'a', 'a', 'a', 'i', 'i', 'i', 'i', 'o', 'o', 'o', 'o', 'o', 'o', 'u', 'u', 'u', 'u', 'e', 'e', 'e', 'e', 'c', 'y', 'n', ),$autres->titre);

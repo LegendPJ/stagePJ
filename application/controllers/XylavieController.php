@@ -10,10 +10,11 @@ class XylavieController extends Zend_Controller_Action
 
 	public function indexAction()
 	{
-		$this->view->en 	= 	Entite::findEntity(strtoupper($this->view->controller));
-		$this->view->first 	= 	Encadre::findFirstEncadreEntite($this->view->en[0]->id);
-		$this->view->else 	= 	Encadre::findEncadreNFNR($this->view->en[0]->id);
-		$this->view->rbt 	= 	Encadre::findEncadreRbt($this->view->en[0]->id);
+		$this->view->en 		= 	Entite::findEntity(strtoupper($this->view->controller));
+		$this->view->first 		= 	Encadre::findFirstEncadreEntite($this->view->en[0]->id);
+		$this->view->devis 		= 	Encadre::findDevis($this->view->en[0]->id);
+		$this->view->nonDevis 	= 	Encadre::findNonDevis($this->view->en[0]->id);
+		$this->view->rbt 		= 	Encadre::findEncadreRbt($this->view->en[0]->id);
 	}
 
 	public function devissanteAction()

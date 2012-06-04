@@ -490,6 +490,7 @@ jQuery(function($) {
 			$('#confirmation .prix').append(prix);
 			$('#confirmation .prix2').append(prix*12);
 			$('#accident').hide();
+			$('a#boutonRetour').hide();
 			$('#confirmation').show();
 			
 		}
