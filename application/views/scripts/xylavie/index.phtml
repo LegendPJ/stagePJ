@@ -108,7 +108,7 @@ else {?>
 							echo '<div class="span12 ajout">
 								<h2>'.$autres->titre.'</h2><br>';
 								switch($autres->ajout) {
-									case "d": echo '<a onclick="_gaq.push([\'_trackEvent\', \'Clic sur Devis '.strtoupper($autres->titre).'\', \'clic\'])" href="'.$this->url(array('controller'=>$this->controller,'action'=> 'devis'.strtolower($title).''), null, true).'" title="Faire une demande de devis"><p><img src="'.$this->baseUrl.'/images/xylavie/devis.png"></p><p id="lentite">'.$autres->titre.'</p></a>'; break;
+									case "d": echo '<a onclick="_gaq.push([\'_trackEvent\', \'Clic sur Devis '.strtoupper($autres->titre).'\', \'clic\'])" href="'.$this->url(array('controller'=>$this->controller,'action'=> 'devis'.strtolower($title).''), null, true).'" title="Faire une demande de devis"><p><img src="'.$this->baseUrl.'/images/xylavie/devis.png"></p><p class="lentite">'.$autres->titre.'</p></a>'; break;
 									case "c": echo '<p><a onclick="_gaq.push([\'_trackEvent\', \'Clic sur Rensiegnements Prévoyance\', \'clic\'])" href="'.$this->url(array('controller'=>$this->controller,'action'=> strtolower($title)), null, true).'" title="Contactez nous !"><img src="'.$this->baseUrl.'/images/xylavie/contact.png"></a></p>'; break;
 									default: break;
 								}
