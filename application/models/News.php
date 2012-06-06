@@ -40,21 +40,21 @@ class News extends BaseNews
 					->where('n.id = ?', $idNews)
 					->execute();
 	}
-	public function findPrecNews($dateNews) {
+	public function findPrecNews($numNews) {
 		return 	Doctrine_Query::create()
 					->from('news n')
-					->where('n.date < ?', $dateNews)
+					->where('n.numero < ?', $numNews)
 					->andWhere('n.visible = ?', 'oui')
-					->orderBy('n.date DESC')
+					->orderBy('n.numero DESC')
 					->limit(0,1)
 					->execute();
 	}	
-	public function findNextNews($dateNews) {
+	public function findNextNews($numNews) {
 		return 	Doctrine_Query::create()
 					->from('news n')
-					->where('n.date > ?', $dateNews)
+					->where('n.numero > ?', $numNews)
 					->andWhere('n.visible = ?', 'oui')
-					->orderBy('n.date ASC')
+					->orderBy('n.numero ASC')
 					->limit(0,1)
 					->execute();
 	}	

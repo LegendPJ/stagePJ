@@ -18,8 +18,8 @@ class NewsController extends Zend_Controller_Action
 		$this->view->theNews 	=	 News::findNewsVisible($this->view->int);
 		if (count($this->view->theNews) ==0)
 			$this->_redirect('/error');
-		$this->view->nPrec 		=	 News::findPrecNews($this->view->theNews[0]->date);
-		$this->view->nNext 		=	 News::findNextNews($this->view->theNews[0]->date);
+		$this->view->nPrec 		=	 News::findPrecNews($this->view->theNews[0]->numero);
+		$this->view->nNext 		=	 News::findNextNews($this->view->theNews[0]->numero);
 		$this->view->autres 		=	 News::findAll();
 	}
 
