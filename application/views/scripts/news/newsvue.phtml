@@ -28,6 +28,12 @@
 			<p><span id="source">Source :</span> <a href="http://<?php echo $news->lien;?>" target="_blank" title="Source"><?php echo $news->lien;?></a></p>
 		<?php } ?>
 	</div>
+	<div class="span12" style="text-align:center;">
+		<?php if (!empty($news->image)) { ?>
+		<p><span id="source">Image (cliquez pour agrandir) :</span></p>
+			<a href="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $news->image; ?>" target="_blank"><img style="width:540px;" src="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $news->image; ?>" alt="Image ajoutée"></a>
+		<?php } ?>
+	</div>
 </div>
 
 <br><br>

@@ -5,7 +5,7 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 <div class="row">
 	<div class="span12" id="ajouter">
 		<h2>Ajouter une News</h2><br>
-		<form action="" method="post">
+		<form method="post" enctype="multipart/form-data">
 			<label for="titre">Titre<span style="color:#C33">*</span></label>
 			<input class="span6" id="titre" type="text" name="titre" value="">
 			<br><br>
@@ -19,6 +19,8 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 			<input type="radio" name="entite" value="xylavie">&nbsp;XYLAVIE
 			<input type="radio" name="entite" value="xylabtp">&nbsp;XYLABTP
 			<input type="radio" name="entite" value="xylarisk">&nbsp;XYLARISK<br><br>
+			<label for="file">Image</label>
+			<input type="file" name="image"><p style="margin-left:30px;">(Taille inférieure à 2Mo)</p><br>
 			<?php if($this->ident->droit > 15) {?>
 				<label for="lien">Visible<span style="color:#C33">*</span></label>
 				<input type="radio" name="visible" value="oui">&nbsp;Oui

@@ -56,6 +56,12 @@ class NewsController extends Zend_Controller_Action
 			$contenu = $query->getParam('contenu');
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
+			if(!empty($_FILES['image']) && $_FILES['image']['size'] < 2100000) {
+				$picture_temp = $_FILES['image']['tmp_name'];
+				$picture = $_FILES['image']['name'];
+				$nom = md5(uniqid(rand(), true));
+				move_uploaded_file($picture_temp, $_SERVER['DOCUMENT_ROOT'].'/images/upload/'.$nom.'-'.$picture);
+			}
 			if($this->view->ident->droit < 15) {
 				$visible = "non";
 			} else {
@@ -72,6 +78,8 @@ class NewsController extends Zend_Controller_Action
 				$news->auteur 	= 	$this->view->ident->name;
 				$news->lien 		= 	$lien;
 				$news->photo 	= 	$entite.'.jpg';
+				if(!empty($picture))
+					$news->image 	= 	$nom.'-'.$picture;
 				$news->date 		= 	$date;
 				$news->visible	= 	$visible;
 				$news->save();
@@ -94,10 +102,12 @@ class NewsController extends Zend_Controller_Action
 			$contenu = $query->getParam('contenu');
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
-			if($this->view->ident->droit < 15) {
-				$visible = "non";
-			} else {
-				$visible = $query->getParam('visible'); }
+			if(!empty($_FILES['image']) && $_FILES['image']['size'] < 2100000) {
+				$picture_temp = $_FILES['image']['tmp_name'];
+				$picture = $_FILES['image']['name'];
+				$nom = md5(uniqid(rand(), true));
+				move_uploaded_file($picture_temp, $_SERVER['DOCUMENT_ROOT'].'/images/upload/'.$nom.'-'.$picture);
+			}
 			if($this->view->ident->droit < 15) {
 				$visible = "non";
 			} else {
@@ -105,6 +115,10 @@ class NewsController extends Zend_Controller_Action
 			if (strlen($titre) !=  0) {
 				$photo = $entite.'.jpg';
 				News::updateNews($titre, $contenu, $this->view->idNews, $lien, $photo, $visible);
+				if(!empty($picture)) {
+					$image = $nom.'-'.$picture;
+					News::updateImageNews($image, $this->view->idNews);
+				}
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('News modifiée avec succès!');
 				$this->_redirect('/news/modif');
 			}

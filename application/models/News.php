@@ -89,6 +89,14 @@ class News extends BaseNews
 				->where("id = ?", $idNews)
 				->execute();
 	}
+	public function updateImageNews($image, $idNews) {
+		return Doctrine_Query::create()
+				->update("News")
+				->set("image", "?", $image)
+				->where("id = ?", $idNews)
+				->execute();
+	}
+
 	public function deleteNews($id) {
 		return Doctrine_Query::create()
 				->delete('news n')

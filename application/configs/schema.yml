@@ -28,6 +28,9 @@ News:
    type: string
   photo:
    type: string
+  image:
+   type: string
+   notnull: true
   date: 
    type: string
    notnull: true
