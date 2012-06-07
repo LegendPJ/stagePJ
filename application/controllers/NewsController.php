@@ -118,6 +118,7 @@ class NewsController extends Zend_Controller_Action
 				if(!empty($picture)) {
 					$image = $nom.'-'.$picture;
 					News::updateImageNews($image, $this->view->idNews);
+					unlink($_SERVER['DOCUMENT_ROOT'].'/images/upload/'.$this->view->news[0]->image);
 				}
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('News modifiée avec succès!');
 				$this->_redirect('/news/modif');

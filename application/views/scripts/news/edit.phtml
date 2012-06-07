@@ -22,7 +22,7 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 			<input type="radio" name="entite" value="xylarisk" <?php echo ($entite[0] == 'xylarisk') ? 'checked="checked"' : '' ?>>&nbsp;XYLARISK<br><br>
 			<label for="file">Image</label>
 			<div class="span5">
-				<a href="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $this->news[0]->image; ?>" target="_blank"><img style="width:140px;" src="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $this->news[0]->image; ?>" alt="Image ajoutée"></a>
+				<a href="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $this->news[0]->image; ?>" target="_blank"><img id="miniatures" src="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $this->news[0]->image; ?>" alt="Image ajoutée"></a>
 			</div>
 			<div class="span5">
 				<input type="file" name="image"><p style="margin-left:30px;">(Taille inférieure à 2Mo)</p>

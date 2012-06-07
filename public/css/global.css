@@ -1054,6 +1054,10 @@ li.oneS {
 	background-repeat:no-repeat;
 } /* Non selectionné */
 
+#miniatures {width:200px; border :3px solid grey; border-radius:10px;}
+
+#miniatures:hover {border :3px solid #036;}
+
 li.oneS:hover {background-position:-49px 0;} /* Au dessus */
 
 li#homecur:hover {background-position:-49px 0;} /* Au dessus */
