@@ -1058,6 +1058,16 @@ li.oneS {
 
 #miniatures:hover {border :3px solid #036;}
 
+#agrandi {
+	max-width:600px;
+	border: 5px solid #FFFFFF;
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 0 10px black;
+}
+
+#agrandi:hover {
+	border: 5px solid #ccc;
+}
 li.oneS:hover {background-position:-49px 0;} /* Au dessus */
 
 li#homecur:hover {background-position:-49px 0;} /* Au dessus */

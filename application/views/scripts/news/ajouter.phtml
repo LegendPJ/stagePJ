@@ -20,7 +20,7 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 			<input type="radio" name="entite" value="xylabtp">&nbsp;XYLABTP
 			<input type="radio" name="entite" value="xylarisk">&nbsp;XYLARISK<br><br>
 			<label for="file">Image</label>
-			<input type="file" name="image"><p style="margin-left:30px;">(Taille inférieure à 2Mo)</p><br>
+			<input type="file" name="image"><p style="margin-left:30px;">(Taille inférieure à 500Ko)</p><br>
 			<?php if($this->ident->droit > 15) {?>
 				<label for="lien">Visible<span style="color:#C33">*</span></label>
 				<input type="radio" name="visible" value="oui">&nbsp;Oui

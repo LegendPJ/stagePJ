@@ -21,21 +21,29 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 			<input type="radio" name="entite" value="xylabtp" <?php echo ($entite[0] == 'xylabtp') ? 'checked="checked"' : '' ?>>&nbsp;XYLABTP
 			<input type="radio" name="entite" value="xylarisk" <?php echo ($entite[0] == 'xylarisk') ? 'checked="checked"' : '' ?>>&nbsp;XYLARISK<br><br>
 			<label for="file">Image</label>
+<?php 			if(!empty($this->news[0]->image)) { ?>
+				<div class="span5">
+					<a href="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $this->news[0]->image; ?>" target="_blank"><img title="Cliquez pour agrandir" id="miniatures" src="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $this->news[0]->image; ?>" alt="Image ajoutée"></a>
+				</div>
+<?php 			} else { ?>
+				<div class="span5">
+					<p>Aucune image n'a encore été ajoutée.</p>
+				</div>
+<?php 			} ?>
 			<div class="span5">
-				<a href="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $this->news[0]->image; ?>" target="_blank"><img id="miniatures" src="<?php echo $this->baseUrl; ?>/images/upload/<?php echo $this->news[0]->image; ?>" alt="Image ajoutée"></a>
-			</div>
-			<div class="span5">
-				<input type="file" name="image"><p style="margin-left:30px;">(Taille inférieure à 2Mo)</p>
-			</div><br><br>
-
-			<?php if($this->ident->droit > 15) {?>
-			<br><br><br>
+				<input type="file" name="image"><p style="margin-left:30px;">(Taille inférieure à 500Ko)</p>
+			</div><br><br><br>
+			<?php if($this->ident->droit > 15) {?>	
+			<div class="span12" style="margin: 20px 0 0 0;">
 				<label for="visible">Visible<span style="color:#C33">*</span></label>
 				<input type="radio" name="visible" value="oui" <?php echo ($this->news[0]->visible == "oui") ? 'checked="checked"' : '' ?>>&nbsp;Oui
 				<input type="radio" name="visible" value="non" <?php echo ($this->news[0]->visible == "non") ? 'checked="checked"' : '' ?>>&nbsp;Non
+			</div>
 			<?php } ?>
 		</form>
-			<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="editNews" onclick="return false;"><i class="icon-ok"></i>Editer cette News</a>
+			<div class="span12" style="margin-top: 20px;">
+				<a href="#" class="btn btn-success btn-large couleurNoire" style="margin-left:65px" id="editNews" onclick="return false;"><i class="icon-ok"></i>Editer cette News</a>
+			</div>
 	</div>
 </div>
 <br><br>

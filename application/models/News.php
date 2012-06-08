@@ -78,7 +78,7 @@ class News extends BaseNews
 			->where("id = ?", $id)
 			->execute();
 	}
-	public function updateNews($titre, $contenu, $idNews, $lien, $photo, $visible) {
+	public function updateNews($titre, $contenu, $idNews, $lien, $photo, $visible){
 		return Doctrine_Query::create()
 				->update("News")
 				->set("titre", "?", $titre)
@@ -96,7 +96,6 @@ class News extends BaseNews
 				->where("id = ?", $idNews)
 				->execute();
 	}
-
 	public function deleteNews($id) {
 		return Doctrine_Query::create()
 				->delete('news n')

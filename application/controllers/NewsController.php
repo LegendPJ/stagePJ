@@ -38,6 +38,8 @@ class NewsController extends Zend_Controller_Action
 				$this->_redirect('/news/modif');
 			} elseif ($_POST['send'] == 'Supprimer' && $this->view->ident->droit > 15) {
 				$iddel = $_POST['id_del'];
+				$newsss = News::findNews($iddel);
+				unlink($_SERVER['DOCUMENT_ROOT'].'/images/upload/'.$newsss[0]->image);
 				News::deleteNews($iddel);
 				$this->_helper->FlashMessenger()->setNamespace('success')->addMessage('News supprimée avec succès!');
 				$this->_redirect('/news/modif');
@@ -56,11 +58,12 @@ class NewsController extends Zend_Controller_Action
 			$contenu = $query->getParam('contenu');
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
-			if(!empty($_FILES['image']) && $_FILES['image']['size'] < 2100000) {
+			if(!empty($_FILES['image']) && $_FILES['image']['size'] < 510000) {
 				$picture_temp = $_FILES['image']['tmp_name'];
 				$picture = $_FILES['image']['name'];
 				$nom = md5(uniqid(rand(), true));
 				move_uploaded_file($picture_temp, $_SERVER['DOCUMENT_ROOT'].'/images/upload/'.$nom.'-'.$picture);
+				// chmod($_SERVER['DOCUMENT_ROOT'].'/images/upload/'.$nom.'-'.$picture, 0666);
 			}
 			if($this->view->ident->droit < 15) {
 				$visible = "non";
@@ -102,11 +105,12 @@ class NewsController extends Zend_Controller_Action
 			$contenu = $query->getParam('contenu');
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
-			if(!empty($_FILES['image']) && $_FILES['image']['size'] < 2100000) {
+			if(!empty($_FILES['image']) && $_FILES['image']['size'] < 510000) {
 				$picture_temp = $_FILES['image']['tmp_name'];
 				$picture = $_FILES['image']['name'];
 				$nom = md5(uniqid(rand(), true));
 				move_uploaded_file($picture_temp, $_SERVER['DOCUMENT_ROOT'].'/images/upload/'.$nom.'-'.$picture);
+				// chmod($_SERVER['DOCUMENT_ROOT'].'/images/upload/'.$nom.'-'.$picture, 0666);
 			}
 			if($this->view->ident->droit < 15) {
 				$visible = "non";
