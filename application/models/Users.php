@@ -27,4 +27,9 @@ class Users extends BaseUsers
 		}
 		throw new Exception(self::PAS_TROUVE);
 	}
+
+	public function trouve()
+	{
+		return Doctrine_Query::create()->from('Users u')->execute();
+	}
 }

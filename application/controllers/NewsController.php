@@ -52,12 +52,14 @@ class NewsController extends Zend_Controller_Action
 		if (!Zend_Auth::getInstance()->hasIdentity())
 			$this->_redirect('/');
 		$this->_helper->layout->setLayout('layoutstart');
+		$this->view->signature = Users::trouve(); 
 		$query = $this->getRequest();
 		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
+			$auteur = $query->getParam('signature');
 			if(!empty($_FILES['image']) && $_FILES['image']['size'] < 510000) {
 				$picture_temp = $_FILES['image']['tmp_name'];
 				$picture = $_FILES['image']['name'];
@@ -78,9 +80,9 @@ class NewsController extends Zend_Controller_Action
 				$news->titre 		= 	$titre;
 				$news->numero 	= 	$numero[0]->MAX+1;
 				$news->contenu 	= 	$contenu;
-				$news->auteur 	= 	$this->view->ident->name;
+				$news->auteur 	= 	$auteur; /////////////////////
 				$news->lien 		= 	$lien;
-				$news->photo 	= 	$entite.'.jpg';
+				$news->photo 		= 	$entite.'.jpg';
 				if(!empty($picture))
 					$news->image 	= 	$nom.'-'.$picture;
 				$news->date 		= 	$date;
@@ -99,12 +101,14 @@ class NewsController extends Zend_Controller_Action
 		$this->_helper->layout->setLayout('layoutstart');
 		$this->view->idNews = $this->_getParam('id');
 		$this->view->news = News::findNews($this->view->idNews);
+		$this->view->signature = Users::trouve();
 		$query = $this->getRequest();
 		if($query->isPost()) {
 			$titre = $query->getParam('titre');
 			$contenu = $query->getParam('contenu');
 			$lien = $query->getParam('lien');
 			$entite = $query->getParam('entite');
+			$auteur = $query->getParam('signature');
 			if(!empty($_FILES['image']) && $_FILES['image']['size'] < 510000) {
 				$picture_temp = $_FILES['image']['tmp_name'];
 				$picture = $_FILES['image']['name'];
@@ -118,7 +122,7 @@ class NewsController extends Zend_Controller_Action
 				$visible = $query->getParam('visible'); }
 			if (strlen($titre) !=  0) {
 				$photo = $entite.'.jpg';
-				News::updateNews($titre, $contenu, $this->view->idNews, $lien, $photo, $visible);
+				News::updateNews($titre, $contenu, $this->view->idNews, $lien, $photo, $visible, $auteur); ///////////////////////////////
 				if(!empty($picture)) {
 					$image = $nom.'-'.$picture;
 					News::updateImageNews($image, $this->view->idNews);

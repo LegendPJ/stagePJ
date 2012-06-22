@@ -32,7 +32,7 @@
 				<li class="one"><a <?php echo ($this->controller == "index" || $this->controller == "news" || $this->controller == "pages" || $this->controller == "error") ? 'class="current"' : "";?> href="<?php echo $this->url(array('controller'=>'index','action'=>'index'), null, true);?>" title="Accueil du site de XYLAGROUP" onclick="_gaq.push(['_trackEvent', 'Clic sur Accueil', 'clic'])">ACCUEIL</a></li>
 				
 				<?php foreach (Entite::findAllExceptAccueil() as $entite) : ?>
-				<li><a <?php echo (strtolower($this->controller) == strtolower($entite->nom)) ? 'class="current"' : "";?> onclick="_gaq.push(['_trackEvent', 'Clic sur <?php echo strtoupper($entite->nom); ?>', 'clic'])" href="<?php echo $this->url(array(
+				<li><a <?php if ( (strtolower($this->controller) == strtolower($entite->nom)) || (strtolower($this->controller) == "devis" && strtolower($entite->nom) == "xylavie") ) {echo 'class="current"';} ?> onclick="_gaq.push(['_trackEvent', 'Clic sur <?php echo strtoupper($entite->nom); ?>', 'clic'])" href="<?php echo $this->url(array(
 																						'controller'=>strtolower($entite->nom),
 																						'action'=>'index'), null, true);?>"  title="<?php 
 																						switch ($entite->nom) {

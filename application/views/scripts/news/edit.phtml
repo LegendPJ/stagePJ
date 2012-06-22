@@ -20,6 +20,14 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 			<input type="radio" name="entite" value="xylavie" <?php echo ($entite[0] == 'xylavie') ? 'checked="checked"' : '' ?>>&nbsp;XYLAVIE
 			<input type="radio" name="entite" value="xylabtp" <?php echo ($entite[0] == 'xylabtp') ? 'checked="checked"' : '' ?>>&nbsp;XYLABTP
 			<input type="radio" name="entite" value="xylarisk" <?php echo ($entite[0] == 'xylarisk') ? 'checked="checked"' : '' ?>>&nbsp;XYLARISK<br><br>
+			<select name="signature" style="margin-left:30px;">
+				<option value="<?php echo $this->news[0]->auteur; ?>"><?php echo $this->news[0]->auteur; ?></option>
+			<?php foreach ($this->signature as $s) : ?>
+				<?php if($s->name != $this->news[0]->auteur) {?>
+					<option value="<?php echo $s->name; ?>"><?php echo $s->name; ?></option>
+			<?php } 
+			endforeach; ?>
+			</select><br><br>
 			<label for="file">Image</label>
 <?php 			if(!empty($this->news[0]->image)) { ?>
 				<div class="span5">

@@ -29,7 +29,7 @@
 						unset($texte[$nb_mots]);?>
 
 					<div id="contenuNews">
-						<?php echo implode(' ', $texte).'...';?>
+						<?php echo implode(' ', $texte).'...';?> <!-- ajouter un </p> ? -->
 					</div>
 					<a href="<?php echo $this->url(array('controller'=>'news',
 										'action'=>'newsvue',

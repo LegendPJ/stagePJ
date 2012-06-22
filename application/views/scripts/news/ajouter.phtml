@@ -19,6 +19,15 @@ $this->headScript()->appendFile('/js/tinyModif.js')->appendFile('/js/verifchamps
 			<input type="radio" name="entite" value="xylavie">&nbsp;XYLAVIE
 			<input type="radio" name="entite" value="xylabtp">&nbsp;XYLABTP
 			<input type="radio" name="entite" value="xylarisk">&nbsp;XYLARISK<br><br>
+			<label for="signature">Créateur<span style="color:#C33">*</span></label>
+			<select name="signature" style="margin-left:30px;">
+				<option value="<?php echo $this->ident->name; ?>"><?php echo $this->ident->name; ?></option>
+			<?php foreach ($this->signature as $s) : ?>
+				<?php if($s->name != $this->ident->name) {?>
+					<option value="<?php echo $s->name; ?>"><?php echo $s->name; ?></option>
+			<?php } 
+			endforeach; ?>
+			</select><br><br>
 			<label for="file">Image</label>
 			<input type="file" name="image"><p style="margin-left:30px;">(Taille inférieure à 500Ko)</p><br>
 			<?php if($this->ident->droit > 15) {?>
