@@ -15,6 +15,9 @@ class News extends BaseNews
 	public static function findAll() {
 		return Doctrine_Query::create()->from('news n')->execute();
 	}
+	public static function countAll() {
+		return Doctrine_Query::create()->from('news n')->where('n.visible = "oui"')->execute();
+	}
 	public static function findAllDesc() {
 		return Doctrine_Query::create()->from('news n')->orderBy('n.numero DESC')->execute();
 	}

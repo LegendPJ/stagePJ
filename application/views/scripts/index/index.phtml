@@ -38,8 +38,7 @@
 					</div>
 					<br>
 					<div class="span12">
-						<p><a onclick="_gaq.push(['_trackEvent', 'Clic sur Accéder aux News', 'clic'])" href="<?php echo $this->url(array('controller'=>'news',
-	                				 					'action'=>'index'), null, true);?>" class="btn btn-primary couleurNoire"> Accéder à toutes les news</a></p>
+						<p><a onclick="_gaq.push(['_trackEvent', 'Clic sur Accéder aux News', 'clic'])" href="<?php echo $this->url(array('controller'=>'news', 'action'=>'index'), null, true);?>" class="btn btn-primary couleurNoire"> Accéder <?php echo ($this->strCountNews == 'un') ? "à l'autre " : "aux ".$this->strCountNews." autres ";?> news</a></p>
 					</div>
 					<hr class="soften">
 				<!-- FIN NEWS -->

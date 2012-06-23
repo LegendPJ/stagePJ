@@ -2,14 +2,15 @@
 
 class IndexController extends Zend_Controller_Action
 {
-
 	public function init() {}
 
 	public function indexAction()
 	{
-		$entiteAccueil 			= 	Entite::findAccueil(); //on recupere la ligne d'ACCUEIL
+		$entiteAccueil 				= 	Entite::findAccueil(); //on recupere la ligne d'ACCUEIL
 		$this->view->encadreAccueil 		= 	Encadre::findEncadreEntiteV($entiteAccueil[0]->id); //on récupère les encadre relatifs à ACCUEIL
 		$this->view->last 			= 	News::findLastNews(); //on récupère la denière news
+		$int2str 				=	new Webf_Int2Str();
+		$this->view->strCountNews		=	$int2str->int2str(count(News::countAll())-1);
 	}
 
 	public function modifAction()
